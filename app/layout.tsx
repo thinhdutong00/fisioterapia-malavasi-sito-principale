@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-// Aggiunto l'import per gestire correttamente lo script di Clarity e GTM
 import Script from "next/script";
+import Navbar from "@/components/navbar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -78,6 +78,9 @@ export default function RootLayout({
             style={{ display: 'none', visibility: 'hidden' }}
           ></iframe>
         </noscript>
+        
+        {/* --- AGGIUNGI LA NAVBAR QUI --- */}
+        <Navbar />
         
         {children}
       </body>
