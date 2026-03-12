@@ -169,15 +169,13 @@ const [mounted, setMounted] = useState(false);
               />
             </div>
 
-            <nav className={`hidden xl:flex items-center gap-5 2xl:gap-8 text-[11px] 2xl:text-[12px] font-black uppercase tracking-[0.15em] ml-8 transition-colors duration-500
-              ${isScrolled ? 'text-[#022166]' : 'text-white'}`}>
-              <a href="#home" className="hover:text-[#55B4FF] transition-all whitespace-nowrap">CHI SIAMO</a>
-              <a href="#servizi" className="hover:text-[#55B4FF] transition-all whitespace-nowrap">TRATTAMENTI</a>
-              <a href="#metodo" className="hover:text-[#55B4FF] transition-all whitespace-nowrap text-[#55B4FF]">COME LAVORIAMO</a>
-              <a href="#team" className="hover:text-[#55B4FF] transition-all whitespace-nowrap">TEAM</a>
-              <a href="#recensioni" className="hover:text-[#55B4FF] transition-all whitespace-nowrap">RECENSIONI</a>
-              <a href="#dove-siamo" className="hover:text-[#55B4FF] transition-all whitespace-nowrap">DOVE SIAMO</a>
-            </nav>
+<nav className={`hidden xl:flex items-center gap-5 2xl:gap-8 text-[11px] 2xl:text-[12px] font-black uppercase tracking-[0.15em] ml-8 transition-colors duration-500
+  ${isScrolled ? 'text-[#022166]' : 'text-white'}`}>
+  <Link href="/informazioni" className="hover:text-[#55B4FF] transition-all whitespace-nowrap">INFORMAZIONI</Link>
+  <Link href="/trattamenti" className="hover:text-[#55B4FF] transition-all whitespace-nowrap">TRATTAMENTI FISIOTERAPICI</Link>
+  <Link href="/modalita" className="hover:text-[#55B4FF] transition-all whitespace-nowrap">MODALITÀ DELLA SEDUTA</Link>
+  <Link href="/contatti" className="hover:text-[#55B4FF] transition-all whitespace-nowrap">CONTATTI</Link>
+</nav>
 
             <div className="flex items-center gap-2 md:gap-3 ml-auto shrink-0">
               <a href="tel:3338225464" className={`flex items-center gap-2 px-3 md:px-4 py-2 md:py-2.5 rounded-xl font-bold text-[11px] transition-all whitespace-nowrap border-2
@@ -218,19 +216,12 @@ const [mounted, setMounted] = useState(false);
             <X size={40} />
           </button>
           
-          <nav className="flex flex-col items-center gap-8 text-white font-black text-2xl uppercase tracking-widest">
-            <a href="#home" onClick={() => setIsMenuOpen(false)}>Chi Siamo</a>
-            
-           <a href="#servizi" onClick={() => setIsMenuOpen(false)}>Trattamenti</a>
-           
-           <a href="#metodo" onClick={() => setIsMenuOpen(false)}>Metodo</a>
-            <a href="#team" onClick={() => setIsMenuOpen(false)}>Team</a>
-            <a href="#recensioni" onClick={() => setIsMenuOpen(false)}>Recensioni</a>
-            
-            <a href="#dove-siamo" onClick={() => setIsMenuOpen(false)}>Dove Siamo</a>
-         <a href="#servizio-domiciliare" className="text-[#55B4FF]" onClick={() => setIsMenuOpen(false)}>Domicilio</a>
-          </nav>
-
+<nav className="flex flex-col items-center gap-8 text-white font-black text-2xl uppercase tracking-widest">
+  <Link href="/informazioni" onClick={() => setIsMenuOpen(false)}>Informazioni</Link>
+  <Link href="/trattamenti" onClick={() => setIsMenuOpen(false)}>Trattamenti</Link>
+  <Link href="/modalita" onClick={() => setIsMenuOpen(false)}>Modalità</Link>
+  <Link href="/contatti" onClick={() => setIsMenuOpen(false)}>Contatti</Link>
+</nav>
           
           <a 
             href="#prenota" 
