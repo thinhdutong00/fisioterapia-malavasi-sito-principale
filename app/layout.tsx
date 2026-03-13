@@ -85,9 +85,6 @@ export default function RootLayout({
         
         {/* Contenuto della pagina */}
         {children}
-
-        {/* Footer globale */}
-        <Footer />
       </body>
     </html>
   );
