@@ -3,7 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
 import Navbar from "./components/navbar";
-import Footer from "./components/footer"; // Importa il Footer
+import Footer from "./components/footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -69,7 +69,7 @@ export default function RootLayout({
           `}
         </Script>
       </head>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased font-sans`}>
         {/* Google Tag Manager (noscript) */}
         <noscript>
           <iframe 
@@ -80,11 +80,26 @@ export default function RootLayout({
           ></iframe>
         </noscript>
         
-        {/* Navigazione globale */}
         <Navbar />
         
-        {/* Contenuto della pagina */}
-        {children}
+        {/* Wrapper per garantire che Navbar e Footer non si sovrappongano al contenuto */}
+        <div className="flex flex-col min-h-screen">
+          <div className="flex-grow">
+            {children}
+          </div>
+          
+          {/* Sezione dedicata al Footer legale e Privacy */}
+          <Footer />
+          
+          {/* Sottopiede per Policy Iubenda/Legali se non sono già nel componente Footer */}
+          <div className="bg-[#011644] py-4 text-center border-t border-white/5">
+            <div className="flex justify-center gap-6 text-[10px] text-slate-500 uppercase tracking-widest font-bold">
+              <a href="/privacy" className="hover:text-white transition-colors">Privacy Policy</a>
+              <a href="/cookie" className="hover:text-white transition-colors">Cookie Policy</a>
+              <button className="iubenda-cs-preferences-link hover:text-white transition-colors">Gestisci Consensi</button>
+            </div>
+          </div>
+        </div>
       </body>
     </html>
   );
