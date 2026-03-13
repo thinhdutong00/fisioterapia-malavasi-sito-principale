@@ -8,52 +8,59 @@ import { Phone, X, Menu } from 'lucide-react';
 
 export default function Navbar() {
   const pathname = usePathname();
-  
-  // --- STATI NAVBAR (Esattamente i tuoi) ---
+
+  // --- STATI NAVBAR ---
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
-  // Chiudi il menu mobile automaticamente quando cambi pagina
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Chiudi il menu mobile al cambio pagina
   useEffect(() => {
     setIsMenuOpen(false);
   }, [pathname]);
 
-  // --- LOGICA NAVBAR (La tua, ottimizzata per il cambio pagina) ---
+  // --- LOGICA SCROLL OTTIMIZZATA ---
   useEffect(() => {
     const mainContainer = document.querySelector('main');
     
     const controlNavbar = () => {
       if (mainContainer) {
         const currentScrollY = mainContainer.scrollTop;
-        const scrollHeight = mainContainer.scrollHeight;
-        const clientHeight = mainContainer.clientHeight;
-        const isNearBottom = scrollHeight - currentScrollY - clientHeight < 400;
-        
+
+        // 1. Gestione stile (Trasparente vs Bianco)
         setIsScrolled(currentScrollY > 50);
 
-        if (isNearBottom) {
-          setIsVisible(false);
+        // 2. Gestione Visibilità (Mostra/Nascondi al movimento)
+        if (currentScrollY < 10) {
+          // Se siamo in cima, deve essere sempre visibile
+          setIsVisible(true);
         } else if (currentScrollY > lastScrollY && currentScrollY > 100) {
+          // Se sto scendendo e ho superato i 100px, nascondi
           setIsVisible(false);
-        } else {
+        } else if (currentScrollY < lastScrollY) {
+          // SE STO SALENDO (anche di poco), mostra immediatamente
           setIsVisible(true);
         }
+
         setLastScrollY(currentScrollY);
       }
     };
 
-    // Esegui il controllo anche al montaggio per resettare lo stato
-    controlNavbar();
-
     mainContainer?.addEventListener('scroll', controlNavbar);
     return () => mainContainer?.removeEventListener('scroll', controlNavbar);
-  }, [lastScrollY, pathname]); // Si riattiva ogni volta che cambi rotta (pathname)
+  }, [lastScrollY]);
+
+  if (!mounted) return null;
 
   return (
     <>
-      {/* --- HEADER DINAMICO (Esattamente il tuo) --- */}
+      {/* --- HEADER DINAMICO --- */}
       <header className={`fixed top-0 inset-x-0 z-[100] transition-all duration-500 ease-in-out
         ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0 pointer-events-none'}
         ${isScrolled ? 'py-2' : 'py-0'}`}>
@@ -95,12 +102,12 @@ export default function Navbar() {
                 <Phone size={14} /> <span className="hidden sm:inline">333 822 5464</span>
               </a>
 
-              <a href={pathname === '/' ? '#prenota' : '/#prenota'} className={`hidden md:flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-[11px] transition-all shadow-md whitespace-nowrap
+              <Link href="/#prenota" className={`hidden md:flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-[11px] transition-all shadow-md whitespace-nowrap
                 ${isScrolled
                   ? 'bg-[#022166] text-white hover:bg-[#55B4FF]'
                   : 'bg-[#55B4FF] text-[#022166] hover:bg-white'}`}>
                 PRENOTA ORA
-              </a>
+              </Link>
 
               <button 
                 className={`xl:hidden p-1 transition-colors ${isScrolled ? 'text-[#022166]' : 'text-white'}`} 
@@ -114,7 +121,7 @@ export default function Navbar() {
         </div>
       </header>
 
-      {/* --- MENU MOBILE OVERLAY (Esattamente il tuo) --- */}
+      {/* --- MENU MOBILE OVERLAY --- */}
       {isMenuOpen && (
         <div className="fixed inset-0 z-[150] bg-[#022166] flex flex-col items-center justify-center gap-8 animate-in fade-in zoom-in-95 duration-300 xl:hidden">
           <button 
@@ -132,13 +139,13 @@ export default function Navbar() {
             <Link href="/contatti" onClick={() => setIsMenuOpen(false)}>Contatti</Link>
           </nav>
           
-          <a 
-            href={pathname === '/' ? '#prenota' : '/#prenota'}
+          <Link 
+            href="/#prenota" 
             onClick={() => setIsMenuOpen(false)} 
             className="mt-4 bg-[#55B4FF] text-[#022166] px-10 py-4 rounded-2xl font-black text-lg"
           >
             PRENOTA ORA
-          </a>
+          </Link>
         </div>
       )}
     </>
