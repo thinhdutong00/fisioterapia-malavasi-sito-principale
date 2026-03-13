@@ -3,7 +3,21 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowLeft, ChevronRight, Users, Star, ShieldCheck } from 'lucide-react';
+import { 
+  ArrowLeft, 
+  ChevronRight, 
+  ArrowRight, 
+  Users, 
+  Star, 
+  ShieldCheck, 
+  Target, 
+  Activity, 
+  Zap, 
+  HeartPulse, 
+  Brain, 
+  Move 
+} from 'lucide-react'; // Ho aggiunto tutte le icone mancanti qui
+
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, EffectFade } from 'swiper/modules';
 
@@ -127,8 +141,126 @@ export default function InformazioniPage() {
             </Link>
           </div>
 
+
+{/* --- SEZIONE 2: COSA FACCIAMO --- */}
+          <section className="mt-32 py-10 relative">
+            <div className="max-w-3xl mb-16">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#55B4FF]/10 border border-[#55B4FF]/20 mb-6">
+                <Target size={16} className="text-[#022166]" />
+                <span className="text-xs font-black tracking-widest uppercase text-[#022166]">Risultati Misurabili</span>
+              </div>
+              <h2 className="text-4xl md:text-5xl font-black text-[#022166] mb-6">
+                L'APPROCCIO CLINICO <br />
+                <span className="text-[#55B4FF]">AL TUO BENESSERE.</span>
+              </h2>
+              <p className="text-xl text-slate-600 font-medium leading-relaxed">
+                Superiamo il concetto di semplice "seduta". Ogni percorso inizia con una 
+                <span className="text-[#022166] font-bold text-lg"> valutazione funzionale accurata</span>: 
+                analizziamo la biomeccanica del tuo movimento per risolvere la causa del problema, non solo per gestirne i sintomi temporaneamente.
+              </p>
+            </div>
+
+            {/* Grid dei Servizi */}
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {/* Card 1 */}
+              <div className="group bg-white/40 backdrop-blur-sm p-8 rounded-[32px] border border-white/60 hover:bg-white hover:shadow-xl transition-all duration-500">
+                <div className="w-14 h-14 bg-[#022166] text-white rounded-2xl flex items-center justify-center mb-6 group-hover:bg-[#55B4FF] transition-colors">
+                  <Activity size={28} />
+                </div>
+                <h3 className="text-2xl font-black text-[#022166] mb-3">Fisioterapia Generale</h3>
+                <p className="text-slate-500 text-sm leading-relaxed mb-6">
+                  Trattamento specialistico per discopatie, cervicalgie e dolori articolari attraverso tecniche manuali basate sulle più recenti evidenze scientifiche.
+                </p>
+                <Link href="/trattamenti" className="text-xs font-black text-[#022166] flex items-center gap-2 uppercase tracking-widest hover:text-[#55B4FF]">
+                  Scopri di più <ChevronRight size={14} />
+                </Link>
+              </div>
+
+              {/* Card 2 */}
+              <div className="group bg-white/40 backdrop-blur-sm p-8 rounded-[32px] border border-white/60 hover:bg-white hover:shadow-xl transition-all duration-500">
+                <div className="w-14 h-14 bg-[#022166] text-white rounded-2xl flex items-center justify-center mb-6 group-hover:bg-[#55B4FF] transition-colors">
+                  <ShieldCheck size={28} />
+                </div>
+                <h3 className="text-2xl font-black text-[#022166] mb-3">Riabilitazione Post-Op</h3>
+                <p className="text-slate-500 text-sm leading-relaxed mb-6">
+                  Protocolli di recupero personalizzati per il ripristino precoce della mobilità e della forza dopo chirurgia ortopedica o traumi.
+                </p>
+                <Link href="/trattamenti" className="text-xs font-black text-[#022166] flex items-center gap-2 uppercase tracking-widest hover:text-[#55B4FF]">
+                  Scopri di più <ChevronRight size={14} />
+                </Link>
+              </div>
+
+              {/* Card 3 */}
+              <div className="group bg-white/40 backdrop-blur-sm p-8 rounded-[32px] border border-white/60 hover:bg-white hover:shadow-xl transition-all duration-500">
+                <div className="w-14 h-14 bg-[#022166] text-white rounded-2xl flex items-center justify-center mb-6 group-hover:bg-[#55B4FF] transition-colors">
+                  <Zap size={28} />
+                </div>
+                <h3 className="text-2xl font-black text-[#022166] mb-3">Fisioterapia Sportiva</h3>
+                <p className="text-slate-500 text-sm leading-relaxed mb-6">
+                  Dalla fase acuta al Return to Play. Ottimizziamo il gesto atletico e preveniamo le ricadute per farti tornare in campo al 100%.
+                </p>
+                <Link href="/trattamenti" className="text-xs font-black text-[#022166] flex items-center gap-2 uppercase tracking-widest hover:text-[#55B4FF]">
+                  Scopri di più <ChevronRight size={14} />
+                </Link>
+              </div>
+
+              {/* Card 4 */}
+              <div className="group bg-white/40 backdrop-blur-sm p-8 rounded-[32px] border border-white/60 hover:bg-white hover:shadow-xl transition-all duration-500">
+                <div className="w-14 h-14 bg-[#022166] text-white rounded-2xl flex items-center justify-center mb-6 group-hover:bg-[#55B4FF] transition-colors">
+                  <HeartPulse size={28} />
+                </div>
+                <h3 className="text-2xl font-black text-[#022166] mb-3">Fisioterapia Oncologica</h3>
+                <p className="text-slate-500 text-sm leading-relaxed mb-6">
+                  Un supporto specialistico per migliorare la qualità di vita, riducendo l'impatto fisico e il dolore legato alle terapie mediche.
+                </p>
+                <Link href="/trattamenti" className="text-xs font-black text-[#022166] flex items-center gap-2 uppercase tracking-widest hover:text-[#55B4FF]">
+                  Scopri di più <ChevronRight size={14} />
+                </Link>
+              </div>
+
+              {/* Card 5 */}
+              <div className="group bg-white/40 backdrop-blur-sm p-8 rounded-[32px] border border-white/60 hover:bg-white hover:shadow-xl transition-all duration-500">
+                <div className="w-14 h-14 bg-[#022166] text-white rounded-2xl flex items-center justify-center mb-6 group-hover:bg-[#55B4FF] transition-colors">
+                  <Brain size={28} />
+                </div>
+                <h3 className="text-2xl font-black text-[#022166] mb-3">Fisioterapia Neurologica</h3>
+                <p className="text-slate-500 text-sm leading-relaxed mb-6">
+                  Rieducazione motoria avanzata per favorire il recupero delle funzioni e dell'autonomia nelle patologie del sistema nervoso.
+                </p>
+                <Link href="/trattamenti" className="text-xs font-black text-[#022166] flex items-center gap-2 uppercase tracking-widest hover:text-[#55B4FF]">
+                  Scopri di più <ChevronRight size={14} />
+                </Link>
+              </div>
+
+              {/* Card 6 */}
+              <div className="group bg-white/40 backdrop-blur-sm p-8 rounded-[32px] border border-white/60 hover:bg-white hover:shadow-xl transition-all duration-500">
+                <div className="w-14 h-14 bg-[#022166] text-white rounded-2xl flex items-center justify-center mb-6 group-hover:bg-[#55B4FF] transition-colors">
+                  <Move size={28} />
+                </div>
+                <h3 className="text-2xl font-black text-[#022166] mb-3">Ritorno all'Autonomia</h3>
+                <p className="text-slate-500 text-sm leading-relaxed mb-6">
+                  Il nostro obiettivo finale è restituirti la sicurezza nei movimenti quotidiani, eliminando ogni limite imposto dal dolore.
+                </p>
+                <Link href="/trattamenti" className="text-xs font-black text-[#022166] flex items-center gap-2 uppercase tracking-widest hover:text-[#55B4FF]">
+                  Scopri di più <ChevronRight size={14} />
+                </Link>
+              </div>
+            </div>
+
+            {/* Banner CTA */}
+            <div className="mt-20 bg-[#022166] rounded-[40px] p-10 text-center relative overflow-hidden">
+              <div className="relative z-10">
+                <h3 className="text-2xl md:text-3xl font-black text-white mb-6">Recupera la tua libertà di movimento.</h3>
+                <Link href="/contatti" className="inline-flex items-center gap-3 bg-[#55B4FF] text-[#022166] px-10 py-4 rounded-2xl font-black uppercase tracking-widest hover:bg-white transition-all shadow-lg">
+                  Prenota una valutazione <ArrowRight size={18} />
+                </Link>
+              </div>
+            </div>
+          </section>
+
+
         </div>
-      </div>
+      </div>    
     </main>
   );
 }
