@@ -3,38 +3,44 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 import { Phone, X, Menu } from 'lucide-react';
 
 export default function Navbar() {
+  const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isScrolled, setIsScrolled] = useState(false);
 
+  // Reset del menu quando cambi pagina
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [pathname]);
+
   useEffect(() => {
     const mainContainer = document.querySelector('main');
-    
-    const controlNavbar = () => {
-      if (mainContainer) {
-        const currentScrollY = mainContainer.scrollTop;
-        const isNearBottom = mainContainer.scrollHeight - currentScrollY - mainContainer.clientHeight < 400;
-        
-        setIsScrolled(currentScrollY > 50);
+    if (!mainContainer) return;
 
-        if (isNearBottom) {
-          setIsVisible(false);
-        } else if (currentScrollY > lastScrollY && currentScrollY > 100) {
-          setIsVisible(false);
-        } else {
-          setIsVisible(true);
-        }
-        setLastScrollY(currentScrollY);
+    const controlNavbar = () => {
+      const currentScrollY = mainContainer.scrollTop;
+      
+      // Cambia stile dopo 50px di scroll
+      setIsScrolled(currentScrollY > 50);
+
+      // Logica Mostra/Nascondi (Header a scomparsa)
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        setIsVisible(false); // Scorri giù: nascondi
+      } else {
+        isVisible === false && setIsVisible(true); // Scorri su: mostra
       }
+      
+      setLastScrollY(currentScrollY);
     };
 
-    mainContainer?.addEventListener('scroll', controlNavbar);
-    return () => mainContainer?.removeEventListener('scroll', controlNavbar);
-  }, [lastScrollY]);
+    mainContainer.addEventListener('scroll', controlNavbar);
+    return () => mainContainer.removeEventListener('scroll', controlNavbar);
+  }, [lastScrollY, isVisible]);
 
   return (
     <>
@@ -44,74 +50,54 @@ export default function Navbar() {
 
         <div className={`mx-auto transition-all duration-500 px-4 md:px-6
           ${isScrolled
-            ? 'max-w-7xl bg-white/80 backdrop-blur-xl border border-white/40 shadow-lg rounded-2xl h-20'
+            ? 'max-w-7xl bg-white/90 backdrop-blur-xl border border-white/40 shadow-lg rounded-2xl h-20'
             : 'max-w-full bg-transparent h-24'}`}>
 
-          <div className="h-full flex items-center w-full">
+          <div className="h-full flex items-center w-full justify-between">
             <div className="flex items-center shrink-0">
               <Link href="/">
                 <Image
                   src="https://raw.githubusercontent.com/thinhdutong00/image-fisioterapia-malavasi/92e18a782853772b8d90a1ef6e851630fc1492ae/CENTRO-FISIOTERAPICO-CAVEZZO-MODENA-1.webp"
-                  alt="Logo Fisioterapia Malavasi"
+                  alt="Logo"
                   width={256}
                   height={64}
-                  className={`transition-all duration-500 object-contain w-auto ${
-                    isScrolled ? 'h-8 md:h-12 brightness-100' : 'h-10 md:h-16 brightness-0 invert'
+                  className={`transition-all duration-500 object-contain w-auto h-10 md:h-14 ${
+                    isScrolled ? 'brightness-100' : 'brightness-0 invert'
                   }`}
                   priority
                 />
               </Link>
             </div>
 
-            <nav className={`hidden xl:flex items-center gap-5 2xl:gap-8 text-[11px] 2xl:text-[12px] font-black uppercase tracking-[0.15em] ml-8 transition-colors duration-500
+            <nav className={`hidden xl:flex items-center gap-6 text-[11px] font-black uppercase tracking-widest
               ${isScrolled ? 'text-[#022166]' : 'text-white'}`}>
-              <Link href="/informazioni" className="hover:text-[#55B4FF] transition-all">INFORMAZIONI</Link>
-              <Link href="/trattamenti" className="hover:text-[#55B4FF] transition-all">TRATTAMENTI FISIOTERAPICI</Link>
-              <Link href="/modalita" className="hover:text-[#55B4FF] transition-all">MODALITÀ DELLA SEDUTA</Link>
-              <Link href="/contatti" className="hover:text-[#55B4FF] transition-all">CONTATTI</Link>
+              <Link href="/informazioni" className="hover:opacity-70 transition-all">INFORMAZIONI</Link>
+              <Link href="/trattamenti" className="hover:opacity-70 transition-all">TRATTAMENTI</Link>
+              <Link href="/modalita" className="hover:opacity-70 transition-all">MODALITÀ</Link>
+              <Link href="/contatti" className="hover:opacity-70 transition-all">CONTATTI</Link>
             </nav>
 
-            <div className="flex items-center gap-2 md:gap-3 ml-auto shrink-0">
-              <a href="tel:3338225464" className={`flex items-center gap-2 px-3 md:px-4 py-2 md:py-2.5 rounded-xl font-bold text-[11px] transition-all border-2
-                ${isScrolled
-                  ? 'bg-white border-[#022166] text-[#022166] hover:bg-[#022166] hover:text-white'
-                  : 'bg-white/10 border-white/20 text-white hover:bg-white hover:text-[#022166]'}`}>
+            <div className="flex items-center gap-3">
+              <a href="tel:3338225464" className={`flex items-center gap-2 px-4 py-2 rounded-xl font-bold text-[11px] transition-all border-2
+                ${isScrolled ? 'bg-white border-[#022166] text-[#022166]' : 'bg-white/10 border-white/20 text-white'}`}>
                 <Phone size={14} /> <span className="hidden sm:inline">333 822 5464</span>
               </a>
-
-              <a href="#prenota" className={`hidden md:flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-[11px] transition-all shadow-md
-                ${isScrolled
-                  ? 'bg-[#022166] text-white hover:bg-[#55B4FF]'
-                  : 'bg-[#55B4FF] text-[#022166] hover:bg-white'}`}>
-                PRENOTA ORA
-              </a>
-
-              <button 
-                className={`xl:hidden p-1 transition-colors ${isScrolled ? 'text-[#022166]' : 'text-white'}`} 
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
-              >
-                {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
+              <button onClick={() => setIsMenuOpen(true)} className={`xl:hidden p-1 ${isScrolled ? 'text-[#022166]' : 'text-white'}`}>
+                <Menu size={28} />
               </button>
             </div>
           </div>
         </div>
       </header>
 
-      {/* MENU MOBILE OVERLAY */}
+      {/* MOBILE MENU */}
       {isMenuOpen && (
-        <div className="fixed inset-0 z-[150] bg-[#022166] flex flex-col items-center justify-center gap-8 animate-in fade-in zoom-in-95 duration-300 xl:hidden">
-          <button onClick={() => setIsMenuOpen(false)} className="absolute top-8 right-8 text-white p-2">
-            <X size={40} />
-          </button>
-          <nav className="flex flex-col items-center gap-8 text-white font-black text-2xl uppercase tracking-widest">
-            <Link href="/informazioni" onClick={() => setIsMenuOpen(false)}>Informazioni</Link>
-            <Link href="/trattamenti" onClick={() => setIsMenuOpen(false)}>Trattamenti</Link>
-            <Link href="/modalita" onClick={() => setIsMenuOpen(false)}>Modalità</Link>
-            <Link href="/contatti" onClick={() => setIsMenuOpen(false)}>Contatti</Link>
-          </nav>
-          <a href="#prenota" onClick={() => setIsMenuOpen(false)} className="mt-4 bg-[#55B4FF] text-[#022166] px-10 py-4 rounded-2xl font-black text-lg">
-            PRENOTA ORA
-          </a>
+        <div className="fixed inset-0 z-[200] bg-[#022166] flex flex-col items-center justify-center gap-8 animate-in fade-in duration-300">
+          <button onClick={() => setIsMenuOpen(false)} className="absolute top-8 right-8 text-white"><X size={40}/></button>
+          <Link href="/informazioni" className="text-white text-2xl font-black uppercase">Informazioni</Link>
+          <Link href="/trattamenti" className="text-white text-2xl font-black uppercase">Trattamenti</Link>
+          <Link href="/modalita" className="text-white text-2xl font-black uppercase">Modalità</Link>
+          <Link href="/contatti" className="text-white text-2xl font-black uppercase">Contatti</Link>
         </div>
       )}
     </>
