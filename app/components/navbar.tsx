@@ -12,32 +12,39 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
-    // Cerchiamo il main container che ha lo scroll nel tuo sito
     const mainContainer = document.querySelector('main');
     
     const controlNavbar = () => {
       if (mainContainer) {
         const currentScrollY = mainContainer.scrollTop;
+        
+        // 1. Gestione colore (sfocatura/bianco) dopo 50px
+        setIsScrolled(currentScrollY > 50);
+
+        // 2. LOGICA RITRAIMENTO (Show/Hide)
+        // Se siamo vicini alla fine della pagina, la nascondiamo per non coprire il footer
         const scrollHeight = mainContainer.scrollHeight;
         const clientHeight = mainContainer.clientHeight;
         const isNearBottom = scrollHeight - currentScrollY - clientHeight < 400;
-        
-        setIsScrolled(currentScrollY > 50);
 
         if (isNearBottom) {
           setIsVisible(false);
         } else if (currentScrollY > lastScrollY && currentScrollY > 100) {
+          // Se scendo e ho superato i 100px, nascondo
           setIsVisible(false);
         } else {
+          // Se salgo, mostro
           setIsVisible(true);
         }
+        
+        // Aggiorno la posizione dell'ultimo scroll
         setLastScrollY(currentScrollY);
       }
     };
 
     mainContainer?.addEventListener('scroll', controlNavbar);
     return () => mainContainer?.removeEventListener('scroll', controlNavbar);
-  }, [lastScrollY]);
+  }, [lastScrollY]); // Importante: la logica dipende dall'ultimo scroll registrato
 
   return (
     <>
@@ -55,22 +62,23 @@ export default function Navbar() {
               <Link href="/">
                 <Image
                   src="https://raw.githubusercontent.com/thinhdutong00/image-fisioterapia-malavasi/92e18a782853772b8d90a1ef6e851630fc1492ae/CENTRO-FISIOTERAPICO-CAVEZZO-MODENA-1.webp"
-                  alt="Logo"
+                  alt="Logo Fisioterapia Malavasi"
                   width={256}
                   height={64}
                   className={`transition-all duration-500 object-contain w-auto ${
                     isScrolled ? 'h-8 md:h-12 brightness-100' : 'h-10 md:h-16 brightness-0 invert'
                   }`}
+                  priority
                 />
               </Link>
             </div>
 
             <nav className={`hidden xl:flex items-center gap-5 2xl:gap-8 text-[11px] 2xl:text-[12px] font-black uppercase tracking-[0.15em] ml-8 transition-colors duration-500
               ${isScrolled ? 'text-[#022166]' : 'text-white'}`}>
-              <Link href="/informazioni" className="hover:text-[#55B4FF] transition-all whitespace-nowrap">INFORMAZIONI</Link>
-              <Link href="/trattamenti" className="hover:text-[#55B4FF] transition-all whitespace-nowrap">TRATTAMENTI</Link>
-              <Link href="/modalita" className="hover:text-[#55B4FF] transition-all whitespace-nowrap">MODALITÀ</Link>
-              <Link href="/contatti" className="hover:text-[#55B4FF] transition-all whitespace-nowrap">CONTATTI</Link>
+              <Link href="/informazioni" className="hover:text-[#55B4FF] transition-all">INFORMAZIONI</Link>
+              <Link href="/trattamenti" className="hover:text-[#55B4FF] transition-all">TRATTAMENTI</Link>
+              <Link href="/modalita" className="hover:text-[#55B4FF] transition-all">MODALITÀ</Link>
+              <Link href="/contatti" className="hover:text-[#55B4FF] transition-all">CONTATTI</Link>
             </nav>
 
             <div className="flex items-center gap-2 md:gap-3 ml-auto shrink-0">
@@ -88,8 +96,10 @@ export default function Navbar() {
                 PRENOTA ORA
               </Link>
 
-              <button className={`xl:hidden p-1 transition-colors ${isScrolled ? 'text-[#022166]' : 'text-white'}`} 
-                onClick={() => setIsMenuOpen(!isMenuOpen)}>
+              <button 
+                className={`xl:hidden p-1 transition-colors ${isScrolled ? 'text-[#022166]' : 'text-white'}`} 
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+              >
                 {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
               </button>
             </div>
@@ -97,14 +107,16 @@ export default function Navbar() {
         </div>
       </header>
 
-      {/* MENU MOBILE */}
+      {/* MENU MOBILE OVERLAY */}
       {isMenuOpen && (
-        <div className="fixed inset-0 z-[150] bg-[#022166] flex flex-col items-center justify-center gap-8 text-white font-black text-2xl uppercase tracking-widest">
-          <button onClick={() => setIsMenuOpen(false)} className="absolute top-8 right-8"><X size={40} /></button>
-          <Link href="/informazioni" onClick={() => setIsMenuOpen(false)}>Informazioni</Link>
-          <Link href="/trattamenti" onClick={() => setIsMenuOpen(false)}>Trattamenti</Link>
-          <Link href="/modalita" onClick={() => setIsMenuOpen(false)}>Modalità</Link>
-          <Link href="/contatti" onClick={() => setIsMenuOpen(false)}>Contatti</Link>
+        <div className="fixed inset-0 z-[150] bg-[#022166] flex flex-col items-center justify-center gap-8 animate-in fade-in duration-300 xl:hidden">
+          <button onClick={() => setIsMenuOpen(false)} className="absolute top-8 right-8 text-white"><X size={40} /></button>
+          <nav className="flex flex-col items-center gap-8 text-white font-black text-2xl uppercase tracking-widest">
+            <Link href="/informazioni" onClick={() => setIsMenuOpen(false)}>Informazioni</Link>
+            <Link href="/trattamenti" onClick={() => setIsMenuOpen(false)}>Trattamenti</Link>
+            <Link href="/modalita" onClick={() => setIsMenuOpen(false)}>Modalità</Link>
+            <Link href="/contatti" onClick={() => setIsMenuOpen(false)}>Contatti</Link>
+          </nav>
         </div>
       )}
     </>
