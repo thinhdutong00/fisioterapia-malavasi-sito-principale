@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Phone, Menu, X } from 'lucide-react';
+import { Phone, X, Menu } from 'lucide-react';
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -17,34 +17,24 @@ export default function Navbar() {
     const controlNavbar = () => {
       if (mainContainer) {
         const currentScrollY = mainContainer.scrollTop;
+        const isNearBottom = mainContainer.scrollHeight - currentScrollY - mainContainer.clientHeight < 400;
         
-        // 1. Gestione colore (sfocatura/bianco) dopo 50px
         setIsScrolled(currentScrollY > 50);
-
-        // 2. LOGICA RITRAIMENTO (Show/Hide)
-        // Se siamo vicini alla fine della pagina, la nascondiamo per non coprire il footer
-        const scrollHeight = mainContainer.scrollHeight;
-        const clientHeight = mainContainer.clientHeight;
-        const isNearBottom = scrollHeight - currentScrollY - clientHeight < 400;
 
         if (isNearBottom) {
           setIsVisible(false);
         } else if (currentScrollY > lastScrollY && currentScrollY > 100) {
-          // Se scendo e ho superato i 100px, nascondo
           setIsVisible(false);
         } else {
-          // Se salgo, mostro
           setIsVisible(true);
         }
-        
-        // Aggiorno la posizione dell'ultimo scroll
         setLastScrollY(currentScrollY);
       }
     };
 
     mainContainer?.addEventListener('scroll', controlNavbar);
     return () => mainContainer?.removeEventListener('scroll', controlNavbar);
-  }, [lastScrollY]); // Importante: la logica dipende dall'ultimo scroll registrato
+  }, [lastScrollY]);
 
   return (
     <>
@@ -76,8 +66,8 @@ export default function Navbar() {
             <nav className={`hidden xl:flex items-center gap-5 2xl:gap-8 text-[11px] 2xl:text-[12px] font-black uppercase tracking-[0.15em] ml-8 transition-colors duration-500
               ${isScrolled ? 'text-[#022166]' : 'text-white'}`}>
               <Link href="/informazioni" className="hover:text-[#55B4FF] transition-all">INFORMAZIONI</Link>
-              <Link href="/trattamenti" className="hover:text-[#55B4FF] transition-all">TRATTAMENTI</Link>
-              <Link href="/modalita" className="hover:text-[#55B4FF] transition-all">MODALITÀ</Link>
+              <Link href="/trattamenti" className="hover:text-[#55B4FF] transition-all">TRATTAMENTI FISIOTERAPICI</Link>
+              <Link href="/modalita" className="hover:text-[#55B4FF] transition-all">MODALITÀ DELLA SEDUTA</Link>
               <Link href="/contatti" className="hover:text-[#55B4FF] transition-all">CONTATTI</Link>
             </nav>
 
@@ -89,12 +79,12 @@ export default function Navbar() {
                 <Phone size={14} /> <span className="hidden sm:inline">333 822 5464</span>
               </a>
 
-              <Link href="/contatti" className={`hidden md:flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-[11px] transition-all shadow-md
+              <a href="#prenota" className={`hidden md:flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-[11px] transition-all shadow-md
                 ${isScrolled
                   ? 'bg-[#022166] text-white hover:bg-[#55B4FF]'
                   : 'bg-[#55B4FF] text-[#022166] hover:bg-white'}`}>
                 PRENOTA ORA
-              </Link>
+              </a>
 
               <button 
                 className={`xl:hidden p-1 transition-colors ${isScrolled ? 'text-[#022166]' : 'text-white'}`} 
@@ -109,14 +99,19 @@ export default function Navbar() {
 
       {/* MENU MOBILE OVERLAY */}
       {isMenuOpen && (
-        <div className="fixed inset-0 z-[150] bg-[#022166] flex flex-col items-center justify-center gap-8 animate-in fade-in duration-300 xl:hidden">
-          <button onClick={() => setIsMenuOpen(false)} className="absolute top-8 right-8 text-white"><X size={40} /></button>
+        <div className="fixed inset-0 z-[150] bg-[#022166] flex flex-col items-center justify-center gap-8 animate-in fade-in zoom-in-95 duration-300 xl:hidden">
+          <button onClick={() => setIsMenuOpen(false)} className="absolute top-8 right-8 text-white p-2">
+            <X size={40} />
+          </button>
           <nav className="flex flex-col items-center gap-8 text-white font-black text-2xl uppercase tracking-widest">
             <Link href="/informazioni" onClick={() => setIsMenuOpen(false)}>Informazioni</Link>
             <Link href="/trattamenti" onClick={() => setIsMenuOpen(false)}>Trattamenti</Link>
             <Link href="/modalita" onClick={() => setIsMenuOpen(false)}>Modalità</Link>
             <Link href="/contatti" onClick={() => setIsMenuOpen(false)}>Contatti</Link>
           </nav>
+          <a href="#prenota" onClick={() => setIsMenuOpen(false)} className="mt-4 bg-[#55B4FF] text-[#022166] px-10 py-4 rounded-2xl font-black text-lg">
+            PRENOTA ORA
+          </a>
         </div>
       )}
     </>
