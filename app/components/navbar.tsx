@@ -74,11 +74,11 @@ export default function Navbar() {
         
 {/* LOGO AREA */}
         <Link href="/" className="flex items-center gap-4 group">
-          {/* Altezze invariate, larghezza aumentata per massimizzare la resa dell'immagine orizzontale */}
+          {/* Altezze bloccate come richiesto, larghezze espanse al massimo per la resa ottica */}
           <div className={`relative transition-all duration-500 ${
             isScrolled 
-              ? "w-32 h-8 md:w-36 h-9" 
-              : "w-44 h-11 md:w-56 h-12"
+              ? "w-40 h-8 md:w-48 h-9" 
+              : "w-60 h-11 md:w-80 h-12"
           }`}>
             <Image 
               src={logoSrc} 
