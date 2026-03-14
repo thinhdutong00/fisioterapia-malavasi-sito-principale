@@ -690,68 +690,57 @@ const [mounted, setMounted] = useState(false);
       </section>
 
 {/* --- MODALE TRATTAMENTI AGGIORNATA --- */}
-{selectedTrattamento && (
-  <div className="fixed inset-0 z-[200] flex items-center justify-center p-4 md:p-6">
-    {/* Overlay con blur */}
-    <div 
-      className="absolute inset-0 bg-[#022166]/60 backdrop-blur-xl" 
-      onClick={() => setSelectedTrattamento(null)}
-    ></div>
-    
-    {/* Contenitore Modale */}
-    <div className="relative bg-white rounded-[2.5rem] md:rounded-[4rem] p-6 md:p-16 max-w-2xl w-full max-h-[90vh] shadow-2xl animate-in fade-in zoom-in duration-300 flex flex-col overflow-hidden">
-      
-      {/* Bottone Chiusura - Ottimizzato per dita su mobile */}
-      <button 
-        onClick={() => setSelectedTrattamento(null)} 
-        className="absolute top-4 right-4 md:top-10 md:right-10 p-2 text-[#022166] hover:rotate-90 transition-transform z-10 bg-slate-100 md:bg-transparent rounded-full"
-      >
-        <X size={28} />
-      </button>
+      {selectedTrattamento && (
+        <div className="fixed inset-0 z-[200] flex items-center justify-center p-4 md:p-6">
+          {/* Overlay con blur */}
+          <div 
+            className="absolute inset-0 bg-[#022166]/60 backdrop-blur-xl" 
+            onClick={() => setSelectedTrattamento(null)}
+          ></div>
+          
+          {/* Contenitore Modale */}
+          <div className="relative bg-white rounded-[2.5rem] md:rounded-[4rem] p-6 md:p-16 max-w-2xl w-full max-h-[90vh] shadow-2xl animate-in fade-in zoom-in duration-300 flex flex-col overflow-hidden">
+            
+            {/* Bottone Chiusura - Ottimizzato per dita su mobile */}
+            <button 
+              onClick={() => setSelectedTrattamento(null)} 
+              className="absolute top-4 right-4 md:top-10 md:right-10 p-2 text-[#022166] hover:rotate-90 transition-transform z-10 bg-slate-100 md:bg-transparent rounded-full"
+            >
+              <X size={28} />
+            </button>
 
-      {/* Area Contenuto Scrollabile */}
-      <div className="overflow-y-auto pr-2 custom-scrollbar">
-        <div className="text-[#55B4FF] mb-4 md:mb-8">
-          {/* Ridimensionamento icona modale */}
-{React.cloneElement(selectedTrattamento.icona as React.ReactElement<any>, { size: 48 })}
+            {/* Area Contenuto Scrollabile */}
+            <div className="overflow-y-auto pr-2 custom-scrollbar">
+              <div className="text-[#55B4FF] mb-4 md:mb-8">
+                {/* Ridimensionamento icona modale */}
+                {React.cloneElement(selectedTrattamento.icona as React.ReactElement<any>, { size: 48 })}
+              </div>
+              
+              <h3 className="text-2xl md:text-4xl font-black text-[#022166] mb-4 md:mb-8 tracking-tighter leading-tight">
+                {selectedTrattamento.titolo}
+              </h3>
+              
+              <div className="w-12 h-1 bg-[#55B4FF] mb-6 rounded-full"></div>
+              
+              <p className="text-slate-600 text-base md:text-xl leading-relaxed mb-10 font-medium">
+                {selectedTrattamento.descrizione}
+              </p>
+            </div>
+
+            {/* Footer Modale Fisso */}
+            <div className="pt-4 mt-auto">
+              <a 
+                href="#prenota" 
+                onClick={() => setSelectedTrattamento(null)} 
+                className="block w-full text-center bg-[#022166] text-white py-4 md:py-6 rounded-2xl md:rounded-full font-black uppercase tracking-widest hover:bg-[#55B4FF] transition-all shadow-xl text-sm md:text-base"
+              >
+                Prenota Visita
+              </a>
+            </div>
+          </div>
         </div>
-        
-        <h3 className="text-2xl md:text-4xl font-black text-[#022166] mb-4 md:mb-8 tracking-tighter leading-tight">
-          {selectedTrattamento.titolo}
-        </h3>
-        
-        <div className="w-12 h-1 bg-[#55B4FF] mb-6 rounded-full"></div>
-        
-        <p className="text-slate-600 text-base md:text-xl leading-relaxed mb-10 font-medium">
-          {selectedTrattamento.descrizione}
-        </p>
-      </div>
-
-      {/* Footer Modale Fisso */}
-      <div className="pt-4 mt-auto">
-        <a 
-          href="#prenota" 
-          onClick={() => setSelectedTrattamento(null)} 
-          className="block w-full text-center bg-[#022166] text-white py-4 md:py-6 rounded-2xl md:rounded-full font-black uppercase tracking-widest hover:bg-[#55B4FF] transition-all shadow-xl text-sm md:text-base"
-        >
-          Prenota Visita
-        </a>
-      </div>
-    </div>
-  </div>
-)}
+      )}
       
-      <CookieBanner />
-      <footer className="w-full pt-16 pb-12 text-center bg-[#022166] border-t border-white/5">
-      <p className="text-slate-400 font-black tracking-widest text-[10px] uppercase mb-4 opacity-80">
-        © 2026 Fisioterapia Malavasi • Via I Maggio n°95 Cavezzo (MO) | P. IVA 03890170362
-      </p>
-      <div className="flex justify-center gap-8 text-[10px] font-bold uppercase tracking-widest">
-        <Link href="/privacy" className="text-slate-500 hover:text-[#55B4FF] transition-colors">Privacy Policy</Link>
-        <Link href="/cookie" className="text-slate-500 hover:text-[#55B4FF] transition-colors">Cookie Policy</Link>
-      </div>
-      <p className="mt-6 text-[9px] text-slate-700 font-bold uppercase tracking-[0.3em]">MAGO DIGITAL™ STUDIO</p>
-    </footer>
     </main>
   );
 }

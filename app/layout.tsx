@@ -3,7 +3,6 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
 import Navbar from "./components/navbar";
-import Footer from "./components/footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,7 +27,6 @@ export default function RootLayout({
   return (
     <html lang="it">
       <head>
-        {/* Google Tag Manager - Script principale */}
         <Script id="google-tag-manager" strategy="afterInteractive">
           {`
             (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -44,7 +42,6 @@ export default function RootLayout({
             __html: `
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
-              
               gtag('consent', 'default', {
                 'ad_storage': 'denied',
                 'ad_user_data': 'denied',
@@ -58,7 +55,6 @@ export default function RootLayout({
         <link rel="preconnect" href="https://raw.githubusercontent.com" />
         <link rel="dns-prefetch" href="https://raw.githubusercontent.com" />
 
-        {/* Blocco Microsoft Clarity ottimizzato */}
         <Script id="microsoft-clarity" strategy="lazyOnload">
           {`
             (function(c,l,a,r,i,t,y){
@@ -70,7 +66,6 @@ export default function RootLayout({
         </Script>
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased font-sans`}>
-        {/* Google Tag Manager (noscript) */}
         <noscript>
           <iframe 
             src="https://www.googletagmanager.com/ns.html?id=GTM-WRNZP7MS"
@@ -81,25 +76,7 @@ export default function RootLayout({
         </noscript>
         
         <Navbar />
-        
-        {/* Wrapper per garantire che Navbar e Footer non si sovrappongano al contenuto */}
-        <div className="flex flex-col min-h-screen">
-          <div className="flex-grow">
-            {children}
-          </div>
-          
-          {/* Sezione dedicata al Footer legale e Privacy */}
-          <Footer />
-          
-          {/* Sottopiede per Policy Iubenda/Legali se non sono già nel componente Footer */}
-          <div className="bg-[#011644] py-4 text-center border-t border-white/5">
-            <div className="flex justify-center gap-6 text-[10px] text-slate-500 uppercase tracking-widest font-bold">
-              <a href="/privacy" className="hover:text-white transition-colors">Privacy Policy</a>
-              <a href="/cookie" className="hover:text-white transition-colors">Cookie Policy</a>
-              <button className="iubenda-cs-preferences-link hover:text-white transition-colors">Gestisci Consensi</button>
-            </div>
-          </div>
-        </div>
+        {children}
       </body>
     </html>
   );
