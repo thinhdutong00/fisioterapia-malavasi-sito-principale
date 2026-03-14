@@ -61,9 +61,7 @@ export default function Navbar() {
       <div 
         className={`mx-auto transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] flex items-center justify-between border ${
           isScrolled 
-            // Quando è scrollato, rimane un riquadro elegante a centro pagina
-            ? "max-w-7xl bg-white/85 backdrop-blur-2xl border-white/40 shadow-[0_20px_50px_-12px_rgba(2,33,102,0.1)] rounded-2xl px-6 md:px-10 py-3" 
-            // Quando è iniziale, usiamo max-w-[95%] o full per eliminare la compressione
+            ? "max-w-6xl bg-white/85 backdrop-blur-2xl border-white/40 shadow-[0_20px_50px_-12px_rgba(2,33,102,0.1)] rounded-2xl px-6 md:px-10 py-3" 
             : "max-w-[98%] bg-transparent border-transparent py-8 px-4 md:px-12 rounded-none"
         }`}
       >
@@ -73,7 +71,7 @@ export default function Navbar() {
           <div className={`relative transition-all duration-500 ${
             isScrolled 
               ? "w-40 h-8 md:w-48 h-9" 
-              : "w-60 h-11 md:w-80 h-14" // Aumentata leggermente l'altezza h-14 per dare più aria
+              : "w-60 h-11 md:w-80 h-14"
           }`}>
             <Image 
               src={logoSrc} 
@@ -85,8 +83,12 @@ export default function Navbar() {
           </div>
         </Link>
 
-        {/* NAVIGATION */}
-        <nav className="hidden lg:flex items-center gap-10 xl:gap-14">
+        {/* NAVIGATION - Modificata la gestione del gap */}
+        <nav className={`hidden lg:flex items-center transition-all duration-500 ${
+          isScrolled 
+            ? "gap-5 xl:gap-6"   // Meno spazio quando è nel riquadro floating
+            : "gap-10 xl:gap-14" // Più spazio quando è nell'header iniziale
+        }`}>
           {navLinks.map((item) => (
             <Link 
               key={item.n} 
