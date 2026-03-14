@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Phone, ArrowRight } from "lucide-react";
+import { Phone, CalendarCheck, ArrowRight } from "lucide-react";
 
 export default function Navbar() {
   const [isVisible, setIsVisible] = useState(true);
@@ -13,7 +13,6 @@ export default function Navbar() {
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-      
       setIsScrolled(currentScrollY > 80);
 
       if (currentScrollY < 10) {
@@ -46,7 +45,7 @@ export default function Navbar() {
       <div 
         className={`mx-auto transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] flex items-center justify-between border ${
           isScrolled 
-            ? "max-w-6xl bg-white/75 backdrop-blur-2xl border-white/40 shadow-[0_20px_50px_-12px_rgba(2,33,102,0.1)] rounded-2xl px-8 md:px-10 py-3" 
+            ? "max-w-6xl bg-white/80 backdrop-blur-2xl border-white/40 shadow-[0_20px_50px_-12px_rgba(2,33,102,0.1)] rounded-2xl px-6 md:px-10 py-3" 
             : "max-w-full bg-transparent border-transparent py-10 px-8 md:px-16 rounded-none"
         }`}
       >
@@ -84,34 +83,51 @@ export default function Navbar() {
           ))}
         </nav>
 
-        {/* CONTACT & CTA */}
-        <div className="flex items-center gap-4 md:gap-8">
+        {/* ACTIONS */}
+        <div className="flex items-center gap-3 md:gap-5">
+          {/* CALL BUTTON - NUOVO DESIGN */}
           <a 
             href="tel:+393338225464" 
-            className={`hidden xl:flex items-center gap-2.5 font-bold text-[11px] transition-all ${
-              isScrolled ? "text-[#022166] hover:text-[#55B4FF]" : "text-white hover:text-[#55B4FF]"
+            className={`flex items-center gap-2 px-4 py-2.5 rounded-xl font-bold text-[10px] uppercase tracking-widest transition-all active:scale-95 ${
+              isScrolled 
+                ? "bg-[#022166]/5 text-[#022166] hover:bg-[#022166] hover:text-white" 
+                : "bg-white/10 text-white hover:bg-white hover:text-[#022166]"
             }`}
           >
-            <div className={`p-2 rounded-full transition-colors ${isScrolled ? "bg-[#022166]/5" : "bg-white/10"}`}>
-              <Phone size={14} className="text-[#55B4FF]" />
-            </div>
-            <span className="tracking-widest">333 822 5464</span>
+            <Phone size={14} className={isScrolled ? "text-[#55B4FF]" : "text-white group-hover:text-[#55B4FF]"} />
+            <span className="hidden sm:inline">Contattaci</span>
           </a>
           
+          {/* PRENOTA ORA - EFFETTO PREMIUM */}
           <Link 
             href="#prenota"
-            className={`group relative overflow-hidden flex items-center gap-3 px-6 md:px-8 py-3 md:py-4 font-black text-[10px] uppercase tracking-[0.2em] transition-all active:scale-95 ${
+            className={`group relative overflow-hidden flex items-center gap-3 px-6 md:px-8 py-3 md:py-4 font-black text-[10px] uppercase tracking-[0.2em] transition-all active:scale-90 shadow-lg ${
               isScrolled 
-                ? "bg-[#022166] text-white shadow-lg rounded-xl" 
-                : "bg-[#55B4FF] text-[#022166] hover:bg-white rounded-full"
+                ? "bg-[#022166] text-white rounded-xl" 
+                : "bg-[#55B4FF] text-[#022166] rounded-full"
             }`}
           >
+            {/* Animazione Shimmer (riflesso lucido) */}
+            <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-shimmer" />
+            
+            <CalendarCheck size={16} className="relative z-10 transition-transform group-hover:scale-110" />
             <span className="relative z-10">Prenota Ora</span>
-            <ArrowRight size={14} className="relative z-10 transition-transform group-hover:translate-x-1" />
-            <div className="absolute inset-0 bg-[#55B4FF] translate-y-full transition-transform duration-300 group-hover:translate-y-0" />
+            
+            {/* Background Hover Effect */}
+            <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 transition-opacity" />
           </Link>
         </div>
       </div>
+
+      {/* CSS per l'animazione Shimmer - Da aggiungere nel file globals.css o sotto */}
+      <style jsx>{`
+        @keyframes shimmer {
+          100% { transform: translateX(100%); }
+        }
+        .animate-shimmer {
+          animation: shimmer 2s infinite;
+        }
+      `}</style>
     </header>
   );
 }
