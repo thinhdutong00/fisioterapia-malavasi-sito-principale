@@ -24,3 +24,14 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+/* Elimina l'effetto scatto e libera lo scroll */
+html, body {
+  scroll-snap-type: none !important;
+  height: auto !important;
+  overflow-y: visible !important;
+}
+
+/* Rende fluido lo scroll quando usi i link della Navbar */
+html {
+  scroll-behavior: smooth;
+}

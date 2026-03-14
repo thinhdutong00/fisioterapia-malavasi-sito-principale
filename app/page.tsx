@@ -18,9 +18,7 @@ import {
   Shield
 } from 'lucide-react';
 
-// AGGIUNGI QUESTO:
 import { Swiper, SwiperSlide } from 'swiper/react';
-
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 
 import 'swiper/css';
@@ -29,12 +27,13 @@ import 'swiper/css/navigation';
 
 export default function FisioterapiaMalavasi() {
   const router = useRouter();
+  
   // --- STATI INTERFACCIA ---
-
   const [mapUrl, setMapUrl] = useState("https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2836.216234033104!2d11.026365!3d44.838499!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDTCsDUwJzE4LjYiTiAxMcKwMDEnMzQuOSJF!5e0!3m2!1sit!2sit!4v1700000000000!5m2!1sit!2sit");
   const [selectedTrattamento, setSelectedTrattamento] = useState<any>(null);
   const [isHoursOpen, setIsHoursOpen] = useState(false);
-const [mounted, setMounted] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
   // --- STATI MODULO MULTISTEP ---
   const [step, setStep] = useState(1);
   const [file, setFile] = useState<File | null>(null);
@@ -77,8 +76,6 @@ const [mounted, setMounted] = useState(false);
   const nextStep = () => setStep(step + 1);
   const prevStep = () => setStep(step - 1);
 
-
-
   // --- FUNZIONE INVIO EMAIL ---
   const inviaPrenotazione = async () => {
     try {
@@ -109,7 +106,8 @@ const [mounted, setMounted] = useState(false);
   };
 
   return (
-    <main className="h-screen overflow-y-auto md:snap-y md:snap-mandatory scroll-smooth bg-[#F0F4F8] text-slate-800 font-sans">
+    /* MODIFICATO: rimosso h-screen, overflow-y-auto e snap-scroll. Aggiunto min-h-screen e rimosso snap-mandatory */
+    <main className="relative min-h-screen w-full bg-[#F0F4F8] text-slate-800 font-sans scroll-smooth">
       
       {/* BACKGROUND DECORATIONS */}
       <div className="fixed inset-0 z-0 pointer-events-none">
@@ -121,8 +119,9 @@ const [mounted, setMounted] = useState(false);
 
 
 
-      {/* --- HERO SECTION --- */}
-      <section id="home" className="h-screen w-full md:snap-start md:snap-always relative flex items-center justify-center px-4 md:px-8 overflow-hidden bg-[#022166]">
+     {/* --- HERO SECTION --- */}
+      {/* MODIFICATO: rimosso h-screen e snap. Aggiunto min-h-screen */}
+      <section id="home" className="relative min-h-screen w-full flex items-center justify-center px-4 md:px-8 overflow-hidden bg-[#022166]">
         <div className="absolute inset-0 z-0">
           <Image
             src="https://github.com/thinhdutong00/image-fisioterapia-malavasi/blob/main/1.png?raw=true"
@@ -135,7 +134,7 @@ const [mounted, setMounted] = useState(false);
           <div className="absolute inset-0 bg-gradient-to-b from-[#022166]/80 via-[#022166]/60 to-[#022166]/90"></div>
         </div>
 
-        <div className="max-w-4xl mx-auto relative z-10 text-center py-20">
+        <div className="max-w-4xl mx-auto relative z-10 text-center py-32 md:py-40">
           <div className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-md border border-white/20 text-white px-5 py-2 rounded-full text-[10px] font-black uppercase tracking-[0.2em] mb-8 shadow-sm">
             <div className="relative h-5 w-10">
               <Image
@@ -174,84 +173,87 @@ const [mounted, setMounted] = useState(false);
         </div>
       </section>
 
-{/* --- TRATTAMENTI --- */}
-<section id="servizi" className="min-h-screen w-full snap-start snap-always relative flex items-center justify-center py-24 px-4 bg-white/5 backdrop-blur-sm overflow-hidden">
-  <div className="max-w-7xl mx-auto relative z-10 w-full py-10">
-    <div className="text-center mb-16">
-      <h2 className="text-4xl md:text-5xl font-black text-[#022166] tracking-tight mb-4">I Nostri Trattamenti</h2>
-      <div className="w-20 h-1.5 bg-[#55B4FF] mx-auto rounded-full"></div>
-    </div>
+      {/* --- TRATTAMENTI --- */}
+      {/* MODIFICATO: rimosso snap-start e snap-always. Cambiato h-screen in min-h-screen */}
+      <section id="servizi" className="relative min-h-screen w-full flex items-center justify-center py-24 px-4 bg-white/5 backdrop-blur-sm overflow-hidden">
+        <div className="max-w-7xl mx-auto relative z-10 w-full py-10">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-black text-[#022166] tracking-tight mb-4">I Nostri Trattamenti</h2>
+            <div className="w-20 h-1.5 bg-[#55B4FF] mx-auto rounded-full"></div>
+          </div>
 
-    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {[
-        { id: 1, titolo: "Riabilitazione Post-Chirurgica", icona: <Accessibility size={32} />, breve: "Percorsi specialistici per il recupero della mobilità dopo interventi di protesi (anca/ginocchio) o ricostruzione legamentosa (LCA).", descrizione: "L'intervento chirurgico è solo il primo passo: il vero successo dipende dalla riabilitazione. Seguo protocolli basati sulle più recenti evidenze scientifiche per ridurre l'infiammazione, recuperare la forza muscolare e restituirti la piena autonomia nel minor tempo possibile. Non lasciare che la cicatrice limiti il tuo movimento.", colore: "from-blue-500/20 to-transparent" },
-        { id: 2, titolo: "Trattamento Cervicalgia, Lombalgia ed Ernie del Disco", icona: <MoveVertical size={32} />, breve: "Soluzioni efficaci per eliminare il dolore alla colonna vertebrale, sciatalgie e tensioni muscolari legate alla postura.", descrizione: "Il mal di schiena non deve diventare una condizione normale della tua vita. Attraverso tecniche di terapia manuale e manipolazioni mirate, agisco sulla causa del dolore (sia essa meccanica, posturale o compressiva) per liberare le articolazioni e rilassare i tessuti profondi. Torna a muoverti senza paura di rimanere bloccato.", colore: "from-cyan-500/20 to-transparent" },
-        { id: 3, titolo: "Fisioterapia Sportiva e Recupero Traumi da Sport", icona: <Footprints size={32} />, breve: "Trattamento specialistico per distorsioni alla caviglia, lesioni muscolari e problematiche articolari della spalla.", descrizione: "Per uno sportivo, ogni giorno fermo è un giorno perso. Mi occupo del trattamento di traumi acuti e cronici, applicando tecniche che accelerano la riparazione dei tessuti e prevengono future recidive. Dalla gestione della fase acuta al ritorno in campo, ogni fase è monitorata per garantirti la massima performance.", colore: "from-[#55B4FF]/20 to-transparent" },
-        { id: 4, titolo: "Cura delle Tendiniti e Infiammazioni Croniche", icona: <Dna size={32} />, breve: "Trattamento per dolore al gomito (epicondilite), tendine d'Achille e fascite plantare con approcci conservativi avanzati.", descrizione: "Le tendinopatie richiedono pazienza e competenza specifica: il riposo assoluto spesso non basta. Utilizzo un approccio combinato di terapia manuale ed esercizio terapeutico per rieducare il tendine al carico, eliminando quel dolore persistente che ostacola i tuoi gesti quotidiani o la tua corsa.", colore: "from-indigo-500/20 to-transparent" },
-        { id: 5, titolo: "Riabilitazione Neurologica", icona: <Brain size={32} />, breve: "Percorsi per il recupero funzionale in pazienti con esiti di ictus, Parkinson, sclerosi multipla o lesioni nervose.", descrizione: "Il sistema nervoso ha una straordinaria capacità di adattamento. Attraverso esercizi neurocognitivi e stimolazioni specifiche, lavoriamo per riprogrammare il movimento, migliorare l'equilibrio e contrastare la spasticità. L'obiettivo è restituirti la massima indipendenza possibile nelle attività quotidiane, con un approccio empatico e scientificamente rigoroso.", colore: "from-sky-500/20 to-transparent" },
-        { id: 6, titolo: "Fisioterapia Oncologica", icona: <HeartPulse size={32} />, breve: "Supporto specialistico per la gestione del linfedema, del dolore e della stanchezza cronica (fatigue) post-oncologica.", descrizione: "La fisioterapia gioca un ruolo cruciale nel percorso di guarigione oncologica. Mi occupo del trattamento del linfedema tramite linfodrenaggio manuale e bendaggi, oltre al recupero della mobilità articolare post-chirurgia (es. mastectomia). Un supporto concreto per migliorare la qualità della tua vita, riducendo gli effetti collaterali delle terapie e restituendo energia al tuo corpo.", colore: "from-blue-400/20 to-transparent" }
-      ].map((item) => (
-        <div key={item.id} onClick={() => setSelectedTrattamento(item)} className="group relative p-8 rounded-[2.5rem] bg-white/40 backdrop-blur-md border border-white/60 cursor-pointer transition-all duration-500 hover:bg-white hover:-translate-y-2 hover:shadow-2xl">
-          <div className={`absolute inset-0 bg-gradient-to-br ${item.colore} rounded-[2.5rem] opacity-0 group-hover:opacity-100 transition-opacity`}></div>
-          <div className="relative z-10">
-            <div className="w-16 h-16 bg-[#022166] text-[#55B4FF] rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-[#022166]/20 transition-transform group-hover:scale-110">
-              {item.icona}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              { id: 1, titolo: "Riabilitazione Post-Chirurgica", icona: <Accessibility size={32} />, breve: "Percorsi specialistici per il recupero della mobilità dopo interventi di protesi (anca/ginocchio) o ricostruzione legamentosa (LCA).", descrizione: "L'intervento chirurgico è solo il primo passo: il vero successo dipende dalla riabilitazione. Seguo protocolli basati sulle più recenti evidenze scientifiche per ridurre l'infiammazione, recuperare la forza muscolare e restituirti la piena autonomia nel minor tempo possibile. Non lasciare che la cicatrice limiti il tuo movimento.", colore: "from-blue-500/20 to-transparent" },
+              { id: 2, titolo: "Trattamento Cervicalgia, Lombalgia ed Ernie del Disco", icona: <MoveVertical size={32} />, breve: "Soluzioni efficaci per eliminare il dolore alla colonna vertebrale, sciatalgie e tensioni muscolari legate alla postura.", descrizione: "Il mal di schiena non deve diventare una condizione normale della tua vita. Attraverso tecniche di terapia manuale e manipolazioni mirate, agisco sulla causa del dolore (sia essa meccanica, posturale o compressiva) per liberare le articolazioni e rilassare i tessuti profondi. Torna a muoverti senza paura di rimanere bloccato.", colore: "from-cyan-500/20 to-transparent" },
+              { id: 3, titolo: "Fisioterapia Sportiva e Recupero Traumi da Sport", icona: <Footprints size={32} />, breve: "Trattamento specialistico per distorsioni alla caviglia, lesioni muscolari e problematiche articolari della spalla.", descrizione: "Per uno sportivo, ogni giorno fermo è un giorno perso. Mi occupo del trattamento di traumi acuti e cronici, applicando tecniche che accelerano la riparazione dei tessuti e prevengono future recidive. Dalla gestione della fase acuta al ritorno in campo, ogni fase è monitorata per garantirti la massima performance.", colore: "from-[#55B4FF]/20 to-transparent" },
+              { id: 4, titolo: "Cura delle Tendiniti e Infiammazioni Croniche", icona: <Dna size={32} />, breve: "Trattamento per dolore al gomito (epicondilite), tendine d'Achille e fascite plantare con approcci conservativi avanzati.", descrizione: "Le tendinopatie richiedono pazienza e competenza specifica: il riposo assoluto spesso non basta. Utilizzo un approccio combinato di terapia manuale ed esercizio terapeutico per rieducare il tendine al carico, eliminando quel dolore persistente che ostacola i tuoi gesti quotidiani o la tua corsa.", colore: "from-indigo-500/20 to-transparent" },
+              { id: 5, titolo: "Riabilitazione Neurologica", icona: <Brain size={32} />, breve: "Percorsi per il recupero funzionale in pazienti con esiti di ictus, Parkinson, sclerosi multipla o lesioni nervose.", descrizione: "Il sistema nervoso ha una straordinaria capacità di adattamento. Attraverso esercizi neurocognitivi e stimolazioni specifiche, lavoriamo per riprogrammare il movimento, migliorare l'equilibrio e contrastare la spasticità. L'obiettivo è restituirti la massima indipendenza possibile nelle attività quotidiane, con un approccio empatico e scientificamente rigoroso.", colore: "from-sky-500/20 to-transparent" },
+              { id: 6, titolo: "Fisioterapia Oncologica", icona: <HeartPulse size={32} />, breve: "Supporto specialistico per la gestione del linfedema, del dolore e della stanchezza cronica (fatigue) post-oncologica.", descrizione: "La fisioterapia gioca un ruolo cruciale nel percorso di guarigione oncologica. Mi occupo del trattamento del linfedema tramite linfodrenaggio manuale e bendaggi, oltre al recupero della mobilità articolare post-chirurgia (es. mastectomia). Un supporto concreto per migliorare la qualità della tua vita, riducendo gli effetti collaterali delle terapie e restituendo energia al tuo corpo.", colore: "from-blue-400/20 to-transparent" }
+            ].map((item) => (
+              <div key={item.id} onClick={() => setSelectedTrattamento(item)} className="group relative p-8 rounded-[2.5rem] bg-white/40 backdrop-blur-md border border-white/60 cursor-pointer transition-all duration-500 hover:bg-white hover:-translate-y-2 hover:shadow-2xl">
+                <div className={`absolute inset-0 bg-gradient-to-br ${item.colore} rounded-[2.5rem] opacity-0 group-hover:opacity-100 transition-opacity`}></div>
+                <div className="relative z-10">
+                  <div className="w-16 h-16 bg-[#022166] text-[#55B4FF] rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-[#022166]/20 transition-transform group-hover:scale-110">
+                    {item.icona}
+                  </div>
+                  <h3 className="text-xl font-black text-[#022166] mb-3 leading-tight">{item.titolo}</h3>
+                  <p className="text-slate-600 text-sm font-medium mb-6 line-clamp-2">{item.breve}</p>
+                  <div className="inline-flex items-center gap-2 text-[#55B4FF] font-black text-[10px] uppercase tracking-widest">
+                    Scopri i dettagli <ChevronRight size={14} />
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* --- SEZIONE DOMICILIO --- */}
+      {/* MODIFICATO: rimosso snap-start e snap-always. Usato min-h-[60vh] */}
+      <section id="servizio-domiciliare" className="relative min-h-[60vh] w-full flex items-center justify-center py-20 px-4 bg-white/30 backdrop-blur-sm overflow-hidden">
+        <div className="max-w-6xl mx-auto relative z-10 w-full">
+          <div className="group relative p-8 md:p-12 rounded-[3rem] bg-white/60 backdrop-blur-xl border border-white/80 shadow-xl transition-all duration-500 hover:shadow-2xl flex flex-col md:flex-row items-center gap-10">
+            
+            {/* Icona Grande */}
+            <div className="shrink-0">
+              <div className="w-24 h-24 md:w-32 md:h-32 bg-[#022166] text-[#55B4FF] rounded-[2rem] flex items-center justify-center shadow-2xl shadow-[#022166]/30 transition-transform duration-700 group-hover:rotate-[10deg] group-hover:scale-110">
+                <Home size={60} />
+              </div>
             </div>
-            <h3 className="text-xl font-black text-[#022166] mb-3 leading-tight">{item.titolo}</h3>
-            <p className="text-slate-600 text-sm font-medium mb-6 line-clamp-2">{item.breve}</p>
-            <div className="inline-flex items-center gap-2 text-[#55B4FF] font-black text-[10px] uppercase tracking-widest">
-              Scopri i dettagli <ChevronRight size={14} />
+
+            {/* Contenuto Testuale */}
+            <div className="flex-1 text-center md:text-left">
+              <div className="inline-flex items-center gap-2 text-[#55B4FF] font-black text-[10px] uppercase tracking-[0.2em] mb-4">
+                <MapPin size={14} /> CAVEZZO E ZONE LIMITROFE
+              </div>
+              
+              <h2 className="text-3xl md:text-5xl font-black text-[#022166] leading-tight mb-6 tracking-tight">
+                Fisioterapia <span className="text-[#55B4FF]">a Domicilio</span>
+              </h2>
+              
+              <p className="text-slate-600 text-lg font-medium mb-8 leading-relaxed max-w-2xl">
+                Il professionista direttamente a casa tua per pazienti con ridotta mobilità, quadri neurologici o necessità post-chirurgiche. Porto tutta l'attrezzatura necessaria per garantire la stessa qualità dello studio nel comfort di casa tua.
+              </p>
+
+              {/* Box Istruzioni Modulo */}
+              <div className="bg-[#022166]/5 border-l-4 border-[#55B4FF] p-5 rounded-r-2xl mb-8">
+                <p className="text-[#022166] text-sm font-bold italic leading-relaxed">
+                  NOTA PER LA PRENOTAZIONE: Se richiedi il domicilio, specifica il tuo indirizzo di residenza nel campo Note del modulo finale.
+                </p>
+              </div>
+
+              <a href="#prenota" className="inline-flex items-center justify-center gap-3 bg-[#022166] text-white px-10 py-5 rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-[#55B4FF] transition-all group shadow-lg shadow-[#022166]/20">
+                Richiedi Visita a Domicilio <ArrowRight size={18} className="group-hover:translate-x-1.5 transition-transform" />
+              </a>
             </div>
           </div>
         </div>
-      ))}
-    </div>
-  </div>
-</section>
-
-{/* --- SEZIONE DOMICILIO --- */}
-<section id="servizio-domiciliare" className="min-h-[60vh] w-full md:snap-start md:snap-always relative flex items-center justify-center py-20 px-4 bg-white/30 backdrop-blur-sm overflow-hidden">
-  <div className="max-w-6xl mx-auto relative z-10 w-full">
-    <div className="group relative p-8 md:p-12 rounded-[3rem] bg-white/60 backdrop-blur-xl border border-white/80 shadow-xl transition-all duration-500 hover:shadow-2xl flex flex-col md:flex-row items-center gap-10">
-      
-      {/* Icona Grande */}
-      <div className="shrink-0">
-        <div className="w-24 h-24 md:w-32 md:h-32 bg-[#022166] text-[#55B4FF] rounded-[2rem] flex items-center justify-center shadow-2xl shadow-[#022166]/30 transition-transform duration-700 group-hover:rotate-[10deg] group-hover:scale-110">
-          <Home size={60} />
-        </div>
-      </div>
-
-      {/* Contenuto Testuale */}
-      <div className="flex-1 text-center md:text-left">
-        <div className="inline-flex items-center gap-2 text-[#55B4FF] font-black text-[10px] uppercase tracking-[0.2em] mb-4">
-          <MapPin size={14} /> CAVEZZO E ZONE LIMITROFE
-        </div>
-        
-        <h2 className="text-3xl md:text-5xl font-black text-[#022166] leading-tight mb-6 tracking-tight">
-          Fisioterapia <span className="text-[#55B4FF]">a Domicilio</span>
-        </h2>
-        
-        <p className="text-slate-600 text-lg font-medium mb-8 leading-relaxed max-w-2xl">
-          Il professionista direttamente a casa tua per pazienti con ridotta mobilità, quadri neurologici o necessità post-chirurgiche. Porto tutta l'attrezzatura necessaria per garantire la stessa qualità dello studio nel comfort di casa tua.
-        </p>
-
-        {/* Box Istruzioni Modulo */}
-        <div className="bg-[#022166]/5 border-l-4 border-[#55B4FF] p-5 rounded-r-2xl mb-8">
-          <p className="text-[#022166] text-sm font-bold italic leading-relaxed">
-            NOTA PER LA PRENOTAZIONE: Se richiedi il domicilio, specifica il tuo indirizzo di residenza nel campo Note del modulo finale.
-          </p>
-        </div>
-
-        <a href="#prenota" className="inline-flex items-center justify-center gap-3 bg-[#022166] text-white px-10 py-5 rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-[#55B4FF] transition-all group shadow-lg shadow-[#022166]/20">
-          Richiedi Visita a Domicilio <ArrowRight size={18} className="group-hover:translate-x-1.5 transition-transform" />
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
+      </section>
 
 {/* --- SEZIONE STAFF --- */}
-<section id="team" className="min-h-screen w-full md:snap-start md:snap-always relative flex items-center justify-center py-32 px-4 bg-white">
+{/* MODIFICATO: rimosso h-screen e classi snap. Aggiunto min-h-screen */}
+<section id="team" className="relative min-h-screen w-full flex items-center justify-center py-32 px-4 bg-white">
   <div className="max-w-7xl mx-auto relative z-10 w-full py-10">
     <div className="text-center mb-20">
       <span className="text-[#55B4FF] font-black text-[10px] uppercase tracking-[0.3em] block mb-4">Professionalità e Competenza</span>
@@ -283,7 +285,8 @@ const [mounted, setMounted] = useState(false);
 </section>
 
 {/* --- RECENSIONI --- */}
-<section id="recensioni" className="min-h-screen w-full md:snap-start md:snap-always py-20 md:py-24 px-4 relative overflow-hidden bg-gradient-to-b from-white to-[#F0F4F8] flex items-center">
+{/* MODIFICATO: rimosso h-screen e classi snap. Aggiunto min-h-screen e flex items-center */}
+<section id="recensioni" className="relative min-h-screen w-full py-24 md:py-32 px-4 overflow-hidden bg-gradient-to-b from-white to-[#F0F4F8] flex items-center">
   <div className="max-w-7xl mx-auto w-full">
     <div className="flex flex-col md:flex-row items-center justify-between mb-12 md:mb-16 gap-8">
       <div className="text-center md:text-left">
@@ -294,19 +297,19 @@ const [mounted, setMounted] = useState(false);
       </div>
       
       <div className="bg-white p-6 rounded-[2rem] shadow-xl shadow-blue-900/5 border border-slate-100 flex items-center gap-6">
-<div className="flex-shrink-0 w-12 h-12 bg-[#4285F4] rounded-xl flex items-center justify-center">
-  <svg 
-    className="w-6 h-6 text-white" 
-    fill="currentColor" 
-    viewBox="0 0 24 24" 
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
-    <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
-    <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" />
-    <path d="M12 5.38c1.62 0 3.06.56 4.21 1.66l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" />
-  </svg>
-</div>
+        <div className="flex-shrink-0 w-12 h-12 bg-[#4285F4] rounded-xl flex items-center justify-center">
+          <svg 
+            className="w-6 h-6 text-white" 
+            fill="currentColor" 
+            viewBox="0 0 24 24" 
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
+            <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
+            <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" />
+            <path d="M12 5.38c1.62 0 3.06.56 4.21 1.66l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" />
+          </svg>
+        </div>
         <div>
           <div className="flex gap-1 text-yellow-400 mb-1">
             {[...Array(5)].map((_, i) => <Star key={i} size={18} fill="currentColor" />)}
@@ -317,10 +320,7 @@ const [mounted, setMounted] = useState(false);
     </div>
 
     <div className="relative group px-0 md:px-16">
-      {/* Maschera di sfumatura attiva solo su desktop per non coprire testo su mobile */}
-      <div 
-        className="md:[mask-image:linear-gradient(to_right,transparent_0%,black_15%,black_85%,transparent_100%)]"
-      >
+      <div className="md:[mask-image:linear-gradient(to_right,transparent_0%,black_15%,black_85%,transparent_100%)]">
         <Swiper
           modules={[Autoplay, Pagination, Navigation]}
           spaceBetween={20}
@@ -361,7 +361,6 @@ const [mounted, setMounted] = useState(false);
         </Swiper>
       </div>
 
-      {/* Frecce nascoste su mobile per pulizia, visibili da md in su */}
       <button className="swiper-button-prev-custom hidden md:flex absolute top-1/2 -left-6 -translate-y-1/2 z-50 w-14 h-14 bg-white border border-slate-100 rounded-full items-center justify-center text-[#022166] shadow-2xl hover:bg-[#55B4FF] hover:text-white transition-all">
         <ChevronLeft size={28} />
       </button>
@@ -369,7 +368,6 @@ const [mounted, setMounted] = useState(false);
         <ChevronRight size={28} />
       </button>
       
-      {/* Pagination sempre visibile per feedback su mobile */}
       <div className="swiper-pagination-custom flex justify-center mt-6 gap-2"></div>
     </div>
   </div>
@@ -377,178 +375,180 @@ const [mounted, setMounted] = useState(false);
 
 
 {/* --- SEZIONE COME LAVORIAMO (PROCESSO) --- */}
-<section id="metodo" className="min-h-screen w-full md:snap-start md:snap-always relative flex items-center justify-center py-32 px-4 overflow-hidden bg-white">
-        {/* Decorazione sottile di sfondo */}
-        <div className="absolute top-1/2 left-0 w-[300px] h-[300px] bg-[#55B4FF]/5 rounded-full blur-[100px] -z-10" />
+{/* MODIFICATO: rimosso h-screen e snap-start. Aggiunto min-h-screen */}
+<section id="metodo" className="relative min-h-screen w-full flex items-center justify-center py-32 px-4 overflow-hidden bg-white">
+  {/* Decorazione sottile di sfondo */}
+  <div className="absolute top-1/2 left-0 w-[300px] h-[300px] bg-[#55B4FF]/5 rounded-full blur-[100px] -z-10" />
 
-        <div className="max-w-7xl mx-auto relative z-10 w-full">
-          {/* Header Sezione */}
-          <div className="text-center mb-20">
-            <div className="inline-flex items-center justify-center p-1 px-3 mb-4 rounded-full bg-[#022166]/5 border border-[#022166]/10">
-              <span className="text-[#022166] font-black text-[10px] uppercase tracking-[0.3em]">Protocollo Clinico</span>
+  <div className="max-w-7xl mx-auto relative z-10 w-full">
+    {/* Header Sezione */}
+    <div className="text-center mb-20">
+      <div className="inline-flex items-center justify-center p-1 px-3 mb-4 rounded-full bg-[#022166]/5 border border-[#022166]/10">
+        <span className="text-[#022166] font-black text-[10px] uppercase tracking-[0.3em]">Protocollo Clinico</span>
+      </div>
+      <h2 className="text-4xl md:text-6xl font-black text-[#022166] tracking-tighter mb-6">
+        Il Tuo Percorso di <span className="text-[#55B4FF]">Recupero</span>
+      </h2>
+      <p className="max-w-2xl mx-auto text-slate-500 font-bold text-lg leading-relaxed italic">
+        Un approccio scientifico in 3 fasi per risolvere il dolore alla radice e restituirti la libertà di movimento.
+      </p>
+    </div>
+
+    {/* Griglia dei Passaggi */}
+    <div className="grid md:grid-cols-3 gap-8 relative">
+      {/* Linea connettiva (visibile solo su desktop) */}
+      <div className="hidden lg:block absolute top-1/2 left-0 w-full h-0.5 bg-slate-100 -translate-y-1/2 z-0"></div>
+
+      {[
+        {
+          fase: "01",
+          titolo: "Anamnesi e Colloquio",
+          desc: "Ascoltiamo la tua storia. Raccogliamo ogni dettaglio sui tuoi sintomi e sulle tue attività quotidiane per inquadrare correttamente il tuo problema clinico fin dal primo istante.",
+          icon: <MessageCircle size={24} />
+        },
+        {
+          fase: "02",
+          titolo: "Esame Obiettivo e Test",
+          desc: "La scienza del movimento. Attraverso test specifici, valutazioni attive e passive, individuiamo con precisione la causa della tua disfunzione muscolo-scheletrica.",
+          icon: <ClipboardCheck size={24} />
+        },
+        {
+          fase: "03",
+          titolo: "Trattamento ed Autonomia",
+          desc: "Risultati che durano. Combiniamo terapia manuale ed esercizi personalizzati, rendendoti protagonista e autonomo nel tuo processo di guarigione.",
+          icon: <Shield size={24} />
+        }
+      ].map((step, idx) => (
+        <div key={idx} className="relative z-10 group">
+          <div className="bg-slate-50 rounded-[3rem] p-8 pb-12 border border-slate-100 transition-all duration-700 hover:bg-white hover:shadow-[0_40px_80px_-20px_rgba(2,33,102,0.15)] hover:-translate-y-2 h-full flex flex-col items-center text-center">
+            
+            {/* Numero Fase e Icona */}
+            <div className="flex justify-between items-start w-full mb-8">
+              <span className="text-5xl font-black text-[#022166]/10 group-hover:text-[#55B4FF]/20 transition-colors">
+                {step.fase}
+              </span>
+              <div className="w-12 h-12 rounded-2xl bg-[#022166] text-white flex items-center justify-center shadow-lg shadow-[#022166]/20 group-hover:bg-[#55B4FF] transition-colors duration-500">
+                {step.icon}
+              </div>
             </div>
-            <h2 className="text-4xl md:text-6xl font-black text-[#022166] tracking-tighter mb-6">
-              Il Tuo Percorso di <span className="text-[#55B4FF]">Recupero</span>
-            </h2>
-            <p className="max-w-2xl mx-auto text-slate-500 font-bold text-lg leading-relaxed italic">
-              Un approccio scientifico in 3 fasi per risolvere il dolore alla radice e restituirti la libertà di movimento.
+
+            <h3 className="text-2xl font-black text-[#022166] mb-4 tracking-tight group-hover:text-[#55B4FF] transition-colors">
+              {step.titolo}
+            </h3>
+            
+            <p className="text-slate-500 font-bold text-sm leading-relaxed italic">
+              {step.desc}
             </p>
           </div>
+        </div>
+      ))}
+    </div>
 
-          {/* Griglia dei Passaggi */}
-          <div className="grid md:grid-cols-3 gap-8 relative">
-            {/* Linea connettiva (visibile solo su desktop) */}
-            <div className="hidden lg:block absolute top-1/2 left-0 w-full h-0.5 bg-slate-100 -translate-y-1/2 z-0"></div>
+    {/* Nota finale CTA */}
+    <div className="mt-20 text-center">
+      <p className="text-slate-400 text-sm font-bold uppercase tracking-widest mb-6">Ogni seduta ha una durata di circa 45-60 minuti</p>
+      <div className="w-16 h-1 bg-[#022166] mx-auto rounded-full opacity-20"></div>
+    </div>
+  </div>
+</section>
 
+{/* --- DOVE SIAMO --- */}
+{/* MODIFICATO: rimosso h-screen e snap-scroll. Usato min-h-screen */}
+<section id="dove-siamo" className="relative z-10 bg-white flex flex-col lg:flex-row min-h-screen w-full overflow-hidden">
+  
+  {/* LATO TESTI E SELEZIONE */}
+  <div className="lg:w-2/5 w-full p-6 md:p-16 lg:p-24 flex flex-col justify-center bg-gradient-to-br from-white to-slate-50 relative overflow-hidden">
+    {/* Decorazione bloccata per non creare scroll */}
+    <div className="absolute top-0 right-0 w-32 h-32 bg-[#55B4FF]/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl pointer-events-none"></div>
+    
+    <div className="relative z-10 w-full">
+      <span className="text-[#55B4FF] font-black text-xs uppercase tracking-[0.3em] mb-4 block">Vicinanza e Accessibilità</span>
+      <h2 className="text-4xl md:text-5xl font-black text-[#022166] tracking-tight mb-4">Dove <span className="text-[#55B4FF]">Trovarci</span></h2>
+      <p className="text-slate-500 font-medium mb-12 max-w-sm">Scegli la sede più vicina a te e visualizza il percorso interattivo.</p>
+      
+      <div className="space-y-4 w-full">
+        {[
+          { n: 'Cavezzo (MO)', a: 'Via I maggio, 95', u: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2836.32688402506!2d11.026417776652431!3d44.83533497107052!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x477f9754f738e681%3A0x867041a677332c8c!2sVia%20I%20Maggio%2C%2095%2C%2041032%20Cavezzo%20MO!5e0!3m2!1sit!2sit!4v1709574488954!5m2!1sit!2sit" },
+          { n: 'Rovereto sulla Secchia (MO)', a: 'Via Savino Forti, 61', u: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2834.782531652156!2d10.957581576654!3d44.86566877107044!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x477f98c8c68c928b%3A0x6a2c27072c72b25b!2sVia%20Savino%20Forti%2C%2061%2C%2041039%20Rovereto%20sulla%20Secchia%20MO!5e0!3m2!1sit!2sit!4v1709574542231!5m2!1sit!2sit" }
+        ].map(loc => (
+          <button 
+            key={loc.n} 
+            onClick={() => setMapUrl(loc.u)} 
+            className={`group w-full flex items-center gap-4 p-5 rounded-[2rem] transition-all duration-500 border ${
+              mapUrl === loc.u 
+              ? 'bg-[#022166] text-white shadow-xl border-[#022166]' 
+              : 'bg-white border-slate-100 text-[#022166]'
+            }`}
+          >
+            <div className={`p-3 rounded-2xl shrink-0 transition-colors ${
+              mapUrl === loc.u ? 'bg-[#55B4FF] text-[#022166]' : 'bg-slate-100 text-[#022166]'
+            }`}>
+              <MapPin size={22} />
+            </div>
+            <div className="text-left overflow-hidden">
+              <p className="font-black text-base leading-none mb-1 truncate">{loc.n}</p>
+              <p className={`text-[10px] font-bold uppercase tracking-widest truncate ${mapUrl === loc.u ? 'text-[#55B4FF]' : 'text-slate-400'}`}>{loc.a}</p>
+            </div>
+          </button>
+        ))}
+      </div>
+
+      {/* FISARMONICA ORARI */}
+      <div className="mt-8 overflow-hidden rounded-[2rem] border border-slate-100 bg-white shadow-sm w-full">
+        <button 
+          onClick={() => setIsHoursOpen(!isHoursOpen)}
+          className="w-full flex items-center justify-between p-5 hover:bg-slate-50 transition-colors"
+          type="button"
+        >
+          <div className="flex items-center gap-4">
+            <div className="w-10 h-10 bg-[#55B4FF]/10 rounded-xl flex items-center justify-center text-[#55B4FF]">
+              <Clock size={20} />
+            </div>
+            <span className="font-black text-[#022166] text-sm uppercase tracking-widest">Orari di Apertura</span>
+          </div>
+          <div className={`transition-transform duration-300 ${isHoursOpen ? 'rotate-180' : ''}`}>
+            <ChevronRight size={20} className="text-slate-400 rotate-90" />
+          </div>
+        </button>
+        
+        <div className={`transition-all duration-500 ease-in-out ${isHoursOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'} overflow-hidden`}>
+          <div className="p-5 pt-0 space-y-3 border-t border-slate-50">
             {[
-              {
-                fase: "01",
-                titolo: "Anamnesi e Colloquio",
-                desc: "Ascoltiamo la tua storia. Raccogliamo ogni dettaglio sui tuoi sintomi e sulle tue attività quotidiane per inquadrare correttamente il tuo problema clinico fin dal primo istante.",
-                icon: <MessageCircle size={24} />
-              },
-              {
-                fase: "02",
-                titolo: "Esame Obiettivo e Test",
-                desc: "La scienza del movimento. Attraverso test specifici, valutazioni attive e passive, individuiamo con precisione la causa della tua disfunzione muscolo-scheletrica.",
-                icon: <ClipboardCheck size={24} />
-              },
-              {
-                fase: "03",
-                titolo: "Trattamento ed Autonomia",
-                desc: "Risultati che durano. Combiniamo terapia manuale ed esercizi personalizzati, rendendoti protagonista e autonomo nel tuo processo di guarigione.",
-                icon: <Shield size={24} />
-              }
-            ].map((step, idx) => (
-              <div key={idx} className="relative z-10 group">
-                <div className="bg-slate-50 rounded-[3rem] p-8 pb-12 border border-slate-100 transition-all duration-700 hover:bg-white hover:shadow-[0_40px_80px_-20px_rgba(2,33,102,0.15)] hover:-translate-y-2 h-full flex flex-col items-center text-center">
-                  
-                  {/* Numero Fase e Icona */}
-                  <div className="flex justify-between items-start w-full mb-8">
-                    <span className="text-5xl font-black text-[#022166]/10 group-hover:text-[#55B4FF]/20 transition-colors">
-                      {step.fase}
-                    </span>
-                    <div className="w-12 h-12 rounded-2xl bg-[#022166] text-white flex items-center justify-center shadow-lg shadow-[#022166]/20 group-hover:bg-[#55B4FF] transition-colors duration-500">
-                      {step.icon}
-                    </div>
-                  </div>
-
-                  <h3 className="text-2xl font-black text-[#022166] mb-4 tracking-tight group-hover:text-[#55B4FF] transition-colors">
-                    {step.titolo}
-                  </h3>
-                  
-                  <p className="text-slate-500 font-bold text-sm leading-relaxed italic">
-                    {step.desc}
-                  </p>
-                </div>
+              { d: 'Lunedì', o: '09–13, 15–20' },
+              { d: 'Martedì', o: '09–13, 15–21' },
+              { d: 'Mercoledì', o: '09–13, 15–21' },
+              { d: 'Giovedì', o: '09–13, 15–21' },
+              { d: 'Venerdì', o: '09–13, 15–20' },
+              { d: 'Sabato', o: '09–13' },
+              { d: 'Domenica', o: 'Chiuso' },
+            ].map((item, idx) => (
+              <div key={idx} className="flex justify-between items-center gap-4">
+                <span className="text-[10px] font-bold text-slate-400 uppercase tracking-tighter shrink-0">{item.d}</span>
+                <span className={`text-xs font-black ${item.o === 'Chiuso' ? 'text-red-400' : 'text-[#022166]'} text-right`}>{item.o}</span>
               </div>
             ))}
           </div>
-
-          {/* Nota finale CTA */}
-          <div className="mt-20 text-center">
-            <p className="text-slate-400 text-sm font-bold uppercase tracking-widest mb-6">Ogni seduta ha una durata di circa 45-60 minuti</p>
-            <div className="w-16 h-1 bg-[#022166] mx-auto rounded-full opacity-20"></div>
-          </div>
         </div>
-      </section>
+      </div>
+    </div>
+  </div>
 
-
-{/* --- DOVE SIAMO - FIX SCROLL LATERALE --- */}
-<section id="dove-siamo" className="min-h-screen lg:h-screen w-full md:snap-start md:snap-always relative z-10 bg-white flex flex-col lg:flex-row overflow-x-hidden">
-        
-        {/* LATO TESTI E SELEZIONE */}
-        <div className="lg:w-2/5 w-full p-6 md:p-16 lg:p-24 flex flex-col justify-center bg-gradient-to-br from-white to-slate-50 relative overflow-hidden">
-          {/* Decorazione bloccata per non creare scroll */}
-          <div className="absolute top-0 right-0 w-32 h-32 bg-[#55B4FF]/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl pointer-events-none"></div>
-          
-          <div className="relative z-10 w-full">
-            <span className="text-[#55B4FF] font-black text-xs uppercase tracking-[0.3em] mb-4 block">Vicinanza e Accessibilità</span>
-            <h2 className="text-4xl md:text-5xl font-black text-[#022166] tracking-tight mb-4">Dove <span className="text-[#55B4FF]">Trovarci</span></h2>
-            <p className="text-slate-500 font-medium mb-12 max-w-sm">Scegli la sede più vicina a te e visualizza il percorso interattivo.</p>
-            
-            <div className="space-y-4 w-full">
-              {[
-                { n: 'Cavezzo (MO)', a: 'Via I maggio, 95', u: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2836.425145838563!2d11.0268581766627!3d44.8333169710705!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x477f9506637e1967%3A0xc3f6050519965f3a!2sVia%20I%20Maggio%2C%2095%2C%2041032%20Cavezzo%20MO!5e0!3m2!1sit!2sit!4v1709564800000!5m2!1sit!2sit" },
-                { n: 'Rovereto sulla Secchia (MO)', a: 'Via Savino Forti, 61', u: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2837.2847594821564!2d10.957548776661955!3d44.82136127107067!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x477f943f6f16428d%3A0x6b772c72b20755d5!2sVia%20Savino%20Forti%2C%2061%2C%2041016%20Rovereto%20Sulla%20Secchia%20MO!5e0!3m2!1sit!2sit!4v1709564900000!5m2!1sit!2sit" }
-              ].map(loc => (
-                <button 
-                  key={loc.n} 
-                  onClick={() => setMapUrl(loc.u)} 
-                  className={`group w-full flex items-center gap-4 p-5 rounded-[2rem] transition-all duration-500 border ${
-                    mapUrl === loc.u 
-                    ? 'bg-[#022166] text-white shadow-xl border-[#022166]' 
-                    : 'bg-white border-slate-100 text-[#022166]'
-                  }`}
-                >
-                  <div className={`p-3 rounded-2xl shrink-0 transition-colors ${
-                    mapUrl === loc.u ? 'bg-[#55B4FF] text-[#022166]' : 'bg-slate-100 text-[#022166]'
-                  }`}>
-                    <MapPin size={22} />
-                  </div>
-                  <div className="text-left overflow-hidden">
-                    <p className="font-black text-base leading-none mb-1 truncate">{loc.n}</p>
-                    <p className={`text-[10px] font-bold uppercase tracking-widest truncate ${mapUrl === loc.u ? 'text-[#55B4FF]' : 'text-slate-400'}`}>{loc.a}</p>
-                  </div>
-                </button>
-              ))}
-            </div>
-
-            {/* FISARMONICA ORARI */}
-            <div className="mt-8 overflow-hidden rounded-[2rem] border border-slate-100 bg-white shadow-sm w-full">
-              <button 
-                onClick={() => setIsHoursOpen(!isHoursOpen)}
-                className="w-full flex items-center justify-between p-5 hover:bg-slate-50 transition-colors"
-                type="button"
-              >
-                <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 bg-[#55B4FF]/10 rounded-xl flex items-center justify-center text-[#55B4FF]">
-                    <Clock size={20} />
-                  </div>
-                  <span className="font-black text-[#022166] text-sm uppercase tracking-widest">Orari di Apertura</span>
-                </div>
-                <div className={`transition-transform duration-300 ${isHoursOpen ? 'rotate-180' : ''}`}>
-                  <ChevronRight size={20} className="text-slate-400 rotate-90" />
-                </div>
-              </button>
-              
-              <div className={`transition-all duration-500 ease-in-out ${isHoursOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'} overflow-hidden`}>
-                <div className="p-5 pt-0 space-y-3 border-t border-slate-50">
-                  {[
-                    { d: 'Lunedì', o: '09–13, 15–20' },
-                    { d: 'Martedì', o: '09–13, 15–21' },
-                    { d: 'Mercoledì', o: '09–13, 15–21' },
-                    { d: 'Giovedì', o: '09–13, 15–21' },
-                    { d: 'Venerdì', o: '09–13, 15–20' },
-                    { d: 'Sabato', o: '09–13' },
-                    { d: 'Domenica', o: 'Chiuso' },
-                  ].map((item, idx) => (
-                    <div key={idx} className="flex justify-between items-center gap-4">
-                      <span className="text-[10px] font-bold text-slate-400 uppercase tracking-tighter shrink-0">{item.d}</span>
-                      <span className={`text-xs font-black ${item.o === 'Chiuso' ? 'text-red-400' : 'text-[#022166]'} text-right`}>{item.o}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* LATO MAPPA */}
-        <div className="lg:w-3/5 w-full h-[350px] lg:h-full relative bg-slate-200 overflow-hidden">
-          <iframe 
-            src={mapUrl} 
-            title="Mappa Sedi Studio Fisioterapia Malavasi"
-            className="w-full h-full grayscale-[0.2] contrast-[1.1]" 
-            style={{ border: 0 }} 
-            allowFullScreen 
-            loading="lazy"
-          ></iframe>
-        </div>
-      </section>
+  {/* LATO MAPPA */}
+  <div className="lg:w-3/5 w-full h-[400px] lg:h-auto min-h-[400px] relative bg-slate-200">
+    <iframe 
+      src={mapUrl} 
+      title="Mappa Sedi Studio Fisioterapia Malavasi"
+      className="w-full h-full grayscale-[0.2] contrast-[1.1]" 
+      style={{ border: 0 }} 
+      allowFullScreen 
+      loading="lazy"
+    ></iframe>
+  </div>
+</section>
 
 {/* --- PRENOTAZIONE MULTISTEP --- */}
-<section id="prenota" className="min-h-screen w-full md:snap-start md:snap-always py-32 px-6 bg-[#022166] flex flex-col items-center relative overflow-hidden">
+{/* MODIFICATO: rimosso h-screen e snap-start. Aggiunto min-h-screen e rimosso overflow-hidden */}
+<section id="prenota" className="relative min-h-screen w-full py-32 px-6 bg-[#022166] flex flex-col items-center overflow-visible">
         {/* Decorazioni di sfondo */}
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#55B4FF]/10 rounded-full blur-[120px] -z-10 translate-x-1/2 -translate-y-1/2" />
         <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#55B4FF]/5 rounded-full blur-[100px] -z-10 -translate-x-1/2 translate-y-1/2" />
@@ -685,57 +685,29 @@ const [mounted, setMounted] = useState(false);
             </div>
           </div>
         </div>
-
-
       </section>
 
-{/* --- MODALE TRATTAMENTI AGGIORNATA --- */}
+      {/* --- MODALE TRATTAMENTI --- */}
       {selectedTrattamento && (
         <div className="fixed inset-0 z-[200] flex items-center justify-center p-4 md:p-6">
-          {/* Overlay con blur */}
-          <div 
-            className="absolute inset-0 bg-[#022166]/60 backdrop-blur-xl" 
-            onClick={() => setSelectedTrattamento(null)}
-          ></div>
+          <div className="absolute inset-0 bg-[#022166]/60 backdrop-blur-xl" onClick={() => setSelectedTrattamento(null)}></div>
           
-          {/* Contenitore Modale */}
           <div className="relative bg-white rounded-[2.5rem] md:rounded-[4rem] p-6 md:p-16 max-w-2xl w-full max-h-[90vh] shadow-2xl animate-in fade-in zoom-in duration-300 flex flex-col overflow-hidden">
-            
-            {/* Bottone Chiusura - Ottimizzato per dita su mobile */}
-            <button 
-              onClick={() => setSelectedTrattamento(null)} 
-              className="absolute top-4 right-4 md:top-10 md:right-10 p-2 text-[#022166] hover:rotate-90 transition-transform z-10 bg-slate-100 md:bg-transparent rounded-full"
-            >
+            <button onClick={() => setSelectedTrattamento(null)} className="absolute top-4 right-4 md:top-10 md:right-10 p-2 text-[#022166] hover:rotate-90 transition-transform z-10 bg-slate-100 md:bg-transparent rounded-full">
               <X size={28} />
             </button>
 
-            {/* Area Contenuto Scrollabile */}
             <div className="overflow-y-auto pr-2 custom-scrollbar">
               <div className="text-[#55B4FF] mb-4 md:mb-8">
-                {/* Ridimensionamento icona modale */}
                 {React.cloneElement(selectedTrattamento.icona as React.ReactElement<any>, { size: 48 })}
               </div>
-              
-              <h3 className="text-2xl md:text-4xl font-black text-[#022166] mb-4 md:mb-8 tracking-tighter leading-tight">
-                {selectedTrattamento.titolo}
-              </h3>
-              
+              <h3 className="text-2xl md:text-4xl font-black text-[#022166] mb-4 md:mb-8 tracking-tighter leading-tight">{selectedTrattamento.titolo}</h3>
               <div className="w-12 h-1 bg-[#55B4FF] mb-6 rounded-full"></div>
-              
-              <p className="text-slate-600 text-base md:text-xl leading-relaxed mb-10 font-medium">
-                {selectedTrattamento.descrizione}
-              </p>
+              <p className="text-slate-600 text-base md:text-xl leading-relaxed mb-10 font-medium">{selectedTrattamento.descrizione}</p>
             </div>
 
-            {/* Footer Modale Fisso */}
             <div className="pt-4 mt-auto">
-              <a 
-                href="#prenota" 
-                onClick={() => setSelectedTrattamento(null)} 
-                className="block w-full text-center bg-[#022166] text-white py-4 md:py-6 rounded-2xl md:rounded-full font-black uppercase tracking-widest hover:bg-[#55B4FF] transition-all shadow-xl text-sm md:text-base"
-              >
-                Prenota Visita
-              </a>
+              <a href="#prenota" onClick={() => setSelectedTrattamento(null)} className="block w-full text-center bg-[#022166] text-white py-4 md:py-6 rounded-2xl md:rounded-full font-black uppercase tracking-widest hover:bg-[#55B4FF] transition-all shadow-xl text-sm md:text-base">Prenota Visita</a>
             </div>
           </div>
         </div>
