@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { usePathname } from "next/navigation"; // Importa questo!
+import { usePathname } from "next/navigation";
 import { Phone, CalendarCheck } from "lucide-react";
 
 export default function Navbar() {
@@ -11,23 +11,13 @@ export default function Navbar() {
   const isHomePage = pathname === "/";
   
   const [isVisible, setIsVisible] = useState(true);
-  // Se non siamo in home, partiamo già come "scrolled" per essere visibili
-  const [isScrolled, setIsScrolled] = useState(!isHomePage);
+  const [isScrolled, setIsScrolled] = useState(false);
   const lastScrollY = useRef(0);
 
   useEffect(() => {
-    // Reset dello stato quando cambia pagina
-    setIsScrolled(!isHomePage || window.scrollY > 80);
-
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-      
-      // In Home decide lo scroll, nelle altre pagine resta quasi sempre attivo
-      if (isHomePage) {
-        setIsScrolled(currentScrollY > 80);
-      } else {
-        setIsScrolled(true); // Sempre visibile (scrolled style) nelle secondarie
-      }
+      setIsScrolled(currentScrollY > 80);
 
       if (currentScrollY < 10) {
         setIsVisible(true);
@@ -41,7 +31,7 @@ export default function Navbar() {
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [pathname, isHomePage]); // Riesegui quando cambi pagina
+  }, []);
 
   const navLinks = [
     { n: "Informazioni", h: "/informazioni" },
@@ -49,6 +39,13 @@ export default function Navbar() {
     { n: "Il Metodo", h: "/metodo" },
     { n: "Dove Siamo", h: "/dove-siamo" }
   ];
+
+  // LOGICA COLORI DINAMICI
+  // Se siamo in Home e non abbiamo scrollato: Bianco. 
+  // Se abbiamo scrollato O siamo in una pagina secondaria: Blu Notte.
+  const textColor = (isHomePage && !isScrolled) ? "text-white" : "text-[#022166]";
+  const secondaryTextColor = (isHomePage && !isScrolled) ? "text-white/60" : "text-[#022166]/60";
+  const logoInvert = (isHomePage && !isScrolled) ? "brightness-0 invert" : "";
 
   const btnBaseClass = `group relative overflow-hidden flex items-center justify-center gap-3 px-6 py-3.5 font-black text-[10px] uppercase tracking-[0.2em] transition-all active:scale-95 shadow-md`;
   const borderRadiusClass = isScrolled ? "rounded-xl" : "rounded-full";
@@ -62,7 +59,7 @@ export default function Navbar() {
       <div 
         className={`mx-auto transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] flex items-center justify-between border ${
           isScrolled 
-            ? "max-w-6xl bg-white/80 backdrop-blur-2xl border-white/40 shadow-[0_20px_50px_-12px_rgba(2,33,102,0.1)] rounded-2xl px-6 md:px-10 py-3" 
+            ? "max-w-6xl bg-white/85 backdrop-blur-2xl border-white/40 shadow-[0_20px_50px_-12px_rgba(2,33,102,0.1)] rounded-2xl px-6 md:px-10 py-3" 
             : "max-w-full bg-transparent border-transparent py-10 px-8 md:px-16 rounded-none"
         }`}
       >
@@ -74,13 +71,13 @@ export default function Navbar() {
               src="/logo.png" 
               alt="Logo Malavasi" 
               fill 
-              className={`object-contain transition-all duration-500 ${isScrolled ? "" : "brightness-0 invert"}`}
+              className={`object-contain transition-all duration-500 ${logoInvert}`}
             />
           </div>
           <div className="flex flex-col leading-tight">
-            <span className={`font-bold text-[9px] uppercase tracking-[0.2em] transition-colors ${isScrolled ? "text-[#022166]/60" : "text-white/60"}`}>Studio</span>
+            <span className={`font-bold text-[9px] uppercase tracking-[0.2em] transition-colors ${secondaryTextColor}`}>Studio</span>
             <span className="font-black text-xs md:text-sm uppercase tracking-tight text-[#55B4FF]">Fisioterapico</span>
-            <span className={`font-black text-xs md:text-sm uppercase tracking-tight transition-colors ${isScrolled ? "text-[#022166]" : "text-white"}`}>Malavasi</span>
+            <span className={`font-black text-xs md:text-sm uppercase tracking-tight transition-colors ${textColor}`}>Malavasi</span>
           </div>
         </Link>
 
@@ -90,12 +87,9 @@ export default function Navbar() {
             <Link 
               key={item.n} 
               href={item.h}
-              className={`relative font-bold text-[10px] uppercase tracking-[0.15em] transition-all hover:text-[#55B4FF] group/link ${
-                isScrolled ? "text-[#022166]" : "text-white"
-              }`}
+              className={`relative font-bold text-[10px] uppercase tracking-[0.15em] transition-all hover:text-[#55B4FF] group/link ${textColor}`}
             >
               {item.n}
-              {/* Effetto Active: se siamo in questa pagina, la linea è sempre visibile */}
               <span className={`absolute -bottom-1 left-0 h-0.5 bg-[#55B4FF] transition-all duration-300 ${pathname === item.h ? "w-full" : "w-0 group-hover/link:w-full"}`} />
             </Link>
           ))}
@@ -103,29 +97,32 @@ export default function Navbar() {
 
         {/* ACTIONS */}
         <div className="flex items-center gap-3 md:gap-4">
+          
+          {/* CALL BUTTON */}
           <a 
             href="tel:+393338225464" 
             className={`${btnBaseClass} ${borderRadiusClass} ${
-              isScrolled 
-                ? "bg-slate-100 text-[#022166] border border-slate-200" 
-                : "bg-white/10 text-white border border-white/20 backdrop-blur-sm"
+              (isHomePage && !isScrolled)
+                ? "bg-white/10 text-white border border-white/20 backdrop-blur-sm"
+                : "bg-[#022166]/5 text-[#022166] border border-[#022166]/10 hover:bg-[#022166] hover:text-white"
             }`}
           >
-             <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:animate-shimmer" />
-            <Phone size={14} className="relative z-10 transition-transform group-hover:rotate-12" />
+            <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:animate-shimmer" />
+            <Phone size={14} className="relative z-10" />
             <span className="relative z-10 hidden sm:inline">Contattaci</span>
           </a>
           
+          {/* PRENOTA ORA */}
           <Link 
             href="/prenota"
             className={`${btnBaseClass} ${borderRadiusClass} ${
-              isScrolled 
-                ? "bg-[#022166] text-white" 
-                : "bg-[#55B4FF] text-[#022166]"
+              (isHomePage && !isScrolled)
+                ? "bg-[#55B4FF] text-[#022166]"
+                : "bg-[#022166] text-white"
             }`}
           >
             <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-shimmer" />
-            <CalendarCheck size={16} className="relative z-10 transition-transform group-hover:scale-110" />
+            <CalendarCheck size={16} className="relative z-10" />
             <span className="relative z-10">Prenota Ora</span>
           </Link>
         </div>
