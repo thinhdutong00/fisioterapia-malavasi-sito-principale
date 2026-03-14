@@ -59,7 +59,7 @@ export default function FisioterapiaNeurologica() {
                <Sparkles size={16} className="text-[#55B4FF]" />
                <span className="text-[10px] font-black uppercase tracking-[0.2em] text-[#022166]">Riabilitazione Specialistica</span>
             </div>
-            <h1 className="text-4xl md:text-7xl font-black text-[#022166] leading-[1.1] mb-8">
+            <h1 className="text-4xl md:text-7xl font-bold text-[#022166] leading-[1.1] mb-8">
               Ridisegnare il movimento, <br />
               <span className="text-[#55B4FF]">riprendere la vita.</span>
             </h1>

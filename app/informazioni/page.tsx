@@ -65,7 +65,7 @@ export default function InformazioniPage() {
                 <span className="text-xs font-black tracking-[0.2em] uppercase text-[#022166]">Eccellenza Professionale</span>
               </div>
 
-              <h1 className="text-4xl md:text-6xl font-black text-[#022166] leading-tight">
+              <h1 className="text-4xl md:text-6xl font-bold text-[#022166] leading-tight">
                 IL NOSTRO TEAM DI <br />
                 <span className="text-[#55B4FF]">SPECIALISTI.</span>
               </h1>
