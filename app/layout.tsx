@@ -78,12 +78,12 @@ export default function RootLayout({
         
         <Navbar />
         
-        {/* children contiene il contenuto delle tue pagine */}
-        <main className="flex-grow">
+        {/* Il contenuto della pagina viene avvolto in un main che occupa lo spazio disponibile */}
+        <main className="flex-grow w-full">
           {children}
         </main>
 
-        {/* Il footer viene richiamato dal componente separato */}
+        {/* Il footer viene renderizzato dopo il contenuto in ogni pagina */}
         <Footer />
       </body>
     </html>
