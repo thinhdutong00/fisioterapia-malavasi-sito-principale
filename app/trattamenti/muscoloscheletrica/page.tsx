@@ -99,7 +99,7 @@ export default function FisioterapiaMuscoloscheletrica() {
                     </div>
                     <h2 className="text-3xl md:text-5xl font-black mb-8 leading-tight">
                       Fisioterapisti OMPT: <br />
-                      Terapia Manuale Ortopedica.
+                      Terapia Manuale
                     </h2>
                     <p className="text-white/70 text-lg leading-relaxed mb-6">
                       Il titolo OMPT è un riconoscimento internazionale rilasciato secondo gli standard IFOMPT. 
