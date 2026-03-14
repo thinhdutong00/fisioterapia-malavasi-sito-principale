@@ -10,7 +10,9 @@ import {
   Sun, 
   ThermometerSun,
   HandHeart,
-  FileText
+  FileText,
+  ArrowUpRight,
+  Sparkles
 } from 'lucide-react';
 
 export default function FisioterapiaOncologica() {
@@ -33,126 +35,143 @@ export default function FisioterapiaOncologica() {
   ];
 
   return (
-    <main className="min-h-screen bg-[#FDFEFF] text-slate-800 font-sans relative overflow-hidden">
+    <main className="min-h-screen bg-[#F8FAFC] text-slate-800 font-sans relative overflow-hidden">
       
-      {/* BACKGROUND - Toni caldi e rassicuranti */}
+      {/* BACKGROUND - Atmosfera di Luce e Supporto */}
       <div className="fixed inset-0 z-0 pointer-events-none">
-        <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-[#55B4FF]/5 rounded-full blur-[120px]"></div>
-        <div className="absolute bottom-[5%] right-[5%] w-[40%] h-[40%] bg-[#022166]/3 rounded-full blur-[100px]"></div>
+        <div className="absolute top-[-5%] right-[-5%] w-[40%] h-[40%] bg-[#022166]/3 rounded-full blur-[100px]"></div>
+        <div className="absolute bottom-[-5%] left-[-5%] w-[40%] h-[40%] bg-[#55B4FF]/5 rounded-full blur-[100px]"></div>
       </div>
 
       <div className="relative z-10 pt-32 pb-20 px-4 md:px-6">
         <div className="max-w-6xl mx-auto">
           
-          {/* Breadcrumb */}
+          {/* Navigazione / Breadcrumb */}
           <nav className="flex items-center gap-2 text-sm text-slate-500 mb-10">
             <Link href="/" className="hover:text-[#022166] transition-colors">Home</Link>
             <ChevronRight size={14} />
             <Link href="/trattamenti" className="hover:text-[#022166] transition-colors">Trattamenti</Link>
             <ChevronRight size={14} />
-            <span className="text-[#022166] font-semibold">Fisioterapia Oncologica</span>
+            <span className="text-[#022166] font-semibold">Oncologica</span>
           </nav>
 
-          {/* HERO - Empatia e Sostegno */}
-          <header className="mb-20">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white rounded-full shadow-sm border border-pink-100 mb-6">
-               <HeartPulse size={16} className="text-[#55B4FF]" />
-               <span className="text-[10px] font-black uppercase tracking-[0.2em] text-[#022166]">Supporto Integrato</span>
+          {/* HERO - Empatia e Professionalità */}
+          <header className="mb-24">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="h-[1px] w-12 bg-[#55B4FF]"></div>
+              <span className="text-xs font-black uppercase tracking-[0.3em] text-[#55B4FF]">(R)enjoy your mo(ve)ments</span>
             </div>
-            <h1 className="text-4xl md:text-7xl font-bold text-[#022166] leading-[1.1] mb-8">
-              Oltre la cura, <br />
-              <span className="text-[#55B4FF]">il tuo benessere.</span>
+            <h1 className="text-5xl md:text-8xl font-bold text-[#022166] leading-[0.95] mb-10 tracking-tighter">
+              Oltre la cura, <br />il tuo <span className="text-[#55B4FF]">benessere.</span>
             </h1>
-            <p className="max-w-3xl text-xl text-slate-600 leading-relaxed font-light">
-              La fisioterapia oncologica non è solo riabilitazione: è un percorso di supporto che ti accompagna 
-              prima, durante e dopo le terapie. L'obiettivo è proteggere la tua qualità di vita, 
-              riducendo gli effetti collaterali e restituendo dignità al movimento.
+            <p className="max-w-3xl text-xl md:text-2xl text-slate-600 leading-relaxed font-light">
+              Un percorso di supporto che ti accompagna prima, durante e dopo le terapie. 
+              Proteggiamo la tua qualità di vita, restituendo dignità al movimento.
             </p>
           </header>
 
-          {/* VALORE AGGIUNTO: Riduzione Sforzo e Paura */}
+          {/* PILASTRI - Card Evolute */}
           <section className="grid md:grid-cols-3 gap-8 mb-24">
             {benefici.map((b, i) => (
-              <div key={i} className="bg-white/70 backdrop-blur-md p-10 rounded-[3rem] border border-slate-100 shadow-sm transition-all duration-500 hover:shadow-md">
-                <div className="mb-6">{b.icon}</div>
-                <h3 className="text-xl font-bold text-[#022166] mb-4">{b.titolo}</h3>
-                <p className="text-slate-500 leading-relaxed text-sm">{b.desc}</p>
+              <div key={i} className="group bg-white p-12 rounded-[3.5rem] border border-slate-100 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500">
+                <div className="mb-8 p-4 bg-[#F8FAFC] w-fit rounded-2xl group-hover:bg-[#022166] group-hover:text-white transition-colors duration-500">
+                  {b.icon}
+                </div>
+                <h3 className="text-2xl font-bold text-[#022166] mb-4 tracking-tight">{b.titolo}</h3>
+                <p className="text-slate-500 leading-relaxed text-sm md:text-base">
+                  {b.desc}
+                </p>
               </div>
             ))}
           </section>
 
-          {/* SEZIONE CLINICA - Massima Sicurezza (Probability of Success) */}
-          <section className="bg-white border border-slate-100 rounded-[4rem] p-10 md:p-16 mb-24 shadow-sm relative overflow-hidden">
-            <div className="grid lg:grid-cols-2 gap-16 items-center">
-              <div>
-                <h2 className="text-3xl md:text-4xl font-black text-[#022166] mb-8">Un intervento sicuro, <br />basato sulle evidenze.</h2>
-                <div className="space-y-6 text-slate-600">
-                  <p>
-                    Molti pazienti temono che l'esercizio possa essere rischioso. Al contrario, la ricerca clinica 
-                    conferma che un'attività fisica controllata è uno dei pilastri per il recupero della forza 
-                    e il potenziamento del sistema immunitario.
+          {/* AREA CLINICA - Sicurezza e Collaborazione Medica */}
+          <section className="relative mb-24">
+            <div className="absolute inset-0 bg-[#022166] rounded-[4rem] -rotate-1 scale-[1.02] opacity-5"></div>
+            <div className="relative bg-white border border-slate-100 rounded-[4rem] p-10 md:p-20 overflow-hidden shadow-sm">
+              <div className="grid lg:grid-cols-2 gap-16 items-center">
+                <div>
+                  <h2 className="text-3xl md:text-5xl font-black text-[#022166] mb-8 tracking-tight">
+                    Intervento sicuro <br />e validato.
+                  </h2>
+                  <p className="text-slate-600 mb-10 text-lg leading-relaxed">
+                    La ricerca clinica conferma che un'attività fisica controllata è uno dei pilastri per il recupero 
+                    della forza e il potenziamento del sistema immunitario.
                   </p>
-                  <div className="grid grid-cols-1 gap-4">
+                  <div className="space-y-4">
                     {[
                       "Recupero funzionale post-mastectomia",
                       "Trattamento delle neuropatie indotte da chemioterapia",
-                      "Rieducazione respiratoria",
+                      "Rieducazione respiratoria specialistica",
                       "Esercizio terapeutico adattato",
                       "Gestione delle problematiche osteo-articolari"
                     ].map((item, i) => (
-                      <div key={i} className="flex items-center gap-3">
-                        <ShieldCheck size={18} className="text-[#55B4FF]" />
-                        <span className="text-sm font-semibold text-[#022166]/80">{item}</span>
+                      <div key={i} className="flex items-center gap-4 text-[#022166] font-bold">
+                        <ShieldCheck size={20} className="text-[#55B4FF]" />
+                        <span className="text-sm md:text-base tracking-tight">{item}</span>
                       </div>
                     ))}
                   </div>
                 </div>
-              </div>
-              
-              <div className="bg-[#F0F4F8] p-10 rounded-[3rem] flex flex-col justify-center border border-slate-200/50">
-                <FileText className="text-[#022166] mb-6 opacity-20" size={48} />
-                <h4 className="text-xl font-bold text-[#022166] mb-4">Collaborazione Medica</h4>
-                <p className="text-slate-500 text-sm leading-relaxed">
-                  Lavoriamo in stretta sinergia con il tuo oncologo e il tuo team medico. Ogni fase del trattamento 
-                  fisioterapico viene calibrata in base al tuo stato di salute attuale e al ciclo di cure che stai seguendo.
-                </p>
+                
+                <div className="relative p-8 bg-[#F8FAFC] rounded-[3rem] border border-slate-200">
+                   <div className="absolute top-6 right-8 text-[#022166]/10">
+                      <FileText size={100} />
+                   </div>
+                   <h4 className="text-2xl font-bold text-[#022166] mb-6 relative z-10">Collaborazione Medica</h4>
+                   <p className="text-slate-500 text-sm leading-relaxed mb-8 relative z-10">
+                    Lavoriamo in stretta sinergia con il tuo oncologo e il tuo team medico. Ogni fase del trattamento 
+                    viene calibrata in base al tuo stato di salute e al ciclo di cure.
+                   </p>
+                   <div className="p-6 bg-white rounded-2xl border border-[#55B4FF]/20 shadow-inner">
+                      <div className="text-xs text-[#55B4FF] font-black uppercase mb-2 tracking-widest">Garanzia di Sicurezza</div>
+                      <div className="text-[#022166] font-bold italic">"Monitoraggio costante dei parametri e adattamento del carico ad ogni seduta."</div>
+                   </div>
+                </div>
               </div>
             </div>
           </section>
 
-          {/* CTA - Funnel di Conversione Gentile */}
-          <section className="text-center bg-[#022166] rounded-[3rem] p-12 md:p-20 text-white relative overflow-hidden shadow-2xl">
-            <div className="relative z-10">
-              <h2 className="text-3xl md:text-5xl font-black mb-6">Riprendi spazio, un passo alla volta.</h2>
-              <p className="text-white/70 max-w-2xl mx-auto mb-12 text-lg">
-                Siamo qui per ascoltare le tue necessità e costruire un percorso che rispetti i tuoi tempi e le tue energie. 
-                Inizia oggi il tuo viaggio verso un domani più attivo.
-              </p>
-              <div className="flex flex-col sm:flex-row justify-center gap-6">
-                <Link 
-                  href="/prenota" 
-                  className="bg-[#55B4FF] text-[#022166] px-12 py-6 rounded-2xl font-black uppercase text-sm tracking-[0.2em] hover:bg-white transition-all"
-                >
-                  Richiedi un Colloquio
-                </Link>
-                <a 
-                  href="tel:+393338225464" 
-                  className="flex items-center justify-center gap-3 bg-transparent border-2 border-white/20 px-12 py-6 rounded-2xl font-black uppercase text-sm tracking-[0.2em] hover:bg-white/10 transition-all"
-                >
-                  Chiamaci con fiducia
-                </a>
-              </div>
-            </div>
+          {/* CTA - Box Scuro ad Alto Impatto */}
+          <section className="text-center py-10 relative">
+             <div className="bg-[#022166] rounded-[4rem] p-12 md:p-24 text-white overflow-hidden relative shadow-2xl">
+                <div className="absolute top-0 right-0 opacity-5 pointer-events-none -translate-y-1/4 translate-x-1/4">
+                  <Sparkles size={500} />
+                </div>
+                <div className="relative z-10">
+                  <h2 className="text-4xl md:text-6xl font-black mb-8 tracking-tighter">
+                    Riprendi spazio, <br />un passo alla volta.
+                  </h2>
+                  <p className="max-w-2xl mx-auto text-white/70 mb-12 text-lg md:text-xl font-light">
+                    Siamo qui per ascoltare le tue necessità e costruire un percorso che rispetti i tuoi tempi e le tue energie.
+                  </p>
+                  <div className="flex flex-col sm:flex-row justify-center gap-6">
+                    <Link 
+                      href="/prenota" 
+                      className="group bg-[#55B4FF] text-[#022166] px-12 py-6 rounded-2xl font-black uppercase text-xs tracking-[0.3em] hover:bg-white transition-all flex items-center justify-center gap-3 shadow-xl"
+                    >
+                      Richiedi un Colloquio <ArrowUpRight size={18} />
+                    </Link>
+                    <a 
+                      href="tel:+393338225464" 
+                      className="bg-transparent border-2 border-white/20 text-white px-12 py-6 rounded-2xl font-black uppercase text-xs tracking-[0.3em] hover:bg-white/10 transition-all"
+                    >
+                      Chiamaci con fiducia
+                    </a>
+                  </div>
+                </div>
+             </div>
           </section>
 
           {/* Footer Back Link */}
-          <div className="mt-20">
+          <div className="mt-24 border-t border-slate-200 pt-12 flex justify-between items-center text-slate-400">
             <Link 
               href="/trattamenti" 
-              className="inline-flex items-center gap-2 text-slate-400 font-bold hover:text-[#022166] transition-all"
+              className="inline-flex items-center gap-2 font-bold hover:text-[#022166] transition-all"
             >
-              <ArrowLeft size={20} /> Torna all'elenco trattamenti
+              <ArrowLeft size={20} /> Tutti i Trattamenti
             </Link>
+            <span className="text-[10px] uppercase tracking-widest font-black opacity-40 italic">Fisioterapia Malavasi — Supporto & Benessere</span>
           </div>
 
         </div>
