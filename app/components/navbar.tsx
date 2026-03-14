@@ -14,10 +14,8 @@ export default function Navbar() {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
       
-      // Determina se siamo abbastanza lontani dalla cima per attivare il "floating mode"
       setIsScrolled(currentScrollY > 80);
 
-      // Logica Hide/Show: mostra se siamo in cima o se stiamo scrollando verso l'alto
       if (currentScrollY < 10) {
         setIsVisible(true);
       } else if (currentScrollY > lastScrollY.current) {
@@ -48,8 +46,8 @@ export default function Navbar() {
       <div 
         className={`mx-auto transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] flex items-center justify-between border ${
           isScrolled 
-            ? "max-w-6xl bg-white/75 backdrop-blur-2xl border-white/40 shadow-[0_20px_50px_-12px_rgba(2,33,102,0.1)] rounded-[2.5rem] px-8 md:px-10 py-3" 
-            : "max-w-full bg-transparent border-transparent py-10 px-8 md:px-16"
+            ? "max-w-6xl bg-white/75 backdrop-blur-2xl border-white/40 shadow-[0_20px_50px_-12px_rgba(2,33,102,0.1)] rounded-2xl px-8 md:px-10 py-3" 
+            : "max-w-full bg-transparent border-transparent py-10 px-8 md:px-16 rounded-none"
         }`}
       >
         
@@ -102,10 +100,10 @@ export default function Navbar() {
           
           <Link 
             href="#prenota"
-            className={`group relative overflow-hidden flex items-center gap-3 px-6 md:px-8 py-3 md:py-4 rounded-full font-black text-[10px] uppercase tracking-[0.2em] transition-all active:scale-95 ${
+            className={`group relative overflow-hidden flex items-center gap-3 px-6 md:px-8 py-3 md:py-4 font-black text-[10px] uppercase tracking-[0.2em] transition-all active:scale-95 ${
               isScrolled 
-                ? "bg-[#022166] text-white shadow-lg" 
-                : "bg-[#55B4FF] text-[#022166] hover:bg-white"
+                ? "bg-[#022166] text-white shadow-lg rounded-xl" 
+                : "bg-[#55B4FF] text-[#022166] hover:bg-white rounded-full"
             }`}
           >
             <span className="relative z-10">Prenota Ora</span>
