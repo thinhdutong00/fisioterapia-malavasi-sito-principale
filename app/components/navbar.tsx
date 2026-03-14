@@ -37,8 +37,8 @@ export default function Navbar() {
   const navLinks = [
     { n: "Informazioni", h: "/informazioni" },
     { n: "Trattamenti", h: "/trattamenti" },
-    { n: "Il Metodo", h: "/metodo" },
-    { n: "Dove Siamo", h: "/dove-siamo" }
+    { n: "Modalità della seduta", h: "/metodo" },
+    { n: "Scopri di più", h: "/dove-siamo" }
   ];
 
   const isDarkTheme = isHomePage && !isScrolled;
@@ -49,8 +49,8 @@ export default function Navbar() {
     ? "/logo-bianco-fisioterapia-malavasi.png" 
     : "/logo-fisioterapia-malavasi.png";
 
-  // MODIFICA: Aumentata la dimensione font dei bottoni (text-[12px])
-  const btnBaseClass = `group relative overflow-hidden flex items-center justify-center gap-3 px-6 py-3.5 font-black text-[12px] uppercase tracking-[0.2em] transition-all active:scale-95 shadow-md`;
+  // RIDOTTO: Portato a 11px per un look più raffinato
+  const btnBaseClass = `group relative overflow-hidden flex items-center justify-center gap-3 px-6 py-3.5 font-black text-[11px] uppercase tracking-[0.2em] transition-all active:scale-95 shadow-md`;
   const borderRadiusClass = isScrolled ? "rounded-xl" : "rounded-full";
 
   return (
@@ -90,8 +90,8 @@ export default function Navbar() {
             <Link 
               key={item.n} 
               href={item.h}
-              // MODIFICA: Aumentata dimensione font link (text-[13px]) e aggiunto font-black per risalto
-              className={`relative font-black text-[13px] uppercase tracking-[0.15em] transition-all hover:text-[#55B4FF] group/link ${textColor}`}
+              // RIDOTTO: Portato a 11px (da 13px) con font-bold per pulizia visiva
+              className={`relative font-bold text-[11px] uppercase tracking-[0.15em] transition-all hover:text-[#55B4FF] group/link ${textColor}`}
             >
               {item.n}
               <span className={`absolute -bottom-1 left-0 h-0.5 bg-[#55B4FF] transition-all duration-300 ${pathname === item.h ? "w-full" : "w-0 group-hover/link:w-full"}`} />
@@ -110,7 +110,7 @@ export default function Navbar() {
             }`}
           >
             <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:animate-shimmer" />
-            <Phone size={16} className="relative z-10" />
+            <Phone size={15} className="relative z-10" />
             <span className="relative z-10 hidden sm:inline">Contattaci</span>
           </a>
           
@@ -123,7 +123,7 @@ export default function Navbar() {
             }`}
           >
             <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-shimmer" />
-            <CalendarCheck size={18} className="relative z-10" />
+            <CalendarCheck size={16} className="relative z-10" />
             <span className="relative z-10">Prenota Ora</span>
           </Link>
         </div>
