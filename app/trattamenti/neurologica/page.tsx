@@ -10,7 +10,8 @@ import {
   Users, 
   Accessibility, 
   CheckCircle2,
-  Sparkles
+  Sparkles,
+  ArrowUpRight
 } from 'lucide-react';
 
 export default function FisioterapiaNeurologica() {
@@ -35,112 +36,128 @@ export default function FisioterapiaNeurologica() {
   return (
     <main className="min-h-screen bg-[#F8FAFC] text-slate-800 font-sans relative overflow-hidden">
       
-      {/* BACKGROUND DECORATIONS - Toni più morbidi */}
+      {/* BACKGROUND - Atmosfera Accogliente e Professionale */}
       <div className="fixed inset-0 z-0 pointer-events-none">
-        <div className="absolute top-[-5%] left-[-5%] w-[45%] h-[45%] bg-[#55B4FF]/5 rounded-full blur-[120px]"></div>
-        <div className="absolute bottom-[0%] right-[0%] w-[35%] h-[35%] bg-[#022166]/5 rounded-full blur-[120px]"></div>
+        <div className="absolute top-[-5%] right-[-5%] w-[40%] h-[40%] bg-[#022166]/3 rounded-full blur-[100px]"></div>
+        <div className="absolute bottom-[-5%] left-[-5%] w-[40%] h-[40%] bg-[#55B4FF]/5 rounded-full blur-[100px]"></div>
       </div>
 
       <div className="relative z-10 pt-32 pb-20 px-4 md:px-6">
         <div className="max-w-6xl mx-auto">
           
-          {/* Breadcrumb */}
+          {/* Navigazione / Breadcrumb */}
           <nav className="flex items-center gap-2 text-sm text-slate-500 mb-10">
             <Link href="/" className="hover:text-[#022166] transition-colors">Home</Link>
             <ChevronRight size={14} />
             <Link href="/trattamenti" className="hover:text-[#022166] transition-colors">Trattamenti</Link>
             <ChevronRight size={14} />
-            <span className="text-[#022166] font-semibold">Fisioterapia Neurologica</span>
+            <span className="text-[#022166] font-semibold">Neurologica</span>
           </nav>
 
-          {/* HERO - Il Sogno della Riconquista */}
+          {/* HERO - Focus sulla Riconquista del Movimento */}
           <header className="mb-24">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white rounded-full shadow-sm border border-slate-100 mb-6">
-               <Sparkles size={16} className="text-[#55B4FF]" />
-               <span className="text-[10px] font-black uppercase tracking-[0.2em] text-[#022166]">Riabilitazione Specialistica</span>
+            <div className="flex items-center gap-3 mb-6">
+              <div className="h-[1px] w-12 bg-[#55B4FF]"></div>
+              <span className="text-xs font-black uppercase tracking-[0.3em] text-[#55B4FF]">(R)enjoy your mo(ve)ments</span>
             </div>
-            <h1 className="text-4xl md:text-7xl font-bold text-[#022166] leading-[1.1] mb-8">
-              Ridisegnare il movimento, <br />
-              <span className="text-[#55B4FF]">riprendere la vita.</span>
+            <h1 className="text-5xl md:text-8xl font-bold text-[#022166] leading-[0.95] mb-10 tracking-tighter">
+              Ridisegnare il <br />movimento, <span className="text-[#55B4FF]">riprendere la vita.</span>
             </h1>
-            <p className="max-w-3xl text-xl text-slate-600 leading-relaxed font-light">
+            <p className="max-w-3xl text-xl md:text-2xl text-slate-600 leading-relaxed font-light">
               Affrontare una patologia neurologica richiede pazienza, metodo e una guida esperta. 
-              Il nostro approccio integra le neuroscienze con la cura della persona, per trasformare 
-              ogni piccolo progresso in una grande vittoria.
+              Il nostro approccio integra le neuroscienze con la cura della persona.
             </p>
           </header>
 
-          {/* HORMORZI: Valore attraverso la specializzazione */}
+          {/* PILASTRI - Card Evolute */}
           <section className="grid md:grid-cols-3 gap-8 mb-24">
             {puntiForza.map((p, i) => (
-              <div key={i} className="bg-white p-10 rounded-[3rem] border border-slate-100 shadow-[0_10px_40px_-15px_rgba(0,0,0,0.05)] hover:scale-[1.02] transition-transform duration-500">
-                <div className="mb-6">{p.icon}</div>
-                <h3 className="text-xl font-bold text-[#022166] mb-4">{p.titolo}</h3>
-                <p className="text-slate-500 leading-relaxed text-sm">{p.desc}</p>
+              <div key={i} className="group bg-white p-12 rounded-[3.5rem] border border-slate-100 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500">
+                <div className="mb-8 p-4 bg-[#F8FAFC] w-fit rounded-2xl group-hover:bg-[#022166] group-hover:text-white transition-colors duration-500">
+                  {p.icon}
+                </div>
+                <h3 className="text-2xl font-bold text-[#022166] mb-4 tracking-tight">{p.titolo}</h3>
+                <p className="text-slate-500 leading-relaxed text-sm md:text-base">
+                  {p.desc}
+                </p>
               </div>
             ))}
           </section>
 
-          {/* AREA CLINICA - Linguaggio SEO di alto livello */}
-          <section className="bg-[#022166] rounded-[4rem] p-10 md:p-20 text-white shadow-2xl relative overflow-hidden mb-24">
-            <div className="absolute top-0 right-0 w-full h-full opacity-5 pointer-events-none">
-                <Brain size={600} className="absolute -top-20 -right-20" />
-            </div>
-            
-            <div className="relative z-10 grid lg:grid-cols-2 gap-16 items-center">
-              <div>
-                <h2 className="text-3xl md:text-4xl font-black mb-8">Percorsi di riabilitazione per patologie complesse</h2>
-                <p className="text-white/70 mb-10 leading-relaxed">
-                  Ogni lesione neurologica è unica. Per questo non utilizziamo protocolli standardizzati, 
-                  ma costruiamo un progetto riabilitativo individuale basato sulla valutazione clinica 
-                  dei deficit motori e cognitivi.
-                </p>
-                <div className="space-y-4">
-                  {[
-                    "Esiti di Ictus Cerebrale (Ischemico ed Emorragico)",
-                    "Morbo di Parkinson e parkinsonismi",
-                    "Sclerosi Multipla",
-                    "Lesioni del sistema nervoso periferico",
-                    "Disturbi dell'equilibrio e della coordinazione"
-                  ].map((text, i) => (
-                    <div key={i} className="flex items-center gap-3">
-                      <CheckCircle2 size={20} className="text-[#55B4FF]" />
-                      <span className="text-sm md:text-base font-medium text-white/90">{text}</span>
-                    </div>
-                  ))}
-                </div>
+          {/* AREA CLINICA - Box Scuro ad Alto Impatto */}
+          <section className="relative mb-24">
+            <div className="bg-[#022166] rounded-[4rem] p-10 md:p-20 text-white overflow-hidden relative shadow-2xl">
+              {/* Icona Background Gigante */}
+              <div className="absolute top-0 right-0 opacity-5 pointer-events-none -translate-y-1/4 translate-x-1/4">
+                <Brain size={500} />
               </div>
               
-              <div className="bg-white/5 backdrop-blur-sm border border-white/10 p-10 rounded-[3rem]">
-                <Heart className="text-[#55B4FF] mb-6" size={40} />
-                <h4 className="text-2xl font-bold mb-4">Oltre la terapia fisica</h4>
-                <p className="text-white/60 text-sm leading-relaxed">
-                  Sappiamo che il percorso può essere lungo. La nostra promessa è quella di non lasciarvi mai soli, 
-                  fornendo obiettivi chiari e misurabili per mantenere alta la motivazione e la fiducia nel recupero.
-                </p>
+              <div className="relative z-10 grid lg:grid-cols-5 gap-16 items-center">
+                <div className="lg:col-span-3">
+                  <div className="flex items-center gap-3 text-[#55B4FF] mb-8">
+                    <Sparkles size={24} />
+                    <span className="text-xs font-black uppercase tracking-widest text-white/60 text-sm">Progetto Riabilitativo Individuale</span>
+                  </div>
+                  <h2 className="text-3xl md:text-5xl font-black mb-8 leading-tight">
+                    Percorsi per patologie complesse.
+                  </h2>
+                  <p className="text-white/70 text-lg leading-relaxed mb-10">
+                    Ogni lesione neurologica è unica. Per questo non utilizziamo protocolli standardizzati, 
+                    ma costruiamo un progetto riabilitativo individuale basato sulla valutazione clinica 
+                    dei deficit motori e cognitivi.
+                  </p>
+                  <div className="grid sm:grid-cols-1 gap-4">
+                    {[
+                      "Esiti di Ictus Cerebrale (Ischemico ed Emorragico)",
+                      "Morbo di Parkinson e parkinsonismi",
+                      "Sclerosi Multipla",
+                      "Lesioni del sistema nervoso periferico",
+                      "Disturbi dell'equilibrio e della coordinazione"
+                    ].map((text, i) => (
+                      <div key={i} className="flex items-center gap-4 bg-white/5 p-4 rounded-2xl border border-white/10 hover:bg-white/10 transition-colors">
+                        <CheckCircle2 size={20} className="text-[#55B4FF]" />
+                        <span className="text-sm md:text-base font-bold tracking-tight text-white/90">{text}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                
+                <div className="lg:col-span-2">
+                  <div className="bg-white/10 backdrop-blur-md border border-white/20 p-12 rounded-[3rem] relative">
+                    <Heart className="text-[#55B4FF] mb-8" size={48} />
+                    <h4 className="text-2xl font-bold mb-4 tracking-tight">Oltre la terapia fisica</h4>
+                    <p className="text-white/70 text-base leading-relaxed">
+                      Sappiamo che il percorso può essere lungo. La nostra promessa è quella di non lasciarvi mai soli, 
+                      fornendo obiettivi chiari e misurabili per mantenere alta la motivazione e la fiducia nel recupero.
+                    </p>
+                    <div className="mt-8 pt-8 border-t border-white/10 flex items-center gap-2 text-[#55B4FF] font-black text-[10px] uppercase tracking-widest">
+                      Supporto Integrato <ArrowUpRight size={14} />
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </section>
 
-          {/* CTA - Emotività e Azione Rapida */}
-          <section className="text-center max-w-4xl mx-auto mb-12">
-            <h2 className="text-3xl md:text-5xl font-black text-[#022166] mb-8">
-              Costruiamo insieme il prossimo passo.
+          {/* CTA - Chiusura Professionale */}
+          <section className="text-center py-10">
+            <h2 className="text-4xl md:text-6xl font-black text-[#022166] mb-8 tracking-tighter">
+              Costruiamo insieme <br />il prossimo passo.
             </h2>
-            <p className="text-slate-500 mb-12 text-lg">
+            <p className="max-w-2xl mx-auto text-slate-500 mb-12 text-lg">
               La tempestività dell'intervento è un fattore determinante nelle patologie neurologiche. 
-              Siamo pronti ad ascoltare la vostra storia e definire insieme la strategia migliore.
+              Siamo pronti ad ascoltare la vostra storia e definire la strategia migliore.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-6">
               <Link 
                 href="/prenota" 
-                className="bg-[#55B4FF] text-[#022166] px-12 py-6 rounded-2xl font-black uppercase text-sm tracking-[0.2em] hover:bg-[#022166] hover:text-white transition-all shadow-xl shadow-[#55B4FF]/20"
+                className="group bg-[#022166] text-white px-12 py-6 rounded-2xl font-black uppercase text-xs tracking-[0.3em] hover:bg-[#55B4FF] transition-all shadow-2xl shadow-[#022166]/30 flex items-center justify-center gap-3"
               >
-                Richiedi Valutazione
+                Richiedi Valutazione <ChevronRight size={18} className="group-hover:translate-x-2 transition-transform" />
               </Link>
               <a 
                 href="tel:+393338225464" 
-                className="flex items-center justify-center gap-3 bg-white text-[#022166] border-2 border-[#022166]/10 px-12 py-6 rounded-2xl font-black uppercase text-sm tracking-[0.2em] hover:border-[#022166] transition-all"
+                className="bg-white text-[#022166] border-2 border-[#022166] px-12 py-6 rounded-2xl font-black uppercase text-xs tracking-[0.3em] hover:bg-[#F8FAFC] transition-all"
               >
                 Consulenza Telefonica
               </a>
@@ -148,13 +165,14 @@ export default function FisioterapiaNeurologica() {
           </section>
 
           {/* Footer Back Link */}
-          <div className="mt-20 border-t border-slate-200 pt-10">
+          <div className="mt-24 border-t border-slate-200 pt-12 flex justify-between items-center text-slate-400">
             <Link 
               href="/trattamenti" 
-              className="inline-flex items-center gap-2 text-slate-400 font-bold hover:text-[#022166] transition-all"
+              className="inline-flex items-center gap-2 font-bold hover:text-[#022166] transition-all"
             >
-              <ArrowLeft size={20} /> Esplora altri trattamenti
+              <ArrowLeft size={20} /> Altri Trattamenti
             </Link>
+            <span className="text-[10px] uppercase tracking-widest font-black opacity-40">Fisioterapia Malavasi — Riabilitazione Specialistica</span>
           </div>
 
         </div>
