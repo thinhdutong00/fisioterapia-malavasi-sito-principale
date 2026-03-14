@@ -5,58 +5,45 @@ import Link from 'next/link';
 import { 
   ArrowLeft, 
   ChevronRight, 
-  Activity, 
-  Trophy, 
-  Brain, 
-  HeartPulse, 
-  Stethoscope, 
-  Wind, 
-  AlertCircle 
+  Activity 
 } from 'lucide-react';
 
 export default function TrattamentiPage() {
-  // Array dei trattamenti con icone dedicate
+  // Array dei trattamenti semplificato senza icone
   const trattamenti = [
     {
       titolo: "Fisioterapia Muscoloscheletrica",
       slug: "/trattamenti/muscoloscheletrica",
-      icon: <Stethoscope className="text-[#55B4FF]" size={28} />,
       desc: "Riabilitazione per patologie articolari, muscolari e della colonna vertebrale."
     },
     {
       titolo: "Fisioterapia Sportiva",
       slug: "/trattamenti/sportiva",
-      icon: <Trophy className="text-[#55B4FF]" size={28} />,
       desc: "Recupero post-infortunio e ottimizzazione delle performance per atleti."
     },
     {
       titolo: "Fisioterapia Neurologica",
       slug: "/trattamenti/neurologica",
-      icon: <Brain className="text-[#55B4FF]" size={28} />,
       desc: "Supporto e riabilitazione per pazienti con lesioni del sistema nervoso."
     },
     {
       titolo: "Fisioterapia Oncologica",
       slug: "/trattamenti/oncologica",
-      icon: <HeartPulse className="text-[#55B4FF]" size={28} />,
       desc: "Percorsi riabilitativi personalizzati per il supporto durante e dopo le terapie."
     },
     {
       titolo: "Pre e Post Chirurgica",
       slug: "/trattamenti/chirurgica",
-      icon: <Activity className="text-[#55B4FF]" size={28} />,
       desc: "Preparazione e recupero funzionale per interventi ortopedici."
     },
     {
       titolo: "Dolore Persistente",
       slug: "/trattamenti/dolore-persistente",
-      icon: <AlertCircle className="text-[#55B4FF]" size={28} />,
       desc: "Gestione multidisciplinare del dolore cronico e sensibilizzazione centrale."
     },
     {
       titolo: "Cefalee e Vertigini",
       slug: "/trattamenti/cefalee-vertigini",
-      icon: <Wind className="text-[#55B4FF]" size={28} />,
       desc: "Trattamento dei disturbi cervicali correlati a mal di testa e vertigini."
     }
   ];
@@ -98,40 +85,35 @@ export default function TrattamentiPage() {
               <Link 
                 key={index} 
                 href={t.slug}
-                className="group relative bg-white/60 backdrop-blur-md border border-white/40 p-8 rounded-[2rem] shadow-sm hover:shadow-xl hover:bg-white/80 transition-all duration-500 flex flex-col justify-between"
+                className="group relative bg-white/60 backdrop-blur-md border border-white/40 p-10 rounded-[2.5rem] shadow-sm hover:shadow-xl hover:bg-white/80 transition-all duration-500 flex flex-col justify-between"
               >
                 <div>
-                  <div className="w-14 h-14 bg-white rounded-2xl shadow-sm flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-[#022166] transition-all duration-500">
-                    <div className="group-hover:text-white transition-colors">
-                      {t.icon}
-                    </div>
-                  </div>
-                  <h3 className="text-xl font-bold text-[#022166] mb-3 leading-snug">
+                  <h3 className="text-2xl font-bold text-[#022166] mb-4 leading-tight group-hover:text-[#55B4FF] transition-colors">
                     {t.titolo}
                   </h3>
-                  <p className="text-slate-500 text-sm leading-relaxed mb-6">
+                  <p className="text-slate-500 text-sm md:text-base leading-relaxed mb-8">
                     {t.desc}
                   </p>
                 </div>
                 
-                <div className="flex items-center gap-2 text-[#55B4FF] font-bold text-xs uppercase tracking-widest">
-                  Scopri di più <ChevronRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                <div className="flex items-center gap-2 text-[#55B4FF] font-black text-[10px] uppercase tracking-[0.2em]">
+                  Dettagli <ChevronRight size={16} className="group-hover:translate-x-1 transition-transform" />
                 </div>
               </Link>
             ))}
 
             {/* CARD SPECIALE: PRENOTA */}
-            <div className="lg:col-span-1 bg-[#022166] p-8 rounded-[2rem] shadow-xl flex flex-col justify-center text-white relative overflow-hidden group">
+            <div className="lg:col-span-1 bg-[#022166] p-10 rounded-[2.5rem] shadow-xl flex flex-col justify-center text-white relative overflow-hidden group">
                <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:scale-125 transition-transform duration-700">
                   <Activity size={120} />
                </div>
-               <h3 className="text-2xl font-black mb-4 relative z-10">Hai bisogno di una consulenza?</h3>
-               <p className="text-white/70 mb-8 relative z-10">I nostri specialisti sono a disposizione per valutare il tuo caso clinico.</p>
+               <h3 className="text-2xl font-black mb-4 relative z-10">Consulenza Specialistica</h3>
+               <p className="text-white/70 mb-8 relative z-10 text-sm">I nostri professionisti sono a disposizione per definire il piano terapeutico più adatto a te.</p>
                <Link 
                 href="/prenota" 
-                className="bg-[#55B4FF] text-[#022166] px-6 py-4 rounded-xl font-black text-center uppercase text-xs tracking-widest hover:bg-white transition-colors relative z-10"
+                className="bg-[#55B4FF] text-[#022166] px-6 py-4 rounded-2xl font-black text-center uppercase text-[10px] tracking-widest hover:bg-white transition-colors relative z-10"
                >
-                 Prenota Valutazione
+                 Prenota Ora
                </Link>
             </div>
           </div>
@@ -140,7 +122,7 @@ export default function TrattamentiPage() {
           <div className="mt-16 border-t border-slate-200 pt-10">
             <Link 
               href="/" 
-              className="inline-flex items-center gap-2 text-[#022166]/50 font-bold hover:text-[#022166] transition-all"
+              className="inline-flex items-center gap-2 text-[#022166]/40 font-bold hover:text-[#022166] transition-all"
             >
               <ArrowLeft size={20} /> Torna alla Home
             </Link>
