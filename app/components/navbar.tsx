@@ -49,7 +49,6 @@ export default function Navbar() {
     ? "/logo-bianco-fisioterapia-malavasi.png" 
     : "/logo-fisioterapia-malavasi.png";
 
-  // RIDOTTO: Portato a 11px per un look più raffinato
   const btnBaseClass = `group relative overflow-hidden flex items-center justify-center gap-3 px-6 py-3.5 font-black text-[11px] uppercase tracking-[0.2em] transition-all active:scale-95 shadow-md`;
   const borderRadiusClass = isScrolled ? "rounded-xl" : "rounded-full";
 
@@ -57,13 +56,15 @@ export default function Navbar() {
     <header 
       className={`fixed top-0 left-0 w-full z-[100] transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] ${
         isVisible ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0"
-      } ${isScrolled ? "pt-4 px-4 md:px-0" : "pt-0 px-0"}`}
+      } ${isScrolled ? "pt-4 px-4" : "pt-0 px-0"}`}
     >
       <div 
         className={`mx-auto transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] flex items-center justify-between border ${
           isScrolled 
-            ? "max-w-6xl bg-white/85 backdrop-blur-2xl border-white/40 shadow-[0_20px_50px_-12px_rgba(2,33,102,0.1)] rounded-2xl px-6 md:px-10 py-3" 
-            : "max-w-full bg-transparent border-transparent py-10 px-8 md:px-16 rounded-none"
+            // Quando è scrollato, rimane un riquadro elegante a centro pagina
+            ? "max-w-7xl bg-white/85 backdrop-blur-2xl border-white/40 shadow-[0_20px_50px_-12px_rgba(2,33,102,0.1)] rounded-2xl px-6 md:px-10 py-3" 
+            // Quando è iniziale, usiamo max-w-[95%] o full per eliminare la compressione
+            : "max-w-[98%] bg-transparent border-transparent py-8 px-4 md:px-12 rounded-none"
         }`}
       >
         
@@ -72,7 +73,7 @@ export default function Navbar() {
           <div className={`relative transition-all duration-500 ${
             isScrolled 
               ? "w-40 h-8 md:w-48 h-9" 
-              : "w-60 h-11 md:w-80 h-12"
+              : "w-60 h-11 md:w-80 h-14" // Aumentata leggermente l'altezza h-14 per dare più aria
           }`}>
             <Image 
               src={logoSrc} 
@@ -85,12 +86,11 @@ export default function Navbar() {
         </Link>
 
         {/* NAVIGATION */}
-        <nav className="hidden lg:flex items-center gap-8 xl:gap-10">
+        <nav className="hidden lg:flex items-center gap-10 xl:gap-14">
           {navLinks.map((item) => (
             <Link 
               key={item.n} 
               href={item.h}
-              // RIDOTTO: Portato a 11px (da 13px) con font-bold per pulizia visiva
               className={`relative font-bold text-[11px] uppercase tracking-[0.15em] transition-all hover:text-[#55B4FF] group/link ${textColor}`}
             >
               {item.n}
@@ -100,7 +100,7 @@ export default function Navbar() {
         </nav>
 
         {/* ACTIONS */}
-        <div className="flex items-center gap-3 md:gap-4">
+        <div className="flex items-center gap-4 md:gap-6">
           <a 
             href="tel:+393338225464" 
             className={`${btnBaseClass} ${borderRadiusClass} ${
