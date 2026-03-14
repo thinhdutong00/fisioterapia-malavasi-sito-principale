@@ -1,33 +1,60 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Phone } from "lucide-react";
 
 export default function Navbar() {
+  const [isVisible, setIsVisible] = useState(true);
   const [isScrolled, setIsScrolled] = useState(false);
+  const lastScrollY = useRef(0);
 
   useEffect(() => {
     const handleScroll = () => {
-      // Cambio stato dopo 50px di scroll
-      setIsScrolled(window.scrollY > 50);
+      const currentScrollY = window.scrollY;
+
+      // 1. Gestione stile (Trasparente vs Bianco)
+      if (currentScrollY > 50) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+
+      // 2. Gestione visibilità (Scompare in basso, ricompare in alto)
+      // Mostra sempre se siamo vicini alla cima della pagina
+      if (currentScrollY < 10) {
+        setIsVisible(true);
+      } 
+      // Se scorriamo verso il basso, nascondi
+      else if (currentScrollY > lastScrollY.current) {
+        setIsVisible(false);
+      } 
+      // Se scorriamo verso l'alto, mostra
+      else {
+        setIsVisible(true);
+      }
+
+      lastScrollY.current = currentScrollY;
     };
-    window.addEventListener("scroll", handleScroll);
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
     <header 
-      className={`fixed top-0 left-0 w-full z-[100] transition-all duration-300 ${
+      className={`fixed top-0 left-0 w-full z-[100] transition-all duration-500 ease-in-out ${
+        isVisible ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0"
+      } ${
         isScrolled 
-          ? "bg-white/90 backdrop-blur-md border-b border-slate-100 py-4 shadow-sm" 
-          : "bg-transparent py-6"
+          ? "bg-white/95 backdrop-blur-md shadow-md py-4" 
+          : "bg-transparent py-8"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 md:px-10 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
         
-        {/* LOGO AREA */}
+        {/* LOGO */}
         <Link href="/" className="flex items-center gap-3">
           <div className="relative w-10 h-10 md:w-12 md:h-12">
             <Image 
@@ -39,7 +66,7 @@ export default function Navbar() {
               }`}
             />
           </div>
-          <div className="flex flex-col leading-[1.1]">
+          <div className="flex flex-col leading-none">
             <span className={`font-black text-[10px] uppercase tracking-tighter transition-colors ${
               isScrolled ? "text-[#022166]" : "text-white"
             }`}>
@@ -56,7 +83,7 @@ export default function Navbar() {
           </div>
         </Link>
 
-        {/* NAV MENU (Voci dal tuo repository principale) */}
+        {/* MENU DESKTOP (Voci dal tuo repository) */}
         <nav className="hidden lg:flex items-center gap-8">
           {[
             { n: "Informazioni", h: "#team" },
@@ -67,7 +94,7 @@ export default function Navbar() {
             <Link 
               key={item.n} 
               href={item.h}
-              className={`font-black text-[10px] uppercase tracking-[0.15em] transition-colors hover:text-[#55B4FF] ${
+              className={`font-black text-[10px] uppercase tracking-widest transition-colors hover:text-[#55B4FF] ${
                 isScrolled ? "text-[#022166]" : "text-white"
               }`}
             >
@@ -76,7 +103,7 @@ export default function Navbar() {
           ))}
         </nav>
 
-        {/* CTA & PHONE */}
+        {/* ACTIONS */}
         <div className="flex items-center gap-6">
           <a 
             href="tel:+393338225464" 
@@ -90,10 +117,10 @@ export default function Navbar() {
           
           <Link 
             href="#prenota"
-            className={`px-7 py-3.5 rounded-full font-black text-[10px] uppercase tracking-[0.2em] transition-all active:scale-95 shadow-lg ${
+            className={`px-8 py-4 rounded-full font-black text-[10px] uppercase tracking-[0.2em] transition-all active:scale-95 shadow-lg ${
               isScrolled 
-                ? "bg-[#022166] text-white hover:bg-[#55B4FF] shadow-blue-900/10" 
-                : "bg-[#55B4FF] text-[#022166] hover:bg-white shadow-black/10"
+                ? "bg-[#022166] text-white hover:bg-[#55B4FF]" 
+                : "bg-[#55B4FF] text-[#022166] hover:bg-white"
             }`}
           >
             Prenota Ora
