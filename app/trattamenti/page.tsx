@@ -71,7 +71,7 @@ export default function TrattamentiPage() {
           <header className="mb-24">
             <div className="flex items-center gap-3 mb-6">
               <div className="h-[1px] w-12 bg-[#55B4FF]"></div>
-              <span className="text-xs font-black uppercase tracking-[0.3em] text-[#55B4FF]">Clinical Specialties Hub</span>
+              <span className="text-xs font-black uppercase tracking-[0.3em] text-[#55B4FF]">(R)enjoy your mo(ve)ments)</span>
             </div>
             <h1 className="text-5xl md:text-8xl font-black text-[#022166] leading-[0.95] mb-10 tracking-tighter">
               Aree di <br />intervento <span className="text-[#55B4FF]">specialistico.</span>
