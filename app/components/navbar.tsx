@@ -25,10 +25,8 @@ export default function Navbar() {
       if (currentScrollY < 10) {
         setIsVisible(true);
       } else if (currentScrollY > lastScrollY.current) {
-        // Scroll verso il basso: nascondi
         setIsVisible(false);
       } else {
-        // Scroll verso l'alto: mostra
         setIsVisible(true);
       }
       lastScrollY.current = currentScrollY;
@@ -45,14 +43,17 @@ export default function Navbar() {
     { n: "Dove Siamo", h: "/dove-siamo" }
   ];
 
-  // --- LOGICA COLORI ---
-  // In Home (senza scroll) usiamo il bianco per la Hero scura.
-  // Altrove (o dopo scroll) usiamo il Blu Notte per leggibilità su sfondo chiaro.
+  // --- LOGICA COLORI E LOGO ---
+  // isDarkTheme è TRUE quando siamo in Home e NON abbiamo ancora scrollato (sfondo scuro della Hero)
   const isDarkTheme = isHomePage && !isScrolled;
   
   const textColor = isDarkTheme ? "text-white" : "text-[#022166]";
   const secondaryTextColor = isDarkTheme ? "text-white/60" : "text-[#022166]/60";
-  const logoInvert = isDarkTheme ? "brightness-0 invert" : "";
+  
+  // Scambio dinamico del file immagine del logo
+  const logoSrc = isDarkTheme 
+    ? "/logo-bianco-fisioterapia-malavasi.png" 
+    : "/logo-fisioterapia-malavasi.png";
 
   const btnBaseClass = `group relative overflow-hidden flex items-center justify-center gap-3 px-6 py-3.5 font-black text-[10px] uppercase tracking-[0.2em] transition-all active:scale-95 shadow-md`;
   const borderRadiusClass = isScrolled ? "rounded-xl" : "rounded-full";
@@ -75,10 +76,11 @@ export default function Navbar() {
         <Link href="/" className="flex items-center gap-4 group">
           <div className={`relative transition-all duration-500 ${isScrolled ? "w-8 h-8 md:w-9 md:h-9" : "w-11 h-11 md:w-12 md:h-12"}`}>
             <Image 
-              src="/logo.png" 
+              src={logoSrc} 
               alt="Logo Malavasi" 
               fill 
-              className={`object-contain transition-all duration-500 ${logoInvert}`}
+              priority // Carica il logo con priorità per evitare flash al cambio pagina
+              className="object-contain transition-all duration-500"
             />
           </div>
           <div className="flex flex-col leading-tight">
@@ -97,7 +99,6 @@ export default function Navbar() {
               className={`relative font-bold text-[10px] uppercase tracking-[0.15em] transition-all hover:text-[#55B4FF] group/link ${textColor}`}
             >
               {item.n}
-              {/* Linea indicatrice: fissa se pagina attiva, altrimenti compare al passaggio */}
               <span className={`absolute -bottom-1 left-0 h-0.5 bg-[#55B4FF] transition-all duration-300 ${pathname === item.h ? "w-full" : "w-0 group-hover/link:w-full"}`} />
             </Link>
           ))}
@@ -105,8 +106,6 @@ export default function Navbar() {
 
         {/* ACTIONS */}
         <div className="flex items-center gap-3 md:gap-4">
-          
-          {/* CALL BUTTON */}
           <a 
             href="tel:+393338225464" 
             className={`${btnBaseClass} ${borderRadiusClass} ${
@@ -120,7 +119,6 @@ export default function Navbar() {
             <span className="relative z-10 hidden sm:inline">Contattaci</span>
           </a>
           
-          {/* PRENOTA ORA */}
           <Link 
             href="/prenota"
             className={`${btnBaseClass} ${borderRadiusClass} ${
