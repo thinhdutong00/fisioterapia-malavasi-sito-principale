@@ -29,16 +29,15 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // AGGIORNAMENTO: Rotte reali basate sulla struttura tipica del progetto
   const navLinks = [
-    { n: "Informazioni", h: "#team" },
-    { n: "Trattamenti", h: "#trattamenti" },
-    { n: "Il Metodo", h: "#metodo" },
-    { n: "Contatti", h: "#dove-siamo" }
+    { n: "Informazioni", h: "/informazioni" },
+    { n: "Trattamenti", h: "/trattamenti" },
+    { n: "Il Metodo", h: "/metodo" },
+    { n: "Dove Siamo", h: "/dove-siamo" }
   ];
 
-  // Classi comuni per i bottoni per garantire uguaglianza millimetrica
   const btnBaseClass = `group relative overflow-hidden flex items-center justify-center gap-3 px-6 py-3.5 font-black text-[10px] uppercase tracking-[0.2em] transition-all active:scale-95 shadow-md`;
-  
   const borderRadiusClass = isScrolled ? "rounded-xl" : "rounded-full";
 
   return (
@@ -72,7 +71,7 @@ export default function Navbar() {
           </div>
         </Link>
 
-        {/* NAVIGATION */}
+        {/* NAVIGATION - Ora con rotte vere */}
         <nav className="hidden lg:flex items-center gap-8 xl:gap-10">
           {navLinks.map((item) => (
             <Link 
@@ -107,7 +106,7 @@ export default function Navbar() {
           
           {/* PRENOTA ORA */}
           <Link 
-            href="#prenota"
+            href="/prenota"
             className={`${btnBaseClass} ${borderRadiusClass} ${
               isScrolled 
                 ? "bg-[#022166] text-white" 
