@@ -98,7 +98,7 @@ export default function FisioterapiaMuscoloscheletrica() {
                       <span className="text-xs font-black uppercase tracking-widest">Specializzazione Internazionale</span>
                     </div>
                     <h2 className="text-3xl md:text-5xl font-black mb-8 leading-tight">
-                      Eccellenza OMPT: <br />
+                      Fisioterapisti OMPT: <br />
                       Terapia Manuale Ortopedica.
                     </h2>
                     <p className="text-white/70 text-lg leading-relaxed mb-6">
