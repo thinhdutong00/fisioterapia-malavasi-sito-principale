@@ -1,111 +1,91 @@
-"use client"; // Obbligatorio per usare lo stato e lo scroll
+"use client";
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Phone, Menu, X } from "lucide-react";
+import { Phone } from "lucide-react";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  // Gestisce il cambio di stile allo scroll
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      // Si attiva non appena scendi di 50px
+      setIsScrolled(window.scrollY > 50);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navLinks = [
-    { name: "CHI SIAMO", href: "#team" },
-    { name: "TRATTAMENTI", href: "#trattamenti" },
-    { name: "COME LAVORIAMO", href: "#metodo" },
-    { name: "TEAM", href: "#team" },
-    { name: "RECENSIONI", href: "#recensioni" },
-    { name: "DOVE SIAMO", href: "#dove-siamo" },
-  ];
-
   return (
     <header 
-      className={`fixed top-0 left-0 w-full z-[100] transition-all duration-500 ${
+      className={`fixed top-0 left-0 w-full z-[100] transition-all duration-300 ${
         isScrolled 
-          ? "bg-white/80 backdrop-blur-lg shadow-sm py-3" 
-          : "bg-transparent py-5"
+          ? "bg-white shadow-md py-4" 
+          : "bg-transparent py-8"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
         
-        {/* LOGO */}
-        <Link href="/" className="flex items-center gap-3 group">
-          <div className="relative w-10 h-10 md:w-12 md:h-12 transition-transform duration-500 group-hover:scale-105">
+        {/* LOGO - Cambia colore in base allo scroll */}
+        <Link href="/" className="flex items-center gap-3">
+          <div className="relative w-10 h-10 md:w-12 md:h-12">
             <Image 
-              src="/logo.png" 
-              alt="Logo Studio Malavasi" 
+              src="https://github.com/thinhdutong00/Fisioterapia-Malavasi---landing-page-1/blob/main/public/Progetto%20senza%20titolo%20-%202026-02-23T223838.202.png?raw=true" 
+              alt="Logo Malavasi" 
               fill 
-              className="object-contain"
+              className={`object-contain transition-all duration-300 ${isScrolled ? "" : "brightness-0 invert"}`}
             />
           </div>
-          <div className="flex flex-col">
-            <span className="text-[#022166] font-black text-[10px] md:text-xs uppercase tracking-tighter leading-none">Studio</span>
-            <span className="text-[#55B4FF] font-black text-xs md:text-sm uppercase tracking-tighter leading-none">Fisioterapico</span>
-            <span className="text-[#022166] font-black text-xs md:text-sm uppercase tracking-tighter leading-none">Malavasi</span>
+          <div className="flex flex-col leading-none">
+            <span className={`font-black text-[10px] uppercase tracking-tighter ${isScrolled ? "text-[#022166]" : "text-white"}`}>Studio</span>
+            <span className="font-black text-xs uppercase tracking-tighter text-[#55B4FF]">Fisioterapico</span>
+            <span className={`font-black text-xs uppercase tracking-tighter ${isScrolled ? "text-[#022166]" : "text-white"}`}>Malavasi</span>
           </div>
         </Link>
 
-        {/* MENU DESKTOP */}
-        <nav className="hidden lg:flex items-center gap-6">
-          {navLinks.map((link) => (
+        {/* MENU DESKTOP - Cambia colore in base allo scroll */}
+        <nav className="hidden lg:flex items-center gap-10">
+          {[
+            { n: "IL TEAM", h: "#team" },
+            { n: "TRATTAMENTI", h: "#servizi" },
+            { n: "IL METODO", h: "#metodo" },
+            { n: "DOVE SIAMO", h: "#dove-siamo" }
+          ].map((item) => (
             <Link 
-              key={link.name} 
-              href={link.href}
-              className="text-[#022166] font-black text-[10px] uppercase tracking-widest hover:text-[#55B4FF] transition-colors relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-0.5 after:bg-[#55B4FF] after:transition-all hover:after:w-full"
+              key={item.n} 
+              href={item.h}
+              className={`font-black text-[10px] uppercase tracking-[0.2em] transition-colors hover:text-[#55B4FF] ${
+                isScrolled ? "text-[#022166]" : "text-white/90"
+              }`}
             >
-              {link.name}
+              {item.n}
             </Link>
           ))}
         </nav>
 
-        {/* CALL TO ACTION */}
-        <div className="flex items-center gap-3">
+        {/* ACTIONS */}
+        <div className="flex items-center gap-6">
           <a 
             href="tel:+393338225464" 
-            className="hidden xl:flex items-center gap-2 text-[#022166] font-black text-[11px] uppercase tracking-widest hover:text-[#55B4FF] transition-colors"
+            className={`hidden md:flex items-center gap-2 font-black text-[10px] uppercase tracking-widest transition-colors ${
+              isScrolled ? "text-[#022166] hover:text-[#55B4FF]" : "text-white hover:text-[#55B4FF]"
+            }`}
           >
-            <Phone size={14} />
+            <Phone size={14} className="text-[#55B4FF]" />
             333 822 5464
           </a>
+          
           <Link 
             href="#prenota"
-            className="bg-[#022166] text-white px-6 py-3 rounded-full font-black text-[10px] uppercase tracking-[0.2em] shadow-lg shadow-blue-900/10 hover:bg-[#55B4FF] hover:-translate-y-0.5 transition-all active:scale-95"
+            className={`px-8 py-4 rounded-xl font-black text-[10px] uppercase tracking-[0.2em] transition-all active:scale-95 shadow-lg ${
+              isScrolled 
+                ? "bg-[#022166] text-white hover:bg-[#55B4FF]" 
+                : "bg-[#55B4FF] text-[#022166] hover:bg-white"
+            }`}
           >
-            PRENOTA ORA
+            Prenota Ora
           </Link>
-          
-          {/* MOBILE MENU BUTTON */}
-          <button 
-            className="lg:hidden p-2 text-[#022166]"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          >
-            {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
-          </button>
-        </div>
-      </div>
-
-      {/* MOBILE MENU OVERLAY */}
-      <div className={`lg:hidden absolute top-full left-0 w-full bg-white border-t border-slate-50 transition-all duration-300 ${isMobileMenuOpen ? "opacity-100 visible" : "opacity-0 invisible"}`}>
-        <div className="p-6 flex flex-col gap-4">
-          {navLinks.map((link) => (
-            <Link 
-              key={link.name} 
-              href={link.href}
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="text-[#022166] font-black text-xs uppercase tracking-widest"
-            >
-              {link.name}
-            </Link>
-          ))}
         </div>
       </div>
     </header>
