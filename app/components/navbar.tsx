@@ -14,7 +14,7 @@ export default function Navbar() {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
       
-      // Attivazione stile floating
+      // Attivazione stile floating solo dopo 80px
       setIsScrolled(currentScrollY > 80);
 
       // Logica Hide/Show
@@ -46,10 +46,10 @@ export default function Navbar() {
       } ${isScrolled ? "pt-4" : "pt-0"}`}
     >
       <div 
-        className={`mx-auto transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] flex items-center justify-between ${
+        className={`mx-auto transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] flex items-center justify-between border ${
           isScrolled 
-            ? "max-w-6xl bg-white/70 backdrop-blur-2xl border border-white/40 shadow-[0_25px_50px_-12px_rgba(2,33,102,0.08)] rounded-[2rem] px-10 py-3" 
-            : "max-w-7xl bg-transparent py-10 px-12"
+            ? "max-w-6xl bg-white/70 backdrop-blur-2xl border-white/40 shadow-[0_25px_50px_-12px_rgba(2,33,102,0.08)] rounded-[2rem] px-10 py-3" 
+            : "max-w-7xl bg-transparent border-transparent py-10 px-12 shadow-none"
         }`}
       >
         
@@ -70,7 +70,7 @@ export default function Navbar() {
           </div>
         </Link>
 
-        {/* NAVIGATION - Minimal & Clean */}
+        {/* NAVIGATION */}
         <nav className="hidden lg:flex items-center gap-10">
           {navLinks.map((item) => (
             <Link 
@@ -105,7 +105,7 @@ export default function Navbar() {
             className={`group relative overflow-hidden flex items-center gap-3 px-8 py-4 rounded-full font-black text-[10px] uppercase tracking-[0.2em] transition-all active:scale-95 ${
               isScrolled 
                 ? "bg-[#022166] text-white shadow-[0_10px_20px_rgba(2,33,102,0.2)]" 
-                : "bg-white text-[#022166] shadow-xl"
+                : "bg-white text-[#022166]"
             }`}
           >
             <span className="relative z-10">Prenota Ora</span>
