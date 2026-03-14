@@ -10,6 +10,7 @@ import {
   Clock, 
   Stethoscope,
   ShieldCheck,
+  Medal,
   Activity
 } from 'lucide-react';
 
@@ -84,6 +85,50 @@ export default function FisioterapiaMuscoloscheletrica() {
             ))}
           </section>
 
+          {/* SEZIONE OMPT - Autorità Specialistica */}
+          <section className="mb-24 relative">
+             <div className="bg-[#022166] rounded-[4rem] p-10 md:p-20 text-white overflow-hidden relative">
+                <div className="absolute top-0 right-0 opacity-5 -translate-y-1/4 translate-x-1/4">
+                  <Medal size={400} />
+                </div>
+                <div className="relative z-10 grid lg:grid-cols-5 gap-12 items-center">
+                  <div className="lg:col-span-3">
+                    <div className="flex items-center gap-3 text-[#55B4FF] mb-6">
+                      <Medal size={24} />
+                      <span className="text-xs font-black uppercase tracking-widest">Specializzazione Internazionale</span>
+                    </div>
+                    <h2 className="text-3xl md:text-5xl font-black mb-8 leading-tight">
+                      Eccellenza OMPT: <br />
+                      Terapia Manuale Ortopedica.
+                    </h2>
+                    <p className="text-white/70 text-lg leading-relaxed mb-6">
+                      Il titolo OMPT è un riconoscimento internazionale rilasciato secondo gli standard IFOMPT. 
+                      Garantisce che il fisioterapista possieda competenze avanzate nel ragionamento clinico e 
+                      nelle tecniche manuali più sofisticate.
+                    </p>
+                    <p className="text-white/70 text-lg leading-relaxed font-medium italic">
+                      Scegliere un professionista OMPT significa affidarsi a una gestione del dolore e del movimento 
+                      ai massimi livelli qualitativi oggi disponibili.
+                    </p>
+                  </div>
+                  <div className="lg:col-span-2 space-y-4">
+                    {[
+                      "Ragionamento clinico avanzato",
+                      "Tecniche di manipolazione articolare",
+                      "Gestione dei quadri clinici complessi",
+                      "Integrazione di evidenze e bio-meccanica",
+                      "Standard formativi universitari internazionali"
+                    ].map((feature, i) => (
+                      <div key={i} className="flex items-center gap-3 bg-white/5 p-4 rounded-2xl border border-white/10">
+                        <CheckCircle2 size={18} className="text-[#55B4FF]" />
+                        <span className="text-sm font-bold tracking-tight">{feature}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+             </div>
+          </section>
+
           {/* DETTAGLIO CLINICO - Competenze */}
           <section className="relative mb-24">
             <div className="absolute inset-0 bg-[#022166] rounded-[4rem] -rotate-1 scale-[1.02] opacity-5"></div>
@@ -91,7 +136,7 @@ export default function FisioterapiaMuscoloscheletrica() {
               <div className="grid lg:grid-cols-2 gap-16 items-center">
                 <div>
                   <h2 className="text-3xl md:text-5xl font-black text-[#022166] mb-8 tracking-tight">
-                    Competenze <br />specialistiche.
+                    Ambiti di <br />applicazione.
                   </h2>
                   <p className="text-slate-600 mb-10 text-lg leading-relaxed">
                     Il nostro obiettivo è ripristinare la corretta biomeccanica del corpo attraverso un piano 
