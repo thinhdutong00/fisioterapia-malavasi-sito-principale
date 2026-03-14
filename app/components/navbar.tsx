@@ -74,11 +74,11 @@ export default function Navbar() {
         
 {/* LOGO AREA */}
         <Link href="/" className="flex items-center gap-4 group">
-          {/* Ho mantenuto h-8/h-12 come richiesto, ma aumentato w-24/w-32 per far distendere il logo */}
+          {/* Altezze invariate, larghezza aumentata per massimizzare la resa dell'immagine orizzontale */}
           <div className={`relative transition-all duration-500 ${
             isScrolled 
-              ? "w-24 h-8 md:w-28 h-9" 
-              : "w-32 h-11 md:w-40 h-12"
+              ? "w-32 h-8 md:w-36 h-9" 
+              : "w-44 h-11 md:w-56 h-12"
           }`}>
             <Image 
               src={logoSrc} 
