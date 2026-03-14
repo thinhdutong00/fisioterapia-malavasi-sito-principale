@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Phone, CalendarCheck, ArrowRight } from "lucide-react";
+import { Phone, CalendarCheck } from "lucide-react";
 
 export default function Navbar() {
   const [isVisible, setIsVisible] = useState(true);
@@ -35,6 +35,11 @@ export default function Navbar() {
     { n: "Il Metodo", h: "#metodo" },
     { n: "Contatti", h: "#dove-siamo" }
   ];
+
+  // Classi comuni per i bottoni per garantire uguaglianza millimetrica
+  const btnBaseClass = `group relative overflow-hidden flex items-center justify-center gap-3 px-6 py-3.5 font-black text-[10px] uppercase tracking-[0.2em] transition-all active:scale-95 shadow-md`;
+  
+  const borderRadiusClass = isScrolled ? "rounded-xl" : "rounded-full";
 
   return (
     <header 
@@ -84,42 +89,38 @@ export default function Navbar() {
         </nav>
 
         {/* ACTIONS */}
-        <div className="flex items-center gap-3 md:gap-5">
-          {/* CALL BUTTON - NUOVO DESIGN */}
+        <div className="flex items-center gap-3 md:gap-4">
+          
+          {/* CALL BUTTON */}
           <a 
             href="tel:+393338225464" 
-            className={`flex items-center gap-2 px-4 py-2.5 rounded-xl font-bold text-[10px] uppercase tracking-widest transition-all active:scale-95 ${
+            className={`${btnBaseClass} ${borderRadiusClass} ${
               isScrolled 
-                ? "bg-[#022166]/5 text-[#022166] hover:bg-[#022166] hover:text-white" 
-                : "bg-white/10 text-white hover:bg-white hover:text-[#022166]"
+                ? "bg-slate-100 text-[#022166] border border-slate-200" 
+                : "bg-white/10 text-white border border-white/20 backdrop-blur-sm"
             }`}
           >
-            <Phone size={14} className={isScrolled ? "text-[#55B4FF]" : "text-white group-hover:text-[#55B4FF]"} />
-            <span className="hidden sm:inline">Contattaci</span>
+            <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:animate-shimmer" />
+            <Phone size={14} className="relative z-10 transition-transform group-hover:rotate-12" />
+            <span className="relative z-10 hidden sm:inline">Contattaci</span>
           </a>
           
-          {/* PRENOTA ORA - EFFETTO PREMIUM */}
+          {/* PRENOTA ORA */}
           <Link 
             href="#prenota"
-            className={`group relative overflow-hidden flex items-center gap-3 px-6 md:px-8 py-3 md:py-4 font-black text-[10px] uppercase tracking-[0.2em] transition-all active:scale-90 shadow-lg ${
+            className={`${btnBaseClass} ${borderRadiusClass} ${
               isScrolled 
-                ? "bg-[#022166] text-white rounded-xl" 
-                : "bg-[#55B4FF] text-[#022166] rounded-full"
+                ? "bg-[#022166] text-white" 
+                : "bg-[#55B4FF] text-[#022166]"
             }`}
           >
-            {/* Animazione Shimmer (riflesso lucido) */}
             <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-shimmer" />
-            
             <CalendarCheck size={16} className="relative z-10 transition-transform group-hover:scale-110" />
             <span className="relative z-10">Prenota Ora</span>
-            
-            {/* Background Hover Effect */}
-            <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 transition-opacity" />
           </Link>
         </div>
       </div>
 
-      {/* CSS per l'animazione Shimmer - Da aggiungere nel file globals.css o sotto */}
       <style jsx>{`
         @keyframes shimmer {
           100% { transform: translateX(100%); }
