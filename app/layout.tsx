@@ -66,7 +66,7 @@ export default function RootLayout({
           `}
         </Script>
       </head>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased font-sans min-h-screen flex flex-col`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased font-sans`}>
         <noscript>
           <iframe 
             src="https://www.googletagmanager.com/ns.html?id=GTM-WRNZP7MS"
@@ -78,13 +78,7 @@ export default function RootLayout({
         
         <Navbar />
         
-        {/* Il contenuto della pagina viene avvolto in un main che occupa lo spazio disponibile */}
-        <main className="flex-grow w-full">
-          {children}
-        </main>
-
-        {/* Il footer viene renderizzato dopo il contenuto in ogni pagina */}
-        <Footer />
+        {children}
       </body>
     </html>
   );
