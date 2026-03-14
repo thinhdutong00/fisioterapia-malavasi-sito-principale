@@ -3,7 +3,8 @@
 import React from 'react';
 import Link from 'next/link';
 import { 
-  ChevronRight, 
+  ChevronRight,
+  Home, 
   ArrowLeft, 
   HeartPulse, 
   ShieldCheck, 
@@ -131,6 +132,34 @@ export default function FisioterapiaOncologica() {
               </div>
             </div>
           </section>
+
+
+
+{/* SEZIONE DOMICILIO - Comodità e Sicurezza */}
+<section className="mb-24 px-4">
+  <div className="max-w-4xl mx-auto bg-white border border-slate-100 p-8 md:p-12 rounded-[3.5rem] shadow-sm flex flex-col md:flex-row items-center gap-10 group hover:shadow-xl transition-all duration-500">
+    <div className="bg-[#55B4FF]/10 p-6 rounded-[2.5rem] text-[#022166] group-hover:bg-[#022166] group-hover:text-white transition-colors duration-500">
+      <Home size={48} />
+    </div>
+    <div>
+      <h3 className="text-2xl md:text-3xl font-bold text-[#022166] mb-4 tracking-tight">La terapia viene da te.</h3>
+      <p className="text-slate-600 leading-relaxed text-sm md:text-base mb-6">
+        Sappiamo che durante il percorso di cura ogni spostamento può risultare faticoso. 
+        Per questo offriamo la possibilità di effettuare le sedute direttamente presso il **tuo domicilio**, 
+        garantendo la stessa qualità clinica dello studio nell'intimità della tua casa.
+      </p>
+      <div className="flex flex-wrap items-center gap-4 text-[#55B4FF] font-black text-[10px] uppercase tracking-widest">
+        <span className="flex items-center gap-1"><Sparkles size={12}/> Massimo Comfort</span>
+        <span className="hidden md:block opacity-30">•</span>
+        <span className="flex items-center gap-1"><Sparkles size={12}/> Zero Stress</span>
+        <span className="hidden md:block opacity-30">•</span>
+        <span className="flex items-center gap-1"><Sparkles size={12}/> Qualità Certificata</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
 
           {/* CTA - Box Scuro ad Alto Impatto */}
           <section className="text-center py-10 relative">
