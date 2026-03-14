@@ -82,11 +82,7 @@ export default function Navbar() {
               priority // Carica il logo con priorità per evitare flash al cambio pagina
               className="object-contain transition-all duration-500"
             />
-          </div>
-          <div className="flex flex-col leading-tight">
-            <span className={`font-bold text-[9px] uppercase tracking-[0.2em] transition-colors ${secondaryTextColor}`}>Studio</span>
-            <span className="font-black text-xs md:text-sm uppercase tracking-tight text-[#55B4FF]">Fisioterapico</span>
-            <span className={`font-black text-xs md:text-sm uppercase tracking-tight transition-colors ${textColor}`}>Malavasi</span>
+         
           </div>
         </Link>
 
