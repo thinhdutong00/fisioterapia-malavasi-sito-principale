@@ -6,163 +6,150 @@ import {
   ChevronRight, 
   ArrowLeft, 
   ShieldCheck, 
+  BookOpen, 
   Stethoscope, 
-  GraduationCap,
-  Heart,
-  Compass,
-  ArrowRight
+  Search,
+  CheckCircle2,
+  Heart
 } from 'lucide-react';
 
 export default function DolorePersistente() {
+  const pilastriClinici = [
+    {
+      icon: <Stethoscope className="text-[#022166]" size={28} />,
+      titolo: "Valutazione Multidimensionale",
+      desc: "Un inquadramento clinico che analizza i fattori biologici, psicologici e sociali che contribuiscono alla persistenza del sintomo."
+    },
+    {
+      icon: <BookOpen className="text-[#022166]" size={28} />,
+      titolo: "Riconcettualizzazione",
+      desc: "Forniamo le basi neuroscientifiche per comprendere il dolore, riducendo l'incertezza e restituendo il controllo al paziente."
+    },
+    {
+      icon: <ShieldCheck className="text-[#022166]" size={28} />,
+      titolo: "Esposizione Sicura",
+      desc: "Un piano di movimento graduale e protetto, studiato per ricalibrare il sistema di allarme corporeo in totale sicurezza."
+    }
+  ];
+
   return (
-    <main className="min-h-screen bg-[#FDFEFF] text-slate-800 font-sans relative">
+    <main className="min-h-screen bg-white text-[#1A202C] font-sans relative">
       
-      {/* Background minimale */}
-      <div className="absolute inset-0 z-0 pointer-events-none">
-        <div className="absolute top-0 right-0 w-[40%] h-[40%] bg-slate-50 rounded-full blur-[100px]"></div>
+      {/* BACKGROUND - Pulizia assoluta */}
+      <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+        <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-[#F0F4F8] rounded-full blur-[120px] -translate-y-1/2"></div>
       </div>
 
       <div className="relative z-10 pt-32 pb-20 px-4 md:px-6">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           
-          {/* Breadcrumb istituzionale */}
+          {/* Breadcrumb */}
           <nav className="flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] text-slate-400 mb-12">
             <Link href="/" className="hover:text-[#022166]">Home</Link>
             <ChevronRight size={10} />
             <Link href="/trattamenti" className="hover:text-[#022166]">Trattamenti</Link>
             <ChevronRight size={10} />
-            <span className="text-[#022166] font-bold">Gestione Clinica del Dolore</span>
+            <span className="text-[#022166] font-bold">Dolore Persistente</span>
           </nav>
 
-          {/* INTRODUZIONE - L'Accompagnamento */}
-          <header className="mb-20">
+          {/* HEADER - Focus sull'Accompagnamento */}
+          <header className="mb-20 max-w-4xl">
             <h1 className="text-4xl md:text-5xl font-bold text-[#022166] leading-tight mb-8">
-              Un percorso condiviso per la <br />
-              <span className="text-slate-400">risoluzione del dolore persistente.</span>
+              Percorsi di accompagnamento alla <br />
+              <span className="text-[#55B4FF]">Gestione del Dolore Persistente</span>
             </h1>
-            <p className="text-xl text-slate-600 leading-relaxed font-light">
-              Il dolore che si protrae nel tempo richiede una comprensione che va oltre il singolo sintomo. 
-              Il nostro obiettivo non è fornire una soluzione rapida e temporanea, ma <strong>accompagnarti con metodo e pazienza</strong> verso il recupero della tua autonomia, attraverso le evidenze delle neuroscienze moderne.
+            <p className="text-lg text-slate-600 leading-relaxed italic">
+              "Il dolore cronico non è un danno che persiste, ma un sistema che protegge troppo. 
+              Il nostro compito è accompagnarti nel processo di desensibilizzazione, un passo alla volta."
             </p>
           </header>
 
-          {/* I TRE PILASTRI DELL'ACCOMPAGNAMENTO */}
-          <section className="grid md:grid-cols-2 gap-12 mb-28">
-            <div className="space-y-6">
-              <div className="flex items-start gap-4">
-                <div className="mt-1 bg-slate-100 p-2 rounded-lg">
-                  <Compass size={20} className="text-[#022166]" />
+          {/* PILASTRI - Metodologia EBP */}
+          <section className="grid md:grid-cols-3 gap-12 mb-28">
+            {pilastriClinici.map((p, i) => (
+              <div key={i} className="flex flex-col gap-6">
+                <div className="w-12 h-12 bg-[#F8FAFC] rounded-2xl flex items-center justify-center border border-slate-100">
+                  {p.icon}
                 </div>
-                <div>
-                  <h3 className="text-lg font-bold text-[#022166] mb-2">Guida e Orientamento</h3>
-                  <p className="text-slate-500 text-sm leading-relaxed">
-                    Spesso il dolore è accompagnato dall'incertezza. Ti aiutiamo a comprendere i meccanismi neurofisiologici alla base del disturbo, eliminando i dubbi che alimentano il senso di fragilità.
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-4">
-                <div className="mt-1 bg-slate-100 p-2 rounded-lg">
-                  <ShieldCheck size={20} className="text-[#022166]" />
-                </div>
-                <div>
-                  <h3 className="text-lg font-bold text-[#022166] mb-2">Sicurezza e Gradualità</h3>
-                  <p className="text-slate-500 text-sm leading-relaxed">
-                    Ogni passo del percorso è calibrato sulle tue reali capacità. Utilizziamo un approccio di esposizione graduale al movimento, garantendo che ogni esercizio sia percepito come sicuro dal tuo sistema nervoso.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div className="space-y-6">
-              <div className="flex items-start gap-4">
-                <div className="mt-1 bg-slate-100 p-2 rounded-lg">
-                  <GraduationCap size={20} className="text-[#022166]" />
-                </div>
-                <div>
-                  <h3 className="text-lg font-bold text-[#022166] mb-2">Educazione Strategica</h3>
-                  <p className="text-slate-500 text-sm leading-relaxed">
-                    Ti forniamo gli strumenti per gestire autonomamente le fasi di riacutizzazione, rendendoti parte attiva e consapevole del tuo processo di guarigione.
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-4">
-                <div className="mt-1 bg-slate-100 p-2 rounded-lg">
-                  <Heart size={20} className="text-[#022166]" />
-                </div>
-                <div>
-                  <h3 className="text-lg font-bold text-[#022166] mb-2">Alleanza Terapeutica</h3>
-                  <p className="text-slate-500 text-sm leading-relaxed">
-                    Non sarai solo. La continuità del supporto e l'ascolto clinico sono parte integrante del trattamento, per assicurare che il percorso rimanga sempre allineato ai tuoi obiettivi.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          {/* APPROFONDIMENTO CLINICO */}
-          <section className="bg-slate-50 rounded-3xl p-10 md:p-16 mb-28 border border-slate-100">
-            <h2 className="text-2xl font-bold text-[#022166] mb-8">Ambiti di applicazione del percorso</h2>
-            <div className="grid md:grid-cols-2 gap-8 text-slate-600">
-              <ul className="space-y-4">
-                <li className="flex items-center gap-3">
-                  <div className="w-1.5 h-1.5 bg-[#55B4FF] rounded-full"></div>
-                  <span className="text-sm font-medium italic underline decoration-[#55B4FF]/30">Lombalgia e cervicalgia cronica</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <div className="w-1.5 h-1.5 bg-[#55B4FF] rounded-full"></div>
-                  <span className="text-sm font-medium italic underline decoration-[#55B4FF]/30">Sensibilizzazione centrale</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <div className="w-1.5 h-1.5 bg-[#55B4FF] rounded-full"></div>
-                  <span className="text-sm font-medium italic underline decoration-[#55B4FF]/30">Fibromialgia</span>
-                </li>
-              </ul>
-              <div className="p-6 bg-white rounded-2xl border border-slate-100">
-                <h4 className="font-bold text-[#022166] mb-3 text-sm uppercase tracking-wider">Un approccio Integrato</h4>
-                <p className="text-xs leading-relaxed text-slate-500">
-                  Il trattamento del dolore persistente segue le linee guida internazionali che suggeriscono un approccio multimodale, dove l'esercizio terapeutico e l'educazione al dolore si fondono per ristabilire l'equilibrio del sistema biologico.
+                <h3 className="text-xl font-bold text-[#022166] tracking-tight">{p.titolo}</h3>
+                <p className="text-sm text-slate-500 leading-relaxed">
+                  {p.desc}
                 </p>
               </div>
+            ))}
+          </section>
+
+          {/* DETTAGLIO CLINICO - Onestà e Sicurezza */}
+          <section className="bg-[#F8FAFC] border border-slate-100 rounded-[2.5rem] p-8 md:p-16 mb-28">
+            <div className="grid lg:grid-cols-2 gap-16 items-center">
+              <div>
+                <div className="flex items-center gap-2 text-[#55B4FF] mb-4">
+                  <Search size={18} />
+                  <span className="text-[10px] font-black uppercase tracking-widest">Inquadramento</span>
+                </div>
+                <h2 className="text-3xl font-bold text-[#022166] mb-8">Ambiti di applicazione</h2>
+                <div className="space-y-5">
+                  {[
+                    "Lombalgia e cervicalgia persistente",
+                    "Sensibilizzazione centrale e dolore nociplastico",
+                    "Supporto clinico nella Sindrome Fibromialgica",
+                    "Dolore post-operatorio a lungo termine",
+                    "Neuropatie e dolore cronico aspecifico"
+                  ].map((item, i) => (
+                    <div key={i} className="flex items-center gap-3 text-slate-700">
+                      <CheckCircle2 size={18} className="text-[#55B4FF] shrink-0" />
+                      <span className="text-sm font-medium">{item}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="bg-white p-10 rounded-3xl border border-slate-100 shadow-sm">
+                <Heart className="text-[#022166] mb-6 opacity-40" size={32} />
+                <h4 className="text-lg font-bold text-[#022166] mb-4">L'Alleanza Terapeutica</h4>
+                <p className="text-sm text-slate-500 leading-relaxed mb-6">
+                  La ricerca dimostra che la qualità del rapporto tra clinico e paziente è un fattore determinante nel successo della terapia. 
+                  Il nostro impegno è garantire un ascolto attento e una presenza costante durante tutto il percorso di riconquista della propria autonomia.
+                </p>
+                <div className="h-0.5 w-12 bg-[#022166]"></div>
+              </div>
             </div>
           </section>
 
-          {/* CONCLUSIONE - La Porta Aperta */}
-          <section className="border-t border-slate-200 pt-20">
-            <div className="max-w-2xl">
-              <h2 className="text-3xl font-bold text-[#022166] mb-6">Iniziare un percorso di cambiamento.</h2>
-              <p className="text-slate-600 mb-10 leading-relaxed">
-                Riconoscere che il dolore richiede una nuova strategia è il primo passo verso una guarigione sicura. 
-                Siamo a disposizione per una prima valutazione clinica in cui analizzeremo la tua storia e 
-                costruiremo insieme la strada da percorrere.
+          {/* CTA - Etica e Professionale */}
+          <section className="text-center bg-[#022166] rounded-[2.5rem] p-12 md:p-20 text-white relative overflow-hidden">
+            <div className="relative z-10 max-w-2xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6 italic">Iniziamo un dialogo costruttivo.</h2>
+              <p className="text-white/70 mb-10 leading-relaxed">
+                Ogni storia di dolore è unica. Per questo il primo passo è una valutazione clinica approfondita 
+                per definire insieme se il nostro approccio sia il più idoneo alle tue necessità.
               </p>
-              <div className="flex flex-wrap gap-6">
+              <div className="flex flex-col sm:flex-row justify-center gap-6">
                 <Link 
                   href="/prenota" 
-                  className="flex items-center gap-3 text-[#022166] font-black uppercase text-[11px] tracking-[0.2em] group"
+                  className="bg-white text-[#022166] px-10 py-4 rounded-xl font-bold uppercase text-[11px] tracking-widest hover:bg-[#55B4FF] hover:text-white transition-all"
                 >
-                  Richiedi una valutazione clinica <ArrowRight size={16} className="group-hover:translate-x-2 transition-transform" />
+                  Richiedi Valutazione Clinica
                 </Link>
-                <span className="text-slate-300">|</span>
                 <a 
                   href="tel:+393338225464" 
-                  className="text-slate-500 font-bold text-[11px] uppercase tracking-[0.2em] hover:text-[#022166] transition-colors"
+                  className="border border-white/20 px-10 py-4 rounded-xl font-bold uppercase text-[11px] tracking-widest hover:bg-white/10 transition-all"
                 >
-                  Contattaci per un colloquio conoscitivo
+                  Contatto Telefonico
                 </a>
               </div>
             </div>
           </section>
 
-          {/* Footer Back Link */}
-          <div className="mt-32 text-slate-400">
+          {/* FOOTER */}
+          <div className="mt-24 border-t border-slate-100 pt-10 flex flex-col md:flex-row justify-between items-center gap-6 text-slate-400">
             <Link 
               href="/trattamenti" 
               className="inline-flex items-center gap-2 text-xs font-bold hover:text-[#022166] transition-all"
             >
-              <ArrowLeft size={14} /> Elenco aree cliniche
+              <ArrowLeft size={14} /> Torna all'elenco aree cliniche
             </Link>
+            <p className="text-[10px] uppercase tracking-[0.2em]">Fisioterapia Malavasi &bull; Scienza e Cura</p>
           </div>
 
         </div>
