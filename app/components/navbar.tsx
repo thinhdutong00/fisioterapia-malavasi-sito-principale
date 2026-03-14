@@ -17,13 +17,18 @@ export default function Navbar() {
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
+      
+      // 1. Gestione stile (Trasparente vs Riquadro floating)
       setIsScrolled(currentScrollY > 80);
 
+      // 2. Gestione visibilità (Mostra/Nascondi allo scroll)
       if (currentScrollY < 10) {
         setIsVisible(true);
       } else if (currentScrollY > lastScrollY.current) {
+        // Scroll verso il basso: nascondi
         setIsVisible(false);
       } else {
+        // Scroll verso l'alto: mostra
         setIsVisible(true);
       }
       lastScrollY.current = currentScrollY;
@@ -40,12 +45,14 @@ export default function Navbar() {
     { n: "Dove Siamo", h: "/dove-siamo" }
   ];
 
-  // LOGICA COLORI DINAMICI
-  // Se siamo in Home e non abbiamo scrollato: Bianco. 
-  // Se abbiamo scrollato O siamo in una pagina secondaria: Blu Notte.
-  const textColor = (isHomePage && !isScrolled) ? "text-white" : "text-[#022166]";
-  const secondaryTextColor = (isHomePage && !isScrolled) ? "text-white/60" : "text-[#022166]/60";
-  const logoInvert = (isHomePage && !isScrolled) ? "brightness-0 invert" : "";
+  // --- LOGICA COLORI ---
+  // In Home (senza scroll) usiamo il bianco per la Hero scura.
+  // Altrove (o dopo scroll) usiamo il Blu Notte per leggibilità su sfondo chiaro.
+  const isDarkTheme = isHomePage && !isScrolled;
+  
+  const textColor = isDarkTheme ? "text-white" : "text-[#022166]";
+  const secondaryTextColor = isDarkTheme ? "text-white/60" : "text-[#022166]/60";
+  const logoInvert = isDarkTheme ? "brightness-0 invert" : "";
 
   const btnBaseClass = `group relative overflow-hidden flex items-center justify-center gap-3 px-6 py-3.5 font-black text-[10px] uppercase tracking-[0.2em] transition-all active:scale-95 shadow-md`;
   const borderRadiusClass = isScrolled ? "rounded-xl" : "rounded-full";
@@ -90,6 +97,7 @@ export default function Navbar() {
               className={`relative font-bold text-[10px] uppercase tracking-[0.15em] transition-all hover:text-[#55B4FF] group/link ${textColor}`}
             >
               {item.n}
+              {/* Linea indicatrice: fissa se pagina attiva, altrimenti compare al passaggio */}
               <span className={`absolute -bottom-1 left-0 h-0.5 bg-[#55B4FF] transition-all duration-300 ${pathname === item.h ? "w-full" : "w-0 group-hover/link:w-full"}`} />
             </Link>
           ))}
@@ -102,7 +110,7 @@ export default function Navbar() {
           <a 
             href="tel:+393338225464" 
             className={`${btnBaseClass} ${borderRadiusClass} ${
-              (isHomePage && !isScrolled)
+              isDarkTheme
                 ? "bg-white/10 text-white border border-white/20 backdrop-blur-sm"
                 : "bg-[#022166]/5 text-[#022166] border border-[#022166]/10 hover:bg-[#022166] hover:text-white"
             }`}
@@ -116,7 +124,7 @@ export default function Navbar() {
           <Link 
             href="/prenota"
             className={`${btnBaseClass} ${borderRadiusClass} ${
-              (isHomePage && !isScrolled)
+              isDarkTheme
                 ? "bg-[#55B4FF] text-[#022166]"
                 : "bg-[#022166] text-white"
             }`}
