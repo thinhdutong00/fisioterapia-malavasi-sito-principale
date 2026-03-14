@@ -3,17 +3,31 @@
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation"; // Importa questo!
 import { Phone, CalendarCheck } from "lucide-react";
 
 export default function Navbar() {
+  const pathname = usePathname();
+  const isHomePage = pathname === "/";
+  
   const [isVisible, setIsVisible] = useState(true);
-  const [isScrolled, setIsScrolled] = useState(false);
+  // Se non siamo in home, partiamo già come "scrolled" per essere visibili
+  const [isScrolled, setIsScrolled] = useState(!isHomePage);
   const lastScrollY = useRef(0);
 
   useEffect(() => {
+    // Reset dello stato quando cambia pagina
+    setIsScrolled(!isHomePage || window.scrollY > 80);
+
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-      setIsScrolled(currentScrollY > 80);
+      
+      // In Home decide lo scroll, nelle altre pagine resta quasi sempre attivo
+      if (isHomePage) {
+        setIsScrolled(currentScrollY > 80);
+      } else {
+        setIsScrolled(true); // Sempre visibile (scrolled style) nelle secondarie
+      }
 
       if (currentScrollY < 10) {
         setIsVisible(true);
@@ -27,9 +41,8 @@ export default function Navbar() {
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [pathname, isHomePage]); // Riesegui quando cambi pagina
 
-  // AGGIORNAMENTO: Rotte reali basate sulla struttura tipica del progetto
   const navLinks = [
     { n: "Informazioni", h: "/informazioni" },
     { n: "Trattamenti", h: "/trattamenti" },
@@ -71,7 +84,7 @@ export default function Navbar() {
           </div>
         </Link>
 
-        {/* NAVIGATION - Ora con rotte vere */}
+        {/* NAVIGATION */}
         <nav className="hidden lg:flex items-center gap-8 xl:gap-10">
           {navLinks.map((item) => (
             <Link 
@@ -82,15 +95,14 @@ export default function Navbar() {
               }`}
             >
               {item.n}
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#55B4FF] transition-all duration-300 group-hover/link:w-full" />
+              {/* Effetto Active: se siamo in questa pagina, la linea è sempre visibile */}
+              <span className={`absolute -bottom-1 left-0 h-0.5 bg-[#55B4FF] transition-all duration-300 ${pathname === item.h ? "w-full" : "w-0 group-hover/link:w-full"}`} />
             </Link>
           ))}
         </nav>
 
         {/* ACTIONS */}
         <div className="flex items-center gap-3 md:gap-4">
-          
-          {/* CALL BUTTON */}
           <a 
             href="tel:+393338225464" 
             className={`${btnBaseClass} ${borderRadiusClass} ${
@@ -99,12 +111,11 @@ export default function Navbar() {
                 : "bg-white/10 text-white border border-white/20 backdrop-blur-sm"
             }`}
           >
-            <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:animate-shimmer" />
+             <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:animate-shimmer" />
             <Phone size={14} className="relative z-10 transition-transform group-hover:rotate-12" />
             <span className="relative z-10 hidden sm:inline">Contattaci</span>
           </a>
           
-          {/* PRENOTA ORA */}
           <Link 
             href="/prenota"
             className={`${btnBaseClass} ${borderRadiusClass} ${
@@ -121,12 +132,8 @@ export default function Navbar() {
       </div>
 
       <style jsx>{`
-        @keyframes shimmer {
-          100% { transform: translateX(100%); }
-        }
-        .animate-shimmer {
-          animation: shimmer 2s infinite;
-        }
+        @keyframes shimmer { 100% { transform: translateX(100%); } }
+        .animate-shimmer { animation: shimmer 2s infinite; }
       `}</style>
     </header>
   );
