@@ -18,10 +18,8 @@ export default function Navbar() {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
       
-      // 1. Gestione stile (Trasparente vs Riquadro floating)
       setIsScrolled(currentScrollY > 80);
 
-      // 2. Gestione visibilità (Mostra/Nascondi allo scroll)
       if (currentScrollY < 10) {
         setIsVisible(true);
       } else if (currentScrollY > lastScrollY.current) {
@@ -43,19 +41,16 @@ export default function Navbar() {
     { n: "Dove Siamo", h: "/dove-siamo" }
   ];
 
-  // --- LOGICA COLORI E LOGO ---
-  // isDarkTheme è TRUE quando siamo in Home e NON abbiamo ancora scrollato (sfondo scuro della Hero)
   const isDarkTheme = isHomePage && !isScrolled;
   
   const textColor = isDarkTheme ? "text-white" : "text-[#022166]";
-  const secondaryTextColor = isDarkTheme ? "text-white/60" : "text-[#022166]/60";
   
-  // Scambio dinamico del file immagine del logo
   const logoSrc = isDarkTheme 
     ? "/logo-bianco-fisioterapia-malavasi.png" 
     : "/logo-fisioterapia-malavasi.png";
 
-  const btnBaseClass = `group relative overflow-hidden flex items-center justify-center gap-3 px-6 py-3.5 font-black text-[10px] uppercase tracking-[0.2em] transition-all active:scale-95 shadow-md`;
+  // MODIFICA: Aumentata la dimensione font dei bottoni (text-[12px])
+  const btnBaseClass = `group relative overflow-hidden flex items-center justify-center gap-3 px-6 py-3.5 font-black text-[12px] uppercase tracking-[0.2em] transition-all active:scale-95 shadow-md`;
   const borderRadiusClass = isScrolled ? "rounded-xl" : "rounded-full";
 
   return (
@@ -72,9 +67,8 @@ export default function Navbar() {
         }`}
       >
         
-{/* LOGO AREA */}
+        {/* LOGO AREA */}
         <Link href="/" className="flex items-center gap-4 group">
-          {/* Altezze bloccate come richiesto, larghezze espanse al massimo per la resa ottica */}
           <div className={`relative transition-all duration-500 ${
             isScrolled 
               ? "w-40 h-8 md:w-48 h-9" 
@@ -96,7 +90,8 @@ export default function Navbar() {
             <Link 
               key={item.n} 
               href={item.h}
-              className={`relative font-bold text-[10px] uppercase tracking-[0.15em] transition-all hover:text-[#55B4FF] group/link ${textColor}`}
+              // MODIFICA: Aumentata dimensione font link (text-[13px]) e aggiunto font-black per risalto
+              className={`relative font-black text-[13px] uppercase tracking-[0.15em] transition-all hover:text-[#55B4FF] group/link ${textColor}`}
             >
               {item.n}
               <span className={`absolute -bottom-1 left-0 h-0.5 bg-[#55B4FF] transition-all duration-300 ${pathname === item.h ? "w-full" : "w-0 group-hover/link:w-full"}`} />
@@ -115,7 +110,7 @@ export default function Navbar() {
             }`}
           >
             <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:animate-shimmer" />
-            <Phone size={14} className="relative z-10" />
+            <Phone size={16} className="relative z-10" />
             <span className="relative z-10 hidden sm:inline">Contattaci</span>
           </a>
           
@@ -128,7 +123,7 @@ export default function Navbar() {
             }`}
           >
             <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-shimmer" />
-            <CalendarCheck size={16} className="relative z-10" />
+            <CalendarCheck size={18} className="relative z-10" />
             <span className="relative z-10">Prenota Ora</span>
           </Link>
         </div>
