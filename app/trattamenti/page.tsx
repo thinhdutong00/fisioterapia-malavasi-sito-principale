@@ -5,11 +5,11 @@ import Link from 'next/link';
 import { 
   ArrowLeft, 
   ChevronRight, 
-  Activity 
+  Activity,
+  ArrowUpRight
 } from 'lucide-react';
 
 export default function TrattamentiPage() {
-  // Array dei trattamenti semplificato senza icone
   const trattamenti = [
     {
       titolo: "Fisioterapia Muscoloscheletrica",
@@ -49,83 +49,95 @@ export default function TrattamentiPage() {
   ];
 
   return (
-    <main className="min-h-screen bg-[#F0F4F8] text-slate-800 font-sans relative overflow-hidden">
+    <main className="min-h-screen bg-[#F8FAFC] text-slate-800 font-sans relative overflow-hidden">
       
-      {/* BACKGROUND DECORATIONS */}
+      {/* BACKGROUND - Precisione e Pulizia */}
       <div className="fixed inset-0 z-0 pointer-events-none">
-        <div className="absolute top-[-5%] left-[-5%] w-[40%] h-[40%] bg-[#55B4FF]/10 rounded-full blur-[100px]"></div>
-        <div className="absolute bottom-[5%] right-[-5%] w-[30%] h-[30%] bg-[#022166]/5 rounded-full blur-[100px]"></div>
+        <div className="absolute top-[-5%] right-[-5%] w-[40%] h-[40%] bg-[#022166]/3 rounded-full blur-[100px]"></div>
+        <div className="absolute bottom-[-5%] left-[-5%] w-[40%] h-[40%] bg-[#55B4FF]/5 rounded-full blur-[100px]"></div>
       </div>
 
       <div className="relative z-10 pt-32 pb-20 px-4 md:px-6">
         <div className="max-w-6xl mx-auto">
           
           {/* Breadcrumb */}
-          <nav className="flex items-center gap-2 text-sm text-slate-500 mb-8">
+          <nav className="flex items-center gap-2 text-sm text-slate-500 mb-10">
             <Link href="/" className="hover:text-[#022166] transition-colors">Home</Link>
             <ChevronRight size={14} />
-            <span className="text-[#022166] font-semibold">Trattamenti</span>
+            <span className="text-[#022166] font-semibold">Aree Cliniche</span>
           </nav>
 
-          {/* Header Pagina */}
-          <header className="mb-16">
-            <h1 className="text-4xl md:text-6xl font-black text-[#022166] leading-tight mb-6">
-              Eccellenza nella <br />
-              <span className="text-[#55B4FF]">Riabilitazione</span>
+          {/* HEADER - Stile Bold come le sottopagine */}
+          <header className="mb-24">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="h-[1px] w-12 bg-[#55B4FF]"></div>
+              <span className="text-xs font-black uppercase tracking-[0.3em] text-[#55B4FF]">Clinical Specialties Hub</span>
+            </div>
+            <h1 className="text-5xl md:text-8xl font-black text-[#022166] leading-[0.95] mb-10 tracking-tighter">
+              Aree di <br />intervento <span className="text-[#55B4FF]">specialistico.</span>
             </h1>
-            <p className="max-w-2xl text-lg text-slate-600 leading-relaxed">
-              Esplora le nostre aree di specializzazione. Ogni percorso è costruito intorno alle tue esigenze cliniche, 
-              utilizzando le migliori evidenze scientifiche.
+            <p className="max-w-3xl text-xl md:text-2xl text-slate-600 leading-relaxed font-light">
+              Ogni trattamento è guidato dalle più recenti evidenze scientifiche e progettato 
+              per rispondere alle tue specifiche necessità cliniche.
             </p>
           </header>
 
-          {/* GRID TRATTAMENTI */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {/* GRID TRATTAMENTI - Card Strutturate */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {trattamenti.map((t, index) => (
               <Link 
                 key={index} 
                 href={t.slug}
-                className="group relative bg-white/60 backdrop-blur-md border border-white/40 p-10 rounded-[2.5rem] shadow-sm hover:shadow-xl hover:bg-white/80 transition-all duration-500 flex flex-col justify-between"
+                className="group relative bg-white p-12 rounded-[3.5rem] border border-slate-100 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 flex flex-col justify-between"
               >
                 <div>
-                  <h3 className="text-2xl font-bold text-[#022166] mb-4 leading-tight group-hover:text-[#55B4FF] transition-colors">
+                  <div className="flex justify-between items-start mb-8">
+                    <div className="p-3 bg-[#F8FAFC] rounded-2xl group-hover:bg-[#55B4FF] group-hover:text-white transition-colors">
+                        <Activity size={24} className="opacity-40 group-hover:opacity-100" />
+                    </div>
+                    <ArrowUpRight size={20} className="text-slate-300 group-hover:text-[#55B4FF] transition-colors" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-[#022166] mb-4 leading-tight tracking-tight">
                     {t.titolo}
                   </h3>
-                  <p className="text-slate-500 text-sm md:text-base leading-relaxed mb-8">
+                  <p className="text-slate-500 text-sm md:text-base leading-relaxed mb-8 font-medium opacity-80">
                     {t.desc}
                   </p>
                 </div>
                 
-                <div className="flex items-center gap-2 text-[#55B4FF] font-black text-[10px] uppercase tracking-[0.2em]">
-                  Dettagli <ChevronRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                <div className="flex items-center gap-2 text-[#022166] font-black text-[10px] uppercase tracking-[0.3em] border-t border-slate-50 pt-6">
+                  Vai alla sezione <ChevronRight size={14} className="group-hover:translate-x-2 transition-transform" />
                 </div>
               </Link>
             ))}
 
-            {/* CARD SPECIALE: PRENOTA */}
-            <div className="lg:col-span-1 bg-[#022166] p-10 rounded-[2.5rem] shadow-xl flex flex-col justify-center text-white relative overflow-hidden group">
-               <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:scale-125 transition-transform duration-700">
-                  <Activity size={120} />
+            {/* CARD CTA - Unificata allo stile Hub */}
+            <div className="lg:col-span-1 bg-[#022166] p-12 rounded-[3.5rem] shadow-xl flex flex-col justify-center text-white relative overflow-hidden group">
+               <div className="absolute top-[-10%] right-[-10%] p-4 opacity-5 group-hover:opacity-10 transition-opacity duration-700">
+                  <Activity size={280} />
                </div>
-               <h3 className="text-2xl font-black mb-4 relative z-10">Consulenza Specialistica</h3>
-               <p className="text-white/70 mb-8 relative z-10 text-sm">I nostri professionisti sono a disposizione per definire il piano terapeutico più adatto a te.</p>
+               <h3 className="text-3xl font-black mb-6 relative z-10 leading-tight">Valutazione <br />Clinica</h3>
+               <p className="text-white/60 mb-10 relative z-10 text-sm leading-relaxed">
+                 Non sai quale percorso sia più adatto a te? I nostri professionisti sono a disposizione per definire la strategia corretta.
+               </p>
                <Link 
                 href="/prenota" 
-                className="bg-[#55B4FF] text-[#022166] px-6 py-4 rounded-2xl font-black text-center uppercase text-[10px] tracking-widest hover:bg-white transition-colors relative z-10"
+                className="bg-[#55B4FF] text-[#022166] px-8 py-5 rounded-2xl font-black text-center uppercase text-[10px] tracking-[0.3em] hover:bg-white transition-all relative z-10"
                >
-                 Prenota Ora
+                 Prenota Consulto
                </Link>
             </div>
           </div>
 
-          {/* Bottone di ritorno rapido */}
-          <div className="mt-16 border-t border-slate-200 pt-10">
+          {/* Footer Navigation */}
+          <div className="mt-24 border-t border-slate-200 pt-12 flex justify-between items-center text-slate-400">
             <Link 
               href="/" 
-              className="inline-flex items-center gap-2 text-[#022166]/40 font-bold hover:text-[#022166] transition-all"
+              className="inline-flex items-center gap-2 font-bold hover:text-[#022166] transition-all"
             >
               <ArrowLeft size={20} /> Torna alla Home
             </Link>
+            <span className="text-[10px] uppercase tracking-widest font-black opacity-40">Fisioterapia Malavasi — Hub Clinico</span>
           </div>
 
         </div>
