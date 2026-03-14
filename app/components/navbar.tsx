@@ -12,7 +12,6 @@ export default function Navbar() {
   const [isVisible, setIsVisible] = useState(true);
   const [isScrolled, setIsScrolled] = useState(false);
   
-  // Usiamo un Ref per salvare l'ultima posizione senza causare re-render infiniti
   const lastScrollY = useRef(0);
 
   useEffect(() => {
@@ -20,30 +19,23 @@ export default function Navbar() {
   }, [pathname]);
 
   useEffect(() => {
-    // Funzione per agganciare lo scroll
     const attachScrollListener = () => {
       const mainContainer = document.querySelector('main');
       
       if (!mainContainer) {
-        // Se main non c'è ancora (caricamento lento), riprova tra 100ms
         setTimeout(attachScrollListener, 100);
         return;
       }
 
       const controlNavbar = () => {
         const currentScrollY = mainContainer.scrollTop;
-
-        // 1. Gestione stile (Trasparente -> Bianco)
         setIsScrolled(currentScrollY > 50);
 
-        // 2. Logica di ritrazione (Nascondi quando scendi, mostra quando sali)
         if (currentScrollY < 10) {
           setIsVisible(true);
         } else if (currentScrollY > lastScrollY.current && currentScrollY > 100) {
-          // Sto scendendo
           setIsVisible(false);
         } else if (currentScrollY < lastScrollY.current) {
-          // Sto salendo: MOSTRA SEMPRE
           setIsVisible(true);
         }
 
@@ -58,11 +50,10 @@ export default function Navbar() {
 
     return () => {
       if (container instanceof HTMLElement) {
-        // Pulizia corretta per evitare leak di memoria
         container.removeEventListener('scroll', () => {});
       }
     };
-  }, [pathname]); // Fondamentale: si riattiva ogni volta che cambi pagina
+  }, [pathname]);
 
   return (
     <>
@@ -84,15 +75,15 @@ export default function Navbar() {
                   width={256}
                   height={64}
                   className={`transition-all duration-500 object-contain w-auto ${
-                    isScrolled ? 'h-8 md:h-12 brightness-100' : 'h-10 md:h-16 brightness-0 invert'
+                    isScrolled ? 'h-8 md:h-12' : 'h-10 md:h-16'
                   }`}
                   priority
                 />
               </Link>
             </div>
 
-            <nav className={`hidden xl:flex items-center gap-5 2xl:gap-8 text-[11px] 2xl:text-[12px] font-black uppercase tracking-[0.15em] ml-8 transition-colors duration-500
-              ${isScrolled ? 'text-[#022166]' : 'text-white'}`}>
+            {/* Voci Menu: Sempre #022166 per leggibilità su sfondo chiaro */}
+            <nav className={`hidden xl:flex items-center gap-5 2xl:gap-8 text-[11px] 2xl:text-[12px] font-black uppercase tracking-[0.15em] ml-8 transition-colors duration-500 text-[#022166]`}>
               <Link href="/informazioni" className="hover:text-[#55B4FF] transition-all">INFORMAZIONI</Link>
               <Link href="/trattamenti" className="hover:text-[#55B4FF] transition-all">TRATTAMENTI FISIOTERAPICI</Link>
               <Link href="/modalita" className="hover:text-[#55B4FF] transition-all">MODALITÀ DELLA SEDUTA</Link>
@@ -100,22 +91,24 @@ export default function Navbar() {
             </nav>
 
             <div className="flex items-center gap-2 md:gap-3 ml-auto shrink-0">
+              {/* Pulsante Chiamata: Colore #022166 su bianco quando non scollato */}
               <a href="tel:3338225464" className={`flex items-center gap-2 px-3 md:px-4 py-2 md:py-2.5 rounded-xl font-bold text-[11px] transition-all border-2
                 ${isScrolled
                   ? 'bg-white border-[#022166] text-[#022166] hover:bg-[#022166] hover:text-white'
-                  : 'bg-white/10 border-white/20 text-white hover:bg-white hover:text-[#022166]'}`}>
+                  : 'bg-white border-[#022166]/20 text-[#022166] hover:bg-[#022166] hover:text-white'}`}>
                 <Phone size={14} /> <span className="hidden sm:inline">333 822 5464</span>
               </a>
 
               <Link href="/#prenota" className={`hidden md:flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-[11px] transition-all shadow-md
                 ${isScrolled
                   ? 'bg-[#022166] text-white hover:bg-[#55B4FF]'
-                  : 'bg-[#55B4FF] text-[#022166] hover:bg-white'}`}>
+                  : 'bg-[#022166] text-white hover:bg-[#55B4FF]'}`}>
                 PRENOTA ORA
               </Link>
 
+              {/* Icona Menu Mobile: Colore #022166 */}
               <button 
-                className={`xl:hidden p-1 transition-colors ${isScrolled ? 'text-[#022166]' : 'text-white'}`} 
+                className="xl:hidden p-1 transition-colors text-[#022166]" 
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
               >
                 {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
@@ -125,7 +118,7 @@ export default function Navbar() {
         </div>
       </header>
 
-      {/* MENU MOBILE */}
+      {/* MENU MOBILE - Invariato in quanto ha sfondo scuro */}
       {isMenuOpen && (
         <div className="fixed inset-0 z-[150] bg-[#022166] flex flex-col items-center justify-center gap-8 animate-in fade-in zoom-in-95 duration-300 xl:hidden">
           <button onClick={() => setIsMenuOpen(false)} className="absolute top-8 right-8 text-white p-2">

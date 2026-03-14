@@ -4,9 +4,9 @@ import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
-import Footer from './components/footer';
+
 import Script from 'next/script';
-import CookieBanner from './components/CookieBanner';
+
 import {
   Activity, X, ChevronRight, Zap, UserRound, CheckCircle,
   Phone, ArrowRight, Menu, Users, Star, Home, MapPin, HeartPulse,
