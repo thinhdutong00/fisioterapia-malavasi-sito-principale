@@ -74,17 +74,17 @@ export default function Navbar() {
         
 {/* LOGO AREA */}
         <Link href="/" className="flex items-center gap-4 group">
-          {/* Aumentate le dimensioni: da w-8/11 a w-12/16 (e proporzionali su desktop) */}
+          {/* Ho mantenuto h-8/h-12 come richiesto, ma aumentato w-24/w-32 per far distendere il logo */}
           <div className={`relative transition-all duration-500 ${
             isScrolled 
-              ? "w-12 h-12 md:w-14 h-14" 
-              : "w-16 h-16 md:w-20 h-20"
+              ? "w-24 h-8 md:w-28 h-9" 
+              : "w-32 h-11 md:w-40 h-12"
           }`}>
             <Image 
               src={logoSrc} 
               alt="Logo Malavasi" 
               fill 
-              priority // Carica il logo con priorità per evitare flash al cambio pagina
+              priority 
               className="object-contain transition-all duration-500"
             />
           </div>
