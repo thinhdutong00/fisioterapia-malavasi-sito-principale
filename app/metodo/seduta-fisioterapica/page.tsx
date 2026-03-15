@@ -25,14 +25,14 @@ export default function SedutaFisioterapicaPage() {
       <div className="relative z-10 pt-32 pb-20 px-4 md:px-6">
         <div className="max-w-6xl mx-auto">
           
-          {/* Breadcrumb */}
-          <nav className="flex items-center gap-2 text-sm text-slate-500 mb-10">
-            <Link href="/" className="hover:text-[#022166] transition-colors">Home</Link>
-            <ChevronRight size={14} />
-            <Link href="/metodo" className="hover:text-[#022166] transition-colors">Modalità</Link>
-            <ChevronRight size={14} />
-            <span className="text-[#022166] font-semibold">Seduta Fisioterapica</span>
-          </nav>
+{/* Breadcrumb aggiornato */}
+<nav className="flex items-center gap-2 text-sm text-slate-500 mb-10">
+  <Link href="/" className="hover:text-[#022166] transition-colors">Home</Link>
+  <ChevronRight size={14} />
+  <Link href="/metodo" className="hover:text-[#022166] transition-colors text-[#022166] font-semibold">Modalità della seduta</Link>
+  <ChevronRight size={14} />
+  <span className="text-slate-400">Seduta Fisioterapica</span>
+</nav>
 
           {/* HEADER SEZIONE */}
           <header className="mb-24">
