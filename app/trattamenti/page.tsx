@@ -5,7 +5,6 @@ import Link from 'next/link';
 import { 
   ArrowLeft, 
   ChevronRight, 
-  Activity,
   ArrowUpRight
 } from 'lucide-react';
 
@@ -88,13 +87,10 @@ export default function TrattamentiPage() {
               <Link 
                 key={index} 
                 href={t.slug}
-                className="group relative bg-white p-12 rounded-[3.5rem] border border-slate-100 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 flex flex-col justify-between"
+                className="group relative bg-white p-12 rounded-[2rem] border border-slate-100 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 flex flex-col justify-between"
               >
                 <div>
-                  <div className="flex justify-between items-start mb-8">
-                    <div className="p-3 bg-[#F8FAFC] rounded-2xl group-hover:bg-[#55B4FF] group-hover:text-white transition-colors">
-                        <Activity size={24} className="opacity-40 group-hover:opacity-100" />
-                    </div>
+                  <div className="flex justify-end items-start mb-8">
                     <ArrowUpRight size={20} className="text-slate-300 group-hover:text-[#55B4FF] transition-colors" />
                   </div>
                   <h3 className="text-2xl font-bold text-[#022166] mb-4 leading-tight tracking-tight">
@@ -112,10 +108,7 @@ export default function TrattamentiPage() {
             ))}
 
             {/* CARD CTA - Unificata allo stile Hub */}
-            <div className="lg:col-span-1 bg-[#022166] p-12 rounded-[3.5rem] shadow-xl flex flex-col justify-center text-white relative overflow-hidden group">
-               <div className="absolute top-[-10%] right-[-10%] p-4 opacity-5 group-hover:opacity-10 transition-opacity duration-700">
-                  <Activity size={280} />
-               </div>
+            <div className="lg:col-span-1 bg-[#022166] p-12 rounded-[2rem] shadow-xl flex flex-col justify-center text-white relative overflow-hidden group">
                <h3 className="text-3xl font-black mb-6 relative z-10 leading-tight">Valutazione <br />Clinica</h3>
                <p className="text-white/60 mb-10 relative z-10 text-sm leading-relaxed">
                  Non sai quale percorso sia più adatto a te? I nostri professionisti sono a disposizione per definire la strategia corretta.
