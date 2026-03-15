@@ -5,25 +5,25 @@ import Link from 'next/link';
 import { 
   ArrowLeft, 
   ChevronRight, 
-  ArrowUpRight,
-  MapPin,
-  Home
+  ArrowUpRight 
 } from 'lucide-react';
 
 export default function ModalitaSedutaPage() {
   const modalita = [
     {
       titolo: "Seduta Fisioterapica",
-      slug: "/seduta-fisioterapica",
+      // Puntiamo alla sottocartella /metodo/seduta-fisioterapica
+      slug: "/metodo/seduta-fisioterapica", 
       desc: "L'intervento riabilitativo d'eccellenza presso il nostro studio. Setting controllato e tecnologie avanzate per il tuo recupero.",
-      color: "bg-[#E0F2FE]", // Azzurro vivace
+      color: "bg-[#E0F2FE]", 
       label: "In Studio"
     },
     {
       titolo: "Seduta Fisioterapica Domiciliare",
-      slug: "/seduta-fisioterapica-domiciliare",
+      // Puntiamo alla sottocartella /metodo/seduta-fisioterapica-domiciliare
+      slug: "/metodo/seduta-fisioterapica-domiciliare", 
       desc: "Portiamo la massima qualità clinica direttamente a casa tua, abbattendo le barriere logistiche e i disagi dello spostamento.",
-      color: "bg-[#F3E8FF]", // Lavanda vivace
+      color: "bg-[#F3E8FF]", 
       label: "A Domicilio"
     }
   ];
@@ -31,7 +31,7 @@ export default function ModalitaSedutaPage() {
   return (
     <main className="min-h-screen bg-[#F8FAFC] text-slate-800 font-sans relative overflow-hidden">
       
-      {/* BACKGROUND - Precisione e Pulizia */}
+      {/* BACKGROUND DECORATIONS */}
       <div className="fixed inset-0 z-0 pointer-events-none">
         <div className="absolute top-[-5%] right-[-5%] w-[40%] h-[40%] bg-[#022166]/3 rounded-full blur-[100px]"></div>
         <div className="absolute bottom-[-5%] left-[-5%] w-[40%] h-[40%] bg-[#55B4FF]/5 rounded-full blur-[100px]"></div>
@@ -47,7 +47,7 @@ export default function ModalitaSedutaPage() {
             <span className="text-[#022166] font-semibold">Modalità della seduta</span>
           </nav>
 
-          {/* HEADER - Stile Bold Istituzionale */}
+          {/* HEADER - Stile Hub con font Bold e tracking tight */}
           <header className="mb-24">
             <div className="flex items-center gap-3 mb-6">
               <div className="h-[1px] w-12 bg-[#55B4FF]"></div>
@@ -58,11 +58,11 @@ export default function ModalitaSedutaPage() {
             </h1>
             <p className="max-w-3xl text-xl md:text-2xl text-slate-600 leading-relaxed font-light">
               Flessibilità logistica senza compromettere il rigore scientifico. Scegli l'ambiente 
-              più adatto alle tue attuali necessità cliniche e personali.
+              più adatto alle tue attuali necessità cliniche.
             </p>
           </header>
 
-          {/* GRID MODALITÀ - 2 Card Grandi */}
+          {/* GRID MODALITÀ - Le due Card Sottomenu */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {modalita.map((m, index) => (
               <Link 
@@ -86,29 +86,13 @@ export default function ModalitaSedutaPage() {
                 </div>
                 
                 <div className="flex items-center gap-2 text-[#022166] font-black text-[10px] uppercase tracking-[0.3em] border-t border-[#022166]/10 pt-8">
-                  Configura il tuo percorso <ChevronRight size={14} className="group-hover:translate-x-2 transition-transform" />
+                  Scopri il protocollo <ChevronRight size={14} className="group-hover:translate-x-2 transition-transform" />
                 </div>
               </Link>
             ))}
-
-            {/* CARD INFO SUPPLEMENTARE (Opzionale, mantiene il layout bilanciato) */}
-            <div className="md:col-span-2 bg-[#022166] p-12 rounded-[2rem] shadow-xl flex flex-col md:flex-row items-center justify-between text-white relative overflow-hidden group mt-8">
-               <div className="relative z-10 max-w-xl">
-                 <h3 className="text-3xl font-black mb-4 leading-tight">Dubbi sulla scelta?</h3>
-                 <p className="text-white/60 text-sm leading-relaxed mb-6 md:mb-0">
-                   Se non sai quale modalità sia più indicata per la tua patologia, i nostri coordinatori clinici possono guidarti verso la soluzione ottimale dopo un breve consulto telefonico.
-                 </p>
-               </div>
-               <Link 
-                href="/contatti" 
-                className="bg-[#55B4FF] text-[#022166] px-10 py-5 rounded-2xl font-black text-center uppercase text-[10px] tracking-[0.3em] hover:bg-white transition-all relative z-10 whitespace-nowrap"
-               >
-                 Richiedi Supporto
-               </Link>
-            </div>
           </div>
 
-          {/* Footer Navigation */}
+          {/* Footer Back Link */}
           <div className="mt-24 border-t border-slate-200 pt-12 flex justify-between items-center text-slate-400">
             <Link 
               href="/" 
@@ -116,7 +100,7 @@ export default function ModalitaSedutaPage() {
             >
               <ArrowLeft size={20} /> Torna alla Home
             </Link>
-            <span className="text-[10px] uppercase tracking-widest font-black opacity-40">Fisioterapia Malavasi — Protocolli di Accesso</span>
+            <span className="text-[10px] uppercase tracking-widest font-black opacity-40">Fisioterapia Malavasi — Hub Clinico</span>
           </div>
 
         </div>
