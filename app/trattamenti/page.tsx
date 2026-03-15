@@ -13,37 +13,44 @@ export default function TrattamentiPage() {
     {
       titolo: "Fisioterapia Muscoloscheletrica",
       slug: "/trattamenti/muscoloscheletrica",
-      desc: "Riabilitazione per patologie articolari, muscolari e della colonna vertebrale."
+      desc: "Riabilitazione per patologie articolari, muscolari e della colonna vertebrale.",
+      color: "bg-[#E0F2FE]" // Azzurro chiaro
     },
     {
       titolo: "Fisioterapia Sportiva",
       slug: "/trattamenti/sportiva",
-      desc: "Recupero post-infortunio e ottimizzazione delle performance per atleti."
+      desc: "Recupero post-infortunio e ottimizzazione delle performance per atleti.",
+      color: "bg-[#DCFCE7]" // Verde menta
     },
     {
       titolo: "Fisioterapia Neurologica",
       slug: "/trattamenti/neurologica",
-      desc: "Supporto e riabilitazione per pazienti con lesioni del sistema nervoso."
+      desc: "Supporto e riabilitazione per pazienti con lesioni del sistema nervoso.",
+      color: "bg-[#F3E8FF]" // Lavanda
     },
     {
       titolo: "Fisioterapia Oncologica",
       slug: "/trattamenti/oncologica",
-      desc: "Percorsi riabilitativi personalizzati per il supporto durante e dopo le terapie."
+      desc: "Percorsi riabilitativi personalizzati per il supporto durante e dopo le terapie.",
+      color: "bg-[#FFEDD5]" // Pesca
     },
     {
       titolo: "Pre e Post Chirurgica",
       slug: "/trattamenti/chirurgica",
-      desc: "Preparazione e recupero funzionale per interventi ortopedici."
+      desc: "Preparazione e recupero funzionale per interventi ortopedici.",
+      color: "bg-[#E0E7FF]" // Indigo soft
     },
     {
       titolo: "Dolore Persistente",
       slug: "/trattamenti/dolore-persistente",
-      desc: "Gestione multidisciplinare del dolore cronico e sensibilizzazione centrale."
+      desc: "Gestione multidisciplinare del dolore cronico e sensibilizzazione centrale.",
+      color: "bg-[#FCE7F3]" // Rosa tenue
     },
     {
       titolo: "Cefalee e Vertigini",
       slug: "/trattamenti/cefalee-vertigini",
-      desc: "Trattamento dei disturbi cervicali correlati a mal di testa e vertigini."
+      desc: "Trattamento dei disturbi cervicali correlati a mal di testa e vertigini.",
+      color: "bg-[#FEF9C3]" // Giallo tenue
     }
   ];
 
@@ -70,7 +77,7 @@ export default function TrattamentiPage() {
           <header className="mb-24">
             <div className="flex items-center gap-3 mb-6">
               <div className="h-[1px] w-12 bg-[#55B4FF]"></div>
-              <span className="text-xs font-black uppercase tracking-[0.3em] text-[#55B4FF]">(R)enjoy your mo(ve)ments)</span>
+              <span className="text-xs font-black uppercase tracking-[0.3em] text-[#55B4FF]">(R)enjoy your mo(ve)ments</span>
             </div>
             <h1 className="text-5xl md:text-8xl font-bold text-[#022166] leading-[0.95] mb-10 tracking-tighter">
               Aree di <br />intervento <span className="text-[#55B4FF]">specialistico.</span>
@@ -81,27 +88,27 @@ export default function TrattamentiPage() {
             </p>
           </header>
 
-          {/* GRID TRATTAMENTI - Card Strutturate */}
+          {/* GRID TRATTAMENTI - Card Strutturate con Colori Vivaci */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {trattamenti.map((t, index) => (
               <Link 
                 key={index} 
                 href={t.slug}
-                className="group relative bg-white p-12 rounded-[2rem] border border-slate-100 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 flex flex-col justify-between"
+                className={`group relative ${t.color} p-12 rounded-[2rem] border border-white/50 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 flex flex-col justify-between`}
               >
                 <div>
                   <div className="flex justify-end items-start mb-8">
-                    <ArrowUpRight size={20} className="text-slate-300 group-hover:text-[#55B4FF] transition-colors" />
+                    <ArrowUpRight size={20} className="text-[#022166]/30 group-hover:text-[#022166] transition-colors" />
                   </div>
                   <h3 className="text-2xl font-bold text-[#022166] mb-4 leading-tight tracking-tight">
                     {t.titolo}
                   </h3>
-                  <p className="text-slate-500 text-sm md:text-base leading-relaxed mb-8 font-medium opacity-80">
+                  <p className="text-[#022166]/70 text-sm md:text-base leading-relaxed mb-8 font-medium">
                     {t.desc}
                   </p>
                 </div>
                 
-                <div className="flex items-center gap-2 text-[#022166] font-black text-[10px] uppercase tracking-[0.3em] border-t border-slate-50 pt-6">
+                <div className="flex items-center gap-2 text-[#022166] font-black text-[10px] uppercase tracking-[0.3em] border-t border-[#022166]/10 pt-6">
                   Vai alla sezione <ChevronRight size={14} className="group-hover:translate-x-2 transition-transform" />
                 </div>
               </Link>
