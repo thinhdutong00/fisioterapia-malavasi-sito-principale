@@ -47,7 +47,10 @@ export default function ContattiPage() {
           
           <div className="relative z-10 w-full">
             <span className="text-[#55B4FF] font-black text-xs uppercase tracking-[0.3em] mb-4 block">Vicinanza e Accessibilità</span>
-            <h2 className="text-4xl md:text-5xl font-black text-[#022166] tracking-tight mb-4">Dove <span className="text-[#55B4FF]">Trovarci</span></h2>
+            <h2 className="text-5xl md:text-8xl font-bold text-[#022166] leading-[0.95] tracking-tighter mb-8">
+  Dove <br className="hidden md:block" /> 
+  <span className="text-[#55B4FF]">Trovarci.</span>
+</h2>
             <p className="text-slate-500 font-medium mb-12 max-w-sm">Scegli la sede più vicina a te e visualizza il percorso interattivo.</p>
             
             <div className="space-y-4 w-full">
