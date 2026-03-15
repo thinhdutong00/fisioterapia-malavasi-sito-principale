@@ -24,6 +24,7 @@ export default function Navbar() {
       if (currentScrollY < 10) {
         setIsVisible(true);
       } else if (currentScrollY > lastScrollY.current) {
+        // Nascondi header solo se il menu mobile è CHIUSO
         if (!isMobileMenuOpen) {
           setIsVisible(false);
         }
@@ -37,7 +38,7 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [isMobileMenuOpen]);
 
-  // Blocca lo scroll della pagina quando l'hamburger menu è aperto
+  // Blocca lo scroll della pagina principale quando l'hamburger menu è aperto
   useEffect(() => {
     if (isMobileMenuOpen) {
       document.body.style.overflow = "hidden";
@@ -55,7 +56,7 @@ export default function Navbar() {
 
   const isDarkTheme = isHomePage && !isScrolled;
   
-  // Colore testo e icone: se il menu è aperto deve essere blu studio sul fondo bianco
+  // Colore testo e icone: blu se menu aperto, altrimenti basato su scroll
   const textColor = isMobileMenuOpen 
     ? "text-[#022166]" 
     : (isDarkTheme ? "text-white" : "text-[#022166]");
@@ -81,7 +82,7 @@ export default function Navbar() {
         }`}
       >
         
-        {/* LOGO AREA - z-120 per stare sopra la tendina */}
+        {/* LOGO AREA - Rimane fisso perché dentro l'header fixed */}
         <Link href="/" className="flex items-center flex-shrink-0 z-[120]">
           <div className={`relative transition-all duration-500 ${
             isScrolled 
@@ -157,9 +158,10 @@ export default function Navbar() {
             : "-translate-y-full opacity-0 invisible"
         }`}
       >
-        <div className="flex flex-col h-full pt-44 pb-12 px-10">
+        {/* Contenitore interno con scroll indipendente */}
+        <div className="flex flex-col h-full pt-44 pb-12 px-10 overflow-y-auto">
           
-          {/* Menu Links Ordinati con divisori */}
+          {/* Menu Links */}
           <nav className="flex flex-col">
             {navLinks.map((item) => (
               <Link 
@@ -174,7 +176,7 @@ export default function Navbar() {
           </nav>
 
           {/* Pulsanti CTA in fondo */}
-          <div className="mt-auto space-y-4">
+          <div className="mt-auto pt-10 space-y-4">
             <a 
               href="tel:+393338225464" 
               className="w-full flex items-center justify-center gap-4 bg-slate-100 text-[#022166] py-5 rounded-2xl font-black uppercase text-xs tracking-widest active:scale-95 transition-all"
@@ -193,6 +195,11 @@ export default function Navbar() {
           </div>
         </div>
       </div>
+
+      <style jsx>{`
+        @keyframes shimmer { 100% { transform: translateX(100%); } }
+        .animate-shimmer { animation: shimmer 2s infinite; }
+      `}</style>
     </header>
   );
 }
