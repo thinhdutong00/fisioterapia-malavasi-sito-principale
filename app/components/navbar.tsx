@@ -15,7 +15,7 @@ export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const lastScrollY = useRef(0);
 
-  // Gestione Scroll: nasconde/mostra la navbar e chiude il menu mobile se si scrolla
+  // Gestione Scroll
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
@@ -109,7 +109,7 @@ export default function Navbar() {
           ))}
         </nav>
 
-        {/* ACTIONS (Desktop) & HAMBURGER (Mobile) */}
+        {/* ACTIONS & HAMBURGER */}
         <div className="flex items-center flex-shrink-0 gap-3">
           <div className="hidden lg:flex items-center gap-3">
             <a 
@@ -135,7 +135,6 @@ export default function Navbar() {
             </Link>
           </div>
 
-          {/* Hamburger Trigger */}
           <button 
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className={`lg:hidden p-2 transition-colors z-[110] ${textColor}`}
@@ -145,28 +144,31 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* MOBILE MENU (Glass Effect) */}
+      {/* MOBILE MENU */}
       <div 
         className={`fixed inset-0 bg-white/80 backdrop-blur-[30px] z-[105] lg:hidden transition-all duration-500 ease-in-out ${
           isMobileMenuOpen ? "translate-x-0 opacity-100" : "translate-x-full opacity-0"
         }`}
       >
-        <div className="flex flex-col h-full pt-32 pb-10 px-8">
-          {/* Navigation Links - Font alleggerito e ordinato */}
-          <div className="space-y-8">
-            {navLinks.map((item) => (
-              <Link 
-                key={item.n} 
-                href={item.h}
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="block text-xl font-medium text-[#022166] uppercase tracking-[0.2em] transition-colors hover:text-[#55B4FF]"
-              >
-                {item.n}
-              </Link>
-            ))}
+        <div className="flex flex-col h-full pt-32 pb-10 px-6">
+          
+          {/* Sfondo Unico per tutte le voci */}
+          <div className="bg-white/50 backdrop-blur-md border border-white/60 rounded-[2.5rem] p-8 shadow-sm">
+            <div className="flex flex-col gap-8">
+              {navLinks.map((item) => (
+                <Link 
+                  key={item.n} 
+                  href={item.h}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="block text-xl font-medium text-[#022166] uppercase tracking-[0.2em] transition-colors hover:text-[#55B4FF]"
+                >
+                  {item.n}
+                </Link>
+              ))}
+            </div>
           </div>
 
-          {/* Bottom Actions - Design coordinato e pulito */}
+          {/* Bottom Actions */}
           <div className="mt-auto space-y-4 border-t border-slate-100 pt-8">
             <a 
               href="tel:+393338225464" 
