@@ -147,7 +147,7 @@ export default function Navbar() {
 
       {/* MOBILE MENU (Glass Effect) */}
       <div 
-        className={`fixed inset-0 bg-white/90 backdrop-blur-2xl z-[105] lg:hidden transition-all duration-500 ease-in-out ${
+        className={`fixed inset-0 bg-white/80 backdrop-blur-[30px] z-[105] lg:hidden transition-all duration-500 ease-in-out ${
           isMobileMenuOpen ? "translate-x-0 opacity-100" : "translate-x-full opacity-0"
         }`}
       >
@@ -158,7 +158,7 @@ export default function Navbar() {
                 key={item.n} 
                 href={item.h}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="block text-2xl font-black text-[#022166] uppercase tracking-tighter"
+                className="block text-xl font-medium text-[#022166] uppercase tracking-[0.2em]"
               >
                 {item.n}
               </Link>
