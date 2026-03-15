@@ -49,7 +49,7 @@ export default function InformazioniPage() {
             <span className="text-[#022166] font-black uppercase tracking-[0.3em] text-[10px]">Informazioni</span>
           </nav>
 
-          {/* --- SEZIONE 1: IL TEAM --- */}
+{/* --- SEZIONE 1: IL TEAM --- */}
           <section className="grid lg:grid-cols-2 gap-12 lg:gap-24 items-center mb-40">
             
             <div className="space-y-8">
@@ -59,13 +59,13 @@ export default function InformazioniPage() {
                 <span className="text-xs font-black uppercase tracking-[0.3em] text-[#55B4FF]">(R)enjoy your mo(ve)ments</span>
               </div>
 
-              {/* Titolo Hero - Font Bold e Tracking Tighter */}
+              {/* Titolo Hero */}
               <h1 className="text-5xl md:text-8xl font-bold text-[#022166] leading-[0.95] tracking-tighter">
                 Il nostro team <br />
                 di <span className="text-[#55B4FF]">specialisti.</span>
               </h1>
 
-              {/* Corpo Testo - Font Light e Dimensioni Maggiori */}
+              {/* Corpo Testo */}
               <div className="space-y-8 text-xl md:text-2xl text-slate-600 font-light leading-relaxed">
                 <p>
                   Siamo un gruppo di fisioterapisti che condivide un’idea essenziale: 
@@ -84,42 +84,44 @@ export default function InformazioniPage() {
             </div>
 
             {/* Destra: Carosello */}
-            <div className="relative">
-              <div className="relative bg-white p-3 rounded-[40px] shadow-2xl border border-white">
+            <div className="relative group">
+              <div className="relative bg-white p-3 rounded-[40px] shadow-2xl border border-white z-10">
                 <Swiper
-                  modules={[Autoplay, Pagination, EffectFade]}
+                  modules={[Autoplay, EffectFade]} // Rimosso Pagination
                   effect="fade"
                   loop={true}
                   autoplay={{ delay: 4000, disableOnInteraction: false }}
-                  pagination={{ clickable: true }}
-                  className="rounded-[32px] overflow-hidden aspect-[4/5] lg:aspect-square"
+                  className="rounded-[32px] overflow-hidden aspect-square" // Forzato Quadrato
                 >
                   {[
-  "mirco.webp",
-  "luca.webp",
-  "alice.webp"
-].map((img, index) => (
-  <SwiperSlide key={index}>
-    <Image 
-      src={`/${img}`} // Ho aggiunto / davanti per puntare alla cartella public
-      alt={`Staff ${index + 1}`} 
-      fill 
-      className="object-cover" 
-    />
-  </SwiperSlide>
-))}
+                    "mirco.webp",
+                    "luca.webp",
+                    "alice.webp"
+                  ].map((img, index) => (
+                    <SwiperSlide key={index}>
+                      <Image 
+                        src={`/${img}`} 
+                        alt={`Staff ${index + 1}`} 
+                        fill 
+                        priority={index === 0}
+                        className="object-cover object-top scale-105 transition-transform duration-700" // Migliorato l'inquadramento
+                      />
+                    </SwiperSlide>
+                  ))}
                 </Swiper>
               </div>
               
-              {/* Nuovo Badge Sostitutivo */}
-              <div className="absolute -bottom-6 -right-6 bg-[#022166] text-white p-8 rounded-3xl shadow-xl hidden md:block">
+              {/* Badge - Portato in primo piano con z-20 */}
+              <div className="absolute -bottom-6 -right-6 bg-[#022166] text-white p-7 rounded-3xl shadow-2xl hidden md:block z-20 border border-white/10">
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-[#55B4FF]/20 rounded-xl flex items-center justify-center text-[#55B4FF]">
-                    <ShieldCheck size={24} />
+                  <div className="w-12 h-12 bg-[#55B4FF]/20 rounded-xl flex items-center justify-center text-[#55B4FF] shrink-0">
+                    <ShieldCheck size={28} />
                   </div>
-                  <div>
-                    <div className="text-xl font-bold tracking-tight">Fisioterapisti Certificati</div>
-                    <div className="text-[10px] uppercase tracking-[0.3em] opacity-60 font-bold">fisioterapisti iscritti all'Albo della professione sanitaria</div>
+                  <div className="max-w-[220px]">
+                    <div className="text-xl font-bold tracking-tight mb-1">Fisioterapisti Certificati</div>
+                    <div className="text-[9px] leading-tight uppercase tracking-wider opacity-70 font-medium">
+                      Iscritti all'Albo della professione sanitaria
+                    </div>
                   </div>
                 </div>
               </div>
