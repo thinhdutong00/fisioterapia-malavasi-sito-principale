@@ -29,12 +29,17 @@ export default function ContattiPage() {
 
   return (
     <main className="min-h-screen bg-white">
-      {/* BREADCRUMB - Posizionato sopra per coerenza con le altre pagine */}
-      <div className="absolute top-28 left-4 md:left-10 z-20 pointer-events-auto">
-        <nav className="flex items-center gap-2 text-sm text-slate-500">
-          <Link href="/" className="hover:text-[#022166] transition-colors">Home</Link>
-          <ChevronRight size={14} />
-          <span className="text-[#022166] font-black uppercase tracking-[0.3em] text-[10px]">Dove Siamo</span>
+      {/* HEADER PROTECTION ZONE - Protegge la Navbar e il Breadcrumb */}
+      <div className="fixed top-0 left-0 w-full h-32 z-[90] pointer-events-none">
+        <div className="absolute inset-0 bg-white/80 backdrop-blur-md border-b border-slate-100 lg:bg-transparent lg:backdrop-blur-0 lg:border-none lg:bg-gradient-to-b lg:from-white lg:via-white/90 lg:to-transparent"></div>
+      </div>
+
+      {/* BREADCRUMB - Riposizionato con z-index superiore */}
+      <div className="fixed top-32 left-6 md:left-12 lg:left-24 z-[100] pointer-events-auto">
+        <nav className="flex items-center gap-2 text-[10px] text-slate-400 bg-white/50 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20">
+          <Link href="/" className="hover:text-[#022166] transition-colors font-bold uppercase tracking-widest">Home</Link>
+          <ChevronRight size={10} className="opacity-50" />
+          <span className="text-[#022166] font-black uppercase tracking-[0.2em]">Dove Siamo</span>
         </nav>
       </div>
 
