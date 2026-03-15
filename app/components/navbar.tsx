@@ -24,11 +24,8 @@ export default function Navbar() {
       if (currentScrollY < 10) {
         setIsVisible(true);
       } else if (currentScrollY > lastScrollY.current) {
-        // Chiudi il menu se l'utente scrolla verso il basso
         if (!isMobileMenuOpen) {
           setIsVisible(false);
-        } else {
-          setIsMobileMenuOpen(false);
         }
       } else {
         setIsVisible(true);
@@ -58,12 +55,11 @@ export default function Navbar() {
 
   const isDarkTheme = isHomePage && !isScrolled;
   
-  // Colore testo e icone: se il menu è aperto, deve essere blu studio per vedersi sul bianco
+  // Colore testo e icone: se il menu è aperto deve essere blu studio sul fondo bianco
   const textColor = isMobileMenuOpen 
     ? "text-[#022166]" 
     : (isDarkTheme ? "text-white" : "text-[#022166]");
   
-  // Logo: se menu aperto, logo colorato. Altrimenti segui il tema.
   const logoSrc = isMobileMenuOpen || !isDarkTheme
     ? "/logo-fisioterapia-malavasi.png" 
     : "/logo-bianco-fisioterapia-malavasi.png";
@@ -85,7 +81,7 @@ export default function Navbar() {
         }`}
       >
         
-        {/* LOGO AREA */}
+        {/* LOGO AREA - z-120 per stare sopra la tendina */}
         <Link href="/" className="flex items-center flex-shrink-0 z-[120]">
           <div className={`relative transition-all duration-500 ${
             isScrolled 
@@ -119,7 +115,7 @@ export default function Navbar() {
         </nav>
 
         {/* ACTIONS & HAMBURGER */}
-        <div className="flex items-center flex-shrink-0 gap-3">
+        <div className="flex items-center flex-shrink-0 gap-3 z-[120]">
           <div className="hidden lg:flex items-center gap-3">
             <a 
               href="tel:+393338225464" 
@@ -146,40 +142,42 @@ export default function Navbar() {
 
           <button 
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className={`lg:hidden p-2 transition-colors z-[120] ${textColor}`}
+            className={`lg:hidden p-2 transition-colors ${textColor}`}
           >
             {isMobileMenuOpen ? <X size={32} /> : <Menu size={32} />}
           </button>
         </div>
       </div>
 
-      {/* MOBILE MENU TENDINA - SFONDO UNICO BIANCO COPRENTE */}
+      {/* MOBILE MENU TENDINA - SFONDO SOLIDO BIANCO */}
       <div 
-        className={`fixed inset-0 bg-white z-[105] lg:hidden transition-all duration-500 ease-in-out ${
-          isMobileMenuOpen ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0 pointer-events-none"
+        className={`fixed inset-0 h-screen w-screen bg-white z-[110] lg:hidden transition-all duration-500 ease-in-out ${
+          isMobileMenuOpen 
+            ? "translate-y-0 opacity-100 visible" 
+            : "-translate-y-full opacity-0 invisible"
         }`}
       >
-        <div className="flex flex-col h-full pt-40 pb-12 px-10">
+        <div className="flex flex-col h-full pt-44 pb-12 px-10">
           
-          {/* Menu Links Ordinati */}
-          <div className="flex flex-col gap-8">
+          {/* Menu Links Ordinati con divisori */}
+          <nav className="flex flex-col">
             {navLinks.map((item) => (
               <Link 
                 key={item.n} 
                 href={item.h}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="block text-2xl font-bold text-[#022166] uppercase tracking-[0.1em] border-b border-slate-100 pb-4"
+                className="block text-2xl font-bold text-[#022166] uppercase tracking-[0.1em] border-b border-slate-100 py-6"
               >
                 {item.n}
               </Link>
             ))}
-          </div>
+          </nav>
 
-          {/* Pulsanti CTA in fondo alla tendina */}
+          {/* Pulsanti CTA in fondo */}
           <div className="mt-auto space-y-4">
             <a 
               href="tel:+393338225464" 
-              className="w-full flex items-center justify-center gap-4 bg-slate-50 text-[#022166] py-5 rounded-2xl font-black uppercase text-xs tracking-widest active:scale-95 transition-all"
+              className="w-full flex items-center justify-center gap-4 bg-slate-100 text-[#022166] py-5 rounded-2xl font-black uppercase text-xs tracking-widest active:scale-95 transition-all"
             >
               <Phone size={20} />
               Chiama Studio
@@ -187,7 +185,7 @@ export default function Navbar() {
             <Link 
               href="/prenota"
               onClick={() => setIsMobileMenuOpen(false)}
-              className="w-full flex items-center justify-center gap-4 bg-[#022166] text-white py-5 rounded-2xl font-black uppercase text-xs tracking-widest shadow-xl shadow-blue-900/20 active:scale-95 transition-all"
+              className="w-full flex items-center justify-center gap-4 bg-[#022166] text-white py-5 rounded-2xl font-black uppercase text-xs tracking-widest shadow-xl active:scale-95 transition-all"
             >
               <CalendarCheck size={20} />
               Prenota Ora
@@ -195,11 +193,6 @@ export default function Navbar() {
           </div>
         </div>
       </div>
-
-      <style jsx>{`
-        @keyframes shimmer { 100% { transform: translateX(100%); } }
-        .animate-shimmer { animation: shimmer 2s infinite; }
-      `}</style>
     </header>
   );
 }
