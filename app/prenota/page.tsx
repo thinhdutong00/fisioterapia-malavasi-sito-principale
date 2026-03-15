@@ -76,7 +76,7 @@ export default function PrenotaPage() {
             <header className="mb-12">
               <div className="flex items-center gap-3 mb-4">
                 <div className="h-[1px] w-8 bg-[#55B4FF]"></div>
-                <span className="text-[#55B4FF] font-black text-[10px] uppercase tracking-[0.4em]">Fase {step} di 5</span>
+                <span className="text-[#55B4FF] font-bold text-[10px] uppercase tracking-[0.4em]">Fase {step} di 5</span>
               </div>
               <h1 className="text-5xl md:text-8xl font-bold text-[#ffffff] leading-[0.95] mb-10 tracking-tighter">
   Prenota la tua <br />

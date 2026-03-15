@@ -565,8 +565,11 @@ export default function FisioterapiaMalavasi() {
 
           <div className="text-white flex flex-col">
             <div className="mb-12">
-              <span className="text-[#55B4FF] font-black text-[10px] uppercase tracking-[0.3em] block mb-2">Fase {step} di 5</span>
-              <h2 className="text-4xl md:text-5xl font-black tracking-tighter">Prenota la tua <span className="text-[#55B4FF]">Visita</span></h2>
+              <span className="text-[#55B4FF] font-bold text-[10px] uppercase tracking-[0.3em] block mb-2">Fase {step} di 5</span>
+              <h1 className="text-5xl md:text-8xl font-bold text-[#ffffff] leading-[0.95] mb-10 tracking-tighter">
+  Prenota la tua <br />
+  <span className="text-[#55B4FF]">Visita.</span>
+</h1>
             </div>
 
             <div className="min-h-[400px] flex flex-col justify-center">
