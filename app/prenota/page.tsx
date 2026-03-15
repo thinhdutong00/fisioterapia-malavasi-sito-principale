@@ -78,10 +78,10 @@ export default function PrenotaPage() {
                 <div className="h-[1px] w-8 bg-[#55B4FF]"></div>
                 <span className="text-[#55B4FF] font-black text-[10px] uppercase tracking-[0.4em]">Fase {step} di 5</span>
               </div>
-              <h1 className="text-5xl md:text-7xl font-bold tracking-tighter leading-tight">
-                Prenota la tua <br />
-                <span className="text-[#55B4FF]">Visita.</span>
-              </h1>
+              <h1 className="text-5xl md:text-8xl font-bold text-[#022166] leading-[0.95] mb-10 tracking-tighter">
+  Prenota la tua <br />
+  <span className="text-[#55B4FF]">Visita.</span>
+</h1>
             </header>
 
             <div className="min-h-[450px] flex flex-col justify-center">
