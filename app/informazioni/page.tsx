@@ -128,7 +128,7 @@ export default function InformazioniPage() {
             </div>
           </section>
 
-          {/* --- SEZIONE 2: COSA FACCIAMO --- */}
+{/* --- SEZIONE 2: COSA FACCIAMO --- */}
           <section className="py-20 relative">
             <div className="max-w-3xl mb-20">
               <div className="flex items-center gap-3 mb-6">
@@ -141,7 +141,7 @@ export default function InformazioniPage() {
               </h2>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
               {[
                 { title: "Fisioterapia Generale", icon: <Activity size={28} />, desc: "Trattamento specialistico per discopatie e dolori articolari complessi." },
                 { title: "Riabilitazione Post-Op", icon: <ShieldCheck size={28} />, desc: "Protocolli di recupero personalizzati per il ripristino della mobilità funzionale." },
@@ -158,6 +158,17 @@ export default function InformazioniPage() {
                   </Link>
                 </div>
               ))}
+            </div>
+
+            {/* NUOVO PULSANTE GUARDA DI PIÙ */}
+            <div className="flex justify-center mt-12">
+              <Link 
+                href="/trattamenti" 
+                className="group inline-flex items-center gap-4 border-2 border-[#022166]/10 px-10 py-5 rounded-2xl font-black uppercase text-[10px] tracking-[0.3em] text-[#022166] hover:bg-[#022166] hover:text-white transition-all duration-500"
+              >
+                Guarda di più
+                <ArrowRight size={16} className="group-hover:translate-x-2 transition-transform" />
+              </Link>
             </div>
 
             {/* Banner CTA - Unificato allo stile Hub */}
