@@ -380,7 +380,7 @@ export default function SedutaFisioterapicaPage() {
                   href="tel:+393338225464" 
                   className="bg-white/5 backdrop-blur-md text-white border border-white/10 px-12 py-6 rounded-2xl font-black text-center uppercase text-[11px] tracking-[0.3em] hover:bg-white/10 transition-all active:scale-95"
                 >
-                  Parla con un Fisio
+                  Parla con un Fisioterapista
                 </a>
               </div>
             </div>
