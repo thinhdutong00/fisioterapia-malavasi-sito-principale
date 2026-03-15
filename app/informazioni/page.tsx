@@ -125,36 +125,44 @@ export default function InformazioniPage() {
           </section>
 
           {/* --- SEZIONE 2: COSA FACCIAMO --- */}
-          <section className="py-20 relative">
-            <div className="max-w-3xl mb-20">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="h-[1px] w-12 bg-[#55B4FF]"></div>
-                <span className="text-xs font-black uppercase tracking-[0.3em] text-[#55B4FF]">Risultati Misurabili</span>
-              </div>
-              <h2 className="text-4xl md:text-7xl font-bold text-[#022166] tracking-tighter leading-tight">
-                L'approccio clinico <br />
-                <span className="text-[#55B4FF]">al tuo benessere.</span>
-              </h2>
-            </div>
+<section className="py-20 relative">
+  <div className="max-w-3xl mb-20">
+    <div className="flex items-center gap-3 mb-6">
+      <div className="h-[1px] w-12 bg-[#55B4FF]"></div>
+      <span className="text-xs font-black uppercase tracking-[0.3em] text-[#55B4FF]">Risultati Misurabili</span>
+    </div>
+    <h2 className="text-4xl md:text-7xl font-bold text-[#022166] tracking-tighter leading-tight">
+      L'approccio clinico <br />
+      <span className="text-[#55B4FF]">al tuo benessere.</span>
+    </h2>
+  </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-              {[
-                { title: "Fisioterapia Generale", icon: <Activity size={28} />, desc: "Trattamento specialistico per discopatie e dolori articolari complessi." },
-                { title: "Riabilitazione Post-chirurgica", icon: <ShieldCheck size={28} />, desc: "Protocolli di recupero personalizzati per il ripristino della mobilità funzionale." },
-                { title: "Fisioterapia Sportiva", icon: <Zap size={28} />, desc: "Ottimizziamo il gesto atletico e preveniamo le ricadute attraverso il controllo motorio." },
-              ].map((item, i) => (
-                <div key={i} className="group bg-white p-12 rounded-[3rem] border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500">
-                  <div className="w-16 h-16 bg-[#F8FAFC] text-[#022166] group-hover:bg-[#022166] group-hover:text-white rounded-2xl flex items-center justify-center mb-10 transition-all duration-500">
-                    {item.icon}
-                  </div>
-                  <h3 className="text-2xl font-bold text-[#022166] mb-4 tracking-tight uppercase">{item.title}</h3>
-                  <p className="text-slate-500 text-base leading-relaxed mb-10 font-medium opacity-80">{item.desc}</p>
-                  <Link href="/trattamenti" className="text-[10px] font-black text-[#022166] flex items-center gap-2 uppercase tracking-[0.4em] border-t border-slate-50 pt-8 group-hover:text-[#55B4FF] transition-colors">
-                    Esplora area <ChevronRight size={14} className="group-hover:translate-x-2 transition-transform" />
-                  </Link>
-                </div>
-              ))}
-            </div>
+  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+    {[
+      { title: "Fisioterapia Generale", desc: "Trattamento specialistico per discopatie e dolori articolari complessi." },
+      { title: "Riabilitazione Post-chirurgica", desc: "Protocolli di recupero personalizzati per il ripristino della mobilità funzionale." },
+      { title: "Fisioterapia Sportiva", desc: "Ottimizziamo il gesto atletico e preveniamo le ricadute attraverso il controllo motorio." },
+    ].map((item, i) => (
+      <div key={i} className="group bg-white p-12 rounded-2xl border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 flex flex-col justify-between">
+        <div>
+          {/* Icona rimossa e sostituita da un piccolo dettaglio estetico opzionale o lasciata vuota */}
+          <h3 className="text-2xl font-bold text-[#022166] mb-4 tracking-tight uppercase">
+            {item.title}
+          </h3>
+          <p className="text-slate-500 text-base leading-relaxed mb-10 font-medium opacity-80">
+            {item.desc}
+          </p>
+        </div>
+        
+        <Link 
+          href="/trattamenti" 
+          className="text-[10px] font-black text-[#022166] flex items-center gap-2 uppercase tracking-[0.4em] border-t border-slate-50 pt-8 group-hover:text-[#55B4FF] transition-colors"
+        >
+          Esplora area <ChevronRight size={14} className="group-hover:translate-x-2 transition-transform" />
+        </Link>
+      </div>
+    ))}
+  </div>
 
             {/* PULSANTE GUARDA DI PIÙ */}
             <div className="flex justify-center mt-12">
