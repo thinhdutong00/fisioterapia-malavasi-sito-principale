@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { 
   ArrowLeft, 
   ChevronRight,
+  Home,
   ArrowUpRight, 
   ClipboardCheck, 
   Stethoscope, 
@@ -340,6 +341,35 @@ export default function SedutaFisioterapicaPage() {
                 </div>
               </div>
 
+            </div>
+          </section>
+
+
+
+           {/* SEZIONE 3: CALL TO ACTION */}
+          <section className="bg-[#022166] p-12 md:p-20 rounded-[2rem] shadow-2xl relative overflow-hidden group text-white">
+            <div className="absolute top-[-10%] right-[-10%] opacity-5">
+              <Home size={400} />
+            </div>
+            <div className="relative z-10 max-w-2xl">
+              <h3 className="text-3xl md:text-5xl font-bold mb-6 tracking-tighter">Prenota la tua seduta a casa.</h3>
+              <p className="text-white/60 text-lg mb-10 font-light">
+                Contattaci per verificare la disponibilità nella tua zona e programmare il primo incontro valutativo domiciliare.
+              </p>
+              <div className="flex flex-wrap gap-4">
+                <Link 
+                  href="/prenota" 
+                  className="bg-[#55B4FF] text-[#022166] px-10 py-5 rounded-2xl font-black text-center uppercase text-[10px] tracking-[0.3em] hover:bg-white transition-all"
+                >
+                  Verifica Disponibilità
+                </Link>
+                <a 
+                  href="tel:+393338225464" 
+                  className="bg-white/10 backdrop-blur-md text-white border border-white/20 px-10 py-5 rounded-2xl font-black text-center uppercase text-[10px] tracking-[0.3em] hover:bg-white/20 transition-all"
+                >
+                  Chiama Ora
+                </a>
+              </div>
             </div>
           </section>
 
