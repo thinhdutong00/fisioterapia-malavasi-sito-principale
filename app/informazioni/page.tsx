@@ -7,7 +7,6 @@ import {
   ArrowLeft, 
   ChevronRight, 
   ArrowRight, 
-  Star, 
   ShieldCheck, 
   Activity, 
   Zap,
@@ -15,10 +14,9 @@ import {
 } from 'lucide-react';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Pagination, EffectFade } from 'swiper/modules';
+import { Autoplay, EffectFade } from 'swiper/modules';
 
 import 'swiper/css';
-import 'swiper/css/pagination';
 import 'swiper/css/effect-fade';
 
 export default function InformazioniPage() {
@@ -33,49 +31,47 @@ export default function InformazioniPage() {
   return (
     <main className="min-h-screen bg-[#F8FAFC] text-slate-800 font-sans relative overflow-hidden">
       
-      {/* BACKGROUND DECORATIONS - Stile Hub */}
+      {/* BACKGROUND DECORATIONS - Sincronizzati con Hub Clinico */}
       <div className="fixed inset-0 z-0 pointer-events-none">
         <div className="absolute top-[-5%] right-[-5%] w-[40%] h-[40%] bg-[#022166]/3 rounded-full blur-[100px]"></div>
         <div className="absolute bottom-[-5%] left-[-5%] w-[40%] h-[40%] bg-[#55B4FF]/5 rounded-full blur-[100px]"></div>
       </div>
 
-      <div className="relative z-10 pt-32 md:pt-40 pb-20 px-4 md:px-6">
-        <div className="max-w-7xl mx-auto">
+      <div className="relative z-10 pt-32 pb-20 px-4 md:px-6">
+        <div className="max-w-6xl mx-auto">
           
-          {/* Breadcrumb - Font Black Uppercase */}
-          <nav className="flex items-center gap-2 text-sm text-slate-500 mb-12">
+          {/* BREADCRUMB - Allineato a Trattamenti (Font Semibold, No Black) */}
+          <nav className="flex items-center gap-2 text-sm text-slate-500 mb-10">
             <Link href="/" className="hover:text-[#022166] transition-colors">Home</Link>
             <ChevronRight size={14} />
-            <span className="text-[#022166] font-black uppercase tracking-[0.3em] text-[10px]">Informazioni</span>
+            <span className="text-[#022166] font-semibold">Informazioni</span>
           </nav>
 
-{/* --- SEZIONE 1: IL TEAM --- */}
-          <section className="grid lg:grid-cols-2 gap-12 lg:gap-24 items-center mb-40">
-            
+          {/* --- SEZIONE 1: IL TEAM (HEADER) --- */}
+          <header className="mb-24">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="h-[1px] w-12 bg-[#55B4FF]"></div>
+              <span className="text-xs font-black uppercase tracking-[0.3em] text-[#55B4FF]">(R)enjoy your mo(ve)ments</span>
+            </div>
+            <h1 className="text-5xl md:text-8xl font-bold text-[#022166] leading-[0.95] mb-10 tracking-tighter">
+              Il nostro team <br />
+              di <span className="text-[#55B4FF]">specialisti.</span>
+            </h1>
+            <p className="max-w-3xl text-xl md:text-2xl text-slate-600 leading-relaxed font-light">
+              Siamo un gruppo di fisioterapisti che condivide un’idea essenziale: 
+              <span className="text-[#022166] font-semibold"> la fisioterapia deve aiutare la persona</span>, non solo curare un sintomo.
+            </p>
+          </header>
+
+          {/* CONTENUTO DETTAGLIATO TEAM */}
+          <section className="grid lg:grid-cols-2 gap-12 lg:gap-24 items-start mb-40">
             <div className="space-y-8">
-              {/* Label Tecnica */}
-              <div className="flex items-center gap-3 mb-6">
-                <div className="h-[1px] w-12 bg-[#55B4FF]"></div>
-                <span className="text-xs font-black uppercase tracking-[0.3em] text-[#55B4FF]">(R)enjoy your mo(ve)ments</span>
-              </div>
-
-              {/* Titolo Hero */}
-              <h1 className="text-5xl md:text-8xl font-bold text-[#022166] leading-[0.95] tracking-tighter">
-                Il nostro team <br />
-                di <span className="text-[#55B4FF]">specialisti.</span>
-              </h1>
-
-              {/* Corpo Testo */}
-              <div className="space-y-8 text-xl md:text-2xl text-slate-600 font-light leading-relaxed">
+              <div className="space-y-8 text-lg md:text-xl text-slate-500 font-light leading-relaxed">
                 <p>
-                  Siamo un gruppo di fisioterapisti che condivide un’idea essenziale: 
-                  <span className="text-[#022166] font-semibold"> la fisioterapia deve aiutare la persona</span>, non solo curare un sintomo.
-                </p>
-                <p className="text-lg md:text-xl text-slate-500">
                   Nel nostro studio mettiamo al centro l’ascolto e la continuità del percorso. Ogni trattamento nasce da una valutazione approfondita basata sulle più recenti evidenze scientifiche.
                 </p>
-                <div className="bg-white p-8 rounded-[2rem] border border-slate-100 shadow-sm italic text-slate-500 font-medium relative">
-                  <span className="absolute -top-4 left-8 bg-[#55B4FF] text-white p-2 rounded-lg">
+                <div className="bg-white p-8 rounded-[2rem] border border-slate-100 shadow-sm italic text-slate-500 font-medium relative mt-12">
+                  <span className="absolute -top-4 left-8 bg-[#55B4FF] text-white p-2 rounded-lg shadow-lg">
                     <Award size={20} />
                   </span>
                   "Il nostro compito non è solo rimetterti in piedi, ma restituirti equilibrio, sicurezza e libertà di movimento."
@@ -83,15 +79,15 @@ export default function InformazioniPage() {
               </div>
             </div>
 
-            {/* Destra: Carosello */}
+            {/* Destra: Carosello Immagini */}
             <div className="relative group">
               <div className="relative bg-white p-3 rounded-[40px] shadow-2xl border border-white z-10">
                 <Swiper
-                  modules={[Autoplay, EffectFade]} // Rimosso Pagination
+                  modules={[Autoplay, EffectFade]}
                   effect="fade"
                   loop={true}
                   autoplay={{ delay: 4000, disableOnInteraction: false }}
-                  className="rounded-[32px] overflow-hidden aspect-square" // Forzato Quadrato
+                  className="rounded-[32px] overflow-hidden aspect-square"
                 >
                   {[
                     "mirco.webp",
@@ -104,14 +100,14 @@ export default function InformazioniPage() {
                         alt={`Staff ${index + 1}`} 
                         fill 
                         priority={index === 0}
-                        className="object-cover object-top scale-105 transition-transform duration-700" // Migliorato l'inquadramento
+                        className="object-cover object-top scale-105 transition-transform duration-700"
                       />
                     </SwiperSlide>
                   ))}
                 </Swiper>
               </div>
               
-              {/* Badge - Portato in primo piano con z-20 */}
+              {/* Badge Informativo */}
               <div className="absolute -bottom-6 -right-6 bg-[#022166] text-white p-7 rounded-3xl shadow-2xl hidden md:block z-20 border border-white/10">
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 bg-[#55B4FF]/20 rounded-xl flex items-center justify-center text-[#55B4FF] shrink-0">
@@ -128,7 +124,7 @@ export default function InformazioniPage() {
             </div>
           </section>
 
-{/* --- SEZIONE 2: COSA FACCIAMO --- */}
+          {/* --- SEZIONE 2: COSA FACCIAMO --- */}
           <section className="py-20 relative">
             <div className="max-w-3xl mb-20">
               <div className="flex items-center gap-3 mb-6">
@@ -160,7 +156,7 @@ export default function InformazioniPage() {
               ))}
             </div>
 
-            {/* NUOVO PULSANTE GUARDA DI PIÙ */}
+            {/* PULSANTE GUARDA DI PIÙ */}
             <div className="flex justify-center mt-12">
               <Link 
                 href="/trattamenti" 
@@ -171,7 +167,7 @@ export default function InformazioniPage() {
               </Link>
             </div>
 
-            {/* Banner CTA - Unificato allo stile Hub */}
+            {/* Banner CTA */}
             <div className="mt-24 bg-[#022166] rounded-[4rem] p-16 md:p-24 text-center relative overflow-hidden group">
                <div className="absolute inset-0 bg-gradient-to-r from-[#55B4FF]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
                <div className="relative z-10">
@@ -183,7 +179,7 @@ export default function InformazioniPage() {
             </div>
           </section>
 
-          {/* Footer Back Link */}
+          {/* FOOTER NAVIGATION - Sincronizzato con Trattamenti */}
           <div className="mt-24 border-t border-slate-200 pt-12 flex justify-between items-center text-slate-400">
             <Link 
               href="/" 
@@ -191,7 +187,7 @@ export default function InformazioniPage() {
             >
               <ArrowLeft size={20} /> Torna alla Home
             </Link>
-            <span className="text-[10px] uppercase tracking-[0.3em] font-black opacity-40">Fisioterapia e Riabilitazione — Malavasi</span>
+            <span className="text-[10px] uppercase tracking-widest font-black opacity-40">Fisioterapia Malavasi — Hub Clinico</span>
           </div>
         </div>
       </div>    
