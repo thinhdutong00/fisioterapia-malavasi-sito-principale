@@ -15,7 +15,7 @@ export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const lastScrollY = useRef(0);
 
-  // Gestione Scroll
+  // Gestione Scroll: nasconde/mostra la navbar e chiude il menu mobile se si scrolla
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
@@ -25,7 +25,7 @@ export default function Navbar() {
         setIsVisible(true);
       } else if (currentScrollY > lastScrollY.current) {
         setIsVisible(false);
-        setIsMobileMenuOpen(false); // Chiude il menu se scendi
+        setIsMobileMenuOpen(false); 
       } else {
         setIsVisible(true);
       }
@@ -36,7 +36,7 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Blocca lo scroll quando il menu mobile è aperto
+  // Blocca lo scroll della pagina quando l'hamburger menu è aperto
   useEffect(() => {
     if (isMobileMenuOpen) {
       document.body.style.overflow = "hidden";
@@ -152,33 +152,35 @@ export default function Navbar() {
         }`}
       >
         <div className="flex flex-col h-full pt-32 pb-10 px-8">
+          {/* Navigation Links - Font alleggerito e ordinato */}
           <div className="space-y-8">
             {navLinks.map((item) => (
               <Link 
                 key={item.n} 
                 href={item.h}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="block text-xl font-medium text-[#022166] uppercase tracking-[0.2em]"
+                className="block text-xl font-medium text-[#022166] uppercase tracking-[0.2em] transition-colors hover:text-[#55B4FF]"
               >
                 {item.n}
               </Link>
             ))}
           </div>
 
-          <div className="mt-auto space-y-4">
+          {/* Bottom Actions - Design coordinato e pulito */}
+          <div className="mt-auto space-y-4 border-t border-slate-100 pt-8">
             <a 
               href="tel:+393338225464" 
-              className="w-full flex items-center justify-center gap-4 bg-[#F8FAFC] border border-slate-200 text-[#022166] py-5 rounded-2xl font-black uppercase text-xs tracking-widest shadow-sm"
+              className="w-full flex items-center justify-center gap-4 bg-[#F8FAFC] border border-slate-200 text-[#022166] py-5 rounded-2xl font-bold uppercase text-[10px] tracking-[0.2em] shadow-sm active:scale-[0.98] transition-all"
             >
-              <Phone size={18} />
+              <Phone size={16} />
               Chiama Studio
             </a>
             <Link 
               href="/prenota"
               onClick={() => setIsMobileMenuOpen(false)}
-              className="w-full flex items-center justify-center gap-4 bg-[#022166] text-white py-5 rounded-2xl font-black uppercase text-xs tracking-widest shadow-xl shadow-blue-900/10"
+              className="w-full flex items-center justify-center gap-4 bg-[#022166] text-white py-5 rounded-2xl font-bold uppercase text-[10px] tracking-[0.2em] shadow-xl shadow-blue-900/10 active:scale-[0.98] transition-all"
             >
-              <CalendarCheck size={18} />
+              <CalendarCheck size={16} />
               Prenota Ora
             </Link>
           </div>
