@@ -62,7 +62,7 @@ export default function Footer() {
           <h4 className="text-sm font-black uppercase tracking-widest text-[#55B4FF]">Contatti</h4>
           <ul className="space-y-4 text-sm font-bold text-white/60">
             <li className="flex items-center gap-3"><Phone size={18} className="text-[#55B4FF]" /> 333 822 5464</li>
-            <li className="flex items-center gap-3"><Mail size={18} className="text-[#55B4FF]" /> info@fisioterapiamalavasi.it</li>
+            <li className="flex items-center gap-3"><Mail size={18} className="text-[#55B4FF]" /> fisioterapiamalavasi@gmail.com</li>
             <li className="flex items-start gap-3"><MapPin size={18} className="text-[#55B4FF] shrink-0" /> Via I Maggio 95, Cavezzo (MO)</li>
           </ul>
         </div>
