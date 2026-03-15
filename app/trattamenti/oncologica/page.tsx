@@ -135,26 +135,58 @@ export default function FisioterapiaOncologica() {
 
 
 
-{/* SEZIONE DOMICILIO - Comodità e Sicurezza */}
+{/* SEZIONE DOMICILIO - Focus Logistico e Continuità Clinica */}
 <section className="mb-24 px-4">
-  <div className="max-w-4xl mx-auto bg-white border border-slate-100 p-8 md:p-12 rounded-[3.5rem] shadow-sm flex flex-col md:flex-row items-center gap-10 group hover:shadow-xl transition-all duration-500">
-    <div className="bg-[#55B4FF]/10 p-6 rounded-[2.5rem] text-[#022166] group-hover:bg-[#022166] group-hover:text-white transition-colors duration-500">
-      <Home size={48} />
-    </div>
-    <div>
-      <h3 className="text-2xl md:text-3xl font-bold text-[#022166] mb-4 tracking-tight">La terapia viene da te.</h3>
-      <p className="text-slate-600 leading-relaxed text-sm md:text-base mb-6">
-        Sappiamo che durante il percorso di cura ogni spostamento può risultare faticoso. 
-        Per questo offriamo la possibilità di effettuare le sedute direttamente presso il **tuo domicilio**, 
-        garantendo la stessa qualità clinica dello studio nell'intimità della tua casa.
-      </p>
-      <div className="flex flex-wrap items-center gap-4 text-[#55B4FF] font-black text-[10px] uppercase tracking-widest">
-        <span className="flex items-center gap-1"><Sparkles size={12}/> Massimo Comfort</span>
-        <span className="hidden md:block opacity-30">•</span>
-        <span className="flex items-center gap-1"><Sparkles size={12}/> Zero Stress</span>
-        <span className="hidden md:block opacity-30">•</span>
-        <span className="flex items-center gap-1"><Sparkles size={12}/> Qualità Certificata</span>
+  <div className="max-w-5xl mx-auto bg-[#F1F5F9]/50 border border-slate-200 p-10 md:p-16 rounded-[4rem] relative overflow-hidden group transition-all duration-700 hover:bg-white hover:shadow-2xl">
+    <div className="grid md:grid-cols-12 gap-12 items-start relative z-10">
+      
+      {/* Icona Tecnica */}
+      <div className="md:col-span-1">
+        <div className="w-16 h-16 bg-[#022166] text-white rounded-2xl flex items-center justify-center shadow-lg shadow-[#022166]/20">
+          <Home size={28} strokeWidth={1.5} />
+        </div>
       </div>
+
+      {/* Contenuto Testuale Professionale */}
+      <div className="md:col-span-11">
+        <div className="flex flex-col gap-6">
+          <div>
+            <span className="text-[10px] font-black uppercase tracking-[0.4em] text-[#55B4FF] mb-4 block">
+              Continuità Terapeutica Domiciliare
+            </span>
+            <h3 className="text-3xl md:text-4xl font-bold text-[#022166] mb-6 tracking-tighter">
+              Eliminare le barriere del trasporto.
+            </h3>
+            <p className="text-slate-600 leading-relaxed text-base md:text-lg max-w-4xl font-medium opacity-90">
+              Riconosciamo che il carico fisico e organizzativo degli spostamenti può compromettere la regolarità delle cure. 
+              Per garantire la massima aderenza al piano riabilitativo, abbiamo strutturato un servizio di 
+              **fisioterapia domiciliare specialistica**: portiamo le competenze e le tecnologie dello studio 
+              direttamente nel tuo ambiente, annullando lo stress logistico e preservando le tue energie per il recupero.
+            </p>
+          </div>
+
+          {/* Badge Professionali - Rigorosi */}
+          <div className="flex flex-wrap gap-y-4 gap-x-8 pt-8 border-t border-slate-200/60">
+            <div className="flex items-center gap-3">
+              <div className="w-1.5 h-1.5 rounded-full bg-[#55B4FF]"></div>
+              <span className="text-[11px] font-bold uppercase tracking-widest text-[#022166]">Protocolli Clinici Invariati</span>
+            </div>
+            <div className="flex items-center gap-3">
+              <div className="w-1.5 h-1.5 rounded-full bg-[#55B4FF]"></div>
+              <span className="text-[11px] font-bold uppercase tracking-widest text-[#022166]">Ottimizzazione dei Tempi</span>
+            </div>
+            <div className="flex items-center gap-3">
+              <div className="w-1.5 h-1.5 rounded-full bg-[#55B4FF]"></div>
+              <span className="text-[11px] font-bold uppercase tracking-widest text-[#022166]">Supporto ai Caregiver</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {/* Elemento Decorativo Tecnico in background */}
+    <div className="absolute right-0 bottom-0 opacity-[0.02] pointer-events-none translate-x-1/4 translate-y-1/4">
+      <Home size={400} />
     </div>
   </div>
 </section>

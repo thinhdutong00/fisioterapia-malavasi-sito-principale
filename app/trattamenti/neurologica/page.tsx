@@ -4,7 +4,8 @@ import React from 'react';
 import Link from 'next/link';
 import { 
   ChevronRight, 
-  ArrowLeft, 
+  ArrowLeft,
+  Home, 
   Brain, 
   Heart, 
   Users, 
@@ -138,6 +139,65 @@ export default function FisioterapiaNeurologica() {
               </div>
             </div>
           </section>
+
+
+
+{/* SEZIONE DOMICILIO - Focus Logistico e Continuità Clinica */}
+<section className="mb-24 px-4">
+  <div className="max-w-5xl mx-auto bg-[#F1F5F9]/50 border border-slate-200 p-10 md:p-16 rounded-[4rem] relative overflow-hidden group transition-all duration-700 hover:bg-white hover:shadow-2xl">
+    <div className="grid md:grid-cols-12 gap-12 items-start relative z-10">
+      
+      {/* Icona Tecnica */}
+      <div className="md:col-span-1">
+        <div className="w-16 h-16 bg-[#022166] text-white rounded-2xl flex items-center justify-center shadow-lg shadow-[#022166]/20">
+          <Home size={28} strokeWidth={1.5} />
+        </div>
+      </div>
+
+      {/* Contenuto Testuale Professionale */}
+      <div className="md:col-span-11">
+        <div className="flex flex-col gap-6">
+          <div>
+            <span className="text-[10px] font-black uppercase tracking-[0.4em] text-[#55B4FF] mb-4 block">
+              Continuità Terapeutica Domiciliare
+            </span>
+            <h3 className="text-3xl md:text-4xl font-bold text-[#022166] mb-6 tracking-tighter">
+              Eliminare le barriere del trasporto.
+            </h3>
+            <p className="text-slate-600 leading-relaxed text-base md:text-lg max-w-4xl font-medium opacity-90">
+              Riconosciamo che il carico fisico e organizzativo degli spostamenti può compromettere la regolarità delle cure. 
+              Per garantire la massima aderenza al piano riabilitativo, abbiamo strutturato un servizio di 
+              **fisioterapia domiciliare specialistica**: portiamo le competenze e le tecnologie dello studio 
+              direttamente nel tuo ambiente, annullando lo stress logistico e preservando le tue energie per il recupero.
+            </p>
+          </div>
+
+          {/* Badge Professionali - Rigorosi */}
+          <div className="flex flex-wrap gap-y-4 gap-x-8 pt-8 border-t border-slate-200/60">
+            <div className="flex items-center gap-3">
+              <div className="w-1.5 h-1.5 rounded-full bg-[#55B4FF]"></div>
+              <span className="text-[11px] font-bold uppercase tracking-widest text-[#022166]">Protocolli Clinici Invariati</span>
+            </div>
+            <div className="flex items-center gap-3">
+              <div className="w-1.5 h-1.5 rounded-full bg-[#55B4FF]"></div>
+              <span className="text-[11px] font-bold uppercase tracking-widest text-[#022166]">Ottimizzazione dei Tempi</span>
+            </div>
+            <div className="flex items-center gap-3">
+              <div className="w-1.5 h-1.5 rounded-full bg-[#55B4FF]"></div>
+              <span className="text-[11px] font-bold uppercase tracking-widest text-[#022166]">Supporto ai Caregiver</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {/* Elemento Decorativo Tecnico in background */}
+    <div className="absolute right-0 bottom-0 opacity-[0.02] pointer-events-none translate-x-1/4 translate-y-1/4">
+      <Home size={400} />
+    </div>
+  </div>
+</section>
+
 
           {/* CTA - Chiusura Professionale */}
           <section className="text-center py-10">
