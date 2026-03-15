@@ -1,6 +1,7 @@
 "use client";
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { Phone, MapPin, Mail, Instagram, Facebook } from 'lucide-react';
 
 export default function Footer() {
@@ -8,23 +9,42 @@ export default function Footer() {
     <footer className="bg-[#022166] text-white pt-20 pb-10 px-6 border-t border-white/5 w-full">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
         
-        {/* Bio */}
-        <div className="space-y-6">
-          <h3 className="text-xl font-black tracking-tighter uppercase">
-            Fisioterapia <span className="text-[#55B4FF]">Malavasi</span>
-          </h3>
-          <p className="text-white/60 text-sm leading-relaxed font-medium">
-            Professionalità e cura del paziente al centro di ogni trattamento. Specialisti nel recupero funzionale.
-          </p>
-          <div className="flex gap-4">
-            <a href="#" className="p-2 bg-white/5 rounded-lg hover:bg-[#55B4FF] hover:text-[#022166] transition-all">
-              <Instagram size={20} />
-            </a>
-            <a href="#" className="p-2 bg-white/5 rounded-lg hover:bg-[#55B4FF] hover:text-[#022166] transition-all">
-              <Facebook size={20} />
-            </a>
-          </div>
-        </div>
+       {/* Bio */}
+<div className="space-y-8">
+  {/* Logo corretto per Next.js */}
+  <div className="relative h-12 w-auto">
+    <Image 
+      src="/logo-bianco-fisioterapia-malavasi.png" 
+      alt="Logo Fisioterapia Malavasi"
+      width={200}
+      height={48}
+      className="object-contain"
+    />
+  </div>
+  
+  <p className="text-white/60 text-sm leading-relaxed font-medium max-w-xs">
+    Professionalità e cura del paziente al centro di ogni trattamento. Specialisti nel recupero funzionale e nel benessere motorio.
+  </p>
+  
+  <div className="flex gap-4">
+    <a 
+      href="https://www.instagram.com/fisioterapiamalavasi/" 
+      target="_blank" 
+      rel="noopener noreferrer"
+      className="p-3 bg-white/5 rounded-xl hover:bg-[#55B4FF] hover:text-[#022166] transition-all duration-300"
+    >
+      <Instagram size={20} />
+    </a>
+    <a 
+      href="https://www.facebook.com/Dott.MircoMalavasi" 
+      target="_blank" 
+      rel="noopener noreferrer"
+      className="p-3 bg-white/5 rounded-xl hover:bg-[#55B4FF] hover:text-[#022166] transition-all duration-300"
+    >
+      <Facebook size={20} />
+    </a>
+  </div>
+</div>
 
         {/* Link */}
         <div className="space-y-6">
