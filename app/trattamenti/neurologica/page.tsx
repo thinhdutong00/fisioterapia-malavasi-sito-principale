@@ -142,62 +142,65 @@ export default function FisioterapiaNeurologica() {
 
 
 
-{/* SEZIONE DOMICILIO - Focus Logistico e Continuità Clinica */}
+{/* SEZIONE DOMICILIO - Approccio Clinico e Soluzione Logistica */}
 <section className="mb-24 px-4">
-  <div className="max-w-5xl mx-auto bg-[#F1F5F9]/50 border border-slate-200 p-10 md:p-16 rounded-[4rem] relative overflow-hidden group transition-all duration-700 hover:bg-white hover:shadow-2xl">
-    <div className="grid md:grid-cols-12 gap-12 items-start relative z-10">
+  <div className="max-w-6xl mx-auto bg-white border border-slate-200 rounded-[3rem] overflow-hidden shadow-sm relative group hover:shadow-2xl transition-all duration-700">
+    <div className="grid lg:grid-cols-12">
       
-      {/* Icona Tecnica */}
-      <div className="md:col-span-1">
-        <div className="w-16 h-16 bg-[#022166] text-white rounded-2xl flex items-center justify-center shadow-lg shadow-[#022166]/20">
-          <Home size={28} strokeWidth={1.5} />
+      {/* Colonna Accento - Blu Istituzionale */}
+      <div className="hidden lg:block lg:col-span-1 bg-[#022166] relative overflow-hidden">
+        <div className="absolute inset-0 flex items-center justify-center opacity-20 rotate-90 whitespace-nowrap">
+          <span className="text-white text-[10px] font-black uppercase tracking-[1em]">
+            Clinical Support System
+          </span>
         </div>
       </div>
 
-      {/* Contenuto Testuale Professionale */}
-      <div className="md:col-span-11">
-        <div className="flex flex-col gap-6">
-          <div>
-            <span className="text-[10px] font-black uppercase tracking-[0.4em] text-[#55B4FF] mb-4 block">
-              Continuità Terapeutica Domiciliare
-            </span>
-            <h3 className="text-3xl md:text-4xl font-bold text-[#022166] mb-6 tracking-tighter">
-              Eliminare le barriere del trasporto.
+      {/* Contenuto Principale */}
+      <div className="lg:col-span-11 p-10 md:p-16">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-8 mb-12">
+          <div className="max-w-2xl">
+            <h3 className="text-3xl md:text-5xl font-bold text-[#022166] mb-6 tracking-tighter leading-tight">
+              La continuità terapeutica <br />
+              <span className="text-[#55B4FF]">oltre i limiti logistici.</span>
             </h3>
-            <p className="text-slate-600 leading-relaxed text-base md:text-lg max-w-4xl font-medium opacity-90">
-              Riconosciamo che il carico fisico e organizzativo degli spostamenti può compromettere la regolarità delle cure. 
-              Per garantire la massima aderenza al piano riabilitativo, abbiamo strutturato un servizio di 
-              **fisioterapia domiciliare specialistica**: portiamo le competenze e le tecnologie dello studio 
-              direttamente nel tuo ambiente, annullando lo stress logistico e preservando le tue energie per il recupero.
+            <p className="text-slate-600 text-lg md:text-xl font-light leading-relaxed">
+              Le barriere architettoniche e le difficoltà di trasporto non devono condizionare l'esito della riabilitazione. 
+              Garantiamo l'intervento specialistico direttamente a domicilio per pazienti con mobilità ridotta o quadri clinici complessi.
             </p>
           </div>
-
-          {/* Badge Professionali - Rigorosi */}
-          <div className="flex flex-wrap gap-y-4 gap-x-8 pt-8 border-t border-slate-200/60">
-            <div className="flex items-center gap-3">
-              <div className="w-1.5 h-1.5 rounded-full bg-[#55B4FF]"></div>
-              <span className="text-[11px] font-bold uppercase tracking-widest text-[#022166]">Protocolli Clinici Invariati</span>
-            </div>
-            <div className="flex items-center gap-3">
-              <div className="w-1.5 h-1.5 rounded-full bg-[#55B4FF]"></div>
-              <span className="text-[11px] font-bold uppercase tracking-widest text-[#022166]">Ottimizzazione dei Tempi</span>
-            </div>
-            <div className="flex items-center gap-3">
-              <div className="w-1.5 h-1.5 rounded-full bg-[#55B4FF]"></div>
-              <span className="text-[11px] font-bold uppercase tracking-widest text-[#022166]">Supporto ai Caregiver</span>
+          
+          <div className="flex-shrink-0">
+            <div className="w-20 h-20 bg-[#F8FAFC] border border-slate-200 rounded-2xl flex items-center justify-center text-[#022166] shadow-inner">
+              <Home size={32} strokeWidth={1.2} />
             </div>
           </div>
         </div>
-      </div>
-    </div>
 
-    {/* Elemento Decorativo Tecnico in background */}
-    <div className="absolute right-0 bottom-0 opacity-[0.02] pointer-events-none translate-x-1/4 translate-y-1/4">
-      <Home size={400} />
+        <div className="grid md:grid-cols-3 gap-8 pt-10 border-t border-slate-100">
+          <div className="space-y-3">
+            <h4 className="text-sm font-black uppercase tracking-widest text-[#022166]">Efficacia Clinica</h4>
+            <p className="text-sm text-slate-500 leading-relaxed font-medium">
+              Manteniamo gli stessi standard qualitativi e strumentali del setting ambulatoriale.
+            </p>
+          </div>
+          <div className="space-y-3">
+            <h4 className="text-sm font-black uppercase tracking-widest text-[#022166]">Risparmio Energetico</h4>
+            <p className="text-sm text-slate-500 leading-relaxed font-medium">
+              Preserviamo le risorse fisiche del paziente per il focus esclusivo sull'attività riabilitativa.
+            </p>
+          </div>
+          <div className="space-y-3">
+            <h4 className="text-sm font-black uppercase tracking-widest text-[#022166]">Analisi Ambientale</h4>
+            <p className="text-sm text-slate-500 leading-relaxed font-medium">
+              Valutiamo il contesto domestico per ottimizzare l'autonomia nelle attività quotidiane.
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
-
 
           {/* CTA - Chiusura Professionale */}
           <section className="text-center py-10">
