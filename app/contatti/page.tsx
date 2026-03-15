@@ -6,9 +6,7 @@ import {
   MapPin, 
   Clock, 
   ChevronRight, 
-  ArrowLeft,
-  Phone,
-  Mail
+  ArrowLeft 
 } from 'lucide-react';
 
 export default function ContattiPage() {
@@ -29,116 +27,104 @@ export default function ContattiPage() {
   ];
 
   return (
-    <main className="min-h-screen bg-[#F8FAFC] text-slate-800 font-sans relative overflow-hidden">
+    <main className="min-h-screen bg-white">
       
-      {/* BACKGROUND DECORATIONS - Stile Hub */}
-      <div className="fixed inset-0 z-0 pointer-events-none">
-        <div className="absolute top-[-5%] left-[-5%] w-[30%] h-[30%] bg-[#022166]/3 rounded-full blur-[100px]"></div>
+      {/* SPAZIATURA SUPERIORE (Bordo per Header) */}
+      <div className="w-full h-40 lg:h-64 bg-white flex items-end pb-10 px-6 md:px-12 lg:px-24">
+        {/* Breadcrumb integrato nello spazio bianco */}
+        <nav className="flex items-center gap-2 text-sm text-slate-500">
+          <Link href="/" className="hover:text-[#022166] transition-colors">Home</Link>
+          <ChevronRight size={14} />
+          <span className="text-[#022166] font-black uppercase tracking-[0.3em] text-[10px]">Dove Siamo</span>
+        </nav>
       </div>
 
-      <section className="relative z-10 flex flex-col lg:flex-row min-h-screen w-full overflow-hidden">
+      <section id="dove-siamo" className="relative z-10 bg-white flex flex-col lg:flex-row min-h-[calc(100-rem)] w-full overflow-hidden">
         
-        {/* LATO TESTI (40%) */}
-        <div className="lg:w-[40%] w-full p-6 md:p-16 lg:p-20 flex flex-col justify-start bg-white/80 backdrop-blur-xl border-r border-slate-100 relative z-20 pt-32">
+        {/* LATO TESTI E SELEZIONE */}
+        <div className="lg:w-2/5 w-full p-6 md:p-16 lg:p-24 flex flex-col justify-center bg-gradient-to-br from-white to-slate-50 relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-32 h-32 bg-[#55B4FF]/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl pointer-events-none"></div>
           
-          <div className="max-w-md mx-auto lg:mx-0 w-full">
-            {/* Breadcrumb - Allineato a Trattamenti */}
-            <nav className="flex items-center gap-2 text-sm text-slate-500 mb-12">
-              <Link href="/" className="hover:text-[#022166] transition-colors">Home</Link>
-              <ChevronRight size={14} />
-              <span className="text-[#022166] font-semibold">Contatti</span>
-            </nav>
-
-            <header className="mb-12">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="h-[1px] w-12 bg-[#55B4FF]"></div>
-                <span className="text-xs font-black uppercase tracking-[0.3em] text-[#55B4FF]">Vicinanza e Accessibilità</span>
-              </div>
-              <h1 className="text-5xl md:text-7xl font-bold text-[#022166] leading-[0.95] tracking-tighter mb-8">
-                Dove <br />
-                <span className="text-[#55B4FF]">Trovarci.</span>
-              </h1>
-              <p className="text-slate-500 text-lg font-light leading-relaxed">
-                Scegli la sede più vicina a te o contattaci per una seduta domiciliare.
-              </p>
-            </header>
-
-            {/* SELEZIONE SEDI */}
-            <div className="space-y-4 mb-8">
+          <div className="relative z-10 w-full">
+            <span className="text-[#55B4FF] font-black text-xs uppercase tracking-[0.3em] mb-4 block">Vicinanza e Accessibilità</span>
+            <h2 className="text-5xl md:text-8xl font-bold text-[#022166] leading-[0.95] tracking-tighter mb-8">
+  Dove <br className="hidden md:block" /> 
+  <span className="text-[#55B4FF]">Trovarci.</span>
+</h2>
+            <p className="text-slate-500 font-medium mb-12 max-w-sm">Scegli la sede più vicina a te e visualizza il percorso interattivo.</p>
+            
+            <div className="space-y-4 w-full">
               {sedi.map(loc => (
                 <button 
                   key={loc.n} 
                   onClick={() => setMapUrl(loc.u)} 
-                  className={`group w-full flex items-center gap-5 p-5 rounded-[2rem] transition-all duration-500 border-2 ${
+                  className={`group w-full flex items-center gap-4 p-5 rounded-[2rem] transition-all duration-500 border ${
                     mapUrl === loc.u 
-                    ? 'bg-[#022166] border-[#022166] text-white shadow-2xl' 
-                    : 'bg-white border-slate-100 text-[#022166] hover:border-[#55B4FF]/30'
+                    ? 'bg-[#022166] text-white shadow-xl border-[#022166]' 
+                    : 'bg-white border-slate-100 text-[#022166]'
                   }`}
                 >
-                  <div className={`p-4 rounded-2xl shrink-0 transition-colors ${
-                    mapUrl === loc.u ? 'bg-[#55B4FF] text-[#022166]' : 'bg-[#F8FAFC] text-[#022166]'
+                  <div className={`p-3 rounded-2xl shrink-0 transition-colors ${
+                    mapUrl === loc.u ? 'bg-[#55B4FF] text-[#022166]' : 'bg-slate-100 text-[#022166]'
                   }`}>
-                    <MapPin size={24} />
+                    <MapPin size={22} />
                   </div>
                   <div className="text-left overflow-hidden">
-                    <p className="font-black text-base leading-tight mb-1 truncate">{loc.n}</p>
+                    <p className="font-black text-base leading-none mb-1 truncate">{loc.n}</p>
                     <p className={`text-[10px] font-bold uppercase tracking-widest truncate ${mapUrl === loc.u ? 'text-[#55B4FF]' : 'text-slate-400'}`}>{loc.a}</p>
                   </div>
                 </button>
               ))}
             </div>
 
-            {/* FISARMONICA ORARI - Design Uniformato */}
-            <div className="mb-8 overflow-hidden rounded-[2rem] border border-slate-100 bg-white shadow-sm">
+            {/* FISARMONICA ORARI */}
+            <div className="mt-8 overflow-hidden rounded-[2rem] border border-slate-100 bg-white shadow-sm w-full">
               <button 
                 onClick={() => setIsHoursOpen(!isHoursOpen)}
-                className="w-full flex items-center justify-between p-6 hover:bg-slate-50 transition-colors"
+                className="w-full flex items-center justify-between p-5 hover:bg-slate-50 transition-colors"
+                type="button"
               >
-                <div className="flex items-center gap-4 text-[#022166]">
-                  <Clock size={20} className="text-[#55B4FF]" />
-                  <span className="font-black text-[10px] uppercase tracking-[0.2em]">Orari Clinici</span>
+                <div className="flex items-center gap-4">
+                  <div className="w-10 h-10 bg-[#55B4FF]/10 rounded-xl flex items-center justify-center text-[#55B4FF]">
+                    <Clock size={20} />
+                  </div>
+                  <span className="font-black text-[#022166] text-sm uppercase tracking-widest">Orari di Apertura</span>
                 </div>
-                <ChevronRight size={18} className={`text-slate-300 transition-transform duration-300 ${isHoursOpen ? 'rotate-90' : ''}`} />
+                <div className={`transition-transform duration-300 ${isHoursOpen ? 'rotate-180' : ''}`}>
+                  <ChevronRight size={20} className="text-slate-400 rotate-90" />
+                </div>
               </button>
               
-              <div className={`transition-all duration-500 ease-in-out ${isHoursOpen ? 'max-h-[400px] opacity-100' : 'max-h-0 opacity-0'} overflow-hidden`}>
-                <div className="p-6 pt-0 space-y-3 border-t border-slate-50">
+              <div className={`transition-all duration-500 ease-in-out ${isHoursOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'} overflow-hidden`}>
+                <div className="p-5 pt-0 space-y-3 border-t border-slate-50">
                   {[
-                    { d: 'Lun-Ven', o: '09–13, 15–21' },
+                    { d: 'Lunedì', o: '09–13, 15–20' },
+                    { d: 'Martedì', o: '09–13, 15–21' },
+                    { d: 'Mercoledì', o: '09–13, 15–21' },
+                    { d: 'Giovedì', o: '09–13, 15–21' },
+                    { d: 'Venerdì', o: '09–13, 15–20' },
                     { d: 'Sabato', o: '09–13' },
                     { d: 'Domenica', o: 'Chiuso' },
                   ].map((item, idx) => (
-                    <div key={idx} className="flex justify-between items-center">
-                      <span className="text-[10px] font-bold text-slate-400 uppercase tracking-tighter">{item.d}</span>
-                      <span className={`text-xs font-black ${item.o === 'Chiuso' ? 'text-red-400' : 'text-[#022166]'}`}>{item.o}</span>
+                    <div key={idx} className="flex justify-between items-center gap-4">
+                      <span className="text-[10px] font-bold text-slate-400 uppercase tracking-tighter shrink-0">{item.d}</span>
+                      <span className={`text-xs font-black ${item.o === 'Chiuso' ? 'text-red-400' : 'text-[#022166]'} text-right`}>{item.o}</span>
                     </div>
                   ))}
                 </div>
               </div>
             </div>
 
-            {/* CONTATTI RAPIDI AGGIUNTI */}
-            <div className="grid grid-cols-2 gap-4 mb-12">
-              <a href="tel:+393338225464" className="flex flex-col p-6 bg-[#F8FAFC] rounded-[2rem] hover:bg-[#55B4FF]/10 transition-colors group">
-                <Phone size={20} className="mb-4 text-[#55B4FF]" />
-                <span className="text-[9px] font-black uppercase tracking-widest text-slate-400 mb-1">Chiamaci</span>
-                <span className="text-sm font-black text-[#022166]">333 822 5464</span>
-              </a>
-              <a href="mailto:info@fisiomalavasi.it" className="flex flex-col p-6 bg-[#F8FAFC] rounded-[2rem] hover:bg-[#55B4FF]/10 transition-colors group">
-                <Mail size={20} className="mb-4 text-[#55B4FF]" />
-                <span className="text-[9px] font-black uppercase tracking-widest text-slate-400 mb-1">Email</span>
-                <span className="text-sm font-black text-[#022166]">Contattaci</span>
-              </a>
+            <div className="mt-12">
+              <Link href="/" className="inline-flex items-center gap-2 text-slate-400 hover:text-[#022166] font-bold transition-all text-sm uppercase tracking-widest">
+                <ArrowLeft size={16} /> Torna alla Home
+              </Link>
             </div>
-
-            <Link href="/" className="inline-flex items-center gap-2 text-slate-400 hover:text-[#022166] font-bold transition-all text-[10px] uppercase tracking-[0.3em]">
-              <ArrowLeft size={16} /> Torna alla Home
-            </Link>
           </div>
         </div>
 
-        {/* LATO MAPPA (60%) - Funzionalità Intatta */}
-        <div className="lg:w-[60%] w-full h-[500px] lg:h-screen relative bg-slate-200 z-10">
+        {/* LATO MAPPA */}
+        <div className="lg:w-3/5 w-full h-[500px] lg:h-auto min-h-[500px] relative bg-slate-200">
           <iframe 
             src={mapUrl} 
             title="Mappa Sedi Studio Fisioterapia Malavasi"
