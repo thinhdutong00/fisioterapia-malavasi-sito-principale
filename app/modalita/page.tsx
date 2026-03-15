@@ -2,65 +2,121 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { ArrowLeft, ChevronRight } from 'lucide-react';
+import { 
+  ArrowLeft, 
+  ChevronRight, 
+  ArrowUpRight,
+  MapPin,
+  Home
+} from 'lucide-react';
 
-export default function NewPage() {
+export default function ModalitaSedutaPage() {
+  const modalita = [
+    {
+      titolo: "Seduta Fisioterapica",
+      slug: "/seduta-fisioterapica",
+      desc: "L'intervento riabilitativo d'eccellenza presso il nostro studio. Setting controllato e tecnologie avanzate per il tuo recupero.",
+      color: "bg-[#E0F2FE]", // Azzurro vivace
+      label: "In Studio"
+    },
+    {
+      titolo: "Seduta Fisioterapica Domiciliare",
+      slug: "/seduta-fisioterapica-domiciliare",
+      desc: "Portiamo la massima qualità clinica direttamente a casa tua, abbattendo le barriere logistiche e i disagi dello spostamento.",
+      color: "bg-[#F3E8FF]", // Lavanda vivace
+      label: "A Domicilio"
+    }
+  ];
+
   return (
-    <main className="min-h-screen bg-[#F0F4F8] text-slate-800 font-sans relative overflow-hidden">
+    <main className="min-h-screen bg-[#F8FAFC] text-slate-800 font-sans relative overflow-hidden">
       
-      {/* BACKGROUND DECORATIONS (Uguali alla Home per coerenza) */}
+      {/* BACKGROUND - Precisione e Pulizia */}
       <div className="fixed inset-0 z-0 pointer-events-none">
-        <div className="absolute top-[-5%] left-[-5%] w-[40%] h-[40%] bg-[#55B4FF]/10 rounded-full blur-[100px]"></div>
-        <div className="absolute bottom-[5%] right-[-5%] w-[30%] h-[30%] bg-[#022166]/5 rounded-full blur-[100px]"></div>
+        <div className="absolute top-[-5%] right-[-5%] w-[40%] h-[40%] bg-[#022166]/3 rounded-full blur-[100px]"></div>
+        <div className="absolute bottom-[-5%] left-[-5%] w-[40%] h-[40%] bg-[#55B4FF]/5 rounded-full blur-[100px]"></div>
       </div>
 
-      {/* CONTENUTO PAGINA */}
       <div className="relative z-10 pt-32 pb-20 px-4 md:px-6">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           
-          {/* Breadcrumb per tornare indietro */}
-          <nav className="flex items-center gap-2 text-sm text-slate-500 mb-8">
+          {/* Breadcrumb */}
+          <nav className="flex items-center gap-2 text-sm text-slate-500 mb-10">
             <Link href="/" className="hover:text-[#022166] transition-colors">Home</Link>
             <ChevronRight size={14} />
             <span className="text-[#022166] font-semibold">Modalità della seduta</span>
           </nav>
 
-          {/* Header Pagina */}
-          <header className="mb-12">
-            <h1 className="text-4xl md:text-5xl font-black text-[#022166] leading-tight">
-              TITOLO DELLA PAGINA
+          {/* HEADER - Stile Bold Istituzionale */}
+          <header className="mb-24">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="h-[1px] w-12 bg-[#55B4FF]"></div>
+              <span className="text-xs font-black uppercase tracking-[0.3em] text-[#55B4FF]">Clinical Access</span>
+            </div>
+            <h1 className="text-5xl md:text-8xl font-bold text-[#022166] leading-[0.95] mb-10 tracking-tighter">
+              Scegli la tua <br />modalità di <span className="text-[#55B4FF]">cura.</span>
             </h1>
-            <div className="h-1.5 w-20 bg-[#55B4FF] mt-6 rounded-full"></div>
+            <p className="max-w-3xl text-xl md:text-2xl text-slate-600 leading-relaxed font-light">
+              Flessibilità logistica senza compromettere il rigore scientifico. Scegli l'ambiente 
+              più adatto alle tue attuali necessità cliniche e personali.
+            </p>
           </header>
 
-          {/* Area Contenuto (Qui andranno i tuoi testi) */}
-          <section className="bg-white/60 backdrop-blur-md border border-white/40 p-8 md:p-12 rounded-3xl shadow-xl">
-            <p className="text-lg leading-relaxed text-slate-600">
-              Inserisci qui la descrizione dei trattamenti o le informazioni dello studio. 
-              Questo contenitore è già ottimizzato per la leggibilità.
-            </p>
-            
-            {/* Esempio di griglia per contenuti extra */}
-            <div className="grid md:grid-cols-2 gap-6 mt-10">
-              <div className="p-6 bg-white rounded-2xl shadow-sm border border-slate-100">
-                <h3 className="font-bold text-[#022166] mb-2 text-xl">Punto Chiave 1</h3>
-                <p className="text-slate-500">Descrizione dettagliata del servizio o dell'informazione.</p>
-              </div>
-              <div className="p-6 bg-white rounded-2xl shadow-sm border border-slate-100">
-                <h3 className="font-bold text-[#022166] mb-2 text-xl">Punto Chiave 2</h3>
-                <p className="text-slate-500">Descrizione dettagliata del servizio o dell'informazione.</p>
-              </div>
-            </div>
-          </section>
+          {/* GRID MODALITÀ - 2 Card Grandi */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {modalita.map((m, index) => (
+              <Link 
+                key={index} 
+                href={m.slug}
+                className={`group relative ${m.color} p-12 rounded-[2rem] border border-white/50 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 flex flex-col justify-between min-h-[400px]`}
+              >
+                <div>
+                  <div className="flex justify-between items-start mb-8">
+                    <span className="text-[10px] font-black uppercase tracking-[0.3em] text-[#022166] bg-white/40 px-4 py-2 rounded-full">
+                      {m.label}
+                    </span>
+                    <ArrowUpRight size={24} className="text-[#022166]/30 group-hover:text-[#022166] transition-colors" />
+                  </div>
+                  <h3 className="text-3xl md:text-4xl font-bold text-[#022166] mb-6 leading-tight tracking-tight">
+                    {m.titolo}
+                  </h3>
+                  <p className="text-[#022166]/70 text-lg leading-relaxed mb-8 font-medium">
+                    {m.desc}
+                  </p>
+                </div>
+                
+                <div className="flex items-center gap-2 text-[#022166] font-black text-[10px] uppercase tracking-[0.3em] border-t border-[#022166]/10 pt-8">
+                  Configura il tuo percorso <ChevronRight size={14} className="group-hover:translate-x-2 transition-transform" />
+                </div>
+              </Link>
+            ))}
 
-          {/* Bottone di ritorno rapido */}
-          <div className="mt-12">
+            {/* CARD INFO SUPPLEMENTARE (Opzionale, mantiene il layout bilanciato) */}
+            <div className="md:col-span-2 bg-[#022166] p-12 rounded-[2rem] shadow-xl flex flex-col md:flex-row items-center justify-between text-white relative overflow-hidden group mt-8">
+               <div className="relative z-10 max-w-xl">
+                 <h3 className="text-3xl font-black mb-4 leading-tight">Dubbi sulla scelta?</h3>
+                 <p className="text-white/60 text-sm leading-relaxed mb-6 md:mb-0">
+                   Se non sai quale modalità sia più indicata per la tua patologia, i nostri coordinatori clinici possono guidarti verso la soluzione ottimale dopo un breve consulto telefonico.
+                 </p>
+               </div>
+               <Link 
+                href="/contatti" 
+                className="bg-[#55B4FF] text-[#022166] px-10 py-5 rounded-2xl font-black text-center uppercase text-[10px] tracking-[0.3em] hover:bg-white transition-all relative z-10 whitespace-nowrap"
+               >
+                 Richiedi Supporto
+               </Link>
+            </div>
+          </div>
+
+          {/* Footer Navigation */}
+          <div className="mt-24 border-t border-slate-200 pt-12 flex justify-between items-center text-slate-400">
             <Link 
               href="/" 
-              className="inline-flex items-center gap-2 text-[#022166] font-bold hover:gap-4 transition-all"
+              className="inline-flex items-center gap-2 font-bold hover:text-[#022166] transition-all"
             >
               <ArrowLeft size={20} /> Torna alla Home
             </Link>
+            <span className="text-[10px] uppercase tracking-widest font-black opacity-40">Fisioterapia Malavasi — Protocolli di Accesso</span>
           </div>
 
         </div>
