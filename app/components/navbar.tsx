@@ -37,7 +37,7 @@ export default function Navbar() {
     { n: "Informazioni", h: "/informazioni" },
     { n: "Trattamenti", h: "/trattamenti" },
     { n: "Modalità della seduta", h: "/metodo" },
-    { n: "Scopri di più", h: "/dove-siamo" }
+    { n: "Dove siamo", h: "/contatti" }
   ];
 
   const isDarkTheme = isHomePage && !isScrolled;
