@@ -54,7 +54,7 @@ export default function ModalitaSedutaPage() {
               <span className="text-xs font-black uppercase tracking-[0.3em] text-[#55B4FF]">(R)enjoy your mo(ve)ments</span>
             </div>
             <h1 className="text-5xl md:text-8xl font-bold text-[#022166] leading-[0.95] mb-10 tracking-tighter">
-              Scegli la tua <br />modalità di <span className="text-[#55B4FF]">cura.</span>
+              Scegli la tua <br />modalità della <span className="text-[#55B4FF]">seduta.</span>
             </h1>
             <p className="max-w-3xl text-xl md:text-2xl text-slate-600 leading-relaxed font-light">
               Flessibilità logistica senza compromettere il rigore scientifico. Scegli l'ambiente 
