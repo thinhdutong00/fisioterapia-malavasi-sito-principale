@@ -10,7 +10,6 @@ import {
 } from 'lucide-react';
 
 export default function ContattiPage() {
-  // Stato per la mappa (Default: Cavezzo)
   const [mapUrl, setMapUrl] = useState("https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2836.877864350324!2d11.02646277665798!3d44.83222587107026!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x477f0f626490791d%3A0xc49d63c683b7f197!2sVia%20I%20Maggio%2C%2095%2C%2041011%20Cavezzo%20MO!5e0!3m2!1sit!2sit!4v1710465000000!5m2!1sit!2sit");
   const [isHoursOpen, setIsHoursOpen] = useState(false);
 
@@ -29,27 +28,24 @@ export default function ContattiPage() {
 
   return (
     <main className="min-h-screen bg-white">
-      {/* HEADER PROTECTION ZONE - Protegge la Navbar e il Breadcrumb */}
-      <div className="fixed top-0 left-0 w-full h-32 z-[90] pointer-events-none">
-        <div className="absolute inset-0 bg-white/80 backdrop-blur-md border-b border-slate-100 lg:bg-transparent lg:backdrop-blur-0 lg:border-none lg:bg-gradient-to-b lg:from-white lg:via-white/90 lg:to-transparent"></div>
-      </div>
-
-      {/* BREADCRUMB - Riposizionato con z-index superiore */}
-      <div className="fixed top-32 left-6 md:left-12 lg:left-24 z-[100] pointer-events-auto">
-        <nav className="flex items-center gap-2 text-[10px] text-slate-400 bg-white/50 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20">
-          <Link href="/" className="hover:text-[#022166] transition-colors font-bold uppercase tracking-widest">Home</Link>
-          <ChevronRight size={10} className="opacity-50" />
-          <span className="text-[#022166] font-black uppercase tracking-[0.2em]">Dove Siamo</span>
+      
+      {/* SPAZIATURA SUPERIORE (Bordo per Header) */}
+      <div className="w-full h-40 lg:h-64 bg-white flex items-end pb-10 px-6 md:px-12 lg:px-24">
+        {/* Breadcrumb integrato nello spazio bianco */}
+        <nav className="flex items-center gap-2 text-sm text-slate-500">
+          <Link href="/" className="hover:text-[#022166] transition-colors">Home</Link>
+          <ChevronRight size={14} />
+          <span className="text-[#022166] font-black uppercase tracking-[0.3em] text-[10px]">Dove Siamo</span>
         </nav>
       </div>
 
-      <section id="dove-siamo" className="relative z-10 bg-white flex flex-col lg:flex-row min-h-screen w-full overflow-hidden pt-20 lg:pt-0">
+      <section id="dove-siamo" className="relative z-10 bg-white flex flex-col lg:flex-row min-h-[calc(100-rem)] w-full overflow-hidden">
         
         {/* LATO TESTI E SELEZIONE */}
         <div className="lg:w-2/5 w-full p-6 md:p-16 lg:p-24 flex flex-col justify-center bg-gradient-to-br from-white to-slate-50 relative overflow-hidden">
           <div className="absolute top-0 right-0 w-32 h-32 bg-[#55B4FF]/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl pointer-events-none"></div>
           
-          <div className="relative z-10 w-full mt-12 lg:mt-0">
+          <div className="relative z-10 w-full">
             <span className="text-[#55B4FF] font-black text-xs uppercase tracking-[0.3em] mb-4 block">Vicinanza e Accessibilità</span>
             <h2 className="text-4xl md:text-5xl font-black text-[#022166] tracking-tight mb-4">Dove <span className="text-[#55B4FF]">Trovarci</span></h2>
             <p className="text-slate-500 font-medium mb-12 max-w-sm">Scegli la sede più vicina a te e visualizza il percorso interattivo.</p>
@@ -116,7 +112,6 @@ export default function ContattiPage() {
               </div>
             </div>
 
-            {/* Torna alla Home */}
             <div className="mt-12">
               <Link href="/" className="inline-flex items-center gap-2 text-slate-400 hover:text-[#022166] font-bold transition-all text-sm uppercase tracking-widest">
                 <ArrowLeft size={16} /> Torna alla Home
@@ -126,7 +121,7 @@ export default function ContattiPage() {
         </div>
 
         {/* LATO MAPPA */}
-        <div className="lg:w-3/5 w-full h-[500px] lg:h-screen relative bg-slate-200">
+        <div className="lg:w-3/5 w-full h-[500px] lg:h-auto min-h-[500px] relative bg-slate-200">
           <iframe 
             src={mapUrl} 
             title="Mappa Sedi Studio Fisioterapia Malavasi"
