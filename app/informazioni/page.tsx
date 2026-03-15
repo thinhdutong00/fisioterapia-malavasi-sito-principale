@@ -113,8 +113,8 @@ export default function InformazioniPage() {
                     <ShieldCheck size={24} />
                   </div>
                   <div>
-                    <div className="text-xl font-bold tracking-tight">Clinical Excellence</div>
-                    <div className="text-[10px] uppercase tracking-[0.3em] opacity-60 font-black">Standard Professionali</div>
+                    <div className="text-xl font-bold tracking-tight">Fisioterapisti Certificati</div>
+                    <div className="text-[10px] uppercase tracking-[0.3em] opacity-60 font-bold">fisioterapisti iscritti all'Albo della professione sanitaria</div>
                   </div>
                 </div>
               </div>
