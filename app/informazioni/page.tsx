@@ -95,14 +95,19 @@ export default function InformazioniPage() {
                   className="rounded-[32px] overflow-hidden aspect-[4/5] lg:aspect-square"
                 >
                   {[
-                    "https://raw.githubusercontent.com/thinhdutong00/image-fisioterapia-malavasi/main/staff-1.webp",
-                    "https://raw.githubusercontent.com/thinhdutong00/image-fisioterapia-malavasi/main/staff-2.webp",
-                    "https://raw.githubusercontent.com/thinhdutong00/image-fisioterapia-malavasi/main/staff-3.webp"
-                  ].map((img, index) => (
-                    <SwiperSlide key={index}>
-                      <Image src={img} alt={`Staff ${index + 1}`} fill className="object-cover" />
-                    </SwiperSlide>
-                  ))}
+  "mirco.webp",
+  "luca.webp",
+  "alice.webp"
+].map((img, index) => (
+  <SwiperSlide key={index}>
+    <Image 
+      src={`/${img}`} // Ho aggiunto / davanti per puntare alla cartella public
+      alt={`Staff ${index + 1}`} 
+      fill 
+      className="object-cover" 
+    />
+  </SwiperSlide>
+))}
                 </Swiper>
               </div>
               
