@@ -140,7 +140,7 @@ export default function InformazioniPage() {
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
               {[
                 { title: "Fisioterapia Generale", icon: <Activity size={28} />, desc: "Trattamento specialistico per discopatie e dolori articolari complessi." },
-                { title: "Riabilitazione Post-Op", icon: <ShieldCheck size={28} />, desc: "Protocolli di recupero personalizzati per il ripristino della mobilità funzionale." },
+                { title: "Riabilitazione Post-chirurgica", icon: <ShieldCheck size={28} />, desc: "Protocolli di recupero personalizzati per il ripristino della mobilità funzionale." },
                 { title: "Fisioterapia Sportiva", icon: <Zap size={28} />, desc: "Ottimizziamo il gesto atletico e preveniamo le ricadute attraverso il controllo motorio." },
               ].map((item, i) => (
                 <div key={i} className="group bg-white p-12 rounded-[3rem] border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500">
