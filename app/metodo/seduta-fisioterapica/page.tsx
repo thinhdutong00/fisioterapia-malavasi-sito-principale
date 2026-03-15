@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { 
   ArrowLeft, 
   ChevronRight,
+  Activity,
   Home,
   ArrowUpRight, 
   ClipboardCheck, 
@@ -346,28 +347,40 @@ export default function SedutaFisioterapicaPage() {
 
 
 
-           {/* SEZIONE 3: CALL TO ACTION */}
-          <section className="bg-[#022166] p-12 md:p-20 rounded-[2rem] shadow-2xl relative overflow-hidden group text-white">
-            <div className="absolute top-[-10%] right-[-10%] opacity-5">
-              <Home size={400} />
+           {/* SEZIONE 3: CALL TO ACTION - IN STUDIO */}
+          <section className="bg-[#022166] p-12 md:p-20 rounded-[3rem] shadow-2xl relative overflow-hidden group text-white">
+            {/* Background Icon - Activity per richiamare il setting clinico */}
+            <div className="absolute top-[-10%] right-[-10%] opacity-5 group-hover:scale-110 transition-transform duration-700">
+              <Activity size={400} />
             </div>
-            <div className="relative z-10 max-w-2xl">
-              <h3 className="text-3xl md:text-5xl font-bold mb-6 tracking-tighter">Prenota la tua seduta a casa.</h3>
-              <p className="text-white/60 text-lg mb-10 font-light">
-                Contattaci per verificare la disponibilità nella tua zona e programmare il primo incontro valutativo domiciliare.
+            
+            <div className="relative z-10 max-w-3xl">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="h-[1px] w-8 bg-[#55B4FF]"></div>
+                <span className="text-[#55B4FF] font-black text-[10px] uppercase tracking-[0.4em]">Clinical Excellence</span>
+              </div>
+              
+              <h3 className="text-4xl md:text-6xl font-bold mb-8 tracking-tighter leading-[0.95]">
+                Riprendi il controllo <br />
+                <span className="text-[#55B4FF]">in studio.</span>
+              </h3>
+              
+              <p className="text-white/60 text-xl mb-12 font-light leading-relaxed max-w-xl">
+                Accedi a tecnologie d'avanguardia e a un ambiente progettato per massimizzare i risultati della tua riabilitazione.
               </p>
-              <div className="flex flex-wrap gap-4">
+              
+              <div className="flex flex-wrap gap-6">
                 <Link 
                   href="/prenota" 
-                  className="bg-[#55B4FF] text-[#022166] px-10 py-5 rounded-2xl font-black text-center uppercase text-[10px] tracking-[0.3em] hover:bg-white transition-all"
+                  className="bg-[#55B4FF] text-[#022166] px-12 py-6 rounded-2xl font-black text-center uppercase text-[11px] tracking-[0.3em] hover:bg-white hover:shadow-[0_20px_40px_rgba(85,180,255,0.2)] transition-all active:scale-95"
                 >
-                  Verifica Disponibilità
+                  Prenota Valutazione
                 </Link>
                 <a 
                   href="tel:+393338225464" 
-                  className="bg-white/10 backdrop-blur-md text-white border border-white/20 px-10 py-5 rounded-2xl font-black text-center uppercase text-[10px] tracking-[0.3em] hover:bg-white/20 transition-all"
+                  className="bg-white/5 backdrop-blur-md text-white border border-white/10 px-12 py-6 rounded-2xl font-black text-center uppercase text-[11px] tracking-[0.3em] hover:bg-white/10 transition-all active:scale-95"
                 >
-                  Chiama Ora
+                  Parla con un Fisio
                 </a>
               </div>
             </div>
