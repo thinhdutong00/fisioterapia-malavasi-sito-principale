@@ -96,7 +96,7 @@ export default function InformazioniPage() {
                   {[
                     "mirco.webp",
                     "luca.webp",
-                    "alice.webp"
+                    "alice.jpg"
                   ].map((img, index) => (
                     <SwiperSlide key={index}>
                       <Image 
