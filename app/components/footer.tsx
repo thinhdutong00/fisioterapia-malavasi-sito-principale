@@ -53,7 +53,7 @@ export default function Footer() {
             <li><Link href="/informazioni" className="hover:text-white transition-colors">Informazioni</Link></li>
             <li><Link href="/trattamenti" className="hover:text-white transition-colors">Trattamenti</Link></li>
             <li><Link href="/metodo" className="hover:text-white transition-colors">Modalità seduta</Link></li>
-            <li><Link href="/#prenota" className="hover:text-white transition-colors">Prenota Ora</Link></li>
+            <li><Link href="/prenota" className="hover:text-white transition-colors">Prenota Ora</Link></li>
           </ul>
         </div>
 
