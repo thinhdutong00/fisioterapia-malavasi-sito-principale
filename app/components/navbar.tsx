@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Phone, CalendarCheck } from "lucide-react";
+import { Phone, CalendarCheck, Menu, X } from "lucide-react";
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -12,8 +12,10 @@ export default function Navbar() {
   
   const [isVisible, setIsVisible] = useState(true);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const lastScrollY = useRef(0);
 
+  // Gestione Scroll
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
@@ -23,6 +25,7 @@ export default function Navbar() {
         setIsVisible(true);
       } else if (currentScrollY > lastScrollY.current) {
         setIsVisible(false);
+        setIsMobileMenuOpen(false); // Chiude il menu se scendi
       } else {
         setIsVisible(true);
       }
@@ -32,6 +35,15 @@ export default function Navbar() {
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Blocca lo scroll quando il menu mobile è aperto
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+  }, [isMobileMenuOpen]);
 
   const navLinks = [
     { n: "Informazioni", h: "/informazioni" },
@@ -64,12 +76,12 @@ export default function Navbar() {
         }`}
       >
         
-        {/* LOGO AREA - flex-shrink-0 impedisce al logo di rimpicciolirsi per far spazio ad altro */}
-        <Link href="/" className="flex items-center flex-shrink-0 group">
+        {/* LOGO AREA */}
+        <Link href="/" className="flex items-center flex-shrink-0 z-[110]">
           <div className={`relative transition-all duration-500 ${
             isScrolled 
-              ? "w-40 h-8 md:w-44 h-9" 
-              : "w-60 h-11 md:w-72 h-14"
+              ? "w-36 h-8 md:w-44 h-9" 
+              : "w-52 h-10 md:w-72 h-14"
           }`}>
             <Image 
               src={logoSrc} 
@@ -81,17 +93,14 @@ export default function Navbar() {
           </div>
         </Link>
 
-        {/* NAVIGATION - Aggiunto flex-shrink per gestire lo spazio */}
+        {/* DESKTOP NAVIGATION */}
         <nav className={`hidden lg:flex items-center flex-shrink transition-all duration-500 ${
-          isScrolled 
-            ? "gap-4 xl:gap-6"   
-            : "gap-6 xl:gap-10" 
+          isScrolled ? "gap-4 xl:gap-6" : "gap-6 xl:gap-10" 
         }`}>
           {navLinks.map((item) => (
             <Link 
               key={item.n} 
               href={item.h}
-              // whitespace-nowrap è la chiave per non andare su due righe
               className={`relative font-bold text-[11px] uppercase tracking-[0.1em] transition-all hover:text-[#55B4FF] group/link whitespace-nowrap ${textColor}`}
             >
               {item.n}
@@ -100,31 +109,79 @@ export default function Navbar() {
           ))}
         </nav>
 
-        {/* ACTIONS */}
-        <div className="flex items-center flex-shrink-0 gap-3 md:gap-4">
-          <a 
-            href="tel:+393338225464" 
-            className={`${btnBaseClass} ${borderRadiusClass} ${
-              isDarkTheme
-                ? "bg-white/10 text-white border border-white/20"
-                : "bg-[#022166]/5 text-[#022166] border border-[#022166]/10 hover:bg-[#022166] hover:text-white"
-            }`}
+        {/* ACTIONS (Desktop) & HAMBURGER (Mobile) */}
+        <div className="flex items-center flex-shrink-0 gap-3">
+          <div className="hidden lg:flex items-center gap-3">
+            <a 
+              href="tel:+393338225464" 
+              className={`${btnBaseClass} ${borderRadiusClass} ${
+                isDarkTheme
+                  ? "bg-white/10 text-white border border-white/20"
+                  : "bg-[#022166]/5 text-[#022166] border border-[#022166]/10 hover:bg-[#022166] hover:text-white"
+              }`}
+            >
+              <Phone size={14} />
+              <span className="hidden xl:inline">Contattaci</span>
+            </a>
+            
+            <Link 
+              href="/prenota"
+              className={`${btnBaseClass} ${borderRadiusClass} ${
+                isDarkTheme ? "bg-[#55B4FF] text-[#022166]" : "bg-[#022166] text-white"
+              }`}
+            >
+              <CalendarCheck size={16} />
+              <span>Prenota Ora</span>
+            </Link>
+          </div>
+
+          {/* Hamburger Trigger */}
+          <button 
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className={`lg:hidden p-2 transition-colors z-[110] ${textColor}`}
           >
-            <Phone size={14} className="relative z-10" />
-            <span className="relative z-10 hidden xl:inline">Contattaci</span>
-          </a>
-          
-          <Link 
-            href="/prenota"
-            className={`${btnBaseClass} ${borderRadiusClass} ${
-              isDarkTheme
-                ? "bg-[#55B4FF] text-[#022166]"
-                : "bg-[#022166] text-white"
-            }`}
-          >
-            <CalendarCheck size={16} className="relative z-10" />
-            <span className="relative z-10">Prenota Ora</span>
-          </Link>
+            {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+          </button>
+        </div>
+      </div>
+
+      {/* MOBILE MENU (Glass Effect) */}
+      <div 
+        className={`fixed inset-0 bg-white/90 backdrop-blur-2xl z-[105] lg:hidden transition-all duration-500 ease-in-out ${
+          isMobileMenuOpen ? "translate-x-0 opacity-100" : "translate-x-full opacity-0"
+        }`}
+      >
+        <div className="flex flex-col h-full pt-32 pb-10 px-8">
+          <div className="space-y-8">
+            {navLinks.map((item) => (
+              <Link 
+                key={item.n} 
+                href={item.h}
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="block text-2xl font-black text-[#022166] uppercase tracking-tighter"
+              >
+                {item.n}
+              </Link>
+            ))}
+          </div>
+
+          <div className="mt-auto space-y-4">
+            <a 
+              href="tel:+393338225464" 
+              className="w-full flex items-center justify-center gap-4 bg-[#F8FAFC] border border-slate-200 text-[#022166] py-5 rounded-2xl font-black uppercase text-xs tracking-widest shadow-sm"
+            >
+              <Phone size={18} />
+              Chiama Studio
+            </a>
+            <Link 
+              href="/prenota"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="w-full flex items-center justify-center gap-4 bg-[#022166] text-white py-5 rounded-2xl font-black uppercase text-xs tracking-widest shadow-xl shadow-blue-900/10"
+            >
+              <CalendarCheck size={18} />
+              Prenota Ora
+            </Link>
+          </div>
         </div>
       </div>
 
