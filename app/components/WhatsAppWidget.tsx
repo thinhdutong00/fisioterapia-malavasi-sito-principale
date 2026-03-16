@@ -6,41 +6,49 @@ import { X } from 'lucide-react';
 export default function WhatsAppWidget() {
   const [isVisible, setIsVisible] = useState(false);
   const [showChat, setShowChat] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   
   const phoneNumber = "393338225464";
   const message = "Ciao! Vorrei avere informazioni sulle SmallClass o sulle sedute in studio.";
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 
   useEffect(() => {
-    // Appare l'icona dopo 2 secondi
+    // 1. Appare l'icona dopo 2 secondi
     const iconTimer = setTimeout(() => setIsVisible(true), 2000);
     
-    // Appare la mini-chat (sostituendo l'icona) dopo 20 secondi
+    // 2. Appare la mini-chat dopo 20 secondi
     const chatTimer = setTimeout(() => {
       setShowChat(true);
     }, 20000);
 
+    // 3. Rileva se il menu mobile della Navbar è aperto osservando il body
+    const observer = new MutationObserver(() => {
+      const isOverflowHidden = document.body.style.overflow === "hidden";
+      setIsMenuOpen(isOverflowHidden);
+    });
+
+    observer.observe(document.body, { attributes: true, attributeFilter: ['style'] });
+
     return () => {
       clearTimeout(iconTimer);
       clearTimeout(chatTimer);
+      observer.disconnect();
     };
   }, []);
 
-  if (!isVisible) return null;
+  // Se il widget non deve essere ancora visto o se il menu mobile è aperto, non renderizzare nulla
+  if (!isVisible || isMenuOpen) return null;
 
   return (
     <div className="fixed bottom-6 right-6 md:bottom-8 md:right-8 z-[9999]">
       
-      {/* LOGICA DI SOSTITUZIONE: 
-          Se showChat è TRUE mostra il POPUP, 
-          ALTRIMENTI (else) mostra l'ICONA 
-      */}
+      {/* LOGICA DI SOSTITUZIONE */}
       {showChat ? (
         /* --- IL POPUP --- */
         <div className="bg-white rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.2)] border border-slate-100 p-5 w-[280px] md:w-[320px] animate-in slide-in-from-bottom-4 fade-in duration-500 relative">
           <button 
-            onClick={() => setShowChat(false)} // Chiudendo la chat, showChat diventa false e riappare l'icona
-            className="absolute top-3 right-3 text-slate-400 hover:text-slate-600 p-1"
+            onClick={() => setShowChat(false)} 
+            className="absolute top-3 right-3 text-slate-400 hover:text-slate-600 p-1 transition-colors"
           >
             <X size={16} />
           </button>
@@ -68,13 +76,13 @@ export default function WhatsAppWidget() {
             href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="block w-full bg-[#25D366] text-white text-center py-3 rounded-xl font-black text-[10px] uppercase tracking-[0.2em] hover:bg-[#1ebe57] transition-all shadow-md"
+            className="block w-full bg-[#25D366] text-white text-center py-3 rounded-xl font-black text-[10px] uppercase tracking-[0.2em] hover:bg-[#1ebe57] transition-all shadow-md active:scale-95"
           >
             Inizia Conversazione
           </a>
         </div>
       ) : (
-        /* --- L'ICONA (appare solo se showChat è false) --- */
+        /* --- L'ICONA --- */
         <button
           onClick={() => setShowChat(true)}
           className="bg-[#25D366] text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-all duration-300 flex items-center justify-center relative animate-in zoom-in duration-300"
