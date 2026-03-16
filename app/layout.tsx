@@ -4,6 +4,8 @@ import "./globals.css";
 import Script from "next/script";
 import Navbar from "./components/navbar";
 import Footer from "./components/footer";
+// IMPORT UNIFICATO: Ora punta al file con le maiuscole corrette
+import CookieBanner from "./components/CookieBanner";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,7 +28,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="it">
+    <html lang="it" className="scroll-smooth">
       <head>
         <Script id="google-tag-manager" strategy="afterInteractive">
           {`
@@ -66,7 +68,7 @@ export default function RootLayout({
           `}
         </Script>
       </head>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased font-sans min-h-screen flex flex-col`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased font-sans min-h-screen flex flex-col overflow-x-hidden`}>
         <noscript>
           <iframe 
             src="https://www.googletagmanager.com/ns.html?id=GTM-WRNZP7MS"
@@ -76,13 +78,14 @@ export default function RootLayout({
           ></iframe>
         </noscript>
         
-      <Navbar />
+        <Navbar />
         
-<div className="flex-grow">
-  {children}
-</div>
+        <main className="flex-grow w-full">
+          {children}
+        </main>
 
-<Footer />
+        <Footer />
+        <CookieBanner />
       </body>
     </html>
   );
