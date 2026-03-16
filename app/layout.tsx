@@ -4,6 +4,7 @@ import "./globals.css";
 import Script from "next/script";
 import Navbar from "./components/navbar";
 import Footer from "./components/footer";
+import WhatsAppWidget from "./components/WhatsAppWidget";
 // IMPORT UNIFICATO: Ora punta al file con le maiuscole corrette
 import CookieBanner from "./components/CookieBanner";
 
@@ -85,6 +86,7 @@ export default function RootLayout({
         </main>
 
         <Footer />
+        <WhatsAppWidget />
         <CookieBanner />
       </body>
     </html>
