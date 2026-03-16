@@ -218,15 +218,15 @@ export default function FisioterapiaMalavasi() {
                 icona: <Accessibility size={28} />, 
                 breve: "Recupero della mobilità dopo interventi di protesi (anca/ginocchio) o ricostruzione legamentosa.", 
                 descrizione: "L'intervento chirurgico è solo il primo passo: il vero successo dipende dalla riabilitazione. Seguo protocolli basati sulle più recenti evidenze scientifiche per restituirti la piena autonomia nel minor tempo possibile.", 
-                link: "/trattamenti/riabilitazione-post-chirurgica" 
+                link: "/trattamenti/chirurgica" // MODIFICATO
               },
               { 
                 id: 2, 
-                titolo: "Colonna Vertebrale ed Ernie", 
+                titolo: "Dolore Persistente", // MODIFICATO
                 icona: <MoveVertical size={28} />, 
-                breve: "Soluzioni efficaci per eliminare il dolore alla colonna vertebrale, cervicalgie, lombalgie e sciatalgie.", 
-                descrizione: "Attraverso tecniche di terapia manuale e manipolazioni mirate, agisco sulla causa del dolore per liberare le articolazioni e rilassare i tessuti profondi. Torna a muoverti senza paura.", 
-                link: "/trattamenti/dolore-colonna" 
+                breve: "Approccio multidisciplinare per la gestione di dolori cronici e problematiche della colonna che non trovano sollievo.", 
+                descrizione: "Il dolore persistente richiede un approccio che vada oltre la semplice terapia locale. Attraverso l'educazione al dolore e tecniche manuali specifiche, lavoriamo per desensibilizzare il sistema nervoso e farti tornare a muoverti con fiducia.", 
+                link: "/trattamenti/dolore-persistente" // MODIFICATO
               },
               { 
                 id: 3, 
@@ -238,11 +238,11 @@ export default function FisioterapiaMalavasi() {
               },
               { 
                 id: 4, 
-                titolo: "Tendiniti e Infiammazioni", 
+                titolo: "Cefalee e Vertigini", // MODIFICATO
                 icona: <Dna size={28} />, 
-                breve: "Cura per epicondilite, tendine d'Achille e fascite plantare con approcci conservativi avanzati.", 
-                descrizione: "Utilizzo un approccio combinato di terapia manuale ed esercizio terapeutico per rieducare il tendine al carico, eliminando quel dolore persistente che ostacola i tuoi gesti quotidiani.", 
-                link: "/trattamenti/tendiniti" 
+                breve: "Valutazione e trattamento di mal di testa di origine cervicale e disturbi dell'equilibrio.", 
+                descrizione: "Molte cefalee e vertigini dipendono da disfunzioni del tratto cervicale superiore. Attraverso tecniche manuali mirate e rieducazione specifica, riduciamo la frequenza degli attacchi e miglioriamo la stabilità posturale.", 
+                link: "/trattamenti/cefalee-vertigini" // MODIFICATO
               },
               { 
                 id: 5, 
