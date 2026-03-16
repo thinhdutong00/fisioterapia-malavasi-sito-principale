@@ -4,14 +4,18 @@ import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
+
 import Script from 'next/script';
 
-// Import ottimizzato: solo le icone effettivamente usate nel codice
 import {
-  X, ChevronRight, Phone, ArrowRight, Menu, Users, Star, Home, MapPin, 
-  HeartPulse, Calendar, Clock, Plus, ChevronLeft, Upload, FileText,
-  Accessibility, Brain, Dna, MoveVertical, Footprints, 
-  MessageCircle, ClipboardCheck, Quote, CalendarCheck, Shield, CheckCircle
+  Activity, X, ChevronRight, Zap, UserRound, CheckCircle,
+  Phone, ArrowRight, Menu, Users, Star, Home, MapPin, HeartPulse,
+  Calendar, Clock, Plus, ChevronLeft, Upload, FileText,
+  Accessibility, HandIcon, Move, Brain, Spline, Scale,
+  Stethoscope, Dumbbell, UserCheck,
+  Dna, MoveVertical, Footprints, Layers,
+  MessageCircle, ClipboardCheck, Quote, CalendarCheck,
+  Shield
 } from 'lucide-react';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -21,18 +25,29 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 
+if (typeof window !== 'undefined') {
+  const style = document.createElement('style');
+  style.innerHTML = `
+    html, body { 
+      max-width: 100vw; 
+      overflow-x: hidden; 
+      position: relative;
+      margin: 0;
+      padding: 0;
+    }
+    * { box-sizing: border-box; }
+  `;
+  document.head.appendChild(style);
+}
+
 export default function FisioterapiaMalavasi() {
   const router = useRouter();
   
   // --- STATI INTERFACCIA ---
-  const [mapUrl, setMapUrl] = useState("https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2819.5!2d11.0!3d44.8!"); // URL d'esempio valido
+  const [mapUrl, setMapUrl] = useState("https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2836.216234033104!2d11.026365!3d44.838499!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDTCsDUwJzE4LjYiTiAxMcKwMDEnMzQuOSJF!5e0!3m2!1sit!2sit!4v1700000000000!5m2!1sit!2sit");
   const [selectedTrattamento, setSelectedTrattamento] = useState<any>(null);
   const [isHoursOpen, setIsHoursOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   // --- STATI MODULO MULTISTEP ---
   const [step, setStep] = useState(1);
@@ -76,12 +91,18 @@ export default function FisioterapiaMalavasi() {
   const nextStep = () => setStep(step + 1);
   const prevStep = () => setStep(step - 1);
 
+  // --- FUNZIONE INVIO EMAIL ---
   const inviaPrenotazione = async () => {
     try {
       const data = new FormData();
-      Object.entries(formData).forEach(([key, value]) => {
-        data.append(key, value.toString());
-      });
+      data.append('nome', formData.nome);
+      data.append('email', formData.email);
+      data.append('telefono', formData.telefono);
+      data.append('sede', formData.sede);
+      data.append('data', formData.data);
+      data.append('ora', formData.ora);
+      data.append('motivo', formData.motivo || ""); 
+      
       if (file) data.append('file', file);
 
       const response = await fetch('/api/send', {
@@ -90,7 +111,7 @@ export default function FisioterapiaMalavasi() {
       });
 
       if (response.ok) {
-        router.push('/grazie');
+        window.location.href = '/grazie';
       } else {
         alert("Errore nell'invio. Riprova tra poco.");
       }
@@ -99,18 +120,22 @@ export default function FisioterapiaMalavasi() {
     }
   };
 
-  if (!mounted) return null; // Evita problemi di idratazione (Hydration Mismatch)
-
   return (
-   <main className="relative min-h-screen w-full bg-[#F0F4F8] text-slate-800 font-sans scroll-smooth overflow-x-hidden">
+    /* MODIFICATO: rimosso h-screen, overflow-y-auto e snap-scroll. Aggiunto min-h-screen e rimosso snap-mandatory */
+   <main className="relative min-h-screen w-full bg-[#F0F4F8] text-slate-800 font-sans scroll-smooth">
       
-      {/* BACKGROUND DECORATIONS */}
-      <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-[-2%] left-[-10%] w-[70%] md:w-[40%] h-[30%] bg-[#55B4FF]/10 rounded-full blur-[80px] md:blur-[100px]"></div>
-        <div className="absolute bottom-[5%] right-[-10%] w-[60%] md:w-[30%] h-[30%] bg-[#022166]/5 rounded-full blur-[80px] md:blur-[100px]"></div>
-      </div>
+      {/* BACKGROUND DECORATIONS - Modificato per non creare overflow */}
+  <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden max-w-full">
+    <div className="absolute top-[-2%] left-[-10%] w-[70%] md:w-[40%] h-[30%] bg-[#55B4FF]/10 rounded-full blur-[80px] md:blur-[100px]"></div>
+    <div className="absolute bottom-[5%] right-[-10%] w-[60%] md:w-[30%] h-[30%] bg-[#022166]/5 rounded-full blur-[80px] md:blur-[100px]"></div>
+  </div>
+
+
+
+
 
      {/* --- HERO SECTION --- */}
+      {/* MODIFICATO: rimosso h-screen e snap. Aggiunto min-h-screen */}
       <section id="home" className="relative min-h-screen w-full flex items-center justify-center px-4 md:px-8 overflow-hidden bg-[#022166]">
         <div className="absolute inset-0 z-0">
           <Image
@@ -118,8 +143,7 @@ export default function FisioterapiaMalavasi() {
             alt="Sfondo Anatomia"
             fill
             className="object-cover opacity-40"
-            priority // Fondamentale per PageSpeed
-            quality={85}
+            priority
             sizes="100vw"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-[#022166]/80 via-[#022166]/60 to-[#022166]/90"></div>
@@ -133,28 +157,33 @@ export default function FisioterapiaMalavasi() {
                 alt="Logo Malavasi"
                 fill
                 className="object-contain brightness-0 invert"
-                priority
               />
             </div>
             LA SCIENZA PENSATA PER IL TUO BENESSERE
           </div>
 
           <h1 className="text-[2.6rem] leading-[1.1] sm:text-5xl md:text-7xl xl:text-8xl font-bold text-white mb-8 tracking-tighter">
-            Fisioterapia e <br className="sm:hidden" /> Riabilitazione <br />
-            <span className="text-[#55B4FF]">a Cavezzo</span>
-          </h1>
+  Fisioterapia e <br className="sm:hidden" /> Riabilitazione <br />
+  <span className="text-[#55B4FF]">a Cavezzo</span>
+</h1>
 
           <p className="text-lg md:text-xl text-white/80 mb-10 max-w-2xl mx-auto font-medium leading-relaxed">
             Valutazioni precise e trattamenti fisioterapici basati su evidenze scientifiche, pensati per ridurre il dolore, migliorare la mobilità e accompagnarti verso un recupero stabile e reale.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Link href="#prenota" className="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-[#55B4FF] text-[#022166] px-9 py-5 rounded-xl font-black text-xs uppercase tracking-widest hover:bg-white transition-all group shadow-lg shadow-[#55B4FF]/20">
+            <a href="#prenota" className="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-[#55B4FF] text-[#022166] px-9 py-5 rounded-xl font-black text-xs uppercase tracking-widest hover:bg-white transition-all group shadow-lg shadow-[#55B4FF]/20">
               Inizia il Percorso <ArrowRight size={18} className="group-hover:translate-x-1.5 transition-transform" />
-            </Link>
-            <Link href="#servizi" className="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-white/10 backdrop-blur-md border border-white/20 text-white px-9 py-5 rounded-xl font-black text-xs uppercase tracking-widest hover:bg-white/20 transition-all">
+            </a>
+            <a href="#servizi" className="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-white/10 backdrop-blur-md border border-white/20 text-white px-9 py-5 rounded-xl font-black text-xs uppercase tracking-widest hover:bg-white/20 transition-all">
               I nostri trattamenti
-            </Link>
+            </a>
+          </div>
+        </div>
+
+        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 animate-bounce text-white/30 hidden md:block">
+          <div className="w-6 h-10 border-2 border-white/20 rounded-full flex justify-center p-1">
+            <div className="w-1 h-2 bg-white/40 rounded-full"></div>
           </div>
         </div>
       </section>
@@ -162,19 +191,19 @@ export default function FisioterapiaMalavasi() {
 {/* --- TRATTAMENTI --- */}
       <section id="servizi" className="relative w-full py-24 md:py-32 px-6 bg-white overflow-hidden">
         
-        {/* Decorazione di sfondo - Ottimizzata per prestazioni */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60%] h-[60%] bg-[#55B4FF]/5 rounded-full blur-[100px] pointer-events-none" />
+        {/* Decorazione di sfondo sottile */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60%] h-[60%] bg-[#55B4FF]/5 rounded-full blur-[120px] pointer-events-none" />
 
         <div className="max-w-7xl mx-auto relative z-10">
           
           {/* Header Sezione */}
-          <div className="flex flex-col items-center text-center mb-16 md:mb-24">
+          <div className="flex flex-col items-center text-center mb-20">
             <div className="flex items-center gap-3 mb-6">
               <div className="h-[1px] w-8 bg-[#55B4FF]" />
               <span className="text-[10px] font-black uppercase tracking-[0.3em] text-[#55B4FF]">Specializzazioni</span>
               <div className="h-[1px] w-8 bg-[#55B4FF]" />
             </div>
-            <h2 className="text-4xl md:text-6xl font-bold text-[#022166] tracking-tighter leading-tight md:leading-none">
+            <h2 className="text-4xl md:text-6xl font-bold text-[#022166] tracking-tighter leading-none">
               Soluzioni per il tuo <br />
               <span className="text-slate-400">benessere fisico.</span>
             </h2>
@@ -189,15 +218,15 @@ export default function FisioterapiaMalavasi() {
                 icona: <Accessibility size={28} />, 
                 breve: "Recupero della mobilità dopo interventi di protesi (anca/ginocchio) o ricostruzione legamentosa.", 
                 descrizione: "L'intervento chirurgico è solo il primo passo: il vero successo dipende dalla riabilitazione. Seguo protocolli basati sulle più recenti evidenze scientifiche per restituirti la piena autonomia nel minor tempo possibile.", 
-                link: "/trattamenti/chirurgica" 
+                link: "/trattamenti/chirurgica" // MODIFICATO
               },
               { 
                 id: 2, 
-                titolo: "Dolore Persistente", 
+                titolo: "Dolore Persistente", // MODIFICATO
                 icona: <MoveVertical size={28} />, 
                 breve: "Approccio multidisciplinare per la gestione di dolori cronici e problematiche della colonna che non trovano sollievo.", 
                 descrizione: "Il dolore persistente richiede un approccio che vada oltre la semplice terapia locale. Attraverso l'educazione al dolore e tecniche manuali specifiche, lavoriamo per desensibilizzare il sistema nervoso e farti tornare a muoverti con fiducia.", 
-                link: "/trattamenti/dolore-persistente" 
+                link: "/trattamenti/dolore-persistente" // MODIFICATO
               },
               { 
                 id: 3, 
@@ -209,11 +238,11 @@ export default function FisioterapiaMalavasi() {
               },
               { 
                 id: 4, 
-                titolo: "Cefalee e Vertigini", 
+                titolo: "Cefalee e Vertigini", // MODIFICATO
                 icona: <Dna size={28} />, 
                 breve: "Valutazione e trattamento di mal di testa di origine cervicale e disturbi dell'equilibrio.", 
-                descrizione: "Molte cefalee e vertigini dipendono da disfunzioni del tratto cervicale superiore. Attraverso tecniche manuali mirate e rieducazione specifica, riduciamo la frequenza degli attacchi e miglioriamo la stabilità posturale. Ritrova la tua serenità e torna a muoverti con piena fiducia in ogni gesto quotidiano.", 
-                link: "/trattamenti/cefalee-vertigini" 
+                descrizione: "Molte cefalee e vertigini dipendono da disfunzioni del tratto cervicale superiore. Attraverso tecniche manuali mirate e rieducazione specifica, riduciamo la frequenza degli attacchi e miglioriamo la stabilità posturale.", 
+                link: "/trattamenti/cefalee-vertigini" // MODIFICATO
               },
               { 
                 id: 5, 
@@ -257,15 +286,14 @@ export default function FisioterapiaMalavasi() {
           </div>
         </div>
 
-        {/* MODAL / POPUP DETTAGLI - Ottimizzato Z-Index */}
+        {/* MODAL / POPUP DETTAGLI */}
         {selectedTrattamento && (
-          <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 md:p-6 bg-[#022166]/20 backdrop-blur-md">
-            <div className="bg-white w-full max-w-2xl rounded-[2.5rem] shadow-2xl overflow-hidden relative animate-in zoom-in-95 fade-in duration-200">
+          <div className="fixed inset-0 z-[10000] flex items-center justify-center p-4 md:p-6 bg-[#022166]/20 backdrop-blur-md animate-in fade-in duration-300">
+            <div className="bg-white w-full max-w-2xl rounded-[2.5rem] shadow-2xl overflow-hidden relative animate-in zoom-in-95 duration-300">
               
               <button 
                 onClick={() => setSelectedTrattamento(null)}
                 className="absolute top-6 right-6 p-2 bg-slate-50 text-[#022166] rounded-full hover:bg-slate-100 transition-colors z-10"
-                aria-label="Chiudi"
               >
                 <X size={20} />
               </button>
@@ -286,7 +314,7 @@ export default function FisioterapiaMalavasi() {
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Link 
                     href={selectedTrattamento.link}
-                    className="flex-1 inline-flex items-center justify-center gap-3 bg-[#022166] text-white px-8 py-5 rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-[#55B4FF] transition-all group shadow-lg shadow-[#022166]/10"
+                    className="flex-1 inline-flex items-center justify-center gap-3 bg-[#022166] text-white px-8 py-5 rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-[#55B4FF] transition-all group"
                   >
                     Scopri di più <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                   </Link>
@@ -306,12 +334,13 @@ export default function FisioterapiaMalavasi() {
       {/* --- SEZIONE DOMICILIO --- */}
       <section id="servizio-domiciliare" className="relative w-full py-20 md:py-32 px-6 bg-[#F8FAFC] overflow-hidden">
         
-        <div className="absolute top-0 right-0 w-[40%] h-[40%] bg-[#55B4FF]/5 rounded-full blur-[80px] pointer-events-none" />
+        {/* Background Decorativo */}
+        <div className="absolute top-0 right-0 w-[40%] h-[40%] bg-[#55B4FF]/5 rounded-full blur-[100px] pointer-events-none" />
         
         <div className="max-w-6xl mx-auto relative z-10">
           <div className="grid lg:grid-cols-12 gap-12 lg:gap-20 items-center">
             
-            {/* COLONNA SINISTRA */}
+            {/* COLONNA SINISTRA: Titolo e Badge */}
             <div className="lg:col-span-5 flex flex-col items-start text-left">
               <div className="flex items-center gap-3 mb-6">
                 <div className="h-[1px] w-10 bg-[#55B4FF]" />
@@ -336,7 +365,7 @@ export default function FisioterapiaMalavasi() {
               </div>
             </div>
 
-            {/* COLONNA DESTRA */}
+            {/* COLONNA DESTRA: Dettagli e Chiamata */}
             <div className="lg:col-span-7">
               <div className="space-y-8">
                 <p className="text-xl md:text-2xl text-slate-500 font-light leading-relaxed">
@@ -379,180 +408,205 @@ export default function FisioterapiaMalavasi() {
       </section>
 
 {/* --- SEZIONE STAFF --- */}
-      <section id="team" className="relative py-20 md:py-32 px-4 bg-white overflow-hidden">
-        <div className="max-w-7xl mx-auto relative z-10 w-full">
-          <div className="text-center mb-12 md:mb-20">
-            <span className="text-[#55B4FF] font-black text-[10px] uppercase tracking-[0.3em] block mb-4">Professionalità e Competenza</span>
-            <h2 className="text-3xl md:text-6xl font-black text-[#022166] tracking-tighter mb-6">Il Nostro <span className="text-[#55B4FF]">Team</span></h2>
+{/* MODIFICATO: rimosso h-screen e classi snap. Aggiunto min-h-screen */}
+<section id="team" className="relative py-20 md:py-32 px-4 bg-white overflow-hidden">
+  <div className="max-w-7xl mx-auto relative z-10 w-full">
+    <div className="text-center mb-12 md:mb-20">
+      <span className="text-[#55B4FF] font-black text-[10px] uppercase tracking-[0.3em] block mb-4">Professionalità e Competenza</span>
+      <h2 className="text-3xl md:text-6xl font-black text-[#022166] tracking-tighter mb-6">Il Nostro <span className="text-[#55B4FF]">Team</span></h2>
+    </div>
+    {/* Cambiato gap-8 in gap-6 per mobile */}
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+      {[
+        { nome: "Mirco Malavasi", ruolo: "Fisioterapista OMPT", specialita: "Riabilitazione muscolo-scheletrica e oncologica", foto: "/mirco.webp" },
+        { nome: "Alice Nanetti", ruolo: "Fisioterapista", specialita: "Riabilitazione muscolo-scheletrica e neurologica", foto: "/alice.jpg" },
+        { nome: "Luca Rabaglia", ruolo: "Fisioterapista", specialita: "Riabilitazione muscolo-scheletrica e sportiva", foto: "/luca.webp" }
+      ].map((membro, idx) => (
+        <div key={idx} className="group bg-slate-50 rounded-[2.5rem] md:rounded-[3.5rem] p-4 pb-10 md:pb-12 transition-all duration-700 border border-slate-100 text-center flex flex-col items-center w-full max-w-[400px] mx-auto">
+          <div className="aspect-[4/5] w-full relative overflow-hidden rounded-[2rem] md:rounded-[2.8rem] mb-6 md:mb-8">
+            <Image 
+              src={membro.foto} 
+              alt={membro.nome} 
+              fill
+              className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
+            />
           </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            {[
-              { nome: "Mirco Malavasi", ruolo: "Fisioterapista OMPT", specialita: "Riabilitazione muscolo-scheletrica e oncologica", foto: "/mirco.webp" },
-              { nome: "Alice Nanetti", ruolo: "Fisioterapista", specialita: "Riabilitazione muscolo-scheletrica e neurologica", foto: "/alice.jpg" },
-              { nome: "Luca Rabaglia", ruolo: "Fisioterapista", specialita: "Riabilitazione muscolo-scheletrica e sportiva", foto: "/luca.webp" }
-            ].map((membro, idx) => (
-              <div key={idx} className="group bg-slate-50 rounded-[2.5rem] md:rounded-[3.5rem] p-4 pb-10 md:pb-12 transition-all duration-700 border border-slate-100 text-center flex flex-col items-center w-full max-w-[400px] mx-auto hover:bg-white hover:shadow-xl">
-                <div className="aspect-[4/5] w-full relative overflow-hidden rounded-[2rem] md:rounded-[2.8rem] mb-6 md:mb-8 bg-slate-200">
-                  <Image 
-                    src={membro.foto} 
-                    alt={membro.nome} 
-                    fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
-                    quality={80}
-                  />
-                </div>
-                <span className="bg-[#f0f9ff] text-[#55B4FF] border border-[#55B4FF]/20 px-4 py-1.5 rounded-full font-black text-[8px] md:text-[9px] uppercase tracking-widest mb-4">{membro.ruolo}</span>
-                <h3 className="text-2xl md:text-3xl font-black text-[#022166] mb-3 group-hover:text-[#55B4FF] transition-colors">{membro.nome}</h3>
-                <p className="text-slate-500 text-xs md:text-sm font-bold italic max-w-[220px]">{membro.specialita}</p>
-              </div>
-            ))}
-          </div>
+          <span className="bg-[#f0f9ff] text-[#55B4FF] border border-[#55B4FF]/20 px-4 py-1.5 rounded-full font-black text-[8px] md:text-[9px] uppercase tracking-widest mb-4">{membro.ruolo}</span>
+          <h3 className="text-2xl md:text-3xl font-black text-[#022166] mb-3 group-hover:text-[#55B4FF] transition-colors">{membro.nome}</h3>
+          <p className="text-slate-500 text-xs md:text-sm font-bold italic max-w-[220px]">{membro.specialita}</p>
         </div>
-      </section>
+      ))}
+    </div>
+  </div>
+</section>
 
-      {/* --- RECENSIONI --- */}
-      <section id="recensioni" className="relative min-h-screen w-full py-20 md:py-32 px-4 bg-gradient-to-b from-white to-[#F0F4F8] flex items-center overflow-hidden">
-        <div className="max-w-7xl mx-auto w-full">
-          <div className="flex flex-col md:flex-row items-center justify-between mb-12 md:mb-16 gap-8">
-            <div className="text-center md:text-left">
-              <h2 className="text-4xl md:text-5xl font-black text-[#022166] tracking-tight mb-4">
-                La parola ai nostri <span className="text-[#55B4FF]">Pazienti</span>
-              </h2>
-              <p className="text-slate-500 font-medium text-lg">Esperienze reali tratte dal nostro profilo Google Business.</p>
-            </div>
-            
-            <div className="bg-white p-6 rounded-[2rem] shadow-xl shadow-blue-900/5 border border-slate-100 flex items-center gap-6">
-              <div className="flex-shrink-0 w-12 h-12 bg-[#4285F4] rounded-xl flex items-center justify-center">
-                <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
-                  <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
-                  <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" />
-                  <path d="M12 5.38c1.62 0 3.06.56 4.21 1.66l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" />
-                </svg>
-              </div>
-              <div>
-                <div className="flex gap-1 text-yellow-400 mb-1">
-                  {[...Array(5)].map((_, i) => <Star key={i} size={18} fill="currentColor" />)}
-                </div>
-                <p className="text-[#022166] font-black text-sm uppercase tracking-tighter">Eccellenza 5.0 su Google</p>
-              </div>
-            </div>
+{/* --- RECENSIONI --- */}
+{/* MODIFICATO: rimosso h-screen e classi snap. Aggiunto min-h-screen e flex items-center */}
+<section id="recensioni" className="relative min-h-screen w-full py-20 md:py-32 px-4 overflow-x-hidden bg-gradient-to-b from-white to-[#F0F4F8] flex items-center">
+  <div className="max-w-7xl mx-auto w-full">
+    <div className="flex flex-col md:flex-row items-center justify-between mb-12 md:mb-16 gap-8">
+      <div className="text-center md:text-left">
+        <h2 className="text-4xl md:text-5xl font-black text-[#022166] tracking-tight mb-4">
+          La parola ai nostri <span className="text-[#55B4FF]">Pazienti</span>
+        </h2>
+        <p className="text-slate-500 font-medium text-lg">Esperienze reali tratte dal nostro profilo ufficiale Google Business.</p>
+      </div>
+      
+      <div className="bg-white p-6 rounded-[2rem] shadow-xl shadow-blue-900/5 border border-slate-100 flex items-center gap-6">
+        <div className="flex-shrink-0 w-12 h-12 bg-[#4285F4] rounded-xl flex items-center justify-center">
+          <svg 
+            className="w-6 h-6 text-white" 
+            fill="currentColor" 
+            viewBox="0 0 24 24" 
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
+            <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
+            <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" />
+            <path d="M12 5.38c1.62 0 3.06.56 4.21 1.66l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" />
+          </svg>
+        </div>
+        <div>
+          <div className="flex gap-1 text-yellow-400 mb-1">
+            {[...Array(5)].map((_, i) => <Star key={i} size={18} fill="currentColor" />)}
           </div>
+          <p className="text-[#022166] font-black text-sm uppercase tracking-tighter">Eccellenza 5.0 su Google</p>
+        </div>
+      </div>
+    </div>
 
-          <div className="relative group px-2 md:px-16">
-            <Swiper
-              modules={[Autoplay, Pagination, Navigation]}
-              spaceBetween={20}
-              slidesPerView={1}
-              navigation={{
-                nextEl: '.swiper-button-next-custom',
-                prevEl: '.swiper-button-prev-custom',
-              }}
-              autoplay={{ delay: 5000, disableOnInteraction: false }}
-              pagination={{ clickable: true, el: '.swiper-pagination-custom' }}
-              breakpoints={{ 768: { slidesPerView: 2, spaceBetween: 30 }, 1024: { slidesPerView: 3 } }}
-              className="!pb-16 md:!pb-20"
-            >
-              {[
-                { n: "Rosalba Cantuti", t: "Lo studio Malavasi è molto serio e professionale, Mirco segue molto bene il paziente e da’ consigli utili x continuare a migliorare nel percorso di riabilitazione.", d: "2 settimane fa" },
-                { n: "Samuele Pini", t: "Mi sono rotto il crociato e subito ho deciso di iniziare il mio percorso preoperatorio grazie al quale ho potuto affrontare la riabilitazione molto meglio, psicologicamente più sollevato. Grazie al Dott. Mirco e al suo staff, dotato di ottima preparazione", d: "1 mese fa" },
-                { n: "Federico Zagni", t: "Professionista e collega di alto livello! Grande empatia e professionalità!", d: "3 settimane fa" },
-                { n: "Alessandro Papazzoni", t: "Ci sono andato per la mia caviglia e mi hanno aiutato con molta cura e attenzione, in più sono migliorato velocemente.", d: "10 mesi fa" },
-                { n: "Elisa Cavazzoli", t: "Con Mirco mi sono trovata bene fin da subito. È ATTENTO e molto preparato nonostante la giovane età. Con i giusti esercizi e le giuste tempistiche sono riuscita a gestire e risolvere il mio problema, sono molto contenta! Consigliatissimo a tutti!!", d: "1 anno fa" },
-                { n: "Edoardo Marchesi", t: "Ho portato mia mamma da lui perchè aveva male al piede destro faceva fatica a camminare, a scendere le scale non se ne parla e dopo due infiltrazioni di cortisone non era migliorata, quindi si è decisa ad andarci con ottimi risultati non solo il piede non le duole più, ma ha acquisito un po' più di sicurezza nel camminare e a fare le scale. Grazie Mirco", d: "1 anno fa" }
-              ].map((rev, i) => (
-                <SwiperSlide key={i} className="h-auto">
-                  <div className="bg-white p-7 md:p-10 rounded-[2.5rem] border border-slate-100 h-full flex flex-col relative shadow-md hover:shadow-xl transition-all duration-500 group">
-                    <div className="flex gap-0.5 text-yellow-400 mb-6">
-                      {[...Array(5)].map((_, i) => <Star key={i} size={16} fill="currentColor" />)}
-                    </div>
-                    <p className="text-slate-700 font-medium text-base md:text-lg leading-relaxed flex-grow italic">"{rev.t}"</p>
-                    <div className="flex items-center gap-4 mt-8 md:mt-10 pt-6 md:pt-8 border-t border-slate-50">
-                      <div className="w-12 h-12 md:w-14 md:h-14 bg-[#022166] rounded-2xl flex items-center justify-center text-white font-black text-lg shadow-lg">{rev.n[0]}</div>
-                      <div>
-                        <p className="font-black text-[#022166] text-base md:text-lg leading-none">{rev.n}</p>
-                        <p className="text-[10px] text-slate-400 font-bold uppercase tracking-widest mt-1.5">{rev.d}</p>
-                      </div>
-                    </div>
+    <div className="relative group px-2 md:px-16">
+      <div className="md:[mask-image:linear-gradient(to_right,transparent_0%,black_15%,black_85%,transparent_100%)]">
+        <Swiper
+          modules={[Autoplay, Pagination, Navigation]}
+          spaceBetween={20}
+          slidesPerView={1}
+          navigation={{
+            nextEl: '.swiper-button-next-custom',
+            prevEl: '.swiper-button-prev-custom',
+          }}
+          autoplay={{ delay: 5000, disableOnInteraction: false }}
+          pagination={{ clickable: true, el: '.swiper-pagination-custom' }}
+          breakpoints={{ 768: { slidesPerView: 2, spaceBetween: 30 }, 1024: { slidesPerView: 3 } }}
+          className="!pb-16 md:!pb-20 overflow-hidden md:!overflow-visible"
+        >
+          {[
+            { n: "Rosalba Cantuti", t: "Lo studio Malavasi è molto serio e professionale, Mirco segue molto bene il paziente e da’ consigli utili x continuare a migliorare nel percorso di riabilitazione.", d: "2 settimane fa" },
+            { n: "Samuele Pini", t: "Mi sono rotto il crociato e subito ho deciso di iniziare il mio percorso preoperatorio grazie al quale ho potuto affrontare la riabilitazione molto meglio, psicologicamente più sollevato. Grazie al Dott. Mirco e al suo staff, dotato di ottima preparazione", d: "1 mese fa" },
+            { n: "Federico Zagni", t: "Professionista e collega di alto livello! Grande empatia e professionalità!", d: "3 settimane fa" },
+            { n: "Alessandro Papazzoni", t: "Ci sono andato per la mia caviglia e mi hanno aiutato con molta cura e attenzione, in più sono migliorato velocemente.", d: "10 mesi fa" },
+            { n: "Elisa Cavazzoli", t: "Con Mirco mi sono trovata bene fin da subito. È ATTENTO e molto preparato nonostante la giovane età. Con i giusti esercizi e le giuste tempistiche sono riuscita a gestire e risolvere il mio problema, sono molto contenta! Consigliatissimo a tutti!!", d: "1 anno fa" },
+            { n: "Edoardo Marchesi", t: "Ho portato mia mamma da lui perchè aveva male al piede destro faceva fatica a camminare, a scendere le scale non se ne parla e dopo due infiltrazioni di cortisone non era migliorata, quindi si è decisa ad andarci con ottimi risultati non solo il piede non le duole più, ma ha acquisito un po' più di sicurezza nel camminare e a fare le scale. Grazie Mirco", d: "1 anno fa" }
+          ].map((rev, i) => (
+            <SwiperSlide key={i} className="h-auto px-2 md:px-0">
+              <div className="bg-white p-7 md:p-10 rounded-[2.5rem] border border-slate-100 h-full flex flex-col relative shadow-lg shadow-blue-900/[0.02] hover:shadow-2xl transition-all duration-500 group">
+                <div className="flex gap-0.5 text-yellow-400 mb-6">
+                  {[...Array(5)].map((_, i) => <Star key={i} size={16} fill="currentColor" />)}
+                </div>
+                <p className="text-slate-700 font-medium text-base md:text-lg leading-relaxed flex-grow italic">"{rev.t}"</p>
+                <div className="flex items-center gap-4 mt-8 md:mt-10 pt-6 md:pt-8 border-t border-slate-50">
+                  <div className="w-12 h-12 md:w-14 md:h-14 bg-gradient-to-br from-[#022166] to-[#0a3a8a] rounded-2xl flex items-center justify-center text-white font-black text-lg shadow-lg">{rev.n[0]}</div>
+                  <div>
+                    <p className="font-black text-[#022166] text-base md:text-lg leading-none">{rev.n}</p>
+                    <p className="text-[10px] text-slate-400 font-bold uppercase tracking-widest mt-1.5">{rev.d}</p>
                   </div>
-                </SwiperSlide>
-              ))}
-            </Swiper>
+                </div>
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
 
-            <button className="swiper-button-prev-custom hidden md:flex absolute top-1/2 -left-6 -translate-y-1/2 z-10 w-14 h-14 bg-white border border-slate-100 rounded-full items-center justify-center text-[#022166] shadow-xl hover:bg-[#55B4FF] hover:text-white transition-all">
-              <ChevronLeft size={28} />
-            </button>
-            <button className="swiper-button-next-custom hidden md:flex absolute top-1/2 -right-6 -translate-y-1/2 z-10 w-14 h-14 bg-white border border-slate-100 rounded-full items-center justify-center text-[#022166] shadow-xl hover:bg-[#55B4FF] hover:text-white transition-all">
-              <ChevronRight size={28} />
-            </button>
-            <div className="swiper-pagination-custom flex justify-center mt-6 gap-2"></div>
-          </div>
-        </div>
-      </section>
+      <button className="swiper-button-prev-custom hidden md:flex absolute top-1/2 -left-6 -translate-y-1/2 z-50 w-14 h-14 bg-white border border-slate-100 rounded-full items-center justify-center text-[#022166] shadow-2xl hover:bg-[#55B4FF] hover:text-white transition-all">
+        <ChevronLeft size={28} />
+      </button>
+      <button className="swiper-button-next-custom hidden md:flex absolute top-1/2 -right-6 -translate-y-1/2 z-50 w-14 h-14 bg-white border border-slate-100 rounded-full items-center justify-center text-[#022166] shadow-2xl hover:bg-[#55B4FF] hover:text-white transition-all">
+        <ChevronRight size={28} />
+      </button>
+      
+      <div className="swiper-pagination-custom flex justify-center mt-6 gap-2"></div>
+    </div>
+  </div>
+</section>
 
-      {/* --- SEZIONE COME LAVORIAMO --- */}
-      <section id="metodo" className="relative min-h-screen w-full flex items-center justify-center py-32 px-4 bg-white overflow-hidden">
-        <div className="absolute top-1/2 left-0 w-[300px] h-[300px] bg-[#55B4FF]/5 rounded-full blur-[100px] -z-10" />
 
-        <div className="max-w-7xl mx-auto relative z-10 w-full">
-          <div className="text-center mb-20">
-            <div className="inline-flex items-center justify-center p-1 px-3 mb-4 rounded-full bg-[#022166]/5 border border-[#022166]/10">
-              <span className="text-[#022166] font-black text-[10px] uppercase tracking-[0.3em]">Protocollo Clinico</span>
+{/* --- SEZIONE COME LAVORIAMO (PROCESSO) --- */}
+{/* MODIFICATO: rimosso h-screen e snap-start. Aggiunto min-h-screen */}
+<section id="metodo" className="relative min-h-screen w-full flex items-center justify-center py-32 px-4 overflow-hidden bg-white">
+  {/* Decorazione sottile di sfondo */}
+  <div className="absolute top-1/2 left-0 w-[300px] h-[300px] bg-[#55B4FF]/5 rounded-full blur-[100px] -z-10" />
+
+  <div className="max-w-7xl mx-auto relative z-10 w-full">
+    {/* Header Sezione */}
+    <div className="text-center mb-20">
+      <div className="inline-flex items-center justify-center p-1 px-3 mb-4 rounded-full bg-[#022166]/5 border border-[#022166]/10">
+        <span className="text-[#022166] font-black text-[10px] uppercase tracking-[0.3em]">Protocollo Clinico</span>
+      </div>
+      <h2 className="text-4xl md:text-6xl font-black text-[#022166] tracking-tighter mb-6">
+        Il Tuo Percorso di <span className="text-[#55B4FF]">Recupero</span>
+      </h2>
+      <p className="max-w-2xl mx-auto text-slate-500 font-bold text-lg leading-relaxed italic">
+        Un approccio scientifico in 3 fasi per risolvere il dolore alla radice e restituirti la libertà di movimento.
+      </p>
+    </div>
+
+    {/* Griglia dei Passaggi */}
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative px-2 md:px-0">
+      {/* Linea connettiva (visibile solo su desktop) */}
+      <div className="hidden lg:block absolute top-1/2 left-0 w-full h-0.5 bg-slate-100 -translate-y-1/2 z-0"></div>
+
+      {[
+        {
+          fase: "01",
+          titolo: "Anamnesi e Colloquio",
+          desc: "Ascoltiamo la tua storia. Raccogliamo ogni dettaglio sui tuoi sintomi e sulle tue attività quotidiane per inquadrare correttamente il tuo problema clinico fin dal primo istante.",
+          icon: <MessageCircle size={24} />
+        },
+        {
+          fase: "02",
+          titolo: "Esame Obiettivo e Test",
+          desc: "La scienza del movimento. Attraverso test specifici, valutazioni attive e passive, individuiamo con precisione la causa della tua disfunzione muscolo-scheletrica.",
+          icon: <ClipboardCheck size={24} />
+        },
+        {
+          fase: "03",
+          titolo: "Trattamento ed Autonomia",
+          desc: "Risultati che durano. Combiniamo terapia manuale ed esercizi personalizzati, rendendoti protagonista e autonomo nel tuo processo di guarigione.",
+          icon: <Shield size={24} />
+        }
+      ].map((step, idx) => (
+        <div key={idx} className="relative z-10 group">
+          <div className="bg-slate-50 rounded-[2.5rem] md:rounded-[3rem] p-6 md:p-8 pb-12 border border-slate-100 transition-all duration-700 hover:bg-white hover:shadow-[0_40px_80px_-20px_rgba(2,33,102,0.15)] hover:-translate-y-2 h-full flex flex-col items-center text-center">
+            
+            {/* Numero Fase e Icona */}
+            <div className="flex justify-between items-start w-full mb-8">
+              <span className="text-5xl font-black text-[#022166]/10 group-hover:text-[#55B4FF]/20 transition-colors">
+                {step.fase}
+              </span>
+              <div className="w-12 h-12 rounded-2xl bg-[#022166] text-white flex items-center justify-center shadow-lg shadow-[#022166]/20 group-hover:bg-[#55B4FF] transition-colors duration-500">
+                {step.icon}
+              </div>
             </div>
-            <h2 className="text-4xl md:text-6xl font-black text-[#022166] tracking-tighter mb-6">
-              Il Tuo Percorso di <span className="text-[#55B4FF]">Recupero</span>
-            </h2>
-            <p className="max-w-2xl mx-auto text-slate-500 font-bold text-lg leading-relaxed italic">
-              Un approccio scientifico in 3 fasi per risolvere il dolore alla radice e restituirti la libertà di movimento.
+
+            <h3 className="text-2xl font-black text-[#022166] mb-4 tracking-tight group-hover:text-[#55B4FF] transition-colors">
+              {step.titolo}
+            </h3>
+            
+            <p className="text-slate-500 font-bold text-sm leading-relaxed italic">
+              {step.desc}
             </p>
           </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
-            {[
-              {
-                fase: "01",
-                titolo: "Anamnesi e Colloquio",
-                desc: "Ascoltiamo la tua storia. Raccogliamo ogni dettaglio sui tuoi sintomi e sulle tue attività quotidiane per inquadrare correttamente il tuo problema clinico fin dal primo istante.",
-                icon: <MessageCircle size={24} />
-              },
-              {
-                fase: "02",
-                titolo: "Esame Obiettivo e Test",
-                desc: "La scienza del movimento. Attraverso test specifici, valutazioni attive e passive, individuiamo con precisione la causa della tua disfunzione muscolo-scheletrica.",
-                icon: <ClipboardCheck size={24} />
-              },
-              {
-                fase: "03",
-                titolo: "Trattamento ed Autonomia",
-                desc: "Risultati che durano. Combiniamo terapia manuale ed esercizi personalizzati, rendendoti protagonista e autonomo nel tuo processo di guarigione.",
-                icon: <Shield size={24} />
-              }
-            ].map((step, idx) => (
-              <div key={idx} className="relative z-10 group">
-                <div className="bg-slate-50 rounded-[2.5rem] md:rounded-[3rem] p-6 md:p-8 pb-12 border border-slate-100 transition-all duration-700 hover:bg-white hover:shadow-2xl hover:-translate-y-2 h-full flex flex-col items-center text-center">
-                  <div className="flex justify-between items-start w-full mb-8">
-                    <span className="text-5xl font-black text-[#022166]/10 group-hover:text-[#55B4FF]/20 transition-colors">
-                      {step.fase}
-                    </span>
-                    <div className="w-12 h-12 rounded-2xl bg-[#022166] text-white flex items-center justify-center shadow-lg group-hover:bg-[#55B4FF] transition-colors duration-500">
-                      {step.icon}
-                    </div>
-                  </div>
-                  <h3 className="text-2xl font-black text-[#022166] mb-4 tracking-tight group-hover:text-[#55B4FF] transition-colors">{step.titolo}</h3>
-                  <p className="text-slate-500 font-bold text-sm leading-relaxed italic">{step.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-20 text-center">
-            <p className="text-slate-400 text-sm font-bold uppercase tracking-widest mb-6">Ogni seduta ha una durata di circa 45-60 minuti</p>
-            <div className="w-16 h-1 bg-[#022166] mx-auto rounded-full opacity-20"></div>
-          </div>
         </div>
-      </section>
+      ))}
+    </div>
+
+    {/* Nota finale CTA */}
+    <div className="mt-20 text-center">
+      <p className="text-slate-400 text-sm font-bold uppercase tracking-widest mb-6">Ogni seduta ha una durata di circa 45-60 minuti</p>
+      <div className="w-16 h-1 bg-[#022166] mx-auto rounded-full opacity-20"></div>
+    </div>
+  </div>
+</section>
 
 {/* --- DOVE SIAMO --- */}
 {/* MODIFICATO: rimosso h-screen e snap-scroll. Usato min-h-screen */}
