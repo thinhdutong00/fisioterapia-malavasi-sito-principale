@@ -136,7 +136,7 @@ export default function PrePostChirurgica() {
           {/* CTA - Funnel di Conversione ad Alto Impatto */}
           <section className="text-center py-10">
             <h2 className="text-4xl md:text-6xl font-black text-[#022166] mb-8 tracking-tighter">
-              Non lasciare il tuo <br />recupero al caso.
+              Riscopri il piacere di<br />sentirti al sicuro in ogni gesto.
             </h2>
             <p className="max-w-2xl mx-auto text-slate-500 mb-12 text-lg">
               Sia che tu stia programmando l'intervento o che tu l'abbia già affrontato, 
