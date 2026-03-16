@@ -5,17 +5,19 @@ import Script from "next/script";
 import Navbar from "./components/navbar";
 import Footer from "./components/footer";
 import WhatsAppWidget from "./components/WhatsAppWidget";
-// IMPORT UNIFICATO: Ora punta al file con le maiuscole corrette
 import CookieBanner from "./components/CookieBanner";
 
+// Ottimizzazione Font con display swap
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
+  display: "swap", 
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -31,6 +33,21 @@ export default function RootLayout({
   return (
     <html lang="it" className="scroll-smooth">
       <head>
+        {/* Consenso Cookie spostato in Script per non bloccare il rendering */}
+        <Script id="google-consent" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('consent', 'default', {
+              'ad_storage': 'denied',
+              'ad_user_data': 'denied',
+              'ad_ads_personalization': 'denied',
+              'analytics_storage': 'denied'
+            });
+          `}
+        </Script>
+
+        {/* Google Tag Manager caricato in modo asincrono interattivo */}
         <Script id="google-tag-manager" strategy="afterInteractive">
           {`
             (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -41,24 +58,7 @@ export default function RootLayout({
           `}
         </Script>
 
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('consent', 'default', {
-                'ad_storage': 'denied',
-                'ad_user_data': 'denied',
-                'ad_ads_personalization': 'denied',
-                'analytics_storage': 'denied'
-              });
-            `,
-          }}
-        />
-        
-        <link rel="preconnect" href="https://raw.githubusercontent.com" />
-        <link rel="dns-prefetch" href="https://raw.githubusercontent.com" />
-
+        {/* Clarity caricato solo quando il browser è libero (lazy) */}
         <Script id="microsoft-clarity" strategy="lazyOnload">
           {`
             (function(c,l,a,r,i,t,y){
@@ -86,6 +86,7 @@ export default function RootLayout({
         </main>
 
         <Footer />
+        {/* Widget e Banner caricati dopo il contenuto principale */}
         <WhatsAppWidget />
         <CookieBanner />
       </body>
