@@ -62,7 +62,7 @@ export default function SmallClassPage() {
                     Le <strong className="font-bold text-[#022166]">SmallClass</strong> sono sessioni di esercizio terapeutico supervisionato, progettate per piccoli gruppi d'élite.
                   </p>
                   <p className="text-slate-500 text-base md:text-lg leading-relaxed font-medium opacity-90">
-                    Non si tratta di semplici lezioni di fitness, ma di protocolli basati sulla scienza del movimento (Exercise Medicine). Sono percorsi studiati specificamente per contrastare patologie croniche come diabete, obesità, ipertensione, problematiche cardiovascolari, osteoporosi e per il supporto durante o dopo terapie oncologiche.
+                    Non si tratta di semplici lezioni di fitness, ma di protocolli basati sulla scienza del movimento (Da 1 a 5 membri). Sono percorsi studiati specificamente per contrastare patologie croniche come diabete, obesità, ipertensione, problematiche cardiovascolari, osteoporosi e per il supporto durante o dopo terapie oncologiche.
                   </p>
                 </div>
               </div>
