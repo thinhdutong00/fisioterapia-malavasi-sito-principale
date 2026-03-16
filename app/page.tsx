@@ -25,6 +25,18 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 
+if (typeof window !== 'undefined') {
+  const style = document.createElement('style');
+  style.innerHTML = `
+    html, body { 
+      max-width: 100%; 
+      overflow-x: hidden; 
+      position: relative;
+    }
+  `;
+  document.head.appendChild(style);
+}
+
 export default function FisioterapiaMalavasi() {
   const router = useRouter();
   
@@ -319,7 +331,7 @@ export default function FisioterapiaMalavasi() {
       </div>
     </div>
 
-    <div className="relative group px-0 md:px-16">
+    <div className="relative group px-2 md:px-16">
       <div className="md:[mask-image:linear-gradient(to_right,transparent_0%,black_15%,black_85%,transparent_100%)]">
         <Swiper
           modules={[Autoplay, Pagination, Navigation]}
