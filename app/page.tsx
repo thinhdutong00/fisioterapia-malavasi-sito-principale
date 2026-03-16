@@ -14,7 +14,7 @@ import {
   Accessibility, HandIcon, Move, Brain, Spline, Scale,
   Stethoscope, Dumbbell, UserCheck,
   Dna, MoveVertical, Footprints, Layers,
-  MessageCircle, ClipboardCheck, Quote,
+  MessageCircle, ClipboardCheck, Quote, CalendarCheck,
   Shield
 } from 'lucide-react';
 
@@ -225,43 +225,77 @@ export default function FisioterapiaMalavasi() {
       </section>
 
       {/* --- SEZIONE DOMICILIO --- */}
-      {/* MODIFICATO: rimosso snap-start e snap-always. Usato min-h-[60vh] */}
-      <section id="servizio-domiciliare" className="relative min-h-[60vh] w-full flex items-center justify-center py-20 px-4 bg-white/30 backdrop-blur-sm overflow-hidden">
-        <div className="max-w-6xl mx-auto relative z-10 w-full">
-          <div className="group relative p-8 md:p-12 rounded-[3rem] bg-white/60 backdrop-blur-xl border border-white/80 shadow-xl transition-all duration-500 hover:shadow-2xl flex flex-col md:flex-row items-center gap-10">
+      <section id="servizio-domiciliare" className="relative w-full py-20 md:py-32 px-6 bg-[#F8FAFC] overflow-hidden">
+        
+        {/* Background Decorativo */}
+        <div className="absolute top-0 right-0 w-[40%] h-[40%] bg-[#55B4FF]/5 rounded-full blur-[100px] pointer-events-none" />
+        
+        <div className="max-w-6xl mx-auto relative z-10">
+          <div className="grid lg:grid-cols-12 gap-12 lg:gap-20 items-center">
             
-            {/* Icona Grande */}
-            <div className="shrink-0">
-              <div className="w-24 h-24 md:w-32 md:h-32 bg-[#022166] text-[#55B4FF] rounded-[2rem] flex items-center justify-center shadow-2xl shadow-[#022166]/30 transition-transform duration-700 group-hover:rotate-[10deg] group-hover:scale-110">
-                <Home size={60} />
-              </div>
-            </div>
-
-            {/* Contenuto Testuale */}
-            <div className="flex-1 text-center md:text-left">
-              <div className="inline-flex items-center gap-2 text-[#55B4FF] font-black text-[10px] uppercase tracking-[0.2em] mb-4">
-                <MapPin size={14} /> CAVEZZO E ZONE LIMITROFE
+            {/* COLONNA SINISTRA: Titolo e Badge */}
+            <div className="lg:col-span-5 flex flex-col items-start text-left">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="h-[1px] w-10 bg-[#55B4FF]" />
+                <span className="text-[10px] font-black uppercase tracking-[0.3em] text-[#55B4FF]">
+                  Servizio Esclusivo
+                </span>
               </div>
               
-              <h2 className="text-3xl md:text-5xl font-black text-[#022166] leading-tight mb-6 tracking-tight">
-                Fisioterapia <span className="text-[#55B4FF]">a Domicilio</span>
+              <h2 className="text-5xl md:text-7xl font-bold text-[#022166] leading-[0.95] tracking-tighter mb-8">
+                La cura <br />
+                <span className="text-slate-400">arriva da te.</span>
               </h2>
-              
-              <p className="text-slate-600 text-lg font-medium mb-8 leading-relaxed max-w-2xl">
-                Il professionista direttamente a casa tua per pazienti con ridotta mobilità, quadri neurologici o necessità post-chirurgiche. Porto tutta l'attrezzatura necessaria per garantire la stessa qualità dello studio nel comfort di casa tua.
-              </p>
 
-              {/* Box Istruzioni Modulo */}
-              <div className="bg-[#022166]/5 border-l-4 border-[#55B4FF] p-5 rounded-r-2xl mb-8">
-                <p className="text-[#022166] text-sm font-bold italic leading-relaxed">
-                  NOTA PER LA PRENOTAZIONE: Se richiedi il domicilio, specifica il tuo indirizzo di residenza nel campo Note del modulo finale.
-                </p>
+              <div className="inline-flex items-center gap-4 p-4 bg-white rounded-2xl shadow-sm border border-slate-100">
+                <div className="w-12 h-12 bg-[#022166] text-[#55B4FF] rounded-xl flex items-center justify-center shadow-lg shadow-[#022166]/20">
+                  <Home size={24} />
+                </div>
+                <div>
+                  <p className="text-[10px] font-black uppercase tracking-widest text-slate-400">Copertura attiva</p>
+                  <p className="text-sm font-bold text-[#022166]">Cavezzo e zone limitrofe</p>
+                </div>
               </div>
-
-              <a href="#prenota" className="inline-flex items-center justify-center gap-3 bg-[#022166] text-white px-10 py-5 rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-[#55B4FF] transition-all group shadow-lg shadow-[#022166]/20">
-                Richiedi Visita a Domicilio <ArrowRight size={18} className="group-hover:translate-x-1.5 transition-transform" />
-              </a>
             </div>
+
+            {/* COLONNA DESTRA: Dettagli e Chiamata */}
+            <div className="lg:col-span-7">
+              <div className="space-y-8">
+                <p className="text-xl md:text-2xl text-slate-500 font-light leading-relaxed">
+                  Trattamenti professionali direttamente nel comfort di casa tua, ideali per chi ha <span className="text-[#022166] font-semibold">difficoltà di spostamento</span> o necessità riabilitative specifiche.
+                </p>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-y-4 gap-x-8">
+                  {[
+                    "Ridotta mobilità o anziani",
+                    "Riabilitazione Post-Chirurgica",
+                    "Pazienti Neurologici",
+                    "Attrezzatura professionale inclusa"
+                  ].map((item, i) => (
+                    <div key={i} className="flex items-center gap-3">
+                      <CheckCircle size={18} className="text-[#55B4FF] shrink-0" />
+                      <span className="text-slate-600 font-medium text-base">{item}</span>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="pt-8 border-t border-slate-200">
+                  <p className="text-slate-400 text-sm mb-6 italic">
+                    * Servizio su appuntamento telefonico previa valutazione della distanza.
+                  </p>
+                  
+                  <a 
+                    href="tel:+393338225464" 
+                    className="group inline-flex items-center justify-center gap-4 bg-[#022166] text-white px-8 py-5 rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-[#55B4FF] transition-all shadow-xl shadow-[#022166]/20 active:scale-95"
+                  >
+                    <Phone size={18} />
+                    Chiama per Prenotare
+                    <ArrowRight size={18} className="group-hover:translate-x-1.5 transition-transform" />
+                  </a>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
