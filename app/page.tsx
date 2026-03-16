@@ -407,7 +407,7 @@ export default function FisioterapiaMalavasi() {
     </div>
 
     {/* Griglia dei Passaggi */}
-    <div className="grid md:grid-cols-3 gap-8 relative">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative px-2 md:px-0">
       {/* Linea connettiva (visibile solo su desktop) */}
       <div className="hidden lg:block absolute top-1/2 left-0 w-full h-0.5 bg-slate-100 -translate-y-1/2 z-0"></div>
 
@@ -432,7 +432,7 @@ export default function FisioterapiaMalavasi() {
         }
       ].map((step, idx) => (
         <div key={idx} className="relative z-10 group">
-          <div className="bg-slate-50 rounded-[3rem] p-8 pb-12 border border-slate-100 transition-all duration-700 hover:bg-white hover:shadow-[0_40px_80px_-20px_rgba(2,33,102,0.15)] hover:-translate-y-2 h-full flex flex-col items-center text-center">
+          <div className="bg-slate-50 rounded-[2.5rem] md:rounded-[3rem] p-6 md:p-8 pb-12 border border-slate-100 transition-all duration-700 hover:bg-white hover:shadow-[0_40px_80px_-20px_rgba(2,33,102,0.15)] hover:-translate-y-2 h-full flex flex-col items-center text-center">
             
             {/* Numero Fase e Icona */}
             <div className="flex justify-between items-start w-full mb-8">
