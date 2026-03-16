@@ -54,7 +54,7 @@ export default function SmallClassPage() {
                 <span className="text-[10px] font-black uppercase tracking-[0.4em] text-[#022166] mb-4 block">
                   Definizione Clinica
                 </span>
-                <h2 className="text-3xl font-bold text-[#022166] tracking-tight">Cosa sono.</h2>
+                <h2 className="text-3xl font-bold text-[#022166] tracking-tight">Cosa sono</h2>
               </div>
               <div className="lg:col-span-8">
                 <div className="bg-white p-10 md:p-14 rounded-[2rem] border border-slate-100 shadow-sm transition-all duration-500 hover:shadow-xl">
@@ -74,9 +74,9 @@ export default function SmallClassPage() {
             <div className="grid lg:grid-cols-12 gap-12 items-start">
               <div className="lg:col-span-4">
                 <span className="text-[10px] font-black uppercase tracking-[0.4em] text-[#022166] mb-4 block">
-                  Target Terapeutico
+                  Il movimento come cura
                 </span>
-                <h2 className="text-3xl font-bold text-[#022166] tracking-tight mb-6">Per chi sono.</h2>
+                <h2 className="text-3xl font-bold text-[#022166] tracking-tight mb-6">A chi è rivolto</h2>
                 <div className="inline-flex items-center gap-3 bg-[#022166] text-white px-6 py-3 rounded-2xl">
                   <Target size={18} className="text-[#55B4FF]" />
                   <span className="text-sm font-bold tracking-tight">Pazienti Selezionati</span>
@@ -111,7 +111,7 @@ export default function SmallClassPage() {
                   <span className="text-[10px] font-black uppercase tracking-[0.4em] text-[#022166]">Plus Valore</span>
                 </div>
                 <h2 className="text-4xl font-bold text-[#022166] tracking-tight leading-none mb-6">
-                  Perché scegliere<br />una SmallClass.
+                  Perché scegliere<br />una SmallClass
                 </h2>
               </div>
 
