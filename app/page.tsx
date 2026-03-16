@@ -107,13 +107,13 @@ export default function FisioterapiaMalavasi() {
 
   return (
     /* MODIFICATO: rimosso h-screen, overflow-y-auto e snap-scroll. Aggiunto min-h-screen e rimosso snap-mandatory */
-    <main className="relative min-h-screen w-full bg-[#F0F4F8] text-slate-800 font-sans scroll-smooth">
+   <main className="relative min-h-screen w-full bg-[#F0F4F8] text-slate-800 font-sans scroll-smooth overflow-x-hidden">
       
       {/* BACKGROUND DECORATIONS */}
-      <div className="fixed inset-0 z-0 pointer-events-none">
-        <div className="absolute top-[-5%] left-[-5%] w-[40%] h-[40%] bg-[#55B4FF]/10 rounded-full blur-[100px]"></div>
-        <div className="absolute bottom-[5%] right-[-5%] w-[30%] h-[30%] bg-[#022166]/5 rounded-full blur-[100px]"></div>
-      </div>
+<div className="fixed inset-0 z-0 pointer-events-none overflow-hidden"> {/* Aggiunto overflow-hidden qui */}
+  <div className="absolute top-[-5%] left-[-5%] w-[40%] h-[40%] bg-[#55B4FF]/10 rounded-full blur-[100px]"></div>
+  <div className="absolute bottom-[5%] right-[-5%] w-[30%] h-[30%] bg-[#022166]/5 rounded-full blur-[100px]"></div>
+</div>
 
 
 
@@ -147,10 +147,10 @@ export default function FisioterapiaMalavasi() {
             LA SCIENZA PENSATA PER IL TUO BENESSERE
           </div>
 
-          <h1 className="text-5xl md:text-7xl xl:text-8xl font-bold text-white leading-[1.1] mb-8 tracking-tighter">
-            Fisioterapia e Riabilitazione <br />
-            <span className="text-[#55B4FF]">a Cavezzo</span>
-          </h1>
+          <h1 className="text-4xl sm:text-5xl md:text-7xl xl:text-8xl font-bold text-white leading-[1.1] mb-8 tracking-tighter break-words">
+  Fisioterapia e Riabilitazione <br />
+  <span className="text-[#55B4FF]">a Cavezzo</span>
+</h1>
 
           <p className="text-lg md:text-xl text-white/80 mb-10 max-w-2xl mx-auto font-medium leading-relaxed">
             Valutazioni precise e trattamenti fisioterapici basati su evidenze scientifiche, pensati per ridurre il dolore, migliorare la mobilità e accompagnarti verso un recupero stabile e reale.
@@ -191,7 +191,7 @@ export default function FisioterapiaMalavasi() {
               { id: 5, titolo: "Riabilitazione Neurologica", icona: <Brain size={32} />, breve: "Percorsi per il recupero funzionale in pazienti con esiti di ictus, Parkinson, sclerosi multipla o lesioni nervose.", descrizione: "Il sistema nervoso ha una straordinaria capacità di adattamento. Attraverso esercizi neurocognitivi e stimolazioni specifiche, lavoriamo per riprogrammare il movimento, migliorare l'equilibrio e contrastare la spasticità. L'obiettivo è restituirti la massima indipendenza possibile nelle attività quotidiane, con un approccio empatico e scientificamente rigoroso.", colore: "from-sky-500/20 to-transparent" },
               { id: 6, titolo: "Fisioterapia Oncologica", icona: <HeartPulse size={32} />, breve: "Supporto specialistico per la gestione del linfedema, del dolore e della stanchezza cronica (fatigue) post-oncologica.", descrizione: "La fisioterapia gioca un ruolo cruciale nel percorso di guarigione oncologica. Mi occupo del trattamento del linfedema tramite linfodrenaggio manuale e bendaggi, oltre al recupero della mobilità articolare post-chirurgia (es. mastectomia). Un supporto concreto per migliorare la qualità della tua vita, riducendo gli effetti collaterali delle terapie e restituendo energia al tuo corpo.", colore: "from-blue-400/20 to-transparent" }
             ].map((item) => (
-              <div key={item.id} onClick={() => setSelectedTrattamento(item)} className="group relative p-8 rounded-[2.5rem] bg-white/40 backdrop-blur-md border border-white/60 cursor-pointer transition-all duration-500 hover:bg-white hover:-translate-y-2 hover:shadow-2xl">
+              <div key={item.id} onClick={() => setSelectedTrattamento(item)} className="group relative p-6 md:p-8 rounded-[2.5rem] bg-white/40 backdrop-blur-md border border-white/60 cursor-pointer transition-all duration-500 hover:bg-white hover:-translate-y-2 hover:shadow-2xl">
                 <div className={`absolute inset-0 bg-gradient-to-br ${item.colore} rounded-[2.5rem] opacity-0 group-hover:opacity-100 transition-opacity`}></div>
                 <div className="relative z-10">
                   <div className="w-16 h-16 bg-[#022166] text-[#55B4FF] rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-[#022166]/20 transition-transform group-hover:scale-110">
@@ -253,7 +253,7 @@ export default function FisioterapiaMalavasi() {
 
 {/* --- SEZIONE STAFF --- */}
 {/* MODIFICATO: rimosso h-screen e classi snap. Aggiunto min-h-screen */}
-<section id="team" className="relative min-h-screen w-full flex items-center justify-center py-32 px-4 bg-white">
+<section id="team" className="relative min-h-screen w-full flex items-center justify-center py-32 px-4 bg-white overflow-hidden">
   <div className="max-w-7xl mx-auto relative z-10 w-full py-10">
     <div className="text-center mb-20">
       <span className="text-[#55B4FF] font-black text-[10px] uppercase tracking-[0.3em] block mb-4">Professionalità e Competenza</span>
@@ -265,8 +265,8 @@ export default function FisioterapiaMalavasi() {
         { nome: "Alice Nanetti", ruolo: "Fisioterapista", specialita: "Riabilitazione muscolo-scheletrica e neurologica", foto: "/alice.jpg" },
         { nome: "Luca Rabaglia", ruolo: "Fisioterapista", specialita: "Riabilitazione muscolo-scheletrica e sportiva", foto: "/luca.webp" }
       ].map((membro, idx) => (
-        <div key={idx} className="group bg-slate-50 rounded-[3.5rem] p-4 pb-12 transition-all duration-700 hover:shadow-xl border border-slate-100 text-center flex flex-col items-center">
-          <div className="aspect-[4/4.5] w-full relative overflow-hidden rounded-[2.8rem] mb-8">
+        <div key={idx} className="group bg-slate-50 rounded-[2.5rem] md:rounded-[3.5rem] p-4 pb-8 md:pb-12 transition-all duration-700 hover:shadow-xl border border-slate-100 text-center flex flex-col items-center w-full">
+  <div className="aspect-square w-full relative overflow-hidden rounded-[2rem] md:rounded-[2.8rem] mb-6 md:mb-8">
             <Image 
               src={membro.foto} 
               alt={membro.nome} 
