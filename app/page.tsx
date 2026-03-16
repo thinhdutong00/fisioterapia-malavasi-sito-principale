@@ -107,13 +107,13 @@ export default function FisioterapiaMalavasi() {
 
   return (
     /* MODIFICATO: rimosso h-screen, overflow-y-auto e snap-scroll. Aggiunto min-h-screen e rimosso snap-mandatory */
-   <main className="relative min-h-screen w-full bg-[#F0F4F8] text-slate-800 font-sans scroll-smooth overflow-x-hidden">
+   <main className="relative min-h-screen w-full bg-[#F0F4F8] text-slate-800 font-sans scroll-smooth">
       
-      {/* BACKGROUND DECORATIONS */}
-<div className="fixed inset-0 z-0 pointer-events-none overflow-hidden"> {/* Aggiunto overflow-hidden qui */}
-  <div className="absolute top-[-5%] left-[-5%] w-[40%] h-[40%] bg-[#55B4FF]/10 rounded-full blur-[100px]"></div>
-  <div className="absolute bottom-[5%] right-[-5%] w-[30%] h-[30%] bg-[#022166]/5 rounded-full blur-[100px]"></div>
-</div>
+      {/* BACKGROUND DECORATIONS - Modificato per non creare overflow */}
+  <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+    <div className="absolute top-[-2%] left-[-10%] w-[70%] md:w-[40%] h-[30%] bg-[#55B4FF]/10 rounded-full blur-[80px] md:blur-[100px]"></div>
+    <div className="absolute bottom-[5%] right-[-10%] w-[60%] md:w-[30%] h-[30%] bg-[#022166]/5 rounded-full blur-[80px] md:blur-[100px]"></div>
+  </div>
 
 
 
@@ -147,8 +147,8 @@ export default function FisioterapiaMalavasi() {
             LA SCIENZA PENSATA PER IL TUO BENESSERE
           </div>
 
-          <h1 className="text-4xl sm:text-5xl md:text-7xl xl:text-8xl font-bold text-white leading-[1.1] mb-8 tracking-tighter break-words">
-  Fisioterapia e Riabilitazione <br />
+          <h1 className="text-[2.6rem] leading-[1.1] sm:text-5xl md:text-7xl xl:text-8xl font-bold text-white mb-8 tracking-tighter">
+  Fisioterapia e <br className="sm:hidden" /> Riabilitazione <br />
   <span className="text-[#55B4FF]">a Cavezzo</span>
 </h1>
 
@@ -253,31 +253,31 @@ export default function FisioterapiaMalavasi() {
 
 {/* --- SEZIONE STAFF --- */}
 {/* MODIFICATO: rimosso h-screen e classi snap. Aggiunto min-h-screen */}
-<section id="team" className="relative min-h-screen w-full flex items-center justify-center py-32 px-4 bg-white overflow-hidden">
-  <div className="max-w-7xl mx-auto relative z-10 w-full py-10">
-    <div className="text-center mb-20">
+<section id="team" className="relative py-20 md:py-32 px-4 bg-white overflow-hidden">
+  <div className="max-w-7xl mx-auto relative z-10 w-full">
+    <div className="text-center mb-12 md:mb-20">
       <span className="text-[#55B4FF] font-black text-[10px] uppercase tracking-[0.3em] block mb-4">Professionalità e Competenza</span>
-      <h2 className="text-4xl md:text-6xl font-black text-[#022166] tracking-tighter mb-6">Il Nostro <span className="text-[#55B4FF]">Team</span></h2>
+      <h2 className="text-3xl md:text-6xl font-black text-[#022166] tracking-tighter mb-6">Il Nostro <span className="text-[#55B4FF]">Team</span></h2>
     </div>
-    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+    {/* Cambiato gap-8 in gap-6 per mobile */}
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
       {[
         { nome: "Mirco Malavasi", ruolo: "Fisioterapista OMPT", specialita: "Riabilitazione muscolo-scheletrica e oncologica", foto: "/mirco.webp" },
         { nome: "Alice Nanetti", ruolo: "Fisioterapista", specialita: "Riabilitazione muscolo-scheletrica e neurologica", foto: "/alice.jpg" },
         { nome: "Luca Rabaglia", ruolo: "Fisioterapista", specialita: "Riabilitazione muscolo-scheletrica e sportiva", foto: "/luca.webp" }
       ].map((membro, idx) => (
-        <div key={idx} className="group bg-slate-50 rounded-[3.5rem] p-4 pb-12 transition-all duration-700 hover:shadow-xl border border-slate-100 text-center flex flex-col items-center">
-          <div className="aspect-[4/4.5] w-full relative overflow-hidden rounded-[2.8rem] mb-8">
+        <div key={idx} className="group bg-slate-50 rounded-[2.5rem] md:rounded-[3.5rem] p-4 pb-10 md:pb-12 transition-all duration-700 border border-slate-100 text-center flex flex-col items-center w-full max-w-[400px] mx-auto">
+          <div className="aspect-[4/5] w-full relative overflow-hidden rounded-[2rem] md:rounded-[2.8rem] mb-6 md:mb-8">
             <Image 
               src={membro.foto} 
               alt={membro.nome} 
               fill
               className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
           </div>
-          <span className="bg-[#f0f9ff] text-[#55B4FF] border border-[#55B4FF]/20 px-4 py-1.5 rounded-full font-black text-[9px] uppercase tracking-widest mb-4">{membro.ruolo}</span>
-          <h3 className="text-3xl font-black text-[#022166] mb-4 group-hover:text-[#55B4FF] transition-colors">{membro.nome}</h3>
-          <p className="text-slate-500 text-sm font-bold italic max-w-[250px]">{membro.specialita}</p>
+          <span className="bg-[#f0f9ff] text-[#55B4FF] border border-[#55B4FF]/20 px-4 py-1.5 rounded-full font-black text-[8px] md:text-[9px] uppercase tracking-widest mb-4">{membro.ruolo}</span>
+          <h3 className="text-2xl md:text-3xl font-black text-[#022166] mb-3 group-hover:text-[#55B4FF] transition-colors">{membro.nome}</h3>
+          <p className="text-slate-500 text-xs md:text-sm font-bold italic max-w-[220px]">{membro.specialita}</p>
         </div>
       ))}
     </div>
