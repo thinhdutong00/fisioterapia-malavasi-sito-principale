@@ -286,7 +286,7 @@ export default function FisioterapiaMalavasi() {
 
 {/* --- RECENSIONI --- */}
 {/* MODIFICATO: rimosso h-screen e classi snap. Aggiunto min-h-screen e flex items-center */}
-<section id="recensioni" className="relative min-h-screen w-full py-24 md:py-32 px-4 overflow-hidden bg-gradient-to-b from-white to-[#F0F4F8] flex items-center">
+<section id="recensioni" className="relative min-h-screen w-full py-20 md:py-32 px-4 overflow-x-hidden bg-gradient-to-b from-white to-[#F0F4F8] flex items-center">
   <div className="max-w-7xl mx-auto w-full">
     <div className="flex flex-col md:flex-row items-center justify-between mb-12 md:mb-16 gap-8">
       <div className="text-center md:text-left">
