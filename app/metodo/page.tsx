@@ -12,7 +12,6 @@ export default function ModalitaSedutaPage() {
   const modalita = [
     {
       titolo: "Seduta Fisioterapica",
-      // Puntiamo alla sottocartella /metodo/seduta-fisioterapica
       slug: "/metodo/seduta-fisioterapica", 
       desc: "L'intervento riabilitativo d'eccellenza presso il nostro studio. Setting controllato e tecnologie avanzate per il tuo recupero.",
       color: "bg-[#E0F2FE]", 
@@ -20,16 +19,22 @@ export default function ModalitaSedutaPage() {
     },
     {
       titolo: "Seduta Fisioterapica Domiciliare",
-      // Puntiamo alla sottocartella /metodo/seduta-fisioterapica-domiciliare
       slug: "/metodo/seduta-fisioterapica-domiciliare", 
       desc: "Portiamo la massima qualità clinica direttamente a casa tua, abbattendo le barriere logistiche e i disagi dello spostamento.",
       color: "bg-[#F3E8FF]", 
       label: "A Domicilio"
+    },
+    {
+      titolo: "SmallClass: Exercise Medicine",
+      slug: "/metodo/small-class", 
+      desc: "Esercizio terapeutico in piccoli gruppi (max 5 persone). Il ponte perfetto tra riabilitazione clinica e benessere duraturo.",
+      color: "bg-[#DCFCE7]", // Un verde molto chiaro per differenziarla
+      label: "Gruppi Ridotti"
     }
   ];
 
   return (
-    <main className="min-h-screen bg-[#F8FAFC] text-slate-800 font-sans relative overflow-hidden">
+    <main className="min-h-screen bg-[#F8FAFC] text-slate-800 font-sans relative overflow-x-hidden">
       
       {/* BACKGROUND DECORATIONS */}
       <div className="fixed inset-0 z-0 pointer-events-none">
@@ -38,7 +43,7 @@ export default function ModalitaSedutaPage() {
       </div>
 
       <div className="relative z-10 pt-32 pb-20 px-4 md:px-6">
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-7xl mx-auto">
           
           {/* Breadcrumb */}
           <nav className="flex items-center gap-2 text-sm text-slate-500 mb-10">
@@ -47,28 +52,28 @@ export default function ModalitaSedutaPage() {
             <span className="text-[#022166] font-semibold">Modalità della seduta</span>
           </nav>
 
-          {/* HEADER - Stile Hub con font Bold e tracking tight */}
+          {/* HEADER */}
           <header className="mb-24">
             <div className="flex items-center gap-3 mb-6">
               <div className="h-[1px] w-12 bg-[#55B4FF]"></div>
               <span className="text-xs font-black uppercase tracking-[0.3em] text-[#55B4FF]">(R)enjoy your mo(ve)ments</span>
             </div>
-            <h1 className="text-5xl md:text-8xl font-bold text-[#022166] leading-[0.95] mb-10 tracking-tighter">
-              Scegli la tua <br />modalità della <span className="text-[#55B4FF]">seduta.</span>
+            <h1 className="text-4xl sm:text-5xl md:text-8xl font-bold text-[#022166] leading-[0.95] mb-10 tracking-tighter">
+              Scegli la tua <br className="hidden md:block" />modalità della <span className="text-[#55B4FF]">seduta.</span>
             </h1>
             <p className="max-w-3xl text-xl md:text-2xl text-slate-600 leading-relaxed font-light">
-              Flessibilità logistica senza compromettere il rigore scientifico. Scegli l'ambiente 
-              più adatto alle tue attuali necessità cliniche.
+              Dalla terapia individuale al supporto del gruppo: offriamo percorsi personalizzati 
+              basati sull'evidenza scientifica per ogni fase del tuo recupero.
             </p>
           </header>
 
-          {/* GRID MODALITÀ - Le due Card Sottomenu */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {/* GRID MODALITÀ - Aggiornata a 3 colonne su desktop */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {modalita.map((m, index) => (
               <Link 
                 key={index} 
                 href={m.slug}
-                className={`group relative ${m.color} p-12 rounded-[2rem] border border-white/50 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 flex flex-col justify-between min-h-[400px]`}
+                className={`group relative ${m.color} p-8 md:p-12 rounded-[2rem] border border-white/50 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 flex flex-col justify-between min-h-[450px]`}
               >
                 <div>
                   <div className="flex justify-between items-start mb-8">
@@ -77,10 +82,10 @@ export default function ModalitaSedutaPage() {
                     </span>
                     <ArrowUpRight size={24} className="text-[#022166]/30 group-hover:text-[#022166] transition-colors" />
                   </div>
-                  <h3 className="text-3xl md:text-4xl font-bold text-[#022166] mb-6 leading-tight tracking-tight">
+                  <h3 className="text-3xl font-bold text-[#022166] mb-6 leading-tight tracking-tight">
                     {m.titolo}
                   </h3>
-                  <p className="text-[#022166]/70 text-lg leading-relaxed mb-8 font-medium">
+                  <p className="text-[#022166]/70 text-base md:text-lg leading-relaxed mb-8 font-medium">
                     {m.desc}
                   </p>
                 </div>
@@ -93,7 +98,7 @@ export default function ModalitaSedutaPage() {
           </div>
 
           {/* Footer Back Link */}
-          <div className="mt-24 border-t border-slate-200 pt-12 flex justify-between items-center text-slate-400">
+          <div className="mt-24 border-t border-slate-200 pt-12 flex flex-col md:flex-row justify-between items-center gap-6 text-slate-400">
             <Link 
               href="/" 
               className="inline-flex items-center gap-2 font-bold hover:text-[#022166] transition-all"
