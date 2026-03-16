@@ -40,7 +40,7 @@ export default function SmallClassPage() {
           <header className="mb-24">
             <div className="flex items-center gap-3 mb-6">
               <div className="h-[1px] w-12 bg-[#55B4FF]"></div>
-              <span className="text-xs font-black uppercase tracking-[0.3em] text-[#55B4FF]">Exercise Medicine</span>
+              <span className="text-xs font-black uppercase tracking-[0.3em] text-[#55B4FF]">Da 1 a 5 membri</span>
             </div>
             <h1 className="text-5xl md:text-8xl font-bold text-[#022166] leading-[0.95] mb-10 tracking-tighter">
               SmallClass:<br />Il potere del <span className="text-[#55B4FF]">gruppo.</span>
@@ -62,7 +62,7 @@ export default function SmallClassPage() {
                     Le <strong className="font-bold text-[#022166]">SmallClass</strong> sono sessioni di esercizio terapeutico supervisionato, progettate per piccoli gruppi d'élite.
                   </p>
                   <p className="text-slate-500 text-base md:text-lg leading-relaxed font-medium opacity-90">
-                    Non si tratta di semplici lezioni di fitness, ma di protocolli basati sulla scienza del movimento (Da 1 a 5 membri). Sono percorsi studiati specificamente per contrastare patologie croniche come diabete, obesità, ipertensione, problematiche cardiovascolari, osteoporosi e per il supporto durante o dopo terapie oncologiche.
+                    Non si tratta di semplici lezioni di fitness, ma di protocolli basati sulla scienza del movimento. Sono percorsi studiati specificamente per contrastare patologie croniche come diabete, obesità, ipertensione, problematiche cardiovascolari, osteoporosi e per il supporto durante o dopo terapie oncologiche.
                   </p>
                 </div>
               </div>
