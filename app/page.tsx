@@ -29,10 +29,13 @@ if (typeof window !== 'undefined') {
   const style = document.createElement('style');
   style.innerHTML = `
     html, body { 
-      max-width: 100%; 
+      max-width: 100vw; 
       overflow-x: hidden; 
       position: relative;
+      margin: 0;
+      padding: 0;
     }
+    * { box-sizing: border-box; }
   `;
   document.head.appendChild(style);
 }
@@ -122,7 +125,7 @@ export default function FisioterapiaMalavasi() {
    <main className="relative min-h-screen w-full bg-[#F0F4F8] text-slate-800 font-sans scroll-smooth">
       
       {/* BACKGROUND DECORATIONS - Modificato per non creare overflow */}
-  <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+  <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden max-w-full">
     <div className="absolute top-[-2%] left-[-10%] w-[70%] md:w-[40%] h-[30%] bg-[#55B4FF]/10 rounded-full blur-[80px] md:blur-[100px]"></div>
     <div className="absolute bottom-[5%] right-[-10%] w-[60%] md:w-[30%] h-[30%] bg-[#022166]/5 rounded-full blur-[80px] md:blur-[100px]"></div>
   </div>
@@ -344,7 +347,7 @@ export default function FisioterapiaMalavasi() {
           autoplay={{ delay: 5000, disableOnInteraction: false }}
           pagination={{ clickable: true, el: '.swiper-pagination-custom' }}
           breakpoints={{ 768: { slidesPerView: 2, spaceBetween: 30 }, 1024: { slidesPerView: 3 } }}
-          className="!pb-16 md:!pb-20 !overflow-visible"
+          className="!pb-16 md:!pb-20 overflow-hidden md:!overflow-visible"
         >
           {[
             { n: "Rosalba Cantuti", t: "Lo studio Malavasi è molto serio e professionale, Mirco segue molto bene il paziente e da’ consigli utili x continuare a migliorare nel percorso di riabilitazione.", d: "2 settimane fa" },
@@ -562,8 +565,8 @@ export default function FisioterapiaMalavasi() {
 {/* MODIFICATO: rimosso h-screen e snap-start. Aggiunto min-h-screen e rimosso overflow-hidden */}
 <section id="prenota" className="relative min-h-screen w-full py-32 px-6 bg-[#022166] flex flex-col items-center overflow-visible">
         {/* Decorazioni di sfondo */}
-        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#55B4FF]/10 rounded-full blur-[120px] -z-10 translate-x-1/2 -translate-y-1/2" />
-        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#55B4FF]/5 rounded-full blur-[100px] -z-10 -translate-x-1/2 translate-y-1/2" />
+        <div className="hidden md:block absolute top-0 right-0 w-[600px] h-[600px] bg-[#55B4FF]/10 rounded-full blur-[120px] -z-10 translate-x-1/2 -translate-y-1/2" />
+<div className="hidden md:block absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#55B4FF]/5 rounded-full blur-[100px] -z-10 -translate-x-1/2 translate-y-1/2" />
 
         <div className="max-w-4xl w-full flex flex-col relative flex-grow justify-center">
           
@@ -578,7 +581,7 @@ export default function FisioterapiaMalavasi() {
           <div className="text-white flex flex-col">
             <div className="mb-12">
               <span className="text-[#55B4FF] font-bold text-[10px] uppercase tracking-[0.3em] block mb-2">Fase {step} di 5</span>
-              <h1 className="text-5xl md:text-8xl font-bold text-[#ffffff] leading-[0.95] mb-10 tracking-tighter">
+              <h1 className="text-4xl sm:text-5xl md:text-8xl font-bold text-[#ffffff] leading-[0.95] mb-10 tracking-tighter">
   Prenota la tua <br />
   <span className="text-[#55B4FF]">Visita.</span>
 </h1>
