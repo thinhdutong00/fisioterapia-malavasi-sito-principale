@@ -24,7 +24,6 @@ export default function Navbar() {
       if (currentScrollY < 10) {
         setIsVisible(true);
       } else if (currentScrollY > lastScrollY.current) {
-        // Nascondi header solo se il menu mobile è CHIUSO
         if (!isMobileMenuOpen) {
           setIsVisible(false);
         }
@@ -56,14 +55,11 @@ export default function Navbar() {
 
   const isDarkTheme = isHomePage && !isScrolled;
   
-  // Colore testo e icone: blu se menu aperto, altrimenti basato su scroll
-  const textColor = isMobileMenuOpen 
-    ? "text-[#022166]" 
-    : (isDarkTheme ? "text-white" : "text-[#022166]");
-  
-  const logoSrc = isMobileMenuOpen || !isDarkTheme
-    ? "/logo-fisioterapia-malavasi.png" 
-    : "/logo-bianco-fisioterapia-malavasi.png";
+  // Colori header principale
+  const textColor = isDarkTheme ? "text-white" : "text-[#022166]";
+  const logoSrc = isDarkTheme 
+    ? "/logo-bianco-fisioterapia-malavasi.png" 
+    : "/logo-fisioterapia-malavasi.png";
 
   const btnBaseClass = `group relative overflow-hidden flex items-center justify-center gap-3 px-5 py-3.5 font-black text-[11px] uppercase tracking-[0.15em] transition-all active:scale-95 shadow-md whitespace-nowrap`;
   const borderRadiusClass = isScrolled ? "rounded-xl" : "rounded-full";
@@ -82,12 +78,10 @@ export default function Navbar() {
         }`}
       >
         
-        {/* LOGO AREA - Rimane fisso perché dentro l'header fixed */}
-        <Link href="/" className="flex items-center flex-shrink-0 z-[120]">
+        {/* LOGO AREA (DESKTOP/STANDARD MOBILE) */}
+        <Link href="/" className="flex items-center flex-shrink-0">
           <div className={`relative transition-all duration-500 ${
-            isScrolled 
-              ? "w-36 h-8 md:w-44 h-9" 
-              : "w-52 h-10 md:w-72 h-14"
+            isScrolled ? "w-36 h-8 md:w-44 h-9" : "w-52 h-10 md:w-72 h-14"
           }`}>
             <Image 
               src={logoSrc} 
@@ -116,36 +110,23 @@ export default function Navbar() {
         </nav>
 
         {/* ACTIONS & HAMBURGER */}
-        <div className="flex items-center flex-shrink-0 gap-3 z-[120]">
+        <div className="flex items-center flex-shrink-0 gap-3">
           <div className="hidden lg:flex items-center gap-3">
-            <a 
-              href="tel:+393338225464" 
-              className={`${btnBaseClass} ${borderRadiusClass} ${
-                isDarkTheme
-                  ? "bg-white/10 text-white border border-white/20"
-                  : "bg-[#022166]/5 text-[#022166] border border-[#022166]/10 hover:bg-[#022166] hover:text-white"
-              }`}
-            >
+            <a href="tel:+393338225464" className={`${btnBaseClass} ${borderRadiusClass} ${isDarkTheme ? "bg-white/10 text-white border border-white/20" : "bg-[#022166]/5 text-[#022166] border border-[#022166]/10 hover:bg-[#022166] hover:text-white"}`}>
               <Phone size={14} />
               <span className="hidden xl:inline">Contattaci</span>
             </a>
-            
-            <Link 
-              href="/prenota"
-              className={`${btnBaseClass} ${borderRadiusClass} ${
-                isDarkTheme ? "bg-[#55B4FF] text-[#022166]" : "bg-[#022166] text-white"
-              }`}
-            >
+            <Link href="/prenota" className={`${btnBaseClass} ${borderRadiusClass} ${isDarkTheme ? "bg-[#55B4FF] text-[#022166]" : "bg-[#022166] text-white"}`}>
               <CalendarCheck size={16} />
               <span>Prenota Ora</span>
             </Link>
           </div>
 
           <button 
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            onClick={() => setIsMobileMenuOpen(true)}
             className={`lg:hidden p-2 transition-colors ${textColor}`}
           >
-            {isMobileMenuOpen ? <X size={32} /> : <Menu size={32} />}
+            <Menu size={32} />
           </button>
         </div>
       </div>
@@ -153,15 +134,31 @@ export default function Navbar() {
       {/* MOBILE MENU TENDINA - SFONDO SOLIDO BIANCO */}
       <div 
         className={`fixed inset-0 h-screen w-screen bg-white z-[110] lg:hidden transition-all duration-500 ease-in-out ${
-          isMobileMenuOpen 
-            ? "translate-y-0 opacity-100 visible" 
-            : "-translate-y-full opacity-0 invisible"
+          isMobileMenuOpen ? "translate-y-0 opacity-100 visible" : "-translate-y-full opacity-0 invisible"
         }`}
       >
+        {/* HEADER FISSO DENTRO IL MENU MOBILE */}
+        <div className="absolute top-0 left-0 w-full flex items-center justify-between py-8 px-6 md:px-10 border-b border-slate-50">
+          <Link href="/" onClick={() => setIsMobileMenuOpen(false)} className="flex items-center">
+            <div className="relative w-44 h-9">
+              <Image 
+                src="/logo-fisioterapia-malavasi.png" 
+                alt="Logo Malavasi" 
+                fill 
+                className="object-contain"
+              />
+            </div>
+          </Link>
+          <button 
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="p-2 text-[#022166] transition-transform active:scale-90"
+          >
+            <X size={32} />
+          </button>
+        </div>
+
         {/* Contenitore interno con scroll indipendente */}
-        <div className="flex flex-col h-full pt-44 pb-12 px-10 overflow-y-auto">
-          
-          {/* Menu Links */}
+        <div className="flex flex-col h-full pt-40 pb-12 px-10 overflow-y-auto">
           <nav className="flex flex-col">
             {navLinks.map((item) => (
               <Link 
@@ -175,20 +172,12 @@ export default function Navbar() {
             ))}
           </nav>
 
-          {/* Pulsanti CTA in fondo */}
           <div className="mt-auto pt-10 space-y-4">
-            <a 
-              href="tel:+393338225464" 
-              className="w-full flex items-center justify-center gap-4 bg-slate-100 text-[#022166] py-5 rounded-2xl font-black uppercase text-xs tracking-widest active:scale-95 transition-all"
-            >
+            <a href="tel:+393338225464" className="w-full flex items-center justify-center gap-4 bg-slate-100 text-[#022166] py-5 rounded-2xl font-black uppercase text-xs tracking-widest active:scale-95 transition-all">
               <Phone size={20} />
               Chiama Studio
             </a>
-            <Link 
-              href="/prenota"
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="w-full flex items-center justify-center gap-4 bg-[#022166] text-white py-5 rounded-2xl font-black uppercase text-xs tracking-widest shadow-xl active:scale-95 transition-all"
-            >
+            <Link href="/prenota" onClick={() => setIsMobileMenuOpen(false)} className="w-full flex items-center justify-center gap-4 bg-[#022166] text-white py-5 rounded-2xl font-black uppercase text-xs tracking-widest shadow-xl active:scale-95 transition-all">
               <CalendarCheck size={20} />
               Prenota Ora
             </Link>
