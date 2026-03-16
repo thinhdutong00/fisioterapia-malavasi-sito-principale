@@ -133,7 +133,7 @@ export default function Navbar() {
 
       {/* MOBILE MENU TENDINA - SFONDO SOLIDO BIANCO */}
       <div 
-        className={`fixed inset-0 h-screen w-screen bg-white z-[110] lg:hidden transition-all duration-500 ease-in-out ${
+        className={`fixed inset-0 h-screen w-screen bg-white z-[10000] lg:hidden transition-all duration-500 ease-in-out ${
           isMobileMenuOpen ? "translate-y-0 opacity-100 visible" : "-translate-y-full opacity-0 invisible"
         }`}
       >
