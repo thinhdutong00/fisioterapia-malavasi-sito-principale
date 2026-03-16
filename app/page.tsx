@@ -265,8 +265,8 @@ export default function FisioterapiaMalavasi() {
         { nome: "Alice Nanetti", ruolo: "Fisioterapista", specialita: "Riabilitazione muscolo-scheletrica e neurologica", foto: "/alice.jpg" },
         { nome: "Luca Rabaglia", ruolo: "Fisioterapista", specialita: "Riabilitazione muscolo-scheletrica e sportiva", foto: "/luca.webp" }
       ].map((membro, idx) => (
-        <div key={idx} className="group bg-slate-50 rounded-[2.5rem] md:rounded-[3.5rem] p-4 pb-8 md:pb-12 transition-all duration-700 hover:shadow-xl border border-slate-100 text-center flex flex-col items-center w-full">
-  <div className="aspect-square w-full relative overflow-hidden rounded-[2rem] md:rounded-[2.8rem] mb-6 md:mb-8">
+        <div key={idx} className="group bg-slate-50 rounded-[3.5rem] p-4 pb-12 transition-all duration-700 hover:shadow-xl border border-slate-100 text-center flex flex-col items-center">
+          <div className="aspect-[4/4.5] w-full relative overflow-hidden rounded-[2.8rem] mb-8">
             <Image 
               src={membro.foto} 
               alt={membro.nome} 
