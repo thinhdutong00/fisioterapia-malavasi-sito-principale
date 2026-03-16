@@ -138,9 +138,9 @@ export default function Navbar() {
         }`}
       >
         {/* HEADER FISSO DENTRO IL MENU MOBILE */}
-        <div className="absolute top-0 left-0 w-full flex items-center justify-between py-8 px-6 md:px-10 border-b border-slate-50">
+        <div className="absolute top-0 left-0 w-full flex items-center justify-between py-10 px-6 md:px-10 border-b border-slate-50">
           <Link href="/" onClick={() => setIsMobileMenuOpen(false)} className="flex items-center">
-            <div className="relative w-44 h-9">
+            <div className="relative w-56 h-12 md:w-64 md:h-14">
               <Image 
                 src="/logo-fisioterapia-malavasi.png" 
                 alt="Logo Malavasi" 
@@ -158,14 +158,23 @@ export default function Navbar() {
         </div>
 
         {/* Contenitore interno con scroll indipendente */}
-        <div className="flex flex-col h-full pt-40 pb-12 px-10 overflow-y-auto">
+        <div className="flex flex-col h-full pt-44 pb-12 px-10 overflow-y-auto">
           <nav className="flex flex-col">
+            {/* Voce HOME aggiunta solo per mobile */}
+            <Link 
+              href="/"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="block text-lg font-medium text-[#022166] uppercase tracking-[0.1em] border-b border-slate-100 py-5"
+            >
+              Home
+            </Link>
+            
             {navLinks.map((item) => (
               <Link 
                 key={item.n} 
                 href={item.h}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="block text-2xl font-bold text-[#022166] uppercase tracking-[0.1em] border-b border-slate-100 py-6"
+                className="block text-lg font-medium text-[#022166] uppercase tracking-[0.1em] border-b border-slate-100 py-5"
               >
                 {item.n}
               </Link>
