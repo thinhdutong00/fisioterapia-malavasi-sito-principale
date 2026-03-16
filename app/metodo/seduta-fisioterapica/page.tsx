@@ -357,7 +357,7 @@ export default function SedutaFisioterapicaPage() {
             <div className="relative z-10 max-w-3xl">
               <div className="flex items-center gap-3 mb-6">
                 <div className="h-[1px] w-8 bg-[#55B4FF]"></div>
-                <span className="text-[#55B4FF] font-black text-[10px] uppercase tracking-[0.4em]">Clinical Excellence</span>
+                <span className="text-[#55B4FF] font-black text-[10px] uppercase tracking-[0.4em]">Riabilitazione e Fisioterapia Malavasi</span>
               </div>
               
               <h3 className="text-4xl md:text-6xl font-bold mb-8 tracking-tighter leading-[0.95]">
