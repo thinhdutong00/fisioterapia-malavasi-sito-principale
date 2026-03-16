@@ -188,40 +188,147 @@ export default function FisioterapiaMalavasi() {
         </div>
       </section>
 
-      {/* --- TRATTAMENTI --- */}
-      {/* MODIFICATO: rimosso snap-start e snap-always. Cambiato h-screen in min-h-screen */}
-      <section id="servizi" className="relative min-h-screen w-full flex items-center justify-center py-24 px-4 bg-white/5 backdrop-blur-sm overflow-hidden">
-        <div className="max-w-7xl mx-auto relative z-10 w-full py-10">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-black text-[#022166] tracking-tight mb-4">I Nostri Trattamenti</h2>
-            <div className="w-20 h-1.5 bg-[#55B4FF] mx-auto rounded-full"></div>
+{/* --- TRATTAMENTI --- */}
+      <section id="servizi" className="relative w-full py-24 md:py-32 px-6 bg-white overflow-hidden">
+        
+        {/* Decorazione di sfondo sottile */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60%] h-[60%] bg-[#55B4FF]/5 rounded-full blur-[120px] pointer-events-none" />
+
+        <div className="max-w-7xl mx-auto relative z-10">
+          
+          {/* Header Sezione */}
+          <div className="flex flex-col items-center text-center mb-20">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="h-[1px] w-8 bg-[#55B4FF]" />
+              <span className="text-[10px] font-black uppercase tracking-[0.3em] text-[#55B4FF]">Specializzazioni</span>
+              <div className="h-[1px] w-8 bg-[#55B4FF]" />
+            </div>
+            <h2 className="text-4xl md:text-6xl font-bold text-[#022166] tracking-tighter leading-none">
+              Soluzioni per il tuo <br />
+              <span className="text-slate-400">benessere fisico.</span>
+            </h2>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {/* Grid Trattamenti */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {[
-              { id: 1, titolo: "Riabilitazione Post-Chirurgica", icona: <Accessibility size={32} />, breve: "Percorsi specialistici per il recupero della mobilità dopo interventi di protesi (anca/ginocchio) o ricostruzione legamentosa (LCA).", descrizione: "L'intervento chirurgico è solo il primo passo: il vero successo dipende dalla riabilitazione. Seguo protocolli basati sulle più recenti evidenze scientifiche per ridurre l'infiammazione, recuperare la forza muscolare e restituirti la piena autonomia nel minor tempo possibile. Non lasciare che la cicatrice limiti il tuo movimento.", colore: "from-blue-500/20 to-transparent" },
-              { id: 2, titolo: "Trattamento Cervicalgia, Lombalgia ed Ernie del Disco", icona: <MoveVertical size={32} />, breve: "Soluzioni efficaci per eliminare il dolore alla colonna vertebrale, sciatalgie e tensioni muscolari legate alla postura.", descrizione: "Il mal di schiena non deve diventare una condizione normale della tua vita. Attraverso tecniche di terapia manuale e manipolazioni mirate, agisco sulla causa del dolore (sia essa meccanica, posturale o compressiva) per liberare le articolazioni e rilassare i tessuti profondi. Torna a muoverti senza paura di rimanere bloccato.", colore: "from-cyan-500/20 to-transparent" },
-              { id: 3, titolo: "Fisioterapia Sportiva e Recupero Traumi da Sport", icona: <Footprints size={32} />, breve: "Trattamento specialistico per distorsioni alla caviglia, lesioni muscolari e problematiche articolari della spalla.", descrizione: "Per uno sportivo, ogni giorno fermo è un giorno perso. Mi occupo del trattamento di traumi acuti e cronici, applicando tecniche che accelerano la riparazione dei tessuti e prevengono future recidive. Dalla gestione della fase acuta al ritorno in campo, ogni fase è monitorata per garantirti la massima performance.", colore: "from-[#55B4FF]/20 to-transparent" },
-              { id: 4, titolo: "Cura delle Tendiniti e Infiammazioni Croniche", icona: <Dna size={32} />, breve: "Trattamento per dolore al gomito (epicondilite), tendine d'Achille e fascite plantare con approcci conservativi avanzati.", descrizione: "Le tendinopatie richiedono pazienza e competenza specifica: il riposo assoluto spesso non basta. Utilizzo un approccio combinato di terapia manuale ed esercizio terapeutico per rieducare il tendine al carico, eliminando quel dolore persistente che ostacola i tuoi gesti quotidiani o la tua corsa.", colore: "from-indigo-500/20 to-transparent" },
-              { id: 5, titolo: "Riabilitazione Neurologica", icona: <Brain size={32} />, breve: "Percorsi per il recupero funzionale in pazienti con esiti di ictus, Parkinson, sclerosi multipla o lesioni nervose.", descrizione: "Il sistema nervoso ha una straordinaria capacità di adattamento. Attraverso esercizi neurocognitivi e stimolazioni specifiche, lavoriamo per riprogrammare il movimento, migliorare l'equilibrio e contrastare la spasticità. L'obiettivo è restituirti la massima indipendenza possibile nelle attività quotidiane, con un approccio empatico e scientificamente rigoroso.", colore: "from-sky-500/20 to-transparent" },
-              { id: 6, titolo: "Fisioterapia Oncologica", icona: <HeartPulse size={32} />, breve: "Supporto specialistico per la gestione del linfedema, del dolore e della stanchezza cronica (fatigue) post-oncologica.", descrizione: "La fisioterapia gioca un ruolo cruciale nel percorso di guarigione oncologica. Mi occupo del trattamento del linfedema tramite linfodrenaggio manuale e bendaggi, oltre al recupero della mobilità articolare post-chirurgia (es. mastectomia). Un supporto concreto per migliorare la qualità della tua vita, riducendo gli effetti collaterali delle terapie e restituendo energia al tuo corpo.", colore: "from-blue-400/20 to-transparent" }
+              { 
+                id: 1, 
+                titolo: "Riabilitazione Post-Chirurgica", 
+                icona: <Accessibility size={28} />, 
+                breve: "Recupero della mobilità dopo interventi di protesi (anca/ginocchio) o ricostruzione legamentosa.", 
+                descrizione: "L'intervento chirurgico è solo il primo passo: il vero successo dipende dalla riabilitazione. Seguo protocolli basati sulle più recenti evidenze scientifiche per restituirti la piena autonomia nel minor tempo possibile.", 
+                link: "/trattamenti/riabilitazione-post-chirurgica" 
+              },
+              { 
+                id: 2, 
+                titolo: "Colonna Vertebrale ed Ernie", 
+                icona: <MoveVertical size={28} />, 
+                breve: "Soluzioni efficaci per eliminare il dolore alla colonna vertebrale, cervicalgie, lombalgie e sciatalgie.", 
+                descrizione: "Attraverso tecniche di terapia manuale e manipolazioni mirate, agisco sulla causa del dolore per liberare le articolazioni e rilassare i tessuti profondi. Torna a muoverti senza paura.", 
+                link: "/trattamenti/dolore-colonna" 
+              },
+              { 
+                id: 3, 
+                titolo: "Fisioterapia Sportiva", 
+                icona: <Footprints size={28} />, 
+                breve: "Trattamento specialistico per distorsioni, lesioni muscolari e problematiche articolari traumatiche.", 
+                descrizione: "Mi occupo del trattamento di traumi acuti e cronici, applicando tecniche che accelerano la riparazione dei tessuti e prevengono future recidive per garantirti la massima performance.", 
+                link: "/trattamenti/sportiva" 
+              },
+              { 
+                id: 4, 
+                titolo: "Tendiniti e Infiammazioni", 
+                icona: <Dna size={28} />, 
+                breve: "Cura per epicondilite, tendine d'Achille e fascite plantare con approcci conservativi avanzati.", 
+                descrizione: "Utilizzo un approccio combinato di terapia manuale ed esercizio terapeutico per rieducare il tendine al carico, eliminando quel dolore persistente che ostacola i tuoi gesti quotidiani.", 
+                link: "/trattamenti/tendiniti" 
+              },
+              { 
+                id: 5, 
+                titolo: "Riabilitazione Neurologica", 
+                icona: <Brain size={28} />, 
+                breve: "Recupero funzionale per esiti di ictus, Parkinson, sclerosi multipla o lesioni nervose.", 
+                descrizione: "Attraverso esercizi neurocognitivi e stimolazioni specifiche, lavoriamo per riprogrammare il movimento, migliorare l'equilibrio e contrastare la spasticità.", 
+                link: "/trattamenti/neurologica" 
+              },
+              { 
+                id: 6, 
+                titolo: "Fisioterapia Oncologica", 
+                icona: <HeartPulse size={28} />, 
+                breve: "Gestione del linfedema, del dolore e della stanchezza cronica (fatigue) post-oncologica.", 
+                descrizione: "Trattamento del linfedema tramite linfodrenaggio manuale e bendaggi, oltre al recupero della mobilità articolare post-chirurgia. Un supporto concreto per la qualità della vita.", 
+                link: "/trattamenti/oncologica" 
+              }
             ].map((item) => (
-              <div key={item.id} onClick={() => setSelectedTrattamento(item)} className="group relative p-6 md:p-8 rounded-[2.5rem] bg-white/40 backdrop-blur-md border border-white/60 cursor-pointer transition-all duration-500 hover:bg-white hover:-translate-y-2 hover:shadow-2xl">
-                <div className={`absolute inset-0 bg-gradient-to-br ${item.colore} rounded-[2.5rem] opacity-0 group-hover:opacity-100 transition-opacity`}></div>
-                <div className="relative z-10">
-                  <div className="w-16 h-16 bg-[#022166] text-[#55B4FF] rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-[#022166]/20 transition-transform group-hover:scale-110">
-                    {item.icona}
-                  </div>
-                  <h3 className="text-xl font-black text-[#022166] mb-3 leading-tight">{item.titolo}</h3>
-                  <p className="text-slate-600 text-sm font-medium mb-6 line-clamp-2">{item.breve}</p>
-                  <div className="inline-flex items-center gap-2 text-[#55B4FF] font-black text-[10px] uppercase tracking-widest">
-                    Scopri i dettagli <ChevronRight size={14} />
-                  </div>
+              <div 
+                key={item.id} 
+                onClick={() => setSelectedTrattamento(item)} 
+                className="group p-8 rounded-[2rem] bg-white border border-slate-100 hover:border-[#55B4FF]/30 hover:shadow-[0_20px_40px_rgba(2,33,102,0.05)] transition-all duration-500 cursor-pointer flex flex-col h-full"
+              >
+                <div className="w-14 h-14 bg-[#F8FAFC] text-[#022166] rounded-2xl flex items-center justify-center mb-8 group-hover:bg-[#022166] group-hover:text-[#55B4FF] transition-all duration-500 shadow-sm">
+                  {item.icona}
+                </div>
+                
+                <h3 className="text-xl font-bold text-[#022166] mb-4 leading-tight tracking-tight">
+                  {item.titolo}
+                </h3>
+                
+                <p className="text-slate-500 text-sm leading-relaxed mb-8 flex-grow">
+                  {item.breve}
+                </p>
+
+                <div className="flex items-center gap-2 text-[#55B4FF] font-black text-[10px] uppercase tracking-widest opacity-0 group-hover:opacity-100 group-hover:translate-x-2 transition-all duration-500">
+                  Dettagli <ChevronRight size={14} />
                 </div>
               </div>
             ))}
           </div>
         </div>
+
+        {/* MODAL / POPUP DETTAGLI */}
+        {selectedTrattamento && (
+          <div className="fixed inset-0 z-[10000] flex items-center justify-center p-4 md:p-6 bg-[#022166]/20 backdrop-blur-md animate-in fade-in duration-300">
+            <div className="bg-white w-full max-w-2xl rounded-[2.5rem] shadow-2xl overflow-hidden relative animate-in zoom-in-95 duration-300">
+              
+              <button 
+                onClick={() => setSelectedTrattamento(null)}
+                className="absolute top-6 right-6 p-2 bg-slate-50 text-[#022166] rounded-full hover:bg-slate-100 transition-colors z-10"
+              >
+                <X size={20} />
+              </button>
+
+              <div className="p-8 md:p-12">
+                <div className="w-16 h-16 bg-[#022166] text-[#55B4FF] rounded-2xl flex items-center justify-center mb-8">
+                  {selectedTrattamento.icona}
+                </div>
+                
+                <h3 className="text-3xl md:text-4xl font-bold text-[#022166] mb-6 tracking-tighter">
+                  {selectedTrattamento.titolo}
+                </h3>
+                
+                <p className="text-lg text-slate-600 leading-relaxed mb-10 font-light">
+                  {selectedTrattamento.descrizione}
+                </p>
+
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <Link 
+                    href={selectedTrattamento.link}
+                    className="flex-1 inline-flex items-center justify-center gap-3 bg-[#022166] text-white px-8 py-5 rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-[#55B4FF] transition-all group"
+                  >
+                    Scopri di più <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                  </Link>
+                  <button 
+                    onClick={() => setSelectedTrattamento(null)}
+                    className="flex-1 inline-flex items-center justify-center px-8 py-5 rounded-2xl font-black text-xs uppercase tracking-widest text-slate-400 border border-slate-100 hover:bg-slate-50 transition-all"
+                  >
+                    Chiudi
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </section>
 
       {/* --- SEZIONE DOMICILIO --- */}
