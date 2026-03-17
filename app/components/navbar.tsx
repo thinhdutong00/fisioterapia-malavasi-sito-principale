@@ -49,7 +49,7 @@ export default function Navbar() {
     }
   }, [isMobileMenuOpen]);
 
-  const navLinks = [
+const navLinks = [
     { n: "Informazioni", h: "/informazioni" },
     { 
       n: "Trattamenti", 
