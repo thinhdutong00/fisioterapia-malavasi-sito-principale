@@ -12,7 +12,7 @@ import {
   Phone, ArrowRight, Menu, Users, Star, Home, MapPin, HeartPulse,
   Calendar, Clock, Plus, ChevronLeft, Upload, FileText,
   Accessibility, HandIcon, Move, Brain, Spline, Scale,
-  Stethoscope, Dumbbell, UserCheck,
+  Stethoscope, Dumbbell, UserCheck, GitCommitVertical,
   Dna, MoveVertical, Footprints, Layers,
   MessageCircle, ClipboardCheck, Quote, CalendarCheck,
   Shield
@@ -215,7 +215,7 @@ export default function FisioterapiaMalavasi() {
               { 
                 id: 1, 
                 titolo: "Riabilitazione Post-Chirurgica", 
-                icona: <Accessibility size={28} />, 
+                icona: <GitCommitVertical size={28} />, 
                 breve: "Recupero della mobilità dopo interventi di protesi (anca/ginocchio) o ricostruzione legamentosa.", 
                 descrizione: "L'intervento chirurgico è solo il primo passo: il vero successo dipende dalla riabilitazione. Seguo protocolli basati sulle più recenti evidenze scientifiche per restituirti la piena autonomia nel minor tempo possibile.", 
                 link: "/trattamenti/chirurgica" // MODIFICATO
