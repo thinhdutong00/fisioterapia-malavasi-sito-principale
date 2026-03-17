@@ -64,6 +64,10 @@ const navLinks = [
       ]
     },
     { 
+
+       n: "Modalità della seduta", h: "//metodo" },
+      {
+
       n: "Modalità della seduta", 
       h: "/metodo",
       sub: [
