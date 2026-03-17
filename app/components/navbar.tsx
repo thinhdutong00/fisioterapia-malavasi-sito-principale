@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Phone, CalendarCheck, Menu, X } from "lucide-react";
+import { Phone, CalendarCheck, Menu, X, ChevronDown } from "lucide-react";
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -13,6 +13,7 @@ export default function Navbar() {
   const [isVisible, setIsVisible] = useState(true);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [openSubmenu, setOpenSubmenu] = useState<string | null>(null); // Per mobile
   const lastScrollY = useRef(0);
 
   // Gestione Scroll
@@ -43,14 +44,33 @@ export default function Navbar() {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "unset";
+      setOpenSubmenu(null);
     }
   }, [isMobileMenuOpen]);
 
   const navLinks = [
     { n: "Informazioni", h: "/informazioni" },
-    { n: "Trattamenti", h: "/trattamenti" },
+    { 
+      n: "Trattamenti", 
+      h: "/trattamenti",
+      sub: [
+        { n: "Riabilitazione Post-Chirurgica", h: "/trattamenti/chirurgica" },
+        { n: "Dolore Persistente", h: "/trattamenti/dolore-persistente" },
+        { n: "Fisioterapia Sportiva", h: "/trattamenti/sportiva" },
+        { n: "Cefalee e Vertigini", h: "/trattamenti/cefalee-vertigini" },
+        { n: "Riabilitazione Neurologica", h: "/trattamenti/neurologica" },
+        { n: "Fisioterapia Oncologica", h: "/trattamenti/oncologica" },
+      ]
+    },
     { n: "Modalità della seduta", h: "/metodo" },
-    { n: "Dove siamo", h: "/contatti" }
+    { 
+      n: "Dove siamo", 
+      h: "/contatti",
+      sub: [
+        { n: "Contatti", h: "/contatti" },
+        { n: "Lavora con noi", h: "/contatti/lavora-con-noi" },
+      ]
+    }
   ];
 
   const isDarkTheme = isHomePage && !isScrolled;
@@ -78,7 +98,7 @@ export default function Navbar() {
         }`}
       >
         
-        {/* LOGO AREA (DESKTOP/STANDARD MOBILE) */}
+        {/* LOGO AREA */}
         <Link href="/" className="flex items-center flex-shrink-0">
           <div className={`relative transition-all duration-500 ${
             isScrolled ? "w-36 h-8 md:w-44 h-9" : "w-52 h-10 md:w-72 h-14"
@@ -98,14 +118,39 @@ export default function Navbar() {
           isScrolled ? "gap-4 xl:gap-6" : "gap-6 xl:gap-10" 
         }`}>
           {navLinks.map((item) => (
-            <Link 
-              key={item.n} 
-              href={item.h}
-              className={`relative font-bold text-[11px] uppercase tracking-[0.1em] transition-all hover:text-[#55B4FF] group/link whitespace-nowrap ${textColor}`}
-            >
-              {item.n}
-              <span className={`absolute -bottom-1 left-0 h-0.5 bg-[#55B4FF] transition-all duration-300 ${pathname === item.h ? "w-full" : "w-0 group-hover/link:w-full"}`} />
-            </Link>
+            <div key={item.n} className="relative group/menu">
+              {item.sub ? (
+                <div className="flex items-center gap-1 cursor-default py-2">
+                   <span className={`relative font-bold text-[11px] uppercase tracking-[0.1em] transition-all group-hover/menu:text-[#55B4FF] whitespace-nowrap ${textColor}`}>
+                    {item.n}
+                  </span>
+                  <ChevronDown size={14} className={`transition-transform duration-300 group-hover/menu:rotate-180 ${textColor} group-hover/menu:text-[#55B4FF]`} />
+                  
+                  {/* DROPDOWN DESKTOP */}
+                  <div className="absolute top-full left-1/2 -translate-x-1/2 pt-4 opacity-0 invisible group-hover/menu:opacity-100 group-hover/menu:visible transition-all duration-300 transform group-hover/menu:translate-y-0 translate-y-2">
+                    <div className="bg-white rounded-2xl shadow-2xl border border-slate-100 overflow-hidden min-w-[240px] p-2">
+                      {item.sub.map((subItem) => (
+                        <Link 
+                          key={subItem.n}
+                          href={subItem.h}
+                          className="block px-5 py-3 text-[10px] font-bold uppercase tracking-widest text-[#022166] hover:bg-slate-50 hover:text-[#55B4FF] transition-colors rounded-xl"
+                        >
+                          {subItem.n}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <Link 
+                  href={item.h}
+                  className={`relative font-bold text-[11px] uppercase tracking-[0.1em] transition-all hover:text-[#55B4FF] group/link whitespace-nowrap ${textColor}`}
+                >
+                  {item.n}
+                  <span className={`absolute -bottom-1 left-0 h-0.5 bg-[#55B4FF] transition-all duration-300 ${pathname === item.h ? "w-full" : "w-0 group-hover/link:w-full"}`} />
+                </Link>
+              )}
+            </div>
           ))}
         </nav>
 
@@ -131,73 +176,68 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* MOBILE MENU TENDINA - SFONDO SOLIDO BIANCO */}
+      {/* MOBILE MENU TENDINA */}
       <div 
         className={`fixed inset-0 h-screen w-screen bg-white z-[10000] lg:hidden transition-all duration-500 ease-in-out ${
           isMobileMenuOpen ? "translate-y-0 opacity-100 visible" : "-translate-y-full opacity-0 invisible"
         }`}
       >
-        {/* HEADER FISSO DENTRO IL MENU MOBILE */}
-        <div className="absolute top-0 left-0 w-full flex items-center justify-between py-10 px-6 md:px-10 border-b border-slate-50">
-          <Link href="/" onClick={() => setIsMobileMenuOpen(false)} className="flex items-center">
-            <div className="relative w-56 h-12 md:w-64 md:h-14">
-              <Image 
-                src="/logo-fisioterapia-malavasi.png" 
-                alt="Logo Malavasi" 
-                fill 
-                className="object-contain"
-              />
+        <div className="absolute top-0 left-0 w-full flex items-center justify-between py-8 px-6 border-b border-slate-50">
+          <Link href="/" onClick={() => setIsMobileMenuOpen(false)}>
+            <div className="relative w-48 h-10">
+              <Image src="/logo-fisioterapia-malavasi.png" alt="Logo Malavasi" fill className="object-contain" />
             </div>
           </Link>
-          <button 
-            onClick={() => setIsMobileMenuOpen(false)}
-            className="p-2 text-[#022166] transition-transform active:scale-90"
-          >
-            <X size={32} />
-          </button>
+          <button onClick={() => setIsMobileMenuOpen(false)} className="p-2 text-[#022166]"><X size={32} /></button>
         </div>
 
-        {/* Contenitore interno con scroll indipendente */}
-        <div className="flex flex-col h-full pt-44 pb-12 px-10 overflow-y-auto">
+        <div className="flex flex-col h-full pt-32 pb-12 px-8 overflow-y-auto">
           <nav className="flex flex-col">
-            {/* Voce HOME aggiunta solo per mobile */}
-            <Link 
-              href="/"
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="block text-lg font-medium text-[#022166] uppercase tracking-[0.1em] border-b border-slate-100 py-5"
-            >
-              Home
-            </Link>
+            <Link href="/" onClick={() => setIsMobileMenuOpen(false)} className="text-lg font-bold text-[#022166] uppercase py-5 border-b border-slate-50">Home</Link>
             
             {navLinks.map((item) => (
-              <Link 
-                key={item.n} 
-                href={item.h}
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="block text-lg font-medium text-[#022166] uppercase tracking-[0.1em] border-b border-slate-100 py-5"
-              >
-                {item.n}
-              </Link>
+              <div key={item.n} className="flex flex-col border-b border-slate-50">
+                {item.sub ? (
+                  <>
+                    <button 
+                      onClick={() => setOpenSubmenu(openSubmenu === item.n ? null : item.n)}
+                      className="flex items-center justify-between text-lg font-bold text-[#022166] uppercase py-5 w-full text-left"
+                    >
+                      {item.n}
+                      <ChevronDown size={20} className={`transition-transform duration-300 ${openSubmenu === item.n ? "rotate-180" : ""}`} />
+                    </button>
+                    <div className={`overflow-hidden transition-all duration-300 ${openSubmenu === item.n ? "max-h-[500px] mb-4" : "max-h-0"}`}>
+                      {item.sub.map((sub) => (
+                        <Link 
+                          key={sub.n} 
+                          href={sub.h} 
+                          onClick={() => setIsMobileMenuOpen(false)}
+                          className="block py-3 pl-4 text-sm font-semibold text-slate-500 hover:text-[#55B4FF]"
+                        >
+                          {sub.n}
+                        </Link>
+                      ))}
+                    </div>
+                  </>
+                ) : (
+                  <Link href={item.h} onClick={() => setIsMobileMenuOpen(false)} className="text-lg font-bold text-[#022166] uppercase py-5">
+                    {item.n}
+                  </Link>
+                )}
+              </div>
             ))}
           </nav>
 
           <div className="mt-auto pt-10 space-y-4">
-            <a href="tel:+393338225464" className="w-full flex items-center justify-center gap-4 bg-slate-100 text-[#022166] py-5 rounded-2xl font-black uppercase text-xs tracking-widest active:scale-95 transition-all">
-              <Phone size={20} />
-              Chiama Studio
+            <a href="tel:+393338225464" className="w-full flex items-center justify-center gap-4 bg-slate-100 text-[#022166] py-5 rounded-2xl font-black uppercase text-xs tracking-widest">
+              <Phone size={20} /> Chiama Studio
             </a>
-            <Link href="/prenota" onClick={() => setIsMobileMenuOpen(false)} className="w-full flex items-center justify-center gap-4 bg-[#022166] text-white py-5 rounded-2xl font-black uppercase text-xs tracking-widest shadow-xl active:scale-95 transition-all">
-              <CalendarCheck size={20} />
-              Prenota Ora
+            <Link href="/prenota" onClick={() => setIsMobileMenuOpen(false)} className="w-full flex items-center justify-center gap-4 bg-[#022166] text-white py-5 rounded-2xl font-black uppercase text-xs tracking-widest shadow-xl">
+              <CalendarCheck size={20} /> Prenota Ora
             </Link>
           </div>
         </div>
       </div>
-
-      <style jsx>{`
-        @keyframes shimmer { 100% { transform: translateX(100%); } }
-        .animate-shimmer { animation: shimmer 2s infinite; }
-      `}</style>
     </header>
   );
 }
