@@ -55,7 +55,7 @@ export default function LavoraConNoi() {
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="relative aspect-square md:aspect-video lg:aspect-square rounded-[3rem] overflow-hidden shadow-2xl">
               <Image 
-                src="https://github.com/thinhdutong00/image-fisioterapia-malavasi/blob/main/1.png?raw=true" 
+                src="biglietto-da-visita-malavasi.png" 
                 alt="Ambiente di lavoro Studio Malavasi"
                 fill
                 className="object-cover"
