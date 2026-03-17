@@ -65,12 +65,7 @@ const navLinks = [
     },
     { 
 
-       
-      
-
       n: "Modalità della seduta", h: "/metodo", 
-
-
       
       sub: [
         { n: "Seduta Fisioterapica", h: "/metodo/seduta-fisioterapica" },
@@ -78,8 +73,11 @@ const navLinks = [
         { n: "Small Class", h: "/metodo/small-class" },
       ]
     },
+
+
     { 
-      n: "Dove siamo", 
+    
+      n: "Contatti", 
       h: "/contatti",
       sub: [
         { n: "Contatti", h: "/contatti" },
