@@ -67,9 +67,9 @@ export default function Navbar() {
       n: "Modalità della seduta", 
       h: "/metodo",
       sub: [
-        { n: "Seduta Fisioterapica", h: "/metodo#seduta" },
-        { n: "Seduta Domiciliare", h: "/metodo#domiciliare" },
-        { n: "Small Class", h: "/metodo#small-class" },
+        { n: "Seduta Fisioterapica", h: "metodo/seduta-fisioterapica" },
+        { n: "Seduta Domiciliare", h: "/metodo/seduta-fisioterapica-domiciliare" },
+        { n: "Small Class", h: "/metodo/small-class" },
       ]
     },
     { 
