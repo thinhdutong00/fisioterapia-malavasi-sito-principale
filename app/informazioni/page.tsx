@@ -6,7 +6,7 @@ import Image from 'next/image';
 import { 
   ArrowLeft, 
   ChevronRight, 
-  ArrowRight, 
+  ArrowRight, ClipboardList,
   ShieldCheck, 
   Award,
   Layout,
@@ -203,7 +203,7 @@ export default function InformazioniPage() {
                 { 
                   title: "Sale Terapeutiche", 
                   desc: "Ambienti riservati e confortevoli dove eseguiamo sedute manuali e trattamenti strumentali.",
-                  icon: <Stethoscope size={24} />,
+                  icon: <ClipboardList size={24} />,
                   img: "/studio-fisioterapia-malavasi.jpg"
                 }
               ].map((studio, i) => (
