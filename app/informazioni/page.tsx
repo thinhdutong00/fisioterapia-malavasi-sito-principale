@@ -192,19 +192,19 @@ export default function InformazioniPage() {
                   title: "Reception", 
                   desc: "Un'area accogliente progettata per farti sentire a tuo agio fin dal primo momento.",
                   icon: <Layout size={24} />,
-                  img: "/reception.jpg"
+                  img: "/studio-esterno-malavasi.webp"
                 },
                 { 
                   title: "Palestra Riabilitativa", 
                   desc: "Spazio attrezzato con tecnologie moderne per il recupero funzionale e l'esercizio terapeutico.",
                   icon: <Dumbbell size={24} />,
-                  img: "/palestra.jpg"
+                  img: "/palestra-riabilitativa.jpeg"
                 },
                 { 
                   title: "Sale Terapeutiche", 
                   desc: "Ambienti riservati e confortevoli dove eseguiamo sedute manuali e trattamenti strumentali.",
                   icon: <Stethoscope size={24} />,
-                  img: "/sala.jpg"
+                  img: "/studio-fisioterapia-malavasi.jpg"
                 }
               ].map((studio, i) => (
                 <div key={i} className="group relative bg-white rounded-[2rem] border border-slate-100 overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-700">
