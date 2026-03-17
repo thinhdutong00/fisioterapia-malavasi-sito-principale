@@ -33,7 +33,7 @@ export default function SedutaFisioterapicaPage() {
   <ChevronRight size={14} />
   <Link href="/metodo" className="hover:text-[#022166] transition-colors text-[#022166] font-semibold">Modalità della seduta</Link>
   <ChevronRight size={14} />
-  <span className="text-slate-400">Seduta Fisioterapica</span>
+  <span className="text-slate-400">Seduta in studio</span>
 </nav>
 
           {/* HEADER SEZIONE */}
