@@ -25,7 +25,7 @@ export default function ModalitaSedutaPage() {
       label: "A Domicilio"
     },
     {
-      titolo: "SmallClass: Exercise Medicine",
+      titolo: "SmallClass",
       slug: "/metodo/small-class", 
       desc: "Esercizio terapeutico in piccoli gruppi (max 5 persone). Il ponte perfetto tra riabilitazione clinica e benessere duraturo.",
       color: "bg-[#DCFCE7]", // Un verde molto chiaro per differenziarla
