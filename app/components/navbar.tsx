@@ -9,6 +9,7 @@ import { Phone, CalendarCheck, Menu, X, ChevronDown } from "lucide-react";
 export default function Navbar() {
   const pathname = usePathname();
   const isHomePage = pathname === "/";
+  const isLavoraConNoi = pathname === "/contatti/lavora-con-noi";
   
   const [isVisible, setIsVisible] = useState(true);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -82,7 +83,7 @@ export default function Navbar() {
     }
   ];
 
-  const isDarkTheme = isHomePage && !isScrolled;
+  const isDarkTheme = (isHomePage || isLavoraConNoi) && !isScrolled;
   
   // Colori header principale
   const textColor = isDarkTheme ? "text-white" : "text-[#022166]";
