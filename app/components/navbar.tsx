@@ -62,13 +62,22 @@ export default function Navbar() {
         { n: "Fisioterapia Oncologica", h: "/trattamenti/oncologica" },
       ]
     },
-    { n: "Modalità della seduta", h: "/metodo" },
+    { 
+      n: "Modalità della seduta", 
+      h: "/metodo",
+      sub: [
+        { n: "Seduta Fisioterapica", h: "/metodo#seduta" },
+        { n: "Seduta Domiciliare", h: "/metodo#domiciliare" },
+        { n: "Small Class", h: "/metodo#small-class" },
+      ]
+    },
     { 
       n: "Dove siamo", 
       h: "/contatti",
       sub: [
         { n: "Contatti", h: "/contatti" },
         { n: "Lavora con noi", h: "/contatti/lavora-con-noi" },
+        { n: "Prenota", h: "/prenota" },
       ]
     }
   ];
