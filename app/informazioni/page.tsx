@@ -8,7 +8,10 @@ import {
   ChevronRight, 
   ArrowRight, 
   ShieldCheck, 
-  Award
+  Award,
+  Layout,
+  Dumbbell,
+  Stethoscope
 } from 'lucide-react';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -107,7 +110,6 @@ export default function InformazioniPage() {
                 </Swiper>
               </div>
               
-              {/* Badge Informativo (Ridimensionato per mobile) */}
               <div className="absolute -bottom-4 -right-2 md:-bottom-6 md:-right-6 bg-[#022166] text-white p-4 md:p-7 rounded-2xl md:rounded-3xl shadow-2xl z-20 border border-white/10 max-w-[180px] md:max-w-none">
                 <div className="flex items-center gap-3 md:gap-4">
                   <div className="w-8 h-8 md:w-12 md:h-12 bg-[#55B4FF]/20 rounded-lg flex items-center justify-center text-[#55B4FF] shrink-0">
@@ -162,7 +164,6 @@ export default function InformazioniPage() {
               ))}
             </div>
 
-            {/* PULSANTE GUARDA DI PIÙ */}
             <div className="flex justify-center mt-8 md:mt-12">
               <Link 
                 href="/trattamenti" 
@@ -172,9 +173,71 @@ export default function InformazioniPage() {
                 <ArrowRight size={16} className="group-hover:translate-x-2 transition-transform" />
               </Link>
             </div>
+          </section>
 
-            {/* Banner CTA */}
-            <div className="mt-16 md:mt-24 bg-[#022166] rounded-[2.5rem] md:rounded-[4rem] p-10 md:p-24 text-center relative overflow-hidden group">
+          {/* --- NUOVA SEZIONE: IL NOSTRO STUDIO --- */}
+          <section className="py-24 md:py-40 relative">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="h-[1px] w-12 bg-[#55B4FF]"></div>
+              <span className="text-[10px] md:text-xs font-black uppercase tracking-[0.3em] text-[#55B4FF]">Gli Spazi</span>
+            </div>
+            <h2 className="text-4xl md:text-7xl font-bold text-[#022166] tracking-tighter leading-tight mb-16 md:mb-24">
+              Il nostro <br />
+              <span className="text-[#55B4FF]">studio.</span>
+            </h2>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+              {[
+                { 
+                  title: "Reception", 
+                  desc: "Un'area accogliente progettata per farti sentire a tuo agio fin dal primo momento.",
+                  icon: <Layout size={24} />,
+                  img: "/reception.jpg"
+                },
+                { 
+                  title: "Palestra Riabilitativa", 
+                  desc: "Spazio attrezzato con tecnologie moderne per il recupero funzionale e l'esercizio terapeutico.",
+                  icon: <Dumbbell size={24} />,
+                  img: "/palestra.jpg"
+                },
+                { 
+                  title: "Sale Terapeutiche", 
+                  desc: "Ambienti riservati e confortevoli dove eseguiamo sedute manuali e trattamenti strumentali.",
+                  icon: <Stethoscope size={24} />,
+                  img: "/sala.jpg"
+                }
+              ].map((studio, i) => (
+                <div key={i} className="group relative bg-white rounded-[2rem] border border-slate-100 overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-700">
+                  {/* Image Container */}
+                  <div className="relative h-64 md:h-72 w-full overflow-hidden">
+                    <div className="absolute inset-0 bg-[#022166]/20 group-hover:bg-transparent transition-colors duration-500 z-10"></div>
+                    <Image 
+                      src={studio.img} 
+                      alt={studio.title}
+                      fill
+                      className="object-cover group-hover:scale-110 transition-transform duration-1000"
+                    />
+                  </div>
+                  {/* Content */}
+                  <div className="p-8 md:p-10 relative">
+                    <div className="w-12 h-12 bg-[#F8FAFC] rounded-xl flex items-center justify-center text-[#55B4FF] mb-6 group-hover:bg-[#55B4FF] group-hover:text-white transition-all duration-500">
+                      {studio.icon}
+                    </div>
+                    <h3 className="text-xl md:text-2xl font-black uppercase tracking-tight text-[#022166] mb-4">
+                      {studio.title}
+                    </h3>
+                    <p className="text-slate-500 text-sm md:text-base leading-relaxed font-medium opacity-80">
+                      {studio.desc}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* --- CTA FINAL --- */}
+          <section className="py-12 md:py-20">
+            <div className="bg-[#022166] rounded-[2.5rem] md:rounded-[4rem] p-10 md:p-24 text-center relative overflow-hidden group">
                <div className="absolute inset-0 bg-gradient-to-r from-[#55B4FF]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
                <div className="relative z-10">
                 <h3 className="text-2xl md:text-6xl font-bold text-white mb-8 md:mb-10 tracking-tighter">
