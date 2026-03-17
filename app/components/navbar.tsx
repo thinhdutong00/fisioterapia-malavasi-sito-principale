@@ -8,13 +8,11 @@ import { Phone, CalendarCheck, Menu, X, ChevronDown } from "lucide-react";
 
 export default function Navbar() {
   const pathname = usePathname();
-  const isHomePage = pathname === "/";
-  const isLavoraConNoi = pathname === "/contatti/lavora-con-noi";
   
   const [isVisible, setIsVisible] = useState(true);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [openSubmenu, setOpenSubmenu] = useState<string | null>(null); // Per mobile
+  const [openSubmenu, setOpenSubmenu] = useState<string | null>(null);
   const lastScrollY = useRef(0);
 
   // Gestione Scroll
@@ -49,7 +47,7 @@ export default function Navbar() {
     }
   }, [isMobileMenuOpen]);
 
-const navLinks = [
+  const navLinks = [
     { n: "Informazioni", h: "/informazioni" },
     { 
       n: "Trattamenti", 
@@ -64,19 +62,15 @@ const navLinks = [
       ]
     },
     { 
-
-      n: "Modalità della seduta", h: "/metodo", 
-      
+      n: "Modalità della seduta", 
+      h: "/metodo", 
       sub: [
         { n: "Seduta Fisioterapica", h: "/metodo/seduta-fisioterapica" },
         { n: "Seduta Domiciliare", h: "/metodo/seduta-fisioterapica-domiciliare" },
         { n: "Small Class", h: "/metodo/small-class" },
       ]
     },
-
-
     { 
-    
       n: "Contatti", 
       h: "/contatti",
       sub: [
@@ -87,9 +81,16 @@ const navLinks = [
     }
   ];
 
-  const isDarkTheme = (isHomePage || isLavoraConNoi) && !isScrolled;
+  // LOGICA COLORI: Tutte queste pagine hanno l'Hero Blu all'inizio
+  const isDarkHeroPage = 
+    pathname === "/" || 
+    pathname === "/informazioni" || 
+    pathname === "/trattamenti" || 
+    pathname === "/metodo" || 
+    pathname.startsWith("/contatti");
+
+  const isDarkTheme = isDarkHeroPage && !isScrolled;
   
-  // Colori header principale
   const textColor = isDarkTheme ? "text-white" : "text-[#022166]";
   const logoSrc = isDarkTheme 
     ? "/logo-bianco-fisioterapia-malavasi.png" 
@@ -134,10 +135,14 @@ const navLinks = [
           {navLinks.map((item) => (
             <div key={item.n} className="relative group/menu">
               {item.sub ? (
-                <div className="flex items-center gap-1 cursor-default py-2">
-                   <span className={`relative font-bold text-[11px] uppercase tracking-[0.1em] transition-all group-hover/menu:text-[#55B4FF] whitespace-nowrap ${textColor}`}>
+                <div className="flex items-center gap-1 py-2">
+                   {/* CORREZIONE: Inserito Link per rendere il titolo cliccabile */}
+                   <Link 
+                    href={item.h}
+                    className={`relative font-bold text-[11px] uppercase tracking-[0.1em] transition-all group-hover/menu:text-[#55B4FF] whitespace-nowrap ${textColor}`}
+                   >
                     {item.n}
-                  </span>
+                  </Link>
                   <ChevronDown size={14} className={`transition-transform duration-300 group-hover/menu:rotate-180 ${textColor} group-hover/menu:text-[#55B4FF]`} />
                   
                   {/* DROPDOWN DESKTOP */}
@@ -213,13 +218,22 @@ const navLinks = [
               <div key={item.n} className="flex flex-col border-b border-slate-50">
                 {item.sub ? (
                   <>
-                    <button 
-                      onClick={() => setOpenSubmenu(openSubmenu === item.n ? null : item.n)}
-                      className="flex items-center justify-between text-lg font-bold text-[#022166] uppercase py-5 w-full text-left"
-                    >
-                      {item.n}
-                      <ChevronDown size={20} className={`transition-transform duration-300 ${openSubmenu === item.n ? "rotate-180" : ""}`} />
-                    </button>
+                    <div className="flex items-center justify-between w-full">
+                      {/* CORREZIONE: Link cliccabile anche su mobile a sinistra dello Chevron */}
+                      <Link 
+                        href={item.h} 
+                        onClick={() => setIsMobileMenuOpen(false)}
+                        className="text-lg font-bold text-[#022166] uppercase py-5 flex-grow"
+                      >
+                        {item.n}
+                      </Link>
+                      <button 
+                        onClick={() => setOpenSubmenu(openSubmenu === item.n ? null : item.n)}
+                        className="p-5"
+                      >
+                        <ChevronDown size={20} className={`transition-transform duration-300 ${openSubmenu === item.n ? "rotate-180" : ""}`} />
+                      </button>
+                    </div>
                     <div className={`overflow-hidden transition-all duration-300 ${openSubmenu === item.n ? "max-h-[500px] mb-4" : "max-h-0"}`}>
                       {item.sub.map((sub) => (
                         <Link 
