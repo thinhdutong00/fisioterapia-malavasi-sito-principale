@@ -134,10 +134,13 @@ const navLinks = [
           {navLinks.map((item) => (
             <div key={item.n} className="relative group/menu">
               {item.sub ? (
-                <div className="flex items-center gap-1 cursor-default py-2">
-                   <span className={`relative font-bold text-[11px] uppercase tracking-[0.1em] transition-all group-hover/menu:text-[#55B4FF] whitespace-nowrap ${textColor}`}>
+                <div className="flex items-center gap-1 py-2">
+                  <Link 
+                    href={item.h}
+                    className={`relative font-bold text-[11px] uppercase tracking-[0.1em] transition-all group-hover/menu:text-[#55B4FF] whitespace-nowrap ${textColor}`}
+                  >
                     {item.n}
-                  </span>
+                  </Link>
                   <ChevronDown size={14} className={`transition-transform duration-300 group-hover/menu:rotate-180 ${textColor} group-hover/menu:text-[#55B4FF]`} />
                   
                   {/* DROPDOWN DESKTOP */}
@@ -212,14 +215,22 @@ const navLinks = [
             {navLinks.map((item) => (
               <div key={item.n} className="flex flex-col border-b border-slate-50">
                 {item.sub ? (
-                  <>
-                    <button 
-                      onClick={() => setOpenSubmenu(openSubmenu === item.n ? null : item.n)}
-                      className="flex items-center justify-between text-lg font-bold text-[#022166] uppercase py-5 w-full text-left"
-                    >
-                      {item.n}
-                      <ChevronDown size={20} className={`transition-transform duration-300 ${openSubmenu === item.n ? "rotate-180" : ""}`} />
-                    </button>
+                  <div className="flex flex-col">
+                    <div className="flex items-center justify-between w-full">
+                      <Link 
+                        href={item.h} 
+                        onClick={() => setIsMobileMenuOpen(false)}
+                        className="text-lg font-bold text-[#022166] uppercase py-5 flex-grow"
+                      >
+                        {item.n}
+                      </Link>
+                      <button 
+                        onClick={() => setOpenSubmenu(openSubmenu === item.n ? null : item.n)}
+                        className="p-5"
+                      >
+                        <ChevronDown size={20} className={`transition-transform duration-300 ${openSubmenu === item.n ? "rotate-180" : ""}`} />
+                      </button>
+                    </div>
                     <div className={`overflow-hidden transition-all duration-300 ${openSubmenu === item.n ? "max-h-[500px] mb-4" : "max-h-0"}`}>
                       {item.sub.map((sub) => (
                         <Link 
@@ -232,7 +243,7 @@ const navLinks = [
                         </Link>
                       ))}
                     </div>
-                  </>
+                  </div>
                 ) : (
                   <Link href={item.h} onClick={() => setIsMobileMenuOpen(false)} className="text-lg font-bold text-[#022166] uppercase py-5">
                     {item.n}
