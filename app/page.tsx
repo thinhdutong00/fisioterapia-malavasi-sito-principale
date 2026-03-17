@@ -10,7 +10,7 @@ import Script from 'next/script';
 import {
   Activity, X, ChevronRight, Zap, UserRound, CheckCircle,
   Phone, ArrowRight, Menu, Users, Star, Home, MapPin, HeartPulse,
-  Calendar, Clock, Plus, ChevronLeft, Upload, FileText,
+  Calendar, Clock, Plus, ChevronLeft, Upload, FileText, RotateCw,
   Accessibility, HandIcon, Move, Brain, Spline, Scale,
   Stethoscope, Dumbbell, UserCheck, GitCommitVertical,
   Dna, MoveVertical, Footprints, Layers,
@@ -239,7 +239,7 @@ export default function FisioterapiaMalavasi() {
               { 
                 id: 4, 
                 titolo: "Cefalee e Vertigini", // MODIFICATO
-                icona: <Dna size={28} />, 
+                icona: <RotateCw size={28} />, 
                 breve: "Valutazione e trattamento di mal di testa di origine cervicale e disturbi dell'equilibrio.", 
                 descrizione: "Molte cefalee e vertigini dipendono da disfunzioni del tratto cervicale superiore. Attraverso tecniche manuali mirate e rieducazione specifica, riduciamo la frequenza degli attacchi e miglioriamo la stabilità posturale.", 
                 link: "/trattamenti/cefalee-vertigini" // MODIFICATO
