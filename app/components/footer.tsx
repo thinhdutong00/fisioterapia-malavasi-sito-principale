@@ -79,9 +79,22 @@ export default function Footer() {
       </div>
 
       <div className="max-w-7xl mx-auto mt-20 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 opacity-40">
-        <p className="text-[10px] font-black uppercase tracking-widest">© 2026 | Dott. Malavasi Mirco FISIOTERAPISTA | Via I Maggio n°95 41032 Cavezzo (MO) | P. IVA 03890170362 |</p>
-        <p className="text-[9px] font-black uppercase tracking-[0.3em]">MAGO DIGITAL™ Web Solutions</p>
-      </div>
+  <div className="flex flex-col md:flex-row items-center gap-2 text-center md:text-left">
+    <p className="text-[10px] font-black uppercase tracking-widest">
+      © 2026 | Dott. Malavasi Mirco FISIOTERAPISTA | Via I Maggio n°95 41032 Cavezzo (MO) | P. IVA 03890170362 |
+    </p>
+    <div className="flex gap-2">
+      <Link href="/privacy" className="text-[10px] font-black uppercase tracking-widest hover:text-[#55B4FF] transition-colors">
+        Privacy Policy
+      </Link>
+      <span className="text-[10px] font-black">|</span>
+      <Link href="/cookie" className="text-[10px] font-black uppercase tracking-widest hover:text-[#55B4FF] transition-colors">
+        Cookie Policy
+      </Link>
+    </div>
+  </div>
+  <p className="text-[9px] font-black uppercase tracking-[0.3em]">MAGO DIGITAL™ Web Solutions</p>
+</div>
     </footer>
   );
 }
