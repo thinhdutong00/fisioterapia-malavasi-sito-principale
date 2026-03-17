@@ -65,11 +65,13 @@ const navLinks = [
     },
     { 
 
-       n: "Modalità della seduta", h: "//metodo" },
-      {
+       
+      
 
-      n: "Modalità della seduta", 
-      h: "/metodo",
+      n: "Modalità della seduta", h: "/metodo", 
+
+
+      
       sub: [
         { n: "Seduta Fisioterapica", h: "/metodo/seduta-fisioterapica" },
         { n: "Seduta Domiciliare", h: "/metodo/seduta-fisioterapica-domiciliare" },
