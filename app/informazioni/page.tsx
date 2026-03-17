@@ -192,7 +192,7 @@ export default function InformazioniPage() {
                   title: "Reception", 
                   desc: "Un'area accogliente progettata per farti sentire a tuo agio fin dal primo momento.",
                   icon: <Layout size={24} />,
-                  img: "/studio-esterno-malavasi.webp"
+                  img: "/Studio-esterno-malavasi.webp"
                 },
                 { 
                   title: "Palestra Riabilitativa", 
