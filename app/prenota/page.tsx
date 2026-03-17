@@ -46,8 +46,8 @@ export default function PrenotaPage() {
   return (
     <main className="min-h-screen bg-white font-sans">
       
-      {/* SPAZIATURA SUPERIORE (Bordo per Header) */}
-      <div className="w-full h-32 lg:h-48 bg-white flex items-end pb-8 px-6 md:px-12 lg:px-24">
+      {/* SPAZIATURA SUPERIORE AGGIORNATA */}
+      <div className="w-full pt-32 pb-10 lg:pt-48 lg:pb-12 bg-white flex items-end px-6 md:px-12 lg:px-24">
         <nav className="flex items-center gap-2 text-sm text-slate-500">
           <Link href="/" className="hover:text-[#022166] transition-colors">Home</Link>
           <ChevronRight size={14} />
