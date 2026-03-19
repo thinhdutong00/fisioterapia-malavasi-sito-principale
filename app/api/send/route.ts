@@ -7,7 +7,6 @@ export async function POST(request: Request) {
   try {
     const body = await request.json();
     
-    // Estrazione di tutti i campi, inclusi i nuovi step condizionali (sede e indirizzo)
     const { 
       problema, 
       durata, 
@@ -19,27 +18,33 @@ export async function POST(request: Request) {
       giorniPreferiti, 
       fasciaOraria, 
       urgenza,
-      sede,      // NUOVO
-      indirizzo, // NUOVO
+      sede,      
+      indirizzo, 
       nome, 
       telefono, 
-      email 
+      email,
+      attachment // ESTRATTO DAL FRONTEND (contiene filename e content in base64)
     } = body;
 
+    // Preparazione dell'allegato per Resend
+    const attachments = attachment ? [
+      {
+        filename: attachment.filename,
+        content: attachment.content,
+      }
+    ] : [];
+
     const { data: resendData, error } = await resend.emails.send({
-      // IL MITTENTE: dominio verificato
       from: 'Studio Malavasi <notifiche@fisioterapiamalavasi.it>', 
-      
-      // IL DESTINATARIO: la mail dello studio
       to: ['fisioterapiamalavasi@gmail.com'], 
-      
       subject: `Nuova Prenotazione: ${nome} (${sede})`,
+      attachments: attachments, // INVIO EFFETTIVO DEL FILE
       html: `
         <div style="font-family: sans-serif; padding: 30px; color: #022166; line-height: 1.6; background-color: #f9f9f9;">
           <div style="max-width: 600px; margin: 0 auto; background-color: #ffffff; padding: 25px; border-radius: 15px; border-top: 5px solid #55B4FF; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
             
             <h2 style="color: #55B4FF; margin-top: 0; border-bottom: 1px solid #eee; padding-bottom: 15px; text-align: center;">
-              🩺 Nuova Valutazione Online
+              向 Nuova Valutazione Online
             </h2>
             
             <h3 style="color: #022166; border-left: 4px solid #55B4FF; padding-left: 10px;">Dati Paziente</h3>
@@ -56,14 +61,20 @@ export async function POST(request: Request) {
               <p><strong>Obiettivo desiderato:</strong> ${obiettivo}</p>
               <p><strong>Ha già fatto fisioterapia?</strong> ${giaFattoFisio}</p>
               <p><strong>Ha una diagnosi medica?</strong> ${diagnosiMedica}</p>
+              
+              ${attachment 
+                ? `<p style="margin-top: 10px; padding: 10px; background-color: #e3f2fd; border-radius: 8px; color: #022166; font-weight: bold;">
+                    📎 Referto medico allegato: ${attachment.filename}
+                   </p>` 
+                : ''
+              }
             </div>
 
             <h3 style="color: #022166; border-left: 4px solid #55B4FF; padding-left: 10px; margin-top: 30px;">Dettagli Appuntamento</h3>
             <div style="padding-left: 5px;">
               <p><strong>Sede scelta:</strong> <span style="color: #55B4FF; font-weight: bold;">${sede}</span></p>
               
-              ${/* Visualizza l'indirizzo solo se la sede è Domicilio */
-                sede === 'Domicilio' 
+              ${sede === 'Domicilio' 
                 ? `<p style="background-color: #fff4f4; padding: 10px; border-radius: 8px; border: 1px solid #d9534f; color: #d9534f;">
                     <strong>📍 Indirizzo Domicilio:</strong> ${indirizzo}
                    </p>` 

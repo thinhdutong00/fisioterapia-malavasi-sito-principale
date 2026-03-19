@@ -18,6 +18,7 @@ export default function PrenotaPage() {
   const router = useRouter();
   const [step, setStep] = useState(1);
   const [file, setFile] = useState<File | null>(null);
+  const [isSending, setIsSending] = useState(false);
   const [formData, setFormData] = useState({
     // Dati Clinici (Step 1-7)
     problema: '',
@@ -41,8 +42,37 @@ export default function PrenotaPage() {
     privacy: false
   });
 
+  // Funzione per convertire il file in Base64 per l'invio API
+  const fileToBase64 = (file: File): Promise<string> => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        const base64String = (reader.result as string).split(',')[1];
+        resolve(base64String);
+      };
+      reader.onerror = (error) => reject(error);
+    });
+  };
+
   // LOGICA NAVIGAZIONE CONDIZIONALE
   const nextStep = () => {
+    // Gestione Step 6 -> 6.5 (File) o 7
+    if (step === 6) {
+      if (formData.diagnosiMedica === 'Sì') {
+        setStep(6.5);
+      } else {
+        setStep(7);
+      }
+      return;
+    }
+
+    // Gestione Step 6.5 -> 7
+    if (step === 6.5) {
+      setStep(7);
+      return;
+    }
+
     // Se sono alla scelta sede (9) e NON scelgo Domicilio, salto l'indirizzo (10) e vado ai contatti (11)
     if (step === 9 && formData.sede !== 'Domicilio') {
       setStep(11);
@@ -52,6 +82,22 @@ export default function PrenotaPage() {
   };
 
   const prevStep = () => {
+    // Gestione ritorno da Step 7 verso 6.5 o 6
+    if (step === 7) {
+      if (formData.diagnosiMedica === 'Sì') {
+        setStep(6.5);
+      } else {
+        setStep(6);
+      }
+      return;
+    }
+
+    // Gestione ritorno da 6.5 a 6
+    if (step === 6.5) {
+      setStep(6);
+      return;
+    }
+
     // Se torno indietro dai Contatti (11) e NON avevo scelto Domicilio, torno alla Sede (9)
     if (step === 11 && formData.sede !== 'Domicilio') {
       setStep(9);
@@ -71,11 +117,21 @@ export default function PrenotaPage() {
   };
 
   const inviaPrenotazione = async () => {
+    setIsSending(true);
     try {
+      let attachment = null;
+      if (file) {
+        const base64Content = await fileToBase64(file);
+        attachment = {
+          filename: file.name,
+          content: base64Content,
+        };
+      }
+
       const response = await fetch('/api/send', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ ...formData, attachment }),
       });
 
       if (response.ok) {
@@ -85,6 +141,8 @@ export default function PrenotaPage() {
       }
     } catch (error) {
       alert("Errore di connessione. Controlla la tua rete.");
+    } finally {
+      setIsSending(false);
     }
   };
 
@@ -106,7 +164,7 @@ export default function PrenotaPage() {
         
         <div className="max-w-4xl w-full flex flex-col relative flex-grow justify-center">
           
-          {/* PROGRESS BAR (11 Step totali) */}
+          {/* PROGRESS BAR */}
           <div className="w-full h-1 bg-white/10 rounded-full mb-16 overflow-hidden">
             <div 
               className="h-full bg-[#55B4FF] transition-all duration-700 shadow-[0_0_10px_#55B4FF]" 
@@ -116,7 +174,9 @@ export default function PrenotaPage() {
 
           <div className="text-white flex flex-col">
             <div className="mb-12">
-              <span className="text-[#55B4FF] font-bold text-[10px] uppercase tracking-[0.3em] block mb-2">Fase {step} di 11</span>
+              <span className="text-[#55B4FF] font-bold text-[10px] uppercase tracking-[0.3em] block mb-2">
+                Fase {step === 6.5 ? "6 Bis" : step} di 11
+              </span>
               <h1 className="text-4xl sm:text-5xl md:text-8xl font-bold text-[#ffffff] leading-[0.95] mb-10 tracking-tighter">
                 {step === 11 ? "Ultimo" : "Analisi"} <br />
                 <span className="text-[#55B4FF]">{step === 11 ? "Passaggio." : "Percorso."}</span>
@@ -227,6 +287,35 @@ export default function PrenotaPage() {
                 </div>
               )}
 
+              {/* STEP 6.5: CARICAMENTO REFERTO (CONDIZIONALE) */}
+              {step === 6.5 && (
+                <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
+                   <label className="block text-2xl font-bold mb-8 tracking-tight">Carica il tuo referto medico</label>
+                   <div className="relative group">
+                    <input 
+                      type="file" 
+                      onChange={(e) => setFile(e.target.files ? e.target.files[0] : null)}
+                      className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
+                    />
+                    <div className={`p-12 border-2 border-dashed rounded-3xl flex flex-col items-center justify-center transition-all ${file ? 'border-[#55B4FF] bg-[#55B4FF]/10' : 'border-white/20 bg-white/5 group-hover:border-white/40'}`}>
+                      {file ? (
+                        <>
+                          <FileText size={48} className="text-[#55B4FF] mb-4" />
+                          <p className="text-xl font-bold text-white text-center">{file.name}</p>
+                          <p className="text-sm text-[#55B4FF] mt-2 font-bold uppercase tracking-widest">Pronto per l'invio</p>
+                        </>
+                      ) : (
+                        <>
+                          <Upload size={48} className="text-white/20 mb-4 group-hover:text-[#55B4FF] transition-colors" />
+                          <p className="text-xl font-bold text-white/60 text-center uppercase tracking-tighter">Trascina o seleziona il file</p>
+                          <p className="text-sm text-white/30 mt-2 uppercase font-bold text-center">PDF, JPG o PNG (Max 5MB)</p>
+                        </>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              )}
+
               {/* STEP 7: ETA */}
               {step === 7 && (
                 <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-3">
@@ -318,7 +407,7 @@ export default function PrenotaPage() {
                 </div>
               )}
 
-              {/* STEP 10: INDIRIZZO (CONDIZIONALE) */}
+              {/* STEP 10: INDIRIZZO */}
               {step === 10 && (
                 <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
                   <label className="block text-2xl font-bold mb-8 tracking-tight flex items-center gap-3">
@@ -341,8 +430,6 @@ export default function PrenotaPage() {
                   <label className="block text-2xl font-bold mb-10 tracking-tight">I tuoi contatti</label>
                   <input 
                     type="text" 
-                    name="name"
-                    autoComplete="name"
                     placeholder="Nome e Cognome" 
                     className="w-full bg-white/5 border-b-2 border-white/20 p-5 outline-none focus:border-[#55B4FF] text-xl font-bold text-white" 
                     value={formData.nome} 
@@ -351,8 +438,6 @@ export default function PrenotaPage() {
                   <div className="grid md:grid-cols-2 gap-8">
                     <input 
                       type="tel" 
-                      name="tel"
-                      autoComplete="tel"
                       placeholder="Cellulare" 
                       className="bg-transparent border-b-2 border-white/20 p-5 outline-none focus:border-[#55B4FF] text-xl font-bold text-white" 
                       value={formData.telefono} 
@@ -360,8 +445,6 @@ export default function PrenotaPage() {
                     />
                     <input 
                       type="email" 
-                      name="email"
-                      autoComplete="email"
                       placeholder="Email" 
                       className="bg-transparent border-b-2 border-white/20 p-5 outline-none focus:border-[#55B4FF] text-xl font-bold text-white" 
                       value={formData.email} 
@@ -391,21 +474,23 @@ export default function PrenotaPage() {
               <button 
                 onClick={step === 11 ? inviaPrenotazione : nextStep}
                 disabled={
+                  isSending ||
                   (step === 1 && !formData.problema) ||
                   (step === 2 && !formData.durata) ||
                   (step === 3 && !formData.limitazione) ||
                   (step === 4 && !formData.obiettivo) ||
                   (step === 5 && !formData.giaFattoFisio) ||
                   (step === 6 && !formData.diagnosiMedica) ||
+                  (step === 6.5 && !file) || // Obbligatorio se si è scelto SI
                   (step === 7 && !formData.eta) ||
                   (step === 8 && (formData.giorniPreferiti.length === 0 || !formData.fasciaOraria || !formData.urgenza)) ||
                   (step === 9 && !formData.sede) ||
                   (step === 10 && !formData.indirizzo) ||
-                  (step === 11 && (!formData.nome || !formData.privacy))
+                  (step === 11 && (!formData.nome || !formData.telefono || !formData.email || !formData.privacy))
                 }
                 className="flex-1 bg-[#55B4FF] text-[#022166] py-6 rounded-full font-black uppercase tracking-[0.2em] text-sm hover:bg-white transition-all disabled:opacity-20"
               >
-                {step === 11 ? 'Invia Richiesta' : 'Continua'}
+                {isSending ? 'Invio in corso...' : (step === 11 ? 'Invia Richiesta' : 'Continua')}
               </button>
             </div>
           </div>
