@@ -10,6 +10,7 @@ export default function Navbar() {
   const pathname = usePathname();
   const isHomePage = pathname === "/";
   const isLavoraConNoi = pathname === "/contatti/lavora-con-noi";
+  const isConferma = pathname === "/conferma";
   
   const [isVisible, setIsVisible] = useState(true);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -87,7 +88,7 @@ const navLinks = [
     }
   ];
 
-  const isDarkTheme = (isHomePage || isLavoraConNoi) && !isScrolled;
+  const isDarkTheme = (isHomePage || isLavoraConNoi || isConferma) && !isScrolled;
   
   // Colori header principale
   const textColor = isDarkTheme ? "text-white" : "text-[#022166]";
