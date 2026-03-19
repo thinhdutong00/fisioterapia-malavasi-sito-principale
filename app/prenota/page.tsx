@@ -197,8 +197,8 @@ const stepTitles: { [key: number]: string } = {
   {stepTitles[step]}
 </span>
               <h1 className="text-4xl sm:text-5xl md:text-8xl font-bold text-[#ffffff] leading-[0.95] mb-6 md:mb-10 tracking-tighter">
-                {step === 11 ? "Ci siamo" : "Esaminiamo il tuo"} <br />
-                <span className="text-[#55B4FF]">{step === 11 ? "quasi.." : "dolore"}</span>
+                {step === 11 ? "Ci siamo" : "Inoltra la tua"} <br />
+                <span className="text-[#55B4FF]">{step === 11 ? "quasi.." : "Anamnesi"}</span>
               </h1>
             </div>
 
