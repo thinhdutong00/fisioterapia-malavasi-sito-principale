@@ -38,9 +38,37 @@ export default function PrenotaPage() {
 
   const orariDisponibili = ["09:00", "10:00", "11:00", "15:00", "16:00", "17:00", "18:00", "19:00"];
 
-  const inviaPrenotazione = () => {
-    alert("Richiesta inviata con successo! Ti ricontatteremo a breve.");
-    console.log(formData);
+  const inviaPrenotazione = async () => {
+    try {
+      // 1. Mostriamo un feedback all'utente (opzionale)
+      console.log("Invio in corso...", formData);
+
+      // 2. Chiamiamo la nostra API Resend
+      const response = await fetch('/api/send', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        // 3. Successo!
+        alert("Richiesta inviata con successo! Il Dott. Malavasi ti ricontatterà a breve.");
+        // Se vuoi, qui puoi resettare il modulo o mandare l'utente a una pagina di grazie
+        // setStep(1); 
+      } else {
+        // 4. Errore restituito da Resend
+        console.error("Errore API:", result);
+        alert("C'è stato un problema tecnico. Riprova tra poco o contatta lo studio telefonicamente.");
+      }
+    } catch (error) {
+      // 5. Errore di connessione
+      console.error("Errore di rete:", error);
+      alert("Errore di connessione. Controlla la tua rete e riprova.");
+    }
   };
 
   return (
