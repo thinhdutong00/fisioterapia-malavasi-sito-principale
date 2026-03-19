@@ -42,6 +42,25 @@ export default function PrenotaPage() {
     privacy: false
   });
 
+
+const stepTitles: { [key: number]: string } = {
+    1: "Localizzazione dolore",
+    2: "Analisi temporale",
+    3: "Impatto quotidiano",
+    4: "Obiettivo terapeutico",
+    5: "Storico trattamenti",
+    6: "Diagnosi medica",
+    6.5: "Documentazione clinica",
+    7: "Profilo anagrafico",
+    8: "Preferenze orarie",
+    9: "Luogo del trattamento",
+    10: "Logistica domicilio",
+    11: "Conferma e Contatti"
+  };
+
+
+  
+
   // Funzione per convertire il file in Base64 per l'invio API
   const fileToBase64 = (file: File): Promise<string> => {
     return new Promise((resolve, reject) => {
@@ -175,8 +194,8 @@ export default function PrenotaPage() {
           <div className="text-white flex flex-col">
             <div className="mb-6 md:mb-12">
               <span className="text-[#55B4FF] font-bold text-[10px] uppercase tracking-[0.3em] block mb-2">
-                Fase {step === 6.5 ? "6 Bis" : step} di 11
-              </span>
+  {stepTitles[step]}
+</span>
               <h1 className="text-4xl sm:text-5xl md:text-8xl font-bold text-[#ffffff] leading-[0.95] mb-6 md:mb-10 tracking-tighter">
                 {step === 11 ? "Ci siamo" : "Esaminiamo il tuo"} <br />
                 <span className="text-[#55B4FF]">{step === 11 ? "quasi" : "dolore"}</span>
