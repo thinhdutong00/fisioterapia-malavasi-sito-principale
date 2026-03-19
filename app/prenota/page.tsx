@@ -10,7 +10,8 @@ import {
   FileText, 
   CheckCircle,
   Clock,
-  Calendar 
+  Calendar,
+  MapPin
 } from 'lucide-react';
 
 export default function PrenotaPage() {
@@ -30,16 +31,34 @@ export default function PrenotaPage() {
     giorniPreferiti: [] as string[],
     fasciaOraria: '',
     urgenza: '',
-    // Contatti (Step 9)
+    // Sede e Indirizzo (Step 9-10)
+    sede: '',
+    indirizzo: '',
+    // Contatti (Step 11)
     nome: '',
     telefono: '',
     email: '',
     privacy: false
   });
 
-  // NAVIGAZIONE
-  const nextStep = () => setStep((s) => Math.min(s + 1, 9));
-  const prevStep = () => setStep((s) => Math.max(s - 1, 1));
+  // LOGICA NAVIGAZIONE CONDIZIONALE
+  const nextStep = () => {
+    // Se sono alla scelta sede (9) e NON scelgo Domicilio, salto l'indirizzo (10) e vado ai contatti (11)
+    if (step === 9 && formData.sede !== 'Domicilio') {
+      setStep(11);
+    } else {
+      setStep((s) => Math.min(s + 1, 11));
+    }
+  };
+
+  const prevStep = () => {
+    // Se torno indietro dai Contatti (11) e NON avevo scelto Domicilio, torno alla Sede (9)
+    if (step === 11 && formData.sede !== 'Domicilio') {
+      setStep(9);
+    } else {
+      setStep((s) => Math.max(s - 1, 1));
+    }
+  };
 
   // GESTIONE SELEZIONE MULTIPLA GIORNI
   const toggleGiorno = (giorno: string) => {
@@ -87,20 +106,20 @@ export default function PrenotaPage() {
         
         <div className="max-w-4xl w-full flex flex-col relative flex-grow justify-center">
           
-          {/* PROGRESS BAR (9 Step totali) */}
+          {/* PROGRESS BAR (11 Step totali) */}
           <div className="w-full h-1 bg-white/10 rounded-full mb-16 overflow-hidden">
             <div 
               className="h-full bg-[#55B4FF] transition-all duration-700 shadow-[0_0_10px_#55B4FF]" 
-              style={{ width: `${(step / 9) * 100}%` }} 
+              style={{ width: `${(step / 11) * 100}%` }} 
             />
           </div>
 
           <div className="text-white flex flex-col">
             <div className="mb-12">
-              <span className="text-[#55B4FF] font-bold text-[10px] uppercase tracking-[0.3em] block mb-2">Fase {step} di 9</span>
+              <span className="text-[#55B4FF] font-bold text-[10px] uppercase tracking-[0.3em] block mb-2">Fase {step} di 11</span>
               <h1 className="text-4xl sm:text-5xl md:text-8xl font-bold text-[#ffffff] leading-[0.95] mb-10 tracking-tighter">
-                {step === 9 ? "Ultimo" : "Analisi"} <br />
-                <span className="text-[#55B4FF]">{step === 9 ? "Passaggio." : "Percorso."}</span>
+                {step === 11 ? "Ultimo" : "Analisi"} <br />
+                <span className="text-[#55B4FF]">{step === 11 ? "Passaggio." : "Percorso."}</span>
               </h1>
             </div>
 
@@ -282,8 +301,42 @@ export default function PrenotaPage() {
                 </div>
               )}
 
-              {/* STEP 9: CONTATTI */}
+              {/* STEP 9: SEDE */}
               {step === 9 && (
+                <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-3">
+                  <label className="block text-2xl font-bold mb-8 tracking-tight">Dove preferisci effettuare la visita?</label>
+                  {['Sede Cavezzo (Mo)', 'Sede Rovereto sulla Secchia (Mo)', 'Domicilio'].map((s) => (
+                    <button 
+                      key={s} 
+                      onClick={() => setFormData({...formData, sede: s})} 
+                      className={`w-full p-6 rounded-2xl border-2 font-bold transition-all text-left flex justify-between items-center ${formData.sede === s ? 'border-[#55B4FF] bg-[#55B4FF] text-[#022166]' : 'border-white/10 bg-white/5 text-white hover:border-white/40'}`}
+                    >
+                      <span className="text-xl uppercase tracking-tighter">{s}</span>
+                      {formData.sede === s ? <CheckCircle size={28} /> : <div className="w-6 h-6 rounded-full border-2 border-white/20" />}
+                    </button>
+                  ))}
+                </div>
+              )}
+
+              {/* STEP 10: INDIRIZZO (CONDIZIONALE) */}
+              {step === 10 && (
+                <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
+                  <label className="block text-2xl font-bold mb-8 tracking-tight flex items-center gap-3">
+                    <MapPin className="text-[#55B4FF]" /> Indicare indirizzo di residenza
+                  </label>
+                  <input 
+                    type="text"
+                    placeholder="Via, Civico, Città, CAP" 
+                    className="w-full bg-white/5 border-b-2 border-white/20 p-6 outline-none focus:border-[#55B4FF] transition-all text-xl text-white font-bold" 
+                    value={formData.indirizzo} 
+                    onChange={(e) => setFormData({...formData, indirizzo: e.target.value})} 
+                  />
+                  <p className="text-white/40 mt-4 text-sm uppercase tracking-widest font-bold italic">Necessario per organizzare lo spostamento al domicilio</p>
+                </div>
+              )}
+
+              {/* STEP 11: CONTATTI */}
+              {step === 11 && (
                 <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-6 max-w-xl mx-auto w-full text-center">
                   <label className="block text-2xl font-bold mb-10 tracking-tight">I tuoi contatti</label>
                   <input 
@@ -336,7 +389,7 @@ export default function PrenotaPage() {
                 </button>
               )}
               <button 
-                onClick={step === 9 ? inviaPrenotazione : nextStep}
+                onClick={step === 11 ? inviaPrenotazione : nextStep}
                 disabled={
                   (step === 1 && !formData.problema) ||
                   (step === 2 && !formData.durata) ||
@@ -346,11 +399,13 @@ export default function PrenotaPage() {
                   (step === 6 && !formData.diagnosiMedica) ||
                   (step === 7 && !formData.eta) ||
                   (step === 8 && (formData.giorniPreferiti.length === 0 || !formData.fasciaOraria || !formData.urgenza)) ||
-                  (step === 9 && (!formData.nome || !formData.privacy))
+                  (step === 9 && !formData.sede) ||
+                  (step === 10 && !formData.indirizzo) ||
+                  (step === 11 && (!formData.nome || !formData.privacy))
                 }
                 className="flex-1 bg-[#55B4FF] text-[#022166] py-6 rounded-full font-black uppercase tracking-[0.2em] text-sm hover:bg-white transition-all disabled:opacity-20"
               >
-                {step === 9 ? 'Invia Richiesta' : 'Continua'}
+                {step === 11 ? 'Invia Richiesta' : 'Continua'}
               </button>
             </div>
           </div>
