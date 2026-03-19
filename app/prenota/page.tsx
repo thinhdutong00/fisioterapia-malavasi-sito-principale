@@ -165,7 +165,7 @@ export default function PrenotaPage() {
         <div className="max-w-4xl w-full flex flex-col relative flex-grow justify-center">
           
           {/* PROGRESS BAR */}
-          <div className="w-full h-1 bg-white/10 rounded-full mb-16 overflow-hidden">
+          <div className="w-full h-1 bg-white/10 rounded-full mb-8 md:mb-16 overflow-hidden">
             <div 
               className="h-full bg-[#55B4FF] transition-all duration-700 shadow-[0_0_10px_#55B4FF]" 
               style={{ width: `${(step / 11) * 100}%` }} 
@@ -173,17 +173,18 @@ export default function PrenotaPage() {
           </div>
 
           <div className="text-white flex flex-col">
-            <div className="mb-12">
+            <div className="mb-6 md:mb-12">
               <span className="text-[#55B4FF] font-bold text-[10px] uppercase tracking-[0.3em] block mb-2">
                 Fase {step === 6.5 ? "6 Bis" : step} di 11
               </span>
-              <h1 className="text-4xl sm:text-5xl md:text-8xl font-bold text-[#ffffff] leading-[0.95] mb-10 tracking-tighter">
+              <h1 className="text-4xl sm:text-5xl md:text-8xl font-bold text-[#ffffff] leading-[0.95] mb-6 md:mb-10 tracking-tighter">
                 {step === 11 ? "Ultimo" : "Esaminiamo il tuo"} <br />
                 <span className="text-[#55B4FF]">{step === 11 ? "Passaggio." : "dolore"}</span>
               </h1>
             </div>
 
-            <div className="min-h-[300px] flex flex-col justify-center">
+            {/* CONTENITORE STEP: Altezza ridotta su mobile, centrata su desktop */}
+            <div className="min-h-[280px] md:min-h-[400px] flex flex-col justify-start md:justify-center">
               
               {/* STEP 1: PROBLEMA */}
               {step === 1 && (
