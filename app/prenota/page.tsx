@@ -178,8 +178,8 @@ export default function PrenotaPage() {
                 Fase {step === 6.5 ? "6 Bis" : step} di 11
               </span>
               <h1 className="text-4xl sm:text-5xl md:text-8xl font-bold text-[#ffffff] leading-[0.95] mb-6 md:mb-10 tracking-tighter">
-                {step === 11 ? "Ultimo" : "Esaminiamo il tuo"} <br />
-                <span className="text-[#55B4FF]">{step === 11 ? "Passaggio." : "dolore"}</span>
+                {step === 11 ? "Ci siamo" : "Esaminiamo il tuo"} <br />
+                <span className="text-[#55B4FF]">{step === 11 ? "quasi" : "dolore"}</span>
               </h1>
             </div>
 
@@ -189,7 +189,7 @@ export default function PrenotaPage() {
               {/* STEP 1: PROBLEMA */}
               {step === 1 && (
                 <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-3">
-                  <label className="block text-2xl font-bold mb-8 tracking-tight">Qual è il problema che vuoi risolvere?</label>
+                  <label className="block text-2xl font-bold mb-8 tracking-tight">In quale punto del corpo senti dolore o rigidità?</label>
                   {['Mal di schiena', 'Dolore cervicale', 'Problema alla spalla', 'Ginocchio / anca', 'Infortunio sportivo', 'Altro'].map((opzione) => (
                     <button 
                       key={opzione}
