@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation'; // Aggiunto per il reindirizzamento
 import { 
   ChevronLeft, 
   ChevronRight, 
@@ -11,6 +12,7 @@ import {
 } from 'lucide-react';
 
 export default function PrenotaPage() {
+  const router = useRouter(); // Inizializzazione router
   const [step, setStep] = useState(1);
   const [file, setFile] = useState<File | null>(null);
   const [formData, setFormData] = useState({
@@ -28,7 +30,7 @@ export default function PrenotaPage() {
   const nextStep = () => setStep((s) => Math.min(s + 1, 5));
   const prevStep = () => setStep((s) => Math.max(s - 1, 1));
 
-  // Generazione giorni calendario (Esempio semplificato per 14 giorni)
+  // Generazione giorni calendario
   const oggi = new Date();
   const giorniMese = Array.from({ length: 14 }, (_, i) => {
     const d = new Date();
@@ -40,10 +42,8 @@ export default function PrenotaPage() {
 
   const inviaPrenotazione = async () => {
     try {
-      // 1. Mostriamo un feedback all'utente (opzionale)
       console.log("Invio in corso...", formData);
 
-      // 2. Chiamiamo la nostra API Resend
       const response = await fetch('/api/send', {
         method: 'POST',
         headers: {
@@ -55,17 +55,13 @@ export default function PrenotaPage() {
       const result = await response.json();
 
       if (response.ok) {
-        // 3. Successo!
-        alert("Richiesta inviata con successo! Il Dott. Malavasi ti ricontatterà a breve.");
-        // Se vuoi, qui puoi resettare il modulo o mandare l'utente a una pagina di grazie
-        // setStep(1); 
+        // SUCCESSO: Invece dell'alert, mandiamo alla pagina conferma
+        router.push('/conferma');
       } else {
-        // 4. Errore restituito da Resend
         console.error("Errore API:", result);
         alert("C'è stato un problema tecnico. Riprova tra poco o contatta lo studio telefonicamente.");
       }
     } catch (error) {
-      // 5. Errore di connessione
       console.error("Errore di rete:", error);
       alert("Errore di connessione. Controlla la tua rete e riprova.");
     }
@@ -74,7 +70,7 @@ export default function PrenotaPage() {
   return (
     <main className="min-h-screen bg-white font-sans">
       
-      {/* SPAZIATURA SUPERIORE AGGIORNATA */}
+      {/* SPAZIATURA SUPERIORE */}
       <div className="w-full pt-32 pb-10 lg:pt-48 lg:pb-12 bg-white flex items-end px-6 md:px-12 lg:px-24">
         <nav className="flex items-center gap-2 text-sm text-slate-500">
           <Link href="/" className="hover:text-[#022166] transition-colors">Home</Link>
@@ -83,16 +79,12 @@ export default function PrenotaPage() {
         </nav>
       </div>
 
-     {/* --- PRENOTAZIONE MULTISTEP --- */}
-{/* MODIFICATO: rimosso h-screen e snap-start. Aggiunto min-h-screen e rimosso overflow-hidden */}
-<section id="prenota" className="relative min-h-screen w-full py-32 px-6 bg-[#022166] flex flex-col items-center overflow-visible">
-        {/* Decorazioni di sfondo */}
+      <section id="prenota" className="relative min-h-screen w-full py-32 px-6 bg-[#022166] flex flex-col items-center overflow-visible">
         <div className="hidden md:block absolute top-0 right-0 w-[600px] h-[600px] bg-[#55B4FF]/10 rounded-full blur-[120px] -z-10 translate-x-1/2 -translate-y-1/2" />
-<div className="hidden md:block absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#55B4FF]/5 rounded-full blur-[100px] -z-10 -translate-x-1/2 translate-y-1/2" />
+        <div className="hidden md:block absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#55B4FF]/5 rounded-full blur-[100px] -z-10 -translate-x-1/2 translate-y-1/2" />
 
         <div className="max-w-4xl w-full flex flex-col relative flex-grow justify-center">
           
-          {/* Progress Bar */}
           <div className="w-full h-1 bg-white/10 rounded-full mb-16 overflow-hidden">
             <div 
               className="h-full bg-[#55B4FF] transition-all duration-700 shadow-[0_0_10px_#55B4FF]" 
@@ -104,9 +96,9 @@ export default function PrenotaPage() {
             <div className="mb-12">
               <span className="text-[#55B4FF] font-bold text-[10px] uppercase tracking-[0.3em] block mb-2">Fase {step} di 5</span>
               <h1 className="text-4xl sm:text-5xl md:text-8xl font-bold text-[#ffffff] leading-[0.95] mb-10 tracking-tighter">
-  Prenota la tua <br />
-  <span className="text-[#55B4FF]">Visita.</span>
-</h1>
+                Prenota la tua <br />
+                <span className="text-[#55B4FF]">Visita.</span>
+              </h1>
             </div>
 
             <div className="min-h-[400px] flex flex-col justify-center">
