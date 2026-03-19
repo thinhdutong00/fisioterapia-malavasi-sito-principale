@@ -178,8 +178,8 @@ export default function PrenotaPage() {
                 Fase {step === 6.5 ? "6 Bis" : step} di 11
               </span>
               <h1 className="text-4xl sm:text-5xl md:text-8xl font-bold text-[#ffffff] leading-[0.95] mb-10 tracking-tighter">
-                {step === 11 ? "Ultimo" : "Esaminiamo la tua"} <br />
-                <span className="text-[#55B4FF]">{step === 11 ? "Passaggio." : "patologia"}</span>
+                {step === 11 ? "Ultimo" : "Esaminiamo il tuo"} <br />
+                <span className="text-[#55B4FF]">{step === 11 ? "Passaggio." : "dolore"}</span>
               </h1>
             </div>
 
