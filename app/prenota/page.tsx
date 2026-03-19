@@ -22,6 +22,7 @@ export default function PrenotaPage() {
   const [formData, setFormData] = useState({
     // Dati Clinici (Step 1-7)
     problema: '',
+    problemaSpecifico: '',
     durata: '',
     limitazione: '',
     obiettivo: '',
@@ -45,6 +46,7 @@ export default function PrenotaPage() {
 
 const stepTitles: { [key: number]: string } = {
     1: "Localizzazione dolore",
+    1.2: "Specifica problema",
     2: "Analisi temporale",
     3: "Impatto quotidiano",
     4: "Obiettivo terapeutico",
@@ -76,6 +78,25 @@ const stepTitles: { [key: number]: string } = {
 
   // LOGICA NAVIGAZIONE CONDIZIONALE
   const nextStep = () => {
+    // Gestione Step 1 -> 1.2 (Altro) o 2
+    if (step === 1) {
+      if (formData.problema === 'Altro') {
+        setStep(1.2);
+      } else {
+        setStep(2);
+      }
+      return;
+    }
+
+    // Gestione Step 1.2 -> 2
+    if (step === 1.2) {
+      setStep(2);
+      return;
+    }
+
+
+
+
     // Gestione Step 6 -> 6.5 (File) o 7
     if (step === 6) {
       if (formData.diagnosiMedica === 'Sì') {
@@ -101,6 +122,27 @@ const stepTitles: { [key: number]: string } = {
   };
 
   const prevStep = () => {
+    // Gestione ritorno dallo Step 2 verso 1.2 o 1
+    if (step === 2) {
+      if (formData.problema === 'Altro') {
+        setStep(1.2);
+      } else {
+        setStep(1);
+      }
+      return;
+    }
+
+    // Gestione ritorno da 1.2 a 1
+    if (step === 1.2) {
+      setStep(1);
+      return;
+    }
+
+
+
+
+
+
     // Gestione ritorno da Step 7 verso 6.5 o 6
     if (step === 7) {
       if (formData.diagnosiMedica === 'Sì') {
@@ -221,6 +263,28 @@ const stepTitles: { [key: number]: string } = {
                   ))}
                 </div>
               )}
+
+
+
+{/* STEP 1.2: SPECIFICA ALTRO (CONDIZIONALE) */}
+              {step === 1.2 && (
+                <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
+                  <label className="block text-2xl font-bold mb-8 tracking-tight">Descrivi brevemente il problema</label>
+                  <input 
+                    type="text"
+                    placeholder="Es: Dolore acuto al polso, rigidità mattutina..." 
+                    className="w-full bg-white/5 border-b-2 border-white/20 p-6 outline-none focus:border-[#55B4FF] transition-all text-xl text-white font-bold" 
+                    value={formData.problemaSpecifico} 
+                    onChange={(e) => setFormData({...formData, problemaSpecifico: e.target.value})} 
+                  />
+                  <p className="text-white/40 mt-4 text-sm uppercase tracking-widest font-bold italic">
+                    Questo ci aiuterà a preparare meglio la tua valutazione
+                  </p>
+                </div>
+              )}
+
+
+
 
               {/* STEP 2: DURATA */}
               {step === 2 && (
@@ -513,6 +577,7 @@ const stepTitles: { [key: number]: string } = {
                 disabled={
                   isSending ||
                   (step === 1 && !formData.problema) ||
+                  (step === 1.2 && !formData.problemaSpecifico) ||
                   (step === 2 && !formData.durata) ||
                   (step === 3 && !formData.limitazione) ||
                   (step === 4 && !formData.obiettivo) ||
