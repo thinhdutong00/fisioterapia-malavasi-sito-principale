@@ -198,21 +198,56 @@ export default function PrenotaPage() {
                 </div>
               )}
 
-              {/* STEP 6: CONTATTI */}
-              {step === 6 && (
-                <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-6 max-w-xl mx-auto w-full text-center">
-                  <label className="block text-2xl font-bold mb-10 tracking-tight">I tuoi contatti</label>
-                  <input type="text" placeholder="Nome e Cognome" className="w-full bg-white/5 border-b-2 border-white/20 p-5 outline-none focus:border-[#55B4FF] text-xl font-bold text-white" value={formData.nome} onChange={(e) => setFormData({...formData, nome: e.target.value})} />
-                  <div className="grid md:grid-cols-2 gap-8">
-                    <input type="tel" placeholder="Cellulare" className="bg-transparent border-b-2 border-white/20 p-5 outline-none focus:border-[#55B4FF] text-xl font-bold text-white" value={formData.telefono} onChange={(e) => setFormData({...formData, telefono: e.target.value})} />
-                    <input type="email" placeholder="Email" className="bg-transparent border-b-2 border-white/20 p-5 outline-none focus:border-[#55B4FF] text-xl font-bold text-white" value={formData.email} onChange={(e) => setFormData({...formData, email: e.target.value})} />
-                  </div>
-                  <label className="flex items-center gap-4 cursor-pointer pt-12">
-                    <input type="checkbox" className="w-6 h-6 rounded-lg accent-[#55B4FF]" checked={formData.privacy} onChange={(e) => setFormData({...formData, privacy: e.target.checked})} />
-                    <span className="text-xs text-white/40 text-left">Acconsento al trattamento dei dati (<Link href="/privacy" className="underline text-[#55B4FF]">Privacy Policy</Link>).</span>
-                  </label>
-                </div>
-              )}
+              {/* STEP 6: CONTATTI CON COMPILAZIONE AUTOMATICA */}
+{step === 6 && (
+  <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-6 max-w-xl mx-auto w-full text-center">
+    <label className="block text-2xl font-bold mb-10 tracking-tight">I tuoi contatti</label>
+    
+    <input 
+      type="text" 
+      name="name" // Aggiunto per autofill
+      autoComplete="name" // Forza il browser a suggerire il nome
+      placeholder="Nome e Cognome" 
+      className="w-full bg-white/5 border-b-2 border-white/20 p-5 outline-none focus:border-[#55B4FF] text-xl font-bold text-white" 
+      value={formData.nome} 
+      onChange={(e) => setFormData({...formData, nome: e.target.value})} 
+    />
+
+    <div className="grid md:grid-cols-2 gap-8">
+      <input 
+        type="tel" 
+        name="tel" // Aggiunto per autofill
+        autoComplete="tel" // Forza il browser a suggerire il telefono
+        placeholder="Cellulare" 
+        className="bg-transparent border-b-2 border-white/20 p-5 outline-none focus:border-[#55B4FF] text-xl font-bold text-white" 
+        value={formData.telefono} 
+        onChange={(e) => setFormData({...formData, telefono: e.target.value})} 
+      />
+      
+      <input 
+        type="email" 
+        name="email" // Aggiunto per autofill
+        autoComplete="email" // Forza il browser a suggerire l'email
+        placeholder="Email" 
+        className="bg-transparent border-b-2 border-white/20 p-5 outline-none focus:border-[#55B4FF] text-xl font-bold text-white" 
+        value={formData.email} 
+        onChange={(e) => setFormData({...formData, email: e.target.value})} 
+      />
+    </div>
+
+    <label className="flex items-center gap-4 cursor-pointer pt-12">
+      <input 
+        type="checkbox" 
+        className="w-6 h-6 rounded-lg accent-[#55B4FF]" 
+        checked={formData.privacy} 
+        onChange={(e) => setFormData({...formData, privacy: e.target.checked})} 
+      />
+      <span className="text-xs text-white/40 text-left">
+        Acconsento al trattamento dei dati (<Link href="/privacy" className="underline text-[#55B4FF]">Privacy Policy</Link>).
+      </span>
+    </label>
+  </div>
+)}
             </div>
 
             {/* NAVIGAZIONE */}
