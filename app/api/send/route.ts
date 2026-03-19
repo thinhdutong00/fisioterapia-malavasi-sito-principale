@@ -23,7 +23,7 @@ export async function POST(request: Request) {
     const { data: resendData, error } = await resend.emails.send({
       from: 'Studio Malavasi <notifiche@fisioterapiamalavasi.it>', 
       to: ['fisioterapiamalavasi@gmail.com'], 
-      subject: `Nuova Analisi: ${nome} - ${sede}`,
+      subject: `Nuova prenotazione dal sito: ${nome} - ${sede}`,
       attachments: attachments,
       html: `
         <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #022166; line-height: 1.5; max-width: 600px; margin: 0 auto; padding: 20px;">
