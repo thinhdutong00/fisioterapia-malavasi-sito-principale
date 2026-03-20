@@ -18,6 +18,12 @@ export default function Navbar() {
   const [openSubmenu, setOpenSubmenu] = useState<string | null>(null); // Per mobile
   const lastScrollY = useRef(0);
 
+
+// Se l'URL contiene "/prenota", la Navbar non viene renderizzata
+  if (pathname?.includes('/prenota')) return null;
+
+
+
   // Gestione Scroll
   useEffect(() => {
     const handleScroll = () => {
