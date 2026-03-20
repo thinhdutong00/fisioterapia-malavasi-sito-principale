@@ -249,7 +249,7 @@ const stepTitles: { [key: number]: string } = {
             {/* CONTENITORE STEP: Altezza ridotta su mobile, centrata su desktop */}
             <div className="min-h-[280px] md:min-h-[400px] flex flex-col justify-start md:justify-center">
               
-              {/* STEP 1: PROBLEMA */}
+              {/* STEP 1: PROBLEMA - COMPATTATO SU MOBILE */}
               {step === 1 && (
                 <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-3">
                   <label className="block text-2xl font-bold mb-8 tracking-tight">Per quale patologia desidera ricevere un consulto?</label>
@@ -257,10 +257,17 @@ const stepTitles: { [key: number]: string } = {
                     <button 
                       key={opzione}
                       onClick={() => setFormData({...formData, problema: opzione})}
-                      className={`w-full p-6 rounded-2xl border-2 font-bold transition-all text-left flex justify-between items-center ${formData.problema === opzione ? 'border-[#55B4FF] bg-[#55B4FF] text-[#022166]' : 'border-white/10 bg-white/5 text-white hover:border-white/40'}`}
+                      className={`w-full p-4 md:p-6 rounded-2xl border-2 font-bold transition-all text-left flex justify-between items-center ${
+                        formData.problema === opzione 
+                          ? 'border-[#55B4FF] bg-[#55B4FF] text-[#022166]' 
+                          : 'border-white/10 bg-white/5 text-white hover:border-white/40'
+                      }`}
                     >
-                      <span className="text-xl uppercase tracking-tighter">{opzione}</span>
-                      {formData.problema === opzione ? <CheckCircle size={28} /> : <div className="w-6 h-6 rounded-full border-2 border-white/20" />}
+                      <span className="text-lg md:text-xl uppercase tracking-tighter">{opzione}</span>
+                      {formData.problema === opzione 
+                        ? <CheckCircle size={28} className="shrink-0" /> 
+                        : <div className="w-6 h-6 rounded-full border-2 border-white/20 shrink-0" />
+                      }
                     </button>
                   ))}
                 </div>
