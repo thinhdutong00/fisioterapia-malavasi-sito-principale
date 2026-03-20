@@ -14,7 +14,7 @@ export default function TrattamentiPage() {
       titolo: "Lombalgia e Sciatalgia",
       slug: "/trattamenti/lombalgia-sciatalgia",
       desc: "Percorsi specifici per il dolore lombare acuto e cronico e sofferenze del nervo sciatico.",
-      color: "bg-[#FFF7ED]" // Arancione Soft
+      color: "bg-[#DCFCE7]" // Arancione Soft
     },
     {
       titolo: "Dolore Cronico",
@@ -44,7 +44,7 @@ export default function TrattamentiPage() {
       titolo: "Fisioterapia Sportiva",
       slug: "/trattamenti/sportiva",
       desc: "Recupero post-infortunio e ottimizzazione delle performance per atleti.",
-      color: "bg-[#DCFCE7]" // Verde menta
+      color: "bg-[#FFEDD5]" // Verde menta
     },
     {
       titolo: "Fisioterapia Neurologica",
