@@ -57,10 +57,12 @@ export default function Navbar() {
       n: "Trattamenti", 
       h: "/trattamenti",
       sub: [
+        { n: "Lombalgia e Sciatalgia", h: "/trattamenti/lombalgia-sciatalgia" },
+        { n: "Dolore Cronico", h: "/trattamenti/dolore-persistente" },
+        { n: "Cervicalgia", h: "/trattamenti/cefalee-vertigini" },
         { n: "Riabilitazione Post-Chirurgica", h: "/trattamenti/chirurgica" },
-        { n: "Dolore Persistente", h: "/trattamenti/dolore-persistente" },
-        { n: "Fisioterapia Sportiva", h: "/trattamenti/sportiva" },
-        { n: "Cefalee e Vertigini", h: "/trattamenti/cefalee-vertigini" },
+        { n: "Fisioterapia Muscoloscheletrica", h: "/trattamenti/muscoloscheletrica" },
+        { n: "Fisioterapia Sportiva", h: "/trattamenti/sportiva" },   
         { n: "Riabilitazione Neurologica", h: "/trattamenti/neurologica" },
         { n: "Fisioterapia Oncologica", h: "/trattamenti/oncologica" },
       ]
