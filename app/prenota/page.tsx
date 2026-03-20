@@ -250,7 +250,7 @@ const stepTitles: { [key: number]: string } = {
               {/* STEP 1: PROBLEMA */}
               {step === 1 && (
                 <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-3">
-                  <label className="block text-2xl font-bold mb-8 tracking-tight">In quale punto del corpo senti dolore o rigidità?</label>
+                  <label className="block text-2xl font-bold mb-8 tracking-tight">Per quale patologia desidera ricevere un consulto?</label>
                   {['Lombalgia / sciatalgia', 'Cervicalgia', 'Dolore cronico', 'Riabilitazione post chirurgica', 'Fisioterapia sportiva', 'Altro'].map((opzione) => (
                     <button 
                       key={opzione}
