@@ -137,7 +137,7 @@ export default function TrattamentiPage() {
             >
               <ArrowLeft size={20} /> Torna alla Home
             </Link>
-            <span className="text-[10px] uppercase tracking-widest font-black opacity-40">Fisioterapia Malavasi — Hub Clinico</span>
+            <span className="text-[10px] uppercase tracking-widest font-black opacity-40">Fisioterapia e Riabilitazione — Malavasi</span>
           </div>
 
         </div>
