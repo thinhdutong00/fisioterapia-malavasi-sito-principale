@@ -18,14 +18,14 @@ export default function WhatsAppWidget() {
     // 1. Appare l'icona dopo 2 secondi
     const iconTimer = setTimeout(() => setIsVisible(true), 2000);
     
-    // 2. Appare la mini-chat dopo 20 secondi SOLO se non è stata già chiusa manualmente
+    // 2. Appare la mini-chat dopo 30 secondi SOLO se non è stata già chiusa manualmente
     const hasClosedChat = sessionStorage.getItem('whatsapp_closed');
     
     const chatTimer = setTimeout(() => {
       if (!hasClosedChat) {
         setShowChat(true);
       }
-    }, 20000);
+    }, 30000);
 
     // 3. Rileva se il menu mobile della Navbar è aperto
     const observer = new MutationObserver(() => {
