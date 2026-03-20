@@ -251,7 +251,7 @@ const stepTitles: { [key: number]: string } = {
               {step === 1 && (
                 <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-3">
                   <label className="block text-2xl font-bold mb-8 tracking-tight">In quale punto del corpo senti dolore o rigidità?</label>
-                  {['Mal di schiena', 'Dolore cervicale', 'Problema alla spalla', 'Ginocchio / anca', 'Infortunio sportivo', 'Altro'].map((opzione) => (
+                  {['Lombalgia / sciatalgia', 'Cervicalgia', 'Dolore cronico', 'Riabilitazione post chirurgica', 'Fisioterapia sportiva', 'Altro'].map((opzione) => (
                     <button 
                       key={opzione}
                       onClick={() => setFormData({...formData, problema: opzione})}
