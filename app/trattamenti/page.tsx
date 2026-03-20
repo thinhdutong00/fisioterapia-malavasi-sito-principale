@@ -11,6 +11,30 @@ import {
 export default function TrattamentiPage() {
   const trattamenti = [
     {
+      titolo: "Lombalgia e Sciatalgia",
+      slug: "/trattamenti/lombalgia-sciatalgia",
+      desc: "Percorsi specifici per il dolore lombare acuto e cronico e sofferenze del nervo sciatico.",
+      color: "bg-[#FFF7ED]" // Arancione Soft
+    },
+    {
+      titolo: "Dolore Persistente",
+      slug: "/trattamenti/dolore-persistente",
+      desc: "Gestione multidisciplinare del dolore cronico e sensibilizzazione centrale.",
+      color: "bg-[#FCE7F3]" // Rosa tenue
+    },
+    {
+      titolo: "Cefalee e Vertigini",
+      slug: "/trattamenti/cefalee-vertigini",
+      desc: "Trattamento dei disturbi cervicali correlati a mal di testa e vertigini.",
+      color: "bg-[#FEF9C3]" // Giallo tenue
+    },
+    {
+      titolo: "Pre e Post Chirurgica",
+      slug: "/trattamenti/chirurgica",
+      desc: "Preparazione e recupero funzionale per interventi ortopedici.",
+      color: "bg-[#E0E7FF]" // Indigo soft
+    },
+    {
       titolo: "Fisioterapia Muscoloscheletrica",
       slug: "/trattamenti/muscoloscheletrica",
       desc: "Riabilitazione per patologie articolari, muscolari e della colonna vertebrale.",
@@ -33,31 +57,13 @@ export default function TrattamentiPage() {
       slug: "/trattamenti/oncologica",
       desc: "Percorsi riabilitativi personalizzati per il supporto durante e dopo le terapie.",
       color: "bg-[#FFEDD5]" // Pesca
-    },
-    {
-      titolo: "Pre e Post Chirurgica",
-      slug: "/trattamenti/chirurgica",
-      desc: "Preparazione e recupero funzionale per interventi ortopedici.",
-      color: "bg-[#E0E7FF]" // Indigo soft
-    },
-    {
-      titolo: "Dolore Persistente",
-      slug: "/trattamenti/dolore-persistente",
-      desc: "Gestione multidisciplinare del dolore cronico e sensibilizzazione centrale.",
-      color: "bg-[#FCE7F3]" // Rosa tenue
-    },
-    {
-      titolo: "Cefalee e Vertigini",
-      slug: "/trattamenti/cefalee-vertigini",
-      desc: "Trattamento dei disturbi cervicali correlati a mal di testa e vertigini.",
-      color: "bg-[#FEF9C3]" // Giallo tenue
     }
   ];
 
   return (
     <main className="min-h-screen bg-[#F8FAFC] text-slate-800 font-sans relative overflow-hidden">
       
-      {/* BACKGROUND - Precisione e Pulizia */}
+      {/* BACKGROUND */}
       <div className="fixed inset-0 z-0 pointer-events-none">
         <div className="absolute top-[-5%] right-[-5%] w-[40%] h-[40%] bg-[#022166]/3 rounded-full blur-[100px]"></div>
         <div className="absolute bottom-[-5%] left-[-5%] w-[40%] h-[40%] bg-[#55B4FF]/5 rounded-full blur-[100px]"></div>
@@ -73,7 +79,7 @@ export default function TrattamentiPage() {
             <span className="text-[#022166] font-semibold">Aree Cliniche</span>
           </nav>
 
-          {/* HEADER - Stile Bold come le sottopagine */}
+          {/* HEADER */}
           <header className="mb-24">
             <div className="flex items-center gap-3 mb-6">
               <div className="h-[1px] w-12 bg-[#55B4FF]"></div>
@@ -88,7 +94,7 @@ export default function TrattamentiPage() {
             </p>
           </header>
 
-          {/* GRID TRATTAMENTI - Card Strutturate con Colori Vivaci */}
+          {/* GRID TRATTAMENTI */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {trattamenti.map((t, index) => (
               <Link 
@@ -114,8 +120,8 @@ export default function TrattamentiPage() {
               </Link>
             ))}
 
-            {/* CARD CTA - Unificata allo stile Hub */}
-            <div className="lg:col-span-1 bg-[#022166] p-12 rounded-[2rem] shadow-xl flex flex-col justify-center text-white relative overflow-hidden group">
+            {/* 9. VALUTAZIONE CLINICA (Card CTA finale) */}
+            <div className="bg-[#022166] p-12 rounded-[2rem] shadow-xl flex flex-col justify-center text-white relative overflow-hidden group">
                <h3 className="text-3xl font-black mb-6 relative z-10 leading-tight">Valutazione <br />Clinica</h3>
                <p className="text-white/60 mb-10 relative z-10 text-sm leading-relaxed">
                  Non sai quale percorso sia più adatto a te? I nostri professionisti sono a disposizione per definire la strategia corretta.
