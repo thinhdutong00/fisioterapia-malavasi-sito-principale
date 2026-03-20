@@ -277,110 +277,145 @@ const stepTitles: { [key: number]: string } = {
 
 
 
-{/* STEP 1.2: SPECIFICA ALTRO (CONDIZIONALE) */}
-              {step === 1.2 && (
-                <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-                  <label className="block text-2xl font-bold mb-8 tracking-tight">Descrivi brevemente il problema</label>
-                  <input 
-                    type="text"
-                    placeholder="Es: Dolore acuto al polso, rigidità mattutina..." 
-                    className="w-full bg-white/5 border-b-2 border-white/20 p-6 outline-none focus:border-[#55B4FF] transition-all text-xl text-white font-bold" 
-                    value={formData.problemaSpecifico} 
-                    onChange={(e) => setFormData({...formData, problemaSpecifico: e.target.value})} 
-                  />
-                  <p className="text-white/40 mt-4 text-sm uppercase tracking-widest font-bold italic">
-                    Questo ci aiuterà a preparare meglio la tua valutazione
-                  </p>
-                </div>
-              )}
+{/* STEP 1.2: SPECIFICA ALTRO (CONDIZIONALE) - COMPATTATO SU MOBILE */}
+{step === 1.2 && (
+  <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
+    <label className="block text-2xl font-bold mb-8 tracking-tight">Descrivi brevemente il problema</label>
+    <input 
+      type="text"
+      placeholder="Es: Dolore acuto al polso, rigidità mattutina..." 
+      className="w-full bg-white/5 border-b-2 border-white/20 p-4 md:p-6 outline-none focus:border-[#55B4FF] transition-all text-base md:text-xl text-white font-bold" 
+      value={formData.problemaSpecifico} 
+      onChange={(e) => setFormData({...formData, problemaSpecifico: e.target.value})} 
+    />
+    <p className="text-white/40 mt-4 text-[10px] md:text-sm uppercase tracking-widest font-bold italic">
+      Questo ci aiuterà a preparare meglio la tua valutazione
+    </p>
+  </div>
+)}
 
 
 
 
-              {/* STEP 2: DURATA */}
-              {step === 2 && (
-                <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-3">
-                  <label className="block text-2xl font-bold mb-8 tracking-tight">Da quanto tempo hai questo problema?</label>
-                  {['Da pochi giorni', 'Da settimane', 'Da mesi / anni'].map((opzione) => (
-                    <button 
-                      key={opzione}
-                      onClick={() => setFormData({...formData, durata: opzione})}
-                      className={`w-full p-6 rounded-2xl border-2 font-bold transition-all text-left flex justify-between items-center ${formData.durata === opzione ? 'border-[#55B4FF] bg-[#55B4FF] text-[#022166]' : 'border-white/10 bg-white/5 text-white hover:border-white/40'}`}
-                    >
-                      <span className="text-xl uppercase tracking-tighter">{opzione}</span>
-                      {formData.durata === opzione ? <CheckCircle size={28} /> : <div className="w-6 h-6 rounded-full border-2 border-white/20" />}
-                    </button>
-                  ))}
-                </div>
-              )}
+              {/* STEP 2: DURATA - COMPATTATO SU MOBILE */}
+{step === 2 && (
+  <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-3">
+    <label className="block text-2xl font-bold mb-8 tracking-tight">Da quanto tempo hai questo problema?</label>
+    {['Da pochi giorni', 'Da settimane', 'Da mesi / anni'].map((opzione) => (
+      <button 
+        key={opzione}
+        onClick={() => setFormData({...formData, durata: opzione})}
+        className={`w-full p-4 md:p-6 rounded-2xl border-2 font-bold transition-all text-left flex justify-between items-center ${
+          formData.durata === opzione 
+            ? 'border-[#55B4FF] bg-[#55B4FF] text-[#022166]' 
+            : 'border-white/10 bg-white/5 text-white hover:border-white/40'
+        }`}
+      >
+        <span className="text-base md:text-xl uppercase tracking-tighter">{opzione}</span>
+        {formData.durata === opzione 
+          ? <CheckCircle size={28} className="shrink-0" /> 
+          : <div className="w-6 h-6 rounded-full border-2 border-white/20 shrink-0" />
+        }
+      </button>
+    ))}
+  </div>
+)}
 
-              {/* STEP 3: LIMITAZIONE */}
-              {step === 3 && (
-                <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-3">
-                  <label className="block text-2xl font-bold mb-8 tracking-tight">Quanto ti limita nella vita quotidiana?</label>
-                  {['Poco', 'Abbastanza', 'Molto'].map((opzione) => (
-                    <button 
-                      key={opzione}
-                      onClick={() => setFormData({...formData, limitazione: opzione})}
-                      className={`w-full p-6 rounded-2xl border-2 font-bold transition-all text-left flex justify-between items-center ${formData.limitazione === opzione ? 'border-[#55B4FF] bg-[#55B4FF] text-[#022166]' : 'border-white/10 bg-white/5 text-white hover:border-white/40'}`}
-                    >
-                      <span className="text-xl uppercase tracking-tighter">{opzione}</span>
-                      {formData.limitazione === opzione ? <CheckCircle size={28} /> : <div className="w-6 h-6 rounded-full border-2 border-white/20" />}
-                    </button>
-                  ))}
-                </div>
-              )}
+              {/* STEP 3: LIMITAZIONE - COMPATTATO SU MOBILE */}
+{step === 3 && (
+  <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-3">
+    <label className="block text-2xl font-bold mb-8 tracking-tight">Quanto ti limita nella vita quotidiana?</label>
+    {['Poco', 'Abbastanza', 'Molto'].map((opzione) => (
+      <button 
+        key={opzione}
+        onClick={() => setFormData({...formData, limitazione: opzione})}
+        className={`w-full p-4 md:p-6 rounded-2xl border-2 font-bold transition-all text-left flex justify-between items-center ${
+          formData.limitazione === opzione 
+            ? 'border-[#55B4FF] bg-[#55B4FF] text-[#022166]' 
+            : 'border-white/10 bg-white/5 text-white hover:border-white/40'
+        }`}
+      >
+        <span className="text-base md:text-xl uppercase tracking-tighter">{opzione}</span>
+        {formData.limitazione === opzione 
+          ? <CheckCircle size={28} className="shrink-0" /> 
+          : <div className="w-6 h-6 rounded-full border-2 border-white/20 shrink-0" />
+        }
+      </button>
+    ))}
+  </div>
+)}
 
-              {/* STEP 4: OBIETTIVO */}
-              {step === 4 && (
-                <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-3">
-                  <label className="block text-2xl font-bold mb-8 tracking-tight">Cosa vorresti ottenere dalla fisioterapia?</label>
-                  {['Eliminare il dolore', 'Tornare ad allenarmi', 'Muovermi senza fastidi', 'Evitare un intervento', 'Altro'].map((opzione) => (
-                    <button 
-                      key={opzione}
-                      onClick={() => setFormData({...formData, obiettivo: opzione})}
-                      className={`w-full p-6 rounded-2xl border-2 font-bold transition-all text-left flex justify-between items-center ${formData.obiettivo === opzione ? 'border-[#55B4FF] bg-[#55B4FF] text-[#022166]' : 'border-white/10 bg-white/5 text-white hover:border-white/40'}`}
-                    >
-                      <span className="text-xl uppercase tracking-tighter">{opzione}</span>
-                      {formData.obiettivo === opzione ? <CheckCircle size={28} /> : <div className="w-6 h-6 rounded-full border-2 border-white/20" />}
-                    </button>
-                  ))}
-                </div>
-              )}
+              {/* STEP 4: OBIETTIVO - COMPATTATO SU MOBILE */}
+{step === 4 && (
+  <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-3">
+    <label className="block text-2xl font-bold mb-8 tracking-tight">Cosa vorresti ottenere dalla fisioterapia?</label>
+    {['Eliminare il dolore', 'Tornare ad allenarmi', 'Muovermi senza fastidi', 'Evitare un intervento', 'Altro'].map((opzione) => (
+      <button 
+        key={opzione}
+        onClick={() => setFormData({...formData, obiettivo: opzione})}
+        className={`w-full p-4 md:p-6 rounded-2xl border-2 font-bold transition-all text-left flex justify-between items-center ${
+          formData.obiettivo === opzione 
+            ? 'border-[#55B4FF] bg-[#55B4FF] text-[#022166]' 
+            : 'border-white/10 bg-white/5 text-white hover:border-white/40'
+        }`}
+      >
+        <span className="text-base md:text-xl uppercase tracking-tighter">{opzione}</span>
+        {formData.obiettivo === opzione 
+          ? <CheckCircle size={28} className="shrink-0" /> 
+          : <div className="w-6 h-6 rounded-full border-2 border-white/20 shrink-0" />
+        }
+      </button>
+    ))}
+  </div>
+)}
 
-              {/* STEP 5: GIA FATTO FISIO */}
-              {step === 5 && (
-                <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-3">
-                  <label className="block text-2xl font-bold mb-8 tracking-tight">Hai già fatto fisioterapia per questo problema?</label>
-                  {['Sì', 'No'].map((opzione) => (
-                    <button 
-                      key={opzione}
-                      onClick={() => setFormData({...formData, giaFattoFisio: opzione})}
-                      className={`w-full p-6 rounded-2xl border-2 font-bold transition-all text-left flex justify-between items-center ${formData.giaFattoFisio === opzione ? 'border-[#55B4FF] bg-[#55B4FF] text-[#022166]' : 'border-white/10 bg-white/5 text-white hover:border-white/40'}`}
-                    >
-                      <span className="text-xl uppercase tracking-tighter">{opzione}</span>
-                      {formData.giaFattoFisio === opzione ? <CheckCircle size={28} /> : <div className="w-6 h-6 rounded-full border-2 border-white/20" />}
-                    </button>
-                  ))}
-                </div>
-              )}
+              {/* STEP 5: GIA FATTO FISIO - COMPATTATO SU MOBILE */}
+{step === 5 && (
+  <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-3">
+    <label className="block text-2xl font-bold mb-8 tracking-tight">Hai già fatto fisioterapia per questo problema?</label>
+    {['Sì', 'No'].map((opzione) => (
+      <button 
+        key={opzione}
+        onClick={() => setFormData({...formData, giaFattoFisio: opzione})}
+        className={`w-full p-4 md:p-6 rounded-2xl border-2 font-bold transition-all text-left flex justify-between items-center ${
+          formData.giaFattoFisio === opzione 
+            ? 'border-[#55B4FF] bg-[#55B4FF] text-[#022166]' 
+            : 'border-white/10 bg-white/5 text-white hover:border-white/40'
+        }`}
+      >
+        <span className="text-base md:text-xl uppercase tracking-tighter">{opzione}</span>
+        {formData.giaFattoFisio === opzione 
+          ? <CheckCircle size={28} className="shrink-0" /> 
+          : <div className="w-6 h-6 rounded-full border-2 border-white/20 shrink-0" />
+        }
+      </button>
+    ))}
+  </div>
+)}
 
-              {/* STEP 6: DIAGNOSI */}
-              {step === 6 && (
-                <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-3">
-                  <label className="block text-2xl font-bold mb-8 tracking-tight">Hai una diagnosi medica?</label>
-                  {['Sì', 'No'].map((opzione) => (
-                    <button 
-                      key={opzione}
-                      onClick={() => setFormData({...formData, diagnosiMedica: opzione})}
-                      className={`w-full p-6 rounded-2xl border-2 font-bold transition-all text-left flex justify-between items-center ${formData.diagnosiMedica === opzione ? 'border-[#55B4FF] bg-[#55B4FF] text-[#022166]' : 'border-white/10 bg-white/5 text-white hover:border-white/40'}`}
-                    >
-                      <span className="text-xl uppercase tracking-tighter">{opzione}</span>
-                      {formData.diagnosiMedica === opzione ? <CheckCircle size={28} /> : <div className="w-6 h-6 rounded-full border-2 border-white/20" />}
-                    </button>
-                  ))}
-                </div>
-              )}
+              {/* STEP 6: DIAGNOSI - COMPATTATO SU MOBILE */}
+{step === 6 && (
+  <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-3">
+    <label className="block text-2xl font-bold mb-8 tracking-tight">Hai una diagnosi medica?</label>
+    {['Sì', 'No'].map((opzione) => (
+      <button 
+        key={opzione}
+        onClick={() => setFormData({...formData, diagnosiMedica: opzione})}
+        className={`w-full p-4 md:p-6 rounded-2xl border-2 font-bold transition-all text-left flex justify-between items-center ${
+          formData.diagnosiMedica === opzione 
+            ? 'border-[#55B4FF] bg-[#55B4FF] text-[#022166]' 
+            : 'border-white/10 bg-white/5 text-white hover:border-white/40'
+        }`}
+      >
+        <span className="text-base md:text-xl uppercase tracking-tighter">{opzione}</span>
+        {formData.diagnosiMedica === opzione 
+          ? <CheckCircle size={28} className="shrink-0" /> 
+          : <div className="w-6 h-6 rounded-full border-2 border-white/20 shrink-0" />
+        }
+      </button>
+    ))}
+  </div>
+)}
 
               {/* STEP 6.5: CARICAMENTO REFERTO (CONDIZIONALE) */}
               {step === 6.5 && (
@@ -411,22 +446,29 @@ const stepTitles: { [key: number]: string } = {
                 </div>
               )}
 
-              {/* STEP 7: ETA */}
-              {step === 7 && (
-                <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-3">
-                  <label className="block text-2xl font-bold mb-8 tracking-tight">Indica la tua fascia d'età</label>
-                  {['18–25', '26–35', '36–50', '50+'].map((opzione) => (
-                    <button 
-                      key={opzione}
-                      onClick={() => setFormData({...formData, eta: opzione})}
-                      className={`w-full p-6 rounded-2xl border-2 font-bold transition-all text-left flex justify-between items-center ${formData.eta === opzione ? 'border-[#55B4FF] bg-[#55B4FF] text-[#022166]' : 'border-white/10 bg-white/5 text-white hover:border-white/40'}`}
-                    >
-                      <span className="text-xl uppercase tracking-tighter">{opzione}</span>
-                      {formData.eta === opzione ? <CheckCircle size={28} /> : <div className="w-6 h-6 rounded-full border-2 border-white/20" />}
-                    </button>
-                  ))}
-                </div>
-              )}
+              {/* STEP 7: ETA - COMPATTATO SU MOBILE */}
+{step === 7 && (
+  <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-3">
+    <label className="block text-2xl font-bold mb-8 tracking-tight">Indica la tua fascia d'età</label>
+    {['18–25', '26–35', '36–50', '50+'].map((opzione) => (
+      <button 
+        key={opzione}
+        onClick={() => setFormData({...formData, eta: opzione})}
+        className={`w-full p-4 md:p-6 rounded-2xl border-2 font-bold transition-all text-left flex justify-between items-center ${
+          formData.eta === opzione 
+            ? 'border-[#55B4FF] bg-[#55B4FF] text-[#022166]' 
+            : 'border-white/10 bg-white/5 text-white hover:border-white/40'
+        }`}
+      >
+        <span className="text-base md:text-xl uppercase tracking-tighter">{opzione}</span>
+        {formData.eta === opzione 
+          ? <CheckCircle size={28} className="shrink-0" /> 
+          : <div className="w-6 h-6 rounded-full border-2 border-white/20 shrink-0" />
+        }
+      </button>
+    ))}
+  </div>
+)}
 
               {/* STEP 8: GIORNI E ORARI */}
               {step === 8 && (
@@ -485,24 +527,31 @@ const stepTitles: { [key: number]: string } = {
                 </div>
               )}
 
-              {/* STEP 9: SEDE */}
-              {step === 9 && (
-                <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-3">
-                  <label className="block text-2xl font-bold mb-8 tracking-tight">Dove preferisci effettuare la visita?</label>
-                  {['Sede Cavezzo (Mo)', 'Sede Rovereto sulla Secchia (Mo)', 'Domicilio'].map((s) => (
-                    <button 
-                      key={s} 
-                      onClick={() => setFormData({...formData, sede: s})} 
-                      className={`w-full p-6 rounded-2xl border-2 font-bold transition-all text-left flex justify-between items-center ${formData.sede === s ? 'border-[#55B4FF] bg-[#55B4FF] text-[#022166]' : 'border-white/10 bg-white/5 text-white hover:border-white/40'}`}
-                    >
-                      <span className="text-xl uppercase tracking-tighter">{s}</span>
-                      {formData.sede === s ? <CheckCircle size={28} /> : <div className="w-6 h-6 rounded-full border-2 border-white/20" />}
-                    </button>
-                  ))}
-                </div>
-              )}
+              {/* STEP 9: SEDE - COMPATTATO SU MOBILE */}
+{step === 9 && (
+  <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-3">
+    <label className="block text-2xl font-bold mb-8 tracking-tight">Dove preferisci effettuare la visita?</label>
+    {['Sede Cavezzo (Mo)', 'Sede Rovereto sulla Secchia (Mo)', 'Domicilio'].map((s) => (
+      <button 
+        key={s} 
+        onClick={() => setFormData({...formData, sede: s})} 
+        className={`w-full p-4 md:p-6 rounded-2xl border-2 font-bold transition-all text-left flex justify-between items-center ${
+          formData.sede === s 
+            ? 'border-[#55B4FF] bg-[#55B4FF] text-[#022166]' 
+            : 'border-white/10 bg-white/5 text-white hover:border-white/40'
+        }`}
+      >
+        <span className="text-base md:text-xl uppercase tracking-tighter">{s}</span>
+        {formData.sede === s 
+          ? <CheckCircle size={28} className="shrink-0" /> 
+          : <div className="w-6 h-6 rounded-full border-2 border-white/20 shrink-0" />
+        }
+      </button>
+    ))}
+  </div>
+)}
 
-              {/* STEP 10: INDIRIZZO (CONDIZIONALE) */}
+              {/* STEP 10: INDIRIZZO (CONDIZIONALE) - COMPATTATO SU MOBILE */}
 {step === 10 && (
   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
     <label className="block text-2xl font-bold mb-8 tracking-tight flex items-center gap-3">
@@ -513,38 +562,38 @@ const stepTitles: { [key: number]: string } = {
       name="address"
       autoComplete="street-address"
       placeholder="Via, Civico, Città, CAP" 
-      className="w-full bg-white/5 border-b-2 border-white/20 p-6 outline-none focus:border-[#55B4FF] transition-all text-xl text-white font-bold" 
+      className="w-full bg-white/5 border-b-2 border-white/20 p-4 md:p-6 outline-none focus:border-[#55B4FF] transition-all text-base md:text-xl text-white font-bold" 
       value={formData.indirizzo} 
       onChange={(e) => setFormData({...formData, indirizzo: e.target.value})} 
     />
-    <p className="text-white/40 mt-4 text-sm uppercase tracking-widest font-bold italic">
+    <p className="text-white/40 mt-4 text-[10px] md:text-sm uppercase tracking-widest font-bold italic">
       Necessario per organizzare lo spostamento al domicilio
     </p>
   </div>
 )}
 
-              {/* STEP 11: CONTATTI */}
+              {/* STEP 11: CONTATTI - COMPATTATO SU MOBILE */}
 {step === 11 && (
-  <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-6 max-w-xl mx-auto w-full text-center">
-    <label className="block text-2xl font-bold mb-10 tracking-tight">I tuoi contatti</label>
+  <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-4 md:space-y-6 max-w-xl mx-auto w-full text-center">
+    <label className="block text-2xl font-bold mb-6 md:mb-10 tracking-tight">I tuoi contatti</label>
     
     <input 
       type="text" 
       name="name"
       autoComplete="name"
       placeholder="Nome e Cognome" 
-      className="w-full bg-white/5 border-b-2 border-white/20 p-5 outline-none focus:border-[#55B4FF] text-xl font-bold text-white" 
+      className="w-full bg-white/5 border-b-2 border-white/20 p-4 md:p-5 outline-none focus:border-[#55B4FF] text-base md:text-xl font-bold text-white transition-all" 
       value={formData.nome} 
       onChange={(e) => setFormData({...formData, nome: e.target.value})} 
     />
     
-    <div className="grid md:grid-cols-2 gap-8">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
       <input 
         type="tel" 
         name="tel"
         autoComplete="tel"
         placeholder="Cellulare" 
-        className="bg-transparent border-b-2 border-white/20 p-5 outline-none focus:border-[#55B4FF] text-xl font-bold text-white" 
+        className="bg-white/5 md:bg-transparent border-b-2 border-white/20 p-4 md:p-5 outline-none focus:border-[#55B4FF] text-base md:text-xl font-bold text-white transition-all" 
         value={formData.telefono} 
         onChange={(e) => setFormData({...formData, telefono: e.target.value})} 
       />
@@ -554,21 +603,21 @@ const stepTitles: { [key: number]: string } = {
         name="email"
         autoComplete="email"
         placeholder="Email" 
-        className="bg-transparent border-b-2 border-white/20 p-5 outline-none focus:border-[#55B4FF] text-xl font-bold text-white" 
+        className="bg-white/5 md:bg-transparent border-b-2 border-white/20 p-4 md:p-5 outline-none focus:border-[#55B4FF] text-base md:text-xl font-bold text-white transition-all" 
         value={formData.email} 
         onChange={(e) => setFormData({...formData, email: e.target.value})} 
       />
     </div>
 
-    <label className="flex items-center gap-4 cursor-pointer pt-12">
+    <label className="flex items-center gap-4 cursor-pointer pt-6 md:pt-12">
       <input 
         type="checkbox" 
         name="privacy"
-        className="w-6 h-6 rounded-lg accent-[#55B4FF]" 
+        className="w-6 h-6 rounded-lg accent-[#55B4FF] shrink-0" 
         checked={formData.privacy} 
         onChange={(e) => setFormData({...formData, privacy: e.target.checked})} 
       />
-      <span className="text-xs text-white/40 text-left">
+      <span className="text-[10px] md:text-xs text-white/40 text-left">
         Acconsento al trattamento dei dati (<Link href="/privacy" className="underline text-[#55B4FF]">Privacy Policy</Link>).
       </span>
     </label>
