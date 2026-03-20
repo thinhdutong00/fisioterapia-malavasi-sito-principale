@@ -30,7 +30,7 @@ export async function POST(request: Request) {
         <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #022166; line-height: 1.5; max-width: 600px; margin: 0 auto; padding: 20px;">
           
           <div style="border-bottom: 2px solid #55B4FF; padding-bottom: 20px; margin-bottom: 30px;">
-            <h1 style="font-size: 24px; margin: 0; color: #022166;">Nuova Valutazione Online</h1>
+            <h1 style="font-size: 24px; margin: 0; color: #022166;">Nuova Prenotazione Online - MG</h1>
             <p style="font-size: 14px; color: #55B4FF; margin: 5px 0 0 0; font-weight: bold; text-transform: uppercase; letter-spacing: 1px;">Studio Fisioterapico Malavasi</p>
           </div>
 
