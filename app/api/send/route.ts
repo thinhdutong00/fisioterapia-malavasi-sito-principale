@@ -8,9 +8,10 @@ export async function POST(request: Request) {
     const body = await request.json();
     
     const { 
-      problema, durata, limitazione, obiettivo, giaFattoFisio, 
-      diagnosiMedica, eta, giorniPreferiti, fasciaOraria, urgenza,
-      sede, indirizzo, nome, telefono, email, attachment, obiettivoSpecifico
+      problema, problemaSpecifico, // Aggiunto specifica problema
+      durata, limitazione, obiettivo, obiettivoSpecifico, // Aggiunto specifica obiettivo
+      giaFattoFisio, diagnosiMedica, eta, giorniPreferiti, fasciaOraria, urgenza,
+      sede, indirizzo, nome, telefono, email, attachment 
     } = body;
 
     const attachments = attachment ? [
@@ -44,9 +45,21 @@ export async function POST(request: Request) {
           <div style="margin-bottom: 30px;">
             <h2 style="font-size: 18px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; color: #55B4FF;">Analisi Clinica</h2>
             <p style="margin: 8px 0;"><strong>Problema:</strong> ${problema}</p>
+            
+            ${problema === 'Altro' && problemaSpecifico 
+              ? `<p style="margin: 8px 0; padding: 10px; background-color: #f0f9ff; border-left: 4px solid #55B4FF;"><strong>Dettaglio Problema:</strong> ${problemaSpecifico}</p>` 
+              : ''
+            }
+
             <p style="margin: 8px 0;"><strong>Durata:</strong> ${durata}</p>
             <p style="margin: 8px 0;"><strong>Limitazione:</strong> ${limitazione}</p>
             <p style="margin: 8px 0;"><strong>Obiettivo:</strong> ${obiettivo}</p>
+
+            ${obiettivo === 'Altro' && obiettivoSpecifico 
+              ? `<p style="margin: 8px 0; padding: 10px; background-color: #f0f9ff; border-left: 4px solid #55B4FF;"><strong>Dettaglio Obiettivo:</strong> ${obiettivoSpecifico}</p>` 
+              : ''
+            }
+
             <p style="margin: 8px 0;"><strong>Fisio precedente:</strong> ${giaFattoFisio}</p>
             <p style="margin: 8px 0;"><strong>Diagnosi medica:</strong> ${diagnosiMedica}</p>
             
@@ -62,7 +75,7 @@ export async function POST(request: Request) {
             <h2 style="font-size: 18px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; color: #55B4FF;">Appuntamento</h2>
             <p style="margin: 8px 0;"><strong>Sede:</strong> ${sede}</p>
             
-            ${sede === 'Domicilio' 
+            ${sede === 'Domicilio' && indirizzo
               ? `<p style="margin: 8px 0; color: #d9534f;"><strong>📍 Indirizzo:</strong> ${indirizzo}</p>` 
               : ''
             }
