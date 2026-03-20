@@ -167,10 +167,10 @@ export default function LombalgiaSciatalgiaPage() {
           </section>
 
 
-{/* --- SEZIONE RECENSIONI RESPONSIVE --- */}
-<section id="recensioni" className="relative min-h-screen w-full py-16 md:py-32 px-4 overflow-hidden bg-[#F8FAFC] flex items-center">
+{/* --- SEZIONE RECENSIONI RESPONSIVE (SFONDO NEUTRO E FIX FRECCE) --- */}
+<section id="recensioni" className="relative min-h-screen w-full py-16 md:py-32 px-4 overflow-hidden bg-transparent flex items-center">
   
-  {/* Background decorativo (nascosto su mobile molto piccolo per performance) */}
+  {/* Background decorativo soffuso */}
   <div className="absolute inset-0 pointer-events-none opacity-30 md:opacity-40">
     <div className="absolute top-[-5%] left-[-10%] w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-[#55B4FF]/10 rounded-full blur-[80px] md:blur-[120px]"></div>
     <div className="absolute bottom-[-5%] right-[-10%] w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-[#022166]/5 rounded-full blur-[80px] md:blur-[120px]"></div>
@@ -193,7 +193,7 @@ export default function LombalgiaSciatalgiaPage() {
         </h2>
       </div>
       
-      {/* Google Card - Ridimensionata per mobile */}
+      {/* Google Card */}
       <div className="bg-white p-5 md:p-8 rounded-[2rem] md:rounded-[2.5rem] shadow-xl md:shadow-2xl shadow-blue-900/5 border border-white flex items-center gap-5 md:gap-8 w-full max-w-sm lg:w-auto">
         <div className="w-12 h-12 md:w-16 md:h-16 bg-[#F8FAFC] rounded-xl md:rounded-2xl flex items-center justify-center flex-shrink-0 shadow-inner">
           <svg className="w-6 h-6 md:w-8 md:h-8" viewBox="0 0 24 24">
@@ -218,7 +218,7 @@ export default function LombalgiaSciatalgiaPage() {
       <Swiper
         modules={[Autoplay, Pagination, Navigation]}
         spaceBetween={20}
-        slidesPerView={1} // Default mobile: 1 slide
+        slidesPerView={1}
         navigation={{
           nextEl: '.swiper-button-next-custom',
           prevEl: '.swiper-button-prev-custom',
@@ -232,7 +232,8 @@ export default function LombalgiaSciatalgiaPage() {
           768: { slidesPerView: 2, spaceBetween: 25 }, 
           1280: { slidesPerView: 3, spaceBetween: 30 } 
         }}
-        className="!pb-16 md:!pb-24"
+        /* FIX: !overflow-visible fondamentale per non tagliare le frecce */
+        className="!pb-16 md:!pb-24 !overflow-visible"
       >
         {[
           { n: "Rosalba Cantuti", t: "Lo studio Malavasi è molto serio e professionale, Mirco segue molto bene il paziente e da’ consigli utili x continuare a migliorare nel percorso di riabilitazione.", d: "2 settimane fa" },
@@ -242,8 +243,8 @@ export default function LombalgiaSciatalgiaPage() {
           { n: "Elisa Cavazzoli", t: "Con Mirco mi sono trovata bene fin da subito. È ATTENTO e molto preparato nonostante la giovane età. Con i giusti esercizi e le giuste tempistiche sono riuscita a gestire e risolvere il mio problema, sono molto contenta! Consigliatissimo a tutti!!", d: "1 anno fa" },
           { n: "Edoardo Marchesi", t: "Ho portato mia mamma da lui perchè aveva male al piede destro faceva fatica a camminare, a scendere le scale non se ne parla e dopo due infiltrazioni di cortisone non era migliorata, quindi si è decisa ad andarci con ottimi risultati non solo il piede non le duole più, ma ha acquisito un po' più di sicurezza nel camminare e a fare le scale. Grazie Mirco", d: "1 anno fa" }
         ].map((rev, i) => (
-          <SwiperSlide key={i} className="h-auto">
-            <div className="bg-white p-8 md:p-12 rounded-[2.5rem] md:rounded-[3rem] border border-slate-100 h-full flex flex-col shadow-sm relative group/card">
+          <SwiperSlide key={i} className="!h-auto flex">
+            <div className="bg-white p-8 md:p-12 rounded-[2.5rem] md:rounded-[3rem] border border-slate-100 h-full flex flex-col shadow-sm relative group/card w-full">
               
               <div className="flex gap-1 text-yellow-400 mb-6 md:mb-8">
                 {[...Array(5)].map((_, i) => <Star key={i} size={12} fill="currentColor" stroke="none" />)}
@@ -269,17 +270,17 @@ export default function LombalgiaSciatalgiaPage() {
         ))}
       </Swiper>
 
-      {/* Navigazione Custom - Nascosta su Mobile */}
-      <div className="hidden lg:flex justify-between absolute top-1/2 -left-8 -right-8 -translate-y-1/2 pointer-events-none z-20">
-        <button className="swiper-button-prev-custom pointer-events-auto w-14 h-14 bg-white border border-slate-100 rounded-full flex items-center justify-center text-[#022166] shadow-xl hover:bg-[#022166] hover:text-white transition-all">
-          <ChevronLeft size={28} />
+      {/* Navigazione Custom Desktop - Riposizionate per evitare tagli */}
+      <div className="hidden xl:block">
+        <button className="swiper-button-prev-custom absolute top-[45%] -left-12 -translate-y-1/2 z-50 w-16 h-16 bg-white border border-slate-100 rounded-full flex items-center justify-center text-[#022166] shadow-xl hover:bg-[#022166] hover:text-white transition-all cursor-pointer">
+          <ChevronLeft size={32} />
         </button>
-        <button className="swiper-button-next-custom pointer-events-auto w-14 h-14 bg-white border border-slate-100 rounded-full flex items-center justify-center text-[#022166] shadow-xl hover:bg-[#022166] hover:text-white transition-all">
-          <ChevronRight size={28} />
+        <button className="swiper-button-next-custom absolute top-[45%] -right-12 -translate-y-1/2 z-50 w-16 h-16 bg-white border border-slate-100 rounded-full flex items-center justify-center text-[#022166] shadow-xl hover:bg-[#022166] hover:text-white transition-all cursor-pointer">
+          <ChevronRight size={32} />
         </button>
       </div>
       
-      {/* Pagination Custom - Visibile su Mobile per il touch */}
+      {/* Pagination Mobile dots */}
       <div className="swiper-pagination-custom flex justify-center mt-2 gap-2"></div>
     </div>
   </div>
