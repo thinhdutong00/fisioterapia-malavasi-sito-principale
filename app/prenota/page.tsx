@@ -290,7 +290,7 @@ const stepTitles: { [key: number]: string } = {
               {step === 2 && (
                 <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-3">
                   <label className="block text-2xl font-bold mb-8 tracking-tight">Da quanto tempo hai questo problema?</label>
-                  {['Da pochi giorni', 'Da settimane', 'Da mesi/anni'].map((opzione) => (
+                  {['Da pochi giorni', 'Da settimane', 'Da mesi / anni'].map((opzione) => (
                     <button 
                       key={opzione}
                       onClick={() => setFormData({...formData, durata: opzione})}
