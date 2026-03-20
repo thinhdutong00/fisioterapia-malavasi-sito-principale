@@ -2,10 +2,10 @@
 
 import React, { useState, useEffect } from 'react';
 import { X } from 'lucide-react';
-import { usePathname } from 'next/navigation'; // Importiamo il controllo dell'URL
+import { usePathname } from 'next/navigation';
 
 export default function WhatsAppWidget() {
-  const pathname = usePathname(); // Otteniamo l'URL attuale
+  const pathname = usePathname();
   const [isVisible, setIsVisible] = useState(false);
   const [showChat, setShowChat] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -18,12 +18,16 @@ export default function WhatsAppWidget() {
     // 1. Appare l'icona dopo 2 secondi
     const iconTimer = setTimeout(() => setIsVisible(true), 2000);
     
-    // 2. Appare la mini-chat dopo 20 secondi
+    // 2. Appare la mini-chat dopo 20 secondi SOLO se non è stata già chiusa manualmente
+    const hasClosedChat = sessionStorage.getItem('whatsapp_closed');
+    
     const chatTimer = setTimeout(() => {
-      setShowChat(true);
+      if (!hasClosedChat) {
+        setShowChat(true);
+      }
     }, 20000);
 
-    // 3. Rileva se il menu mobile della Navbar è aperto osservando il body
+    // 3. Rileva se il menu mobile della Navbar è aperto
     const observer = new MutationObserver(() => {
       const isOverflowHidden = document.body.style.overflow === "hidden";
       setIsMenuOpen(isOverflowHidden);
@@ -38,19 +42,22 @@ export default function WhatsAppWidget() {
     };
   }, []);
 
-  // LOGICA DI ESCLUSIONE: 
-  // Se l'URL contiene "prenota" (o il nome della tua pagina modulo), il widget ritorna null
+  // Funzione per chiudere il popup e memorizzare la scelta
+  const handleCloseChat = () => {
+    setShowChat(false);
+    sessionStorage.setItem('whatsapp_closed', 'true');
+  };
+
   if (pathname?.includes('/prenota') || !isVisible || isMenuOpen) return null;
 
   return (
     <div className="fixed bottom-6 right-6 md:bottom-8 md:right-8 z-[9999]">
       
-      {/* LOGICA DI SOSTITUZIONE */}
       {showChat ? (
         /* --- IL POPUP --- */
         <div className="bg-white rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.2)] border border-slate-100 p-5 w-[280px] md:w-[320px] animate-in slide-in-from-bottom-4 fade-in duration-500 relative">
           <button 
-            onClick={() => setShowChat(false)} 
+            onClick={handleCloseChat} 
             className="absolute top-3 right-3 text-slate-400 hover:text-slate-600 p-1 transition-colors"
           >
             <X size={16} />
