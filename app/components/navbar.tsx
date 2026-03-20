@@ -208,16 +208,31 @@ const navLinks = [
           isMobileMenuOpen ? "translate-y-0 opacity-100 visible" : "-translate-y-full opacity-0 invisible"
         }`}
       >
-        <div className="absolute top-0 left-0 w-full flex items-center justify-between py-8 px-6 border-b border-slate-50">
-          <Link href="/" onClick={() => setIsMobileMenuOpen(false)}>
-            <div className="relative w-48 h-10">
-              <Image src="/logo-fisioterapia-malavasi.png" alt="Logo Malavasi" fill className="object-contain" />
-            </div>
-          </Link>
-          <button onClick={() => setIsMobileMenuOpen(false)} className="p-2 text-[#022166]"><X size={32} /></button>
-        </div>
+        
 
-        <div className="flex flex-col h-full pt-32 pb-12 px-8 overflow-y-auto">
+        <div className="flex flex-col h-full pb-12 overflow-y-auto">
+
+{/* NUOVO HEADER SCORREVOLE */}
+<div className="w-full flex items-center justify-between py-8 px-8 border-b border-slate-50 shrink-0 mb-4">
+  <Link href="/" onClick={() => setIsMobileMenuOpen(false)}>
+    <div className="relative w-48 h-10">
+      <Image src="/logo-fisioterapia-malavasi.png" alt="Logo Malavasi" fill className="object-contain" />
+    </div>
+  </Link>
+  <button onClick={() => setIsMobileMenuOpen(false)} className="p-2 text-[#022166]">
+    <X size={32} />
+  </button>
+</div>
+
+{/* APRI QUI IL TAG NAV PER I LINK (Aggiungi px-8 qui) */}
+<nav className="flex flex-col px-8">
+  <Link href="/" onClick={() => setIsMobileMenuOpen(false)} className="text-lg font-bold text-[#022166] uppercase py-5 border-b border-slate-50">Home</Link>
+  {/* ... qui continuano i tuoi navLinks.map ... */}
+</nav>
+
+
+
+
           <nav className="flex flex-col">
             <Link href="/" onClick={() => setIsMobileMenuOpen(false)} className="text-lg font-bold text-[#022166] uppercase py-5 border-b border-slate-50">Home</Link>
             
