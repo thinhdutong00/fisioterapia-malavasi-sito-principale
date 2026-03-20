@@ -3,39 +3,23 @@
 import React from 'react';
 import Link from 'next/link';
 import { 
-  ChevronRight, 
   ArrowLeft, 
-  Activity, 
+  ChevronRight,
+  Activity,
+  ArrowUpRight, 
   ShieldCheck, 
-  Zap, 
-  Microscope, 
-  UserCheck,
+  Dumbbell,
+  Target,
+  Timer,
+  Milestone,
   Stethoscope
 } from 'lucide-react';
 
-export default function PrePostChirurgica() {
-  const fasiPercorso = [
-    {
-      icon: <Microscope className="text-[#55B4FF]" size={32} />,
-      titolo: "Pre-abilitazione",
-      desc: "Preparare i tessuti e la muscolatura prima dell'intervento riduce drasticamente i tempi di recupero e migliora l'esito chirurgico."
-    },
-    {
-      icon: <Activity className="text-[#55B4FF]" size={32} />,
-      titolo: "Gestione Post-Op Immediata",
-      desc: "Controllo del dolore, dell'infiammazione e protezione della riparazione tissutale nelle fasi più delicate."
-    },
-    {
-      icon: <Zap className="text-[#55B4FF]" size={32} />,
-      titolo: "Recupero Funzionale",
-      desc: "Rieducazione al carico e al movimento fluido per tornare alle attività quotidiane e sportive senza timori."
-    }
-  ];
-
+export default function ChirurgiaPage() {
   return (
     <main className="min-h-screen bg-[#F8FAFC] text-slate-800 font-sans relative overflow-hidden">
       
-      {/* BACKGROUND - Precisione e Pulizia */}
+      {/* BACKGROUND - Coerente con lo stile Hub */}
       <div className="fixed inset-0 z-0 pointer-events-none">
         <div className="absolute top-[-5%] right-[-5%] w-[40%] h-[40%] bg-[#022166]/3 rounded-full blur-[100px]"></div>
         <div className="absolute bottom-[-5%] left-[-5%] w-[40%] h-[40%] bg-[#55B4FF]/5 rounded-full blur-[100px]"></div>
@@ -53,119 +37,157 @@ export default function PrePostChirurgica() {
             <span className="text-[#022166] font-semibold">Pre e Post Chirurgica</span>
           </nav>
 
-          {/* HERO - Il Sogno della Certezza del Risultato */}
+          {/* HEADER SEZIONE - AUTHORITY HOOK */}
           <header className="mb-24">
             <div className="flex items-center gap-3 mb-6">
               <div className="h-[1px] w-12 bg-[#55B4FF]"></div>
-              <span className="text-xs font-black uppercase tracking-[0.3em] text-[#55B4FF]">(R)enjoy your mo(ve)ments</span>
+              <span className="text-xs font-black uppercase tracking-[0.3em] text-[#55B4FF]">Riabilitazione Ortopedica Avanzata</span>
             </div>
             <h1 className="text-5xl md:text-8xl font-bold text-[#022166] leading-[0.95] mb-10 tracking-tighter">
-              L'intervento è <br />solo <span className="text-[#55B4FF]">metà dell'opera.</span>
+              Ottimizza il tuo <br />recupero <span className="text-[#55B4FF]">chirurgico.</span>
             </h1>
-            <p className="max-w-3xl text-xl md:text-2xl text-slate-600 leading-relaxed font-light">
-              Il successo di un'operazione chirurgica dipende dalla qualità della riabilitazione. 
-              Proteggiamo il tuo investimento in salute con un protocollo rigoroso, 
-              che massimizza il successo clinico e azzera le incertezze del post-operatorio.
+            <p className="max-w-3xl text-xl md:text-2xl text-slate-600 font-light leading-relaxed">
+              Dalla preparazione pre-operatoria al ritorno alla vita quotidiana: un percorso guidato per garantire il successo della tua operazione.
             </p>
           </header>
 
-          {/* HORMORZI: Valore = Riduzione del Rischio e Tempo */}
-          <section className="grid md:grid-cols-3 gap-8 mb-24">
-            {fasiPercorso.map((f, i) => (
-              <div key={i} className="group bg-white p-12 rounded-[3rem] border border-slate-100 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500">
-                <div className="mb-8 p-4 bg-[#F0F4F8] w-fit rounded-2xl group-hover:bg-[#022166] group-hover:text-white transition-colors duration-500">
-                  {f.icon}
-                </div>
-                <h3 className="text-2xl font-bold text-[#022166] mb-4 tracking-tight">{f.titolo}</h3>
-                <p className="text-slate-500 leading-relaxed">
-                  {f.desc}
-                </p>
+          {/* SEZIONE 1: L'IMPORTANZA DEL PERCORSO (INFORMATIVO) */}
+          <section className="mb-32">
+            <div className="grid lg:grid-cols-12 gap-12 items-start">
+              <div className="lg:col-span-4">
+                <span className="text-[10px] font-black uppercase tracking-[0.4em] text-[#022166] mb-4 block">
+                  La strategia clinica
+                </span>
+                <h2 className="text-3xl font-bold text-[#022166] tracking-tight">Perché la fisioterapia è cruciale?</h2>
               </div>
-            ))}
-          </section>
-
-          {/* SEZIONE ARGOMENTATIVA - Alto Valore SEO & Autorità */}
-          <section className="relative mb-24">
-            <div className="absolute inset-0 bg-[#022166] rounded-[4rem] -rotate-1 scale-[1.02] opacity-5"></div>
-            <div className="relative bg-white border border-slate-100 rounded-[4rem] p-10 md:p-20 overflow-hidden">
-              <div className="grid lg:grid-cols-2 gap-16 items-center">
-                <div>
-                  <h2 className="text-3xl md:text-5xl font-black text-[#022166] mb-8 tracking-tight">
-                    Ingegneria del <br />movimento post-op.
-                  </h2>
-                  <p className="text-slate-600 mb-10 text-lg leading-relaxed">
-                    Collaboriamo con i principali chirurghi ortopedici per garantire che il tuo 
-                    percorso sia in totale continuità con quanto eseguito in sala operatoria. 
-                    Monitoriamo ogni millimetro di mobilità riguadagnata.
-                  </p>
-                  <div className="space-y-4">
-                    {[
-                      "Protesi d'Anca, Ginocchio e Spalla",
-                      "Ricostruzione Legamento Crociato Anteriore (LCA)",
-                      "Chirurgia della Colonna Vertebrale (Ernie, Stabilizzazioni)",
-                      "Suture Tendinee e Riparazione Cuffia dei Rotatori",
-                      "Chirurgia del Piede e della Caviglia"
-                    ].map((item, i) => (
-                      <div key={i} className="flex items-center gap-4 text-[#022166] font-bold">
-                        <UserCheck size={20} className="text-[#55B4FF]" />
-                        <span className="text-sm md:text-base tracking-tight">{item}</span>
-                      </div>
-                    ))}
+              <div className="lg:col-span-8">
+                <div className="bg-white p-10 md:p-14 rounded-[2rem] border border-slate-100 shadow-sm transition-all duration-500 hover:shadow-xl">
+                  <div className="grid md:grid-cols-2 gap-10">
+                    <div>
+                      <h3 className="text-[#55B4FF] font-bold text-lg mb-4 uppercase tracking-tighter">Pre-Operatorio</h3>
+                      <p className="text-slate-500 text-base leading-relaxed">
+                        Arrivare all'intervento con muscoli forti e articolazioni mobili riduce drasticamente i tempi di recupero e migliora l'esito della chirurgia. È il "pre-condizionamento" necessario per il successo.
+                      </p>
+                    </div>
+                    <div>
+                      <h3 className="text-[#022166] font-bold text-lg mb-4 uppercase tracking-tighter">Post-Operatorio</h3>
+                      <p className="text-slate-500 text-base leading-relaxed">
+                        Gestire il dolore, l'edema e recuperare il corretto schema di movimento. La riabilitazione tempestiva evita aderenze cicatriziali e rigidità permanenti.
+                      </p>
+                    </div>
                   </div>
                 </div>
-                
-                <div className="relative p-8 bg-[#F8FAFC] rounded-[3rem] border border-slate-200">
-                   <div className="absolute top-6 right-8 text-[#022166]/10">
-                      <Stethoscope size={100} />
-                   </div>
-                   <h4 className="text-2xl font-bold text-[#022166] mb-6 relative z-10">Perché iniziare prima?</h4>
-                   <p className="text-slate-500 text-sm leading-relaxed mb-8 relative z-10">
-                    Gli studi dimostrano che un paziente che esegue 4 settimane di fisioterapia pre-operatoria 
-                    diminuisce del 30% la necessità di assistenza post-operatoria intensiva. 
-                    <strong> Arrivare pronti significa tornare pronti.</strong>
-                   </p>
-                   <div className="p-6 bg-white rounded-2xl border border-[#55B4FF]/20 shadow-inner">
-                      <div className="text-xs text-[#55B4FF] font-black uppercase mb-2 tracking-widest">Obiettivo Clinico</div>
-                      <div className="text-[#022166] font-bold italic">"Ripristino della biomeccanica fisiologica nel minor tempo biologico possibile."</div>
-                   </div>
-                </div>
               </div>
             </div>
           </section>
 
-          {/* CTA - Funnel di Conversione ad Alto Impatto */}
-          <section className="text-center py-10">
-            <h2 className="text-4xl md:text-6xl font-black text-[#022166] mb-8 tracking-tighter">
-              Riscopri il piacere di<br />sentirti al sicuro in ogni gesto.
-            </h2>
-            <p className="max-w-2xl mx-auto text-slate-500 mb-12 text-lg">
-              Sia che tu stia programmando l'intervento o che tu l'abbia già affrontato, 
-              la finestra temporale per un recupero ottimale è adesso.
-            </p>
-            <div className="flex flex-col sm:flex-row justify-center gap-6">
-              <Link 
-                href="/prenota" 
-                className="group bg-[#022166] text-white px-12 py-6 rounded-2xl font-black uppercase text-xs tracking-[0.3em] hover:bg-[#55B4FF] transition-all shadow-2xl shadow-[#022166]/30 flex items-center justify-center gap-3"
-              >
-                Pianifica il Recupero <ChevronRight size={18} className="group-hover:translate-x-2 transition-transform" />
-              </Link>
-              <a 
-                href="tel:+393338225464" 
-                className="bg-white text-[#022166] border-2 border-[#022166] px-12 py-6 rounded-2xl font-black uppercase text-xs tracking-[0.3em] hover:bg-[#F8FAFC] transition-all"
-              >
-                Consulenza Post-Op
-              </a>
+          {/* SEZIONE 2: FOCUS TERAPIA MANUALE E ESERCIZIO (CORE VALUE) */}
+          <section className="mb-32">
+            <div className="grid lg:grid-cols-12 gap-12 items-center">
+              <div className="lg:col-span-6">
+                <div className="inline-flex items-center gap-3 bg-[#E0E7FF] text-[#022166] px-4 py-2 rounded-full mb-8">
+                  <Target size={16} />
+                  <span className="text-[10px] font-black uppercase tracking-widest">Protocollo Personalizzato</span>
+                </div>
+                <h2 className="text-4xl md:text-6xl font-bold text-[#022166] tracking-tighter leading-[0.95] mb-8">
+                  Terapia Manuale <br />ed <span className="text-[#55B4FF]">Esercizio.</span>
+                </h2>
+                <p className="text-lg text-slate-600 font-medium leading-relaxed mb-8">
+                  Non seguiamo schemi standard. Integriamo tecniche manuali per il drenaggio e la mobilità con l'esercizio terapeutico per restituirti l'autonomia.
+                </p>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="flex gap-4">
+                    <div className="w-10 h-10 bg-[#55B4FF]/10 rounded-lg flex items-center justify-center text-[#55B4FF] flex-shrink-0"><Milestone size={20}/></div>
+                    <p className="text-sm font-bold text-[#022166]">Gestione precisa dei carichi progressivi</p>
+                  </div>
+                  <div className="flex gap-4">
+                    <div className="w-10 h-10 bg-[#55B4FF]/10 rounded-lg flex items-center justify-center text-[#55B4FF] flex-shrink-0"><ShieldCheck size={20}/></div>
+                    <p className="text-sm font-bold text-[#022166]">Prevenzione delle complicanze post-operatorie</p>
+                  </div>
+                </div>
+              </div>
+              <div className="lg:col-span-6 relative">
+                 <div className="bg-[#E0F2FE] p-12 rounded-[3rem] border border-white">
+                    <h4 className="text-[#022166] font-black text-xs uppercase tracking-[0.3em] mb-8">Interventi comuni trattati:</h4>
+                    <div className="space-y-4">
+                       {["Protesi d'Anca e Ginocchio", "Ricostruzione LCA (Crociato)", "Chirurgia della Spalla (Cuffia dei Rotatori)", "Interventi alla Colonna Vertebrale"].map((item, index) => (
+                         <div key={index} className="flex justify-between items-center py-4 border-b border-[#022166]/10">
+                            <span className="text-[#022166] font-bold italic text-lg">{item}</span>
+                            <ArrowUpRight className="text-[#55B4FF]" size={20} />
+                         </div>
+                       ))}
+                    </div>
+                 </div>
+              </div>
             </div>
           </section>
 
-          {/* Footer Back Link */}
-          <div className="mt-24 border-t border-slate-200 pt-12">
+          {/* SEZIONE 3: LE FASI DEL RECUPERO (FUNNEL) */}
+          <section className="mb-32">
+             <div className="bg-[#022166] p-10 md:p-20 rounded-[3rem] shadow-2xl text-white relative overflow-hidden">
+                <div className="relative z-10 grid md:grid-cols-3 gap-12">
+                  <div className="space-y-6">
+                    <div className="w-12 h-12 bg-[#55B4FF] rounded-xl flex items-center justify-center text-[#022166]"><Timer size={24}/></div>
+                    <h4 className="text-2xl font-bold tracking-tight">Fase 1: <br />Protezione</h4>
+                    <p className="text-white/60 text-sm leading-relaxed">Controllo del dolore, riduzione del gonfiore e protezione del tessuto in via di guarigione.</p>
+                  </div>
+                  <div className="space-y-6">
+                    <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center text-white border border-white/20"><Activity size={24}/></div>
+                    <h4 className="text-2xl font-bold tracking-tight">Fase 2: <br />Mobilità</h4>
+                    <p className="text-white/60 text-sm leading-relaxed">Recupero dell'arco di movimento completo e riattivazione della muscolatura atrofizzata.</p>
+                  </div>
+                  <div className="space-y-6">
+                    <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center text-white border border-white/20"><Dumbbell size={24}/></div>
+                    <h4 className="text-2xl font-bold tracking-tight">Fase 3: <br />Funzione</h4>
+                    <p className="text-white/60 text-sm leading-relaxed">Rinforzo avanzato e ritorno alle attività sportive o lavorative in totale sicurezza.</p>
+                  </div>
+                </div>
+             </div>
+          </section>
+
+          {/* SEZIONE FINALE: CALL TO ACTION - CONVERSIONE */}
+          <section className="bg-white p-12 md:p-20 rounded-[3rem] shadow-xl border border-slate-100 relative overflow-hidden group">
+            <div className="relative z-10 max-w-3xl">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="h-[1px] w-8 bg-[#55B4FF]"></div>
+                <span className="text-[#022166] font-black text-[10px] uppercase tracking-[0.4em]">Fisioterapia Malavasi — Hub Riabilitativo</span>
+              </div>
+              
+              <h3 className="text-4xl md:text-6xl font-bold mb-8 tracking-tighter leading-[0.95] text-[#022166]">
+                Assicura il successo <br />
+                <span className="text-[#55B4FF]">del tuo intervento.</span>
+              </h3>
+              
+              <p className="text-slate-500 text-xl mb-12 font-light leading-relaxed max-w-xl">
+                Ogni giorno perso è un giorno di ritardo nel tuo recupero. Inizia oggi il tuo percorso riabilitativo.
+              </p>
+              
+              <div className="flex flex-wrap gap-6">
+                <Link 
+                  href="https://www.fisioterapiamalavasi.it/prenota" 
+                  className="bg-[#022166] text-white px-12 py-6 rounded-2xl font-black text-center uppercase text-[11px] tracking-[0.3em] hover:bg-[#55B4FF] hover:text-[#022166] transition-all active:scale-95"
+                >
+                  Prenota Valutazione
+                </Link>
+                <a 
+                  href="tel:+393338225464" 
+                  className="bg-slate-100 text-[#022166] px-12 py-6 rounded-2xl font-black text-center uppercase text-[11px] tracking-[0.3em] hover:bg-slate-200 transition-all active:scale-95"
+                >
+                  Ho bisogno di info
+                </a>
+              </div>
+            </div>
+          </section>
+
+          {/* FOOTER NAVIGATION */}
+          <div className="mt-24 border-t border-slate-200 pt-12 flex justify-between items-center text-slate-400">
             <Link 
               href="/trattamenti" 
-              className="inline-flex items-center gap-2 text-slate-400 font-bold hover:text-[#022166] transition-all"
+              className="inline-flex items-center gap-2 font-bold hover:text-[#022166] transition-all"
             >
-              <ArrowLeft size={20} /> Torna all'Hub Trattamenti
+              <ArrowLeft size={20} /> Altri Trattamenti
             </Link>
+            <span className="text-[10px] uppercase tracking-widest font-black opacity-40">Specialisti in Riabilitazione Post-Chirurgica</span>
           </div>
 
         </div>
