@@ -208,10 +208,10 @@ const stepTitles: { [key: number]: string } = {
   };
 
   return (
-    <main className="min-h-screen bg-white font-sans">
+   <main className="min-h-screen bg-white font-sans">
       
-      {/* BREADCRUMB */}
-      <div className="w-full pt-32 pb-10 lg:pt-48 lg:pb-12 bg-white flex items-end px-6 md:px-12 lg:px-24">
+      {/* BREADCRUMB - RIDOTTO PT (sopra) E PB (sotto) */}
+      <div className="w-full pt-24 pb-6 lg:pt-32 lg:pb-8 bg-white flex items-end px-6 md:px-12 lg:px-24">
         <nav className="flex items-center gap-2 text-sm text-slate-500">
           <Link href="/" className="hover:text-[#022166] transition-colors">Home</Link>
           <ChevronRight size={14} />
@@ -224,6 +224,8 @@ const stepTitles: { [key: number]: string } = {
         <div className="hidden md:block absolute top-0 right-0 w-[600px] h-[600px] bg-[#55B4FF]/10 rounded-full blur-[120px] -z-10 translate-x-1/2 -translate-y-1/2" />
         
         <div className="max-w-4xl w-full flex flex-col relative flex-grow justify-center">
+
+          
           
           {/* PROGRESS BAR */}
           <div className="w-full h-1 bg-white/10 rounded-full mb-8 md:mb-16 overflow-hidden">
