@@ -56,7 +56,7 @@ export default function TrattamentiPage() {
       titolo: "Fisioterapia Oncologica",
       slug: "/trattamenti/oncologica",
       desc: "Percorsi riabilitativi personalizzati per il supporto durante e dopo le terapie.",
-      color: "bg-[#FFEDD5]" // Pesca
+      color: "bg-[#FDF2F8]" // Pesca
     }
   ];
 
