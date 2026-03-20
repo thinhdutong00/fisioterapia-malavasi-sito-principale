@@ -26,6 +26,7 @@ export default function PrenotaPage() {
     durata: '',
     limitazione: '',
     obiettivo: '',
+    obiettivoSpecifico: '',
     giaFattoFisio: '',
     diagnosiMedica: '',
     eta: '',
@@ -50,6 +51,7 @@ const stepTitles: { [key: number]: string } = {
     2: "Analisi temporale",
     3: "Impatto quotidiano",
     4: "Obiettivo terapeutico",
+    4.2: "Dettaglio obiettivo",
     5: "Storico trattamenti",
     6: "Diagnosi medica",
     6.5: "Documentazione clinica",
@@ -95,6 +97,21 @@ const stepTitles: { [key: number]: string } = {
     }
 
 
+    // Gestione Step 4 -> 4.2 (Altro) o 5
+if (step === 4) {
+  if (formData.obiettivo === 'Altro') {
+    setStep(4.2);
+  } else {
+    setStep(5);
+  }
+  return;
+}
+
+// Gestione Step 4.2 -> 5
+if (step === 4.2) {
+  setStep(5);
+  return;
+}
 
 
     // Gestione Step 6 -> 6.5 (File) o 7
@@ -139,6 +156,22 @@ const stepTitles: { [key: number]: string } = {
     }
 
 
+
+// Gestione ritorno dallo Step 5 verso 4.2 o 4
+if (step === 5) {
+  if (formData.obiettivo === 'Altro') {
+    setStep(4.2);
+  } else {
+    setStep(4);
+  }
+  return;
+}
+
+// Gestione ritorno da 4.2 a 4
+if (step === 4.2) {
+  setStep(4);
+  return;
+}
 
 
 
@@ -368,6 +401,27 @@ const stepTitles: { [key: number]: string } = {
     ))}
   </div>
 )}
+
+
+
+{/* STEP 4.2: SPECIFICA OBIETTIVO (CONDIZIONALE) - COMPATTATO SU MOBILE */}
+{step === 4.2 && (
+  <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
+    <label className="block text-2xl font-bold mb-8 tracking-tight">Cosa desideri ottenere dalla visita?</label>
+    <textarea 
+      placeholder="Descrivi qui il tuo obiettivo specifico..." 
+      className="w-full bg-white/5 border-b-2 border-white/20 p-4 md:p-6 outline-none focus:border-[#55B4FF] transition-all text-base md:text-xl text-white font-bold min-h-[150px] resize-none" 
+      value={formData.obiettivoSpecifico} 
+      onChange={(e) => setFormData({...formData, obiettivoSpecifico: e.target.value})} 
+    />
+    <p className="text-white/40 mt-4 text-[10px] md:text-sm uppercase tracking-widest font-bold italic">
+      Più sarai preciso, meglio potremo aiutarti a raggiungere il tuo traguardo
+    </p>
+  </div>
+)}
+
+
+
 
               {/* STEP 5: GIA FATTO FISIO - COMPATTATO SU MOBILE */}
 {step === 5 && (
@@ -641,6 +695,7 @@ const stepTitles: { [key: number]: string } = {
                   (step === 2 && !formData.durata) ||
                   (step === 3 && !formData.limitazione) ||
                   (step === 4 && !formData.obiettivo) ||
+                  (step === 4.2 && !formData.obiettivoSpecifico) ||
                   (step === 5 && !formData.giaFattoFisio) ||
                   (step === 6 && !formData.diagnosiMedica) ||
                   (step === 6.5 && !file) || // Obbligatorio se si è scelto SI
