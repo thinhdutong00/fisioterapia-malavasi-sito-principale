@@ -10,7 +10,7 @@ export async function POST(request: Request) {
     const { 
       problema, durata, limitazione, obiettivo, giaFattoFisio, 
       diagnosiMedica, eta, giorniPreferiti, fasciaOraria, urgenza,
-      sede, indirizzo, nome, telefono, email, attachment 
+      sede, indirizzo, nome, telefono, email, attachment, obiettivoSpecifico
     } = body;
 
     const attachments = attachment ? [
