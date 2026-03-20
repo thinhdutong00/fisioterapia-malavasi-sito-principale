@@ -17,13 +17,13 @@ export default function TrattamentiPage() {
       color: "bg-[#FFF7ED]" // Arancione Soft
     },
     {
-      titolo: "Dolore Persistente",
+      titolo: "Dolore Cronico",
       slug: "/trattamenti/dolore-persistente",
       desc: "Gestione multidisciplinare del dolore cronico e sensibilizzazione centrale.",
       color: "bg-[#FCE7F3]" // Rosa tenue
     },
     {
-      titolo: "Cefalee e Vertigini",
+      titolo: "Cervicalgia",
       slug: "/trattamenti/cefalee-vertigini",
       desc: "Trattamento dei disturbi cervicali correlati a mal di testa e vertigini.",
       color: "bg-[#FEF9C3]" // Giallo tenue
