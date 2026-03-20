@@ -219,7 +219,7 @@ const stepTitles: { [key: number]: string } = {
         </nav>
       </div>
 
-      <section className="relative min-h-screen w-full py-32 px-6 bg-[#022166] flex flex-col items-center overflow-visible">
+     <section className="relative min-h-screen w-full pt-12 pb-32 md:py-32 px-6 bg-[#022166] flex flex-col items-center overflow-visible">
         {/* DECORAZIONE SFONDO */}
         <div className="hidden md:block absolute top-0 right-0 w-[600px] h-[600px] bg-[#55B4FF]/10 rounded-full blur-[120px] -z-10 translate-x-1/2 -translate-y-1/2" />
         
