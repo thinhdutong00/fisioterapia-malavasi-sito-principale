@@ -679,11 +679,14 @@ if (step === 4.2) {
 )}
             </div>
 
-            {/* NAVIGAZIONE */}
-            <div className="mt-20 mb-24 flex gap-6 shrink-0">
+           {/* NAVIGAZIONE - OTTIMIZZATA PER MOBILE */}
+            <div className="mt-12 md:mt-20 mb-8 md:mb-24 flex gap-4 md:gap-6 shrink-0">
               {step > 1 && (
-                <button onClick={prevStep} className="p-6 border-2 border-white/10 rounded-full text-white hover:border-[#55B4FF] transition-all">
-                  <ChevronLeft size={32} />
+                <button 
+                  onClick={prevStep} 
+                  className="p-4 md:p-6 border-2 border-white/10 rounded-full text-white hover:border-[#55B4FF] transition-all"
+                >
+                  <ChevronLeft size={28} className="md:w-8 md:h-8" />
                 </button>
               )}
               <button 
@@ -698,14 +701,14 @@ if (step === 4.2) {
                   (step === 4.2 && !formData.obiettivoSpecifico) ||
                   (step === 5 && !formData.giaFattoFisio) ||
                   (step === 6 && !formData.diagnosiMedica) ||
-                  (step === 6.5 && !file) || // Obbligatorio se si è scelto SI
+                  (step === 6.5 && !file) ||
                   (step === 7 && !formData.eta) ||
                   (step === 8 && (formData.giorniPreferiti.length === 0 || !formData.fasciaOraria || !formData.urgenza)) ||
                   (step === 9 && !formData.sede) ||
                   (step === 10 && !formData.indirizzo) ||
                   (step === 11 && (!formData.nome || !formData.telefono || !formData.email || !formData.privacy))
                 }
-                className="flex-1 bg-[#55B4FF] text-[#022166] py-6 rounded-full font-black uppercase tracking-[0.2em] text-sm hover:bg-white transition-all disabled:opacity-20"
+                className="flex-1 bg-[#55B4FF] text-[#022166] py-5 md:py-6 rounded-full font-black uppercase tracking-[0.2em] text-xs md:text-sm hover:bg-white transition-all disabled:opacity-20"
               >
                 {isSending ? 'Invio in corso...' : (step === 11 ? 'Invia Richiesta' : 'Continua')}
               </button>
