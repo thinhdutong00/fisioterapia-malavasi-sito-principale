@@ -19,8 +19,7 @@ export default function Navbar() {
   const lastScrollY = useRef(0);
 
 
-// Se l'URL contiene "/prenota", la Navbar non viene renderizzata
-  if (pathname?.includes('/prenota')) return null;
+
 
 
 
@@ -107,10 +106,12 @@ const navLinks = [
 
   return (
     <header 
-      className={`fixed top-0 left-0 w-full z-[100] transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] ${
-        isVisible ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0"
-      } ${isScrolled ? "pt-4 px-4" : "pt-0 px-0"}`}
-    >
+  className={`fixed top-0 left-0 w-full z-[100] transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] ${
+    isVisible ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0"
+  } ${isScrolled ? "pt-4 px-4" : "pt-0 px-0"} ${
+    pathname === '/prenota' ? 'hidden md:block' : 'block'
+  }`}
+>
       <div 
         className={`mx-auto transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] flex items-center justify-between border ${
           isScrolled 
