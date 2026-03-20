@@ -210,8 +210,8 @@ const stepTitles: { [key: number]: string } = {
   return (
    <main className="min-h-screen bg-white font-sans">
       
-      {/* BREADCRUMB - SPAZIO SOPRA E SOTTO UGUALI SU MOBILE */}
-      <div className="w-full pt-6 pb-6 lg:pt-32 lg:pb-8 bg-white flex items-end px-6 md:px-12 lg:px-24">
+      {/* BREADCRUMB - VISIBILE SU MOBILE, NASCOSTO DA DESKTOP (md:hidden) */}
+      <div className="w-full pt-6 pb-6 md:hidden bg-white flex items-end px-6 md:px-12 lg:px-24">
         <nav className="flex items-center gap-2 text-sm text-slate-500">
           <Link href="/" className="hover:text-[#022166] transition-colors">Home</Link>
           <ChevronRight size={14} />
