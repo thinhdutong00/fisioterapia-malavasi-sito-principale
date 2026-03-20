@@ -23,7 +23,7 @@ export default function TrattamentiPage() {
       color: "bg-[#FCE7F3]" // Rosa tenue
     },
     {
-      titolo: "Cervicalgia",
+      titolo: "Cervicalgia", 
       slug: "/trattamenti/cefalee-vertigini",
       desc: "Trattamento dei disturbi cervicali correlati a mal di testa e vertigini.",
       color: "bg-[#FEF9C3]" // Giallo tenue
