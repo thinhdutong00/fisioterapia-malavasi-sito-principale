@@ -210,8 +210,8 @@ const stepTitles: { [key: number]: string } = {
   return (
    <main className="min-h-screen bg-white font-sans">
       
-      {/* BREADCRUMB - RIDOTTO PT (sopra) E PB (sotto) */}
-      <div className="w-full pt-24 pb-6 lg:pt-32 lg:pb-8 bg-white flex items-end px-6 md:px-12 lg:px-24">
+      {/* BREADCRUMB - SPAZIO SOPRA E SOTTO UGUALI SU MOBILE */}
+      <div className="w-full pt-6 pb-6 lg:pt-32 lg:pb-8 bg-white flex items-end px-6 md:px-12 lg:px-24">
         <nav className="flex items-center gap-2 text-sm text-slate-500">
           <Link href="/" className="hover:text-[#022166] transition-colors">Home</Link>
           <ChevronRight size={14} />
@@ -225,7 +225,7 @@ const stepTitles: { [key: number]: string } = {
         
         <div className="max-w-4xl w-full flex flex-col relative flex-grow justify-center">
 
-          
+
           
           {/* PROGRESS BAR */}
           <div className="w-full h-1 bg-white/10 rounded-full mb-8 md:mb-16 overflow-hidden">
