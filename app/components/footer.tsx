@@ -111,7 +111,7 @@ export default function Footer() {
       </Link>
     </div>
   </div>
-  <p className="text-[9px] font-black uppercase tracking-[0.3em]">MAGO DIGITAL™ Web Solutions</p>
+  <p className="text-[9px] font-black uppercase tracking-[0.3em]">POWERED BY MAGO DIGITAL™</p>
 </div>
     </footer>
   );
