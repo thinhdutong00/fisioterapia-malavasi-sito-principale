@@ -679,14 +679,14 @@ if (step === 4.2) {
 )}
             </div>
 
-           {/* NAVIGAZIONE - OTTIMIZZATA PER MOBILE */}
-            <div className="mt-12 md:mt-20 mb-8 md:mb-24 flex gap-4 md:gap-6 shrink-0">
+           {/* NAVIGAZIONE - ULTRA COMPATTATA SU MOBILE */}
+            <div className="mt-6 md:mt-20 mb-0 md:mb-24 flex gap-3 md:gap-6 shrink-0">
               {step > 1 && (
                 <button 
                   onClick={prevStep} 
-                  className="p-4 md:p-6 border-2 border-white/10 rounded-full text-white hover:border-[#55B4FF] transition-all"
+                  className="p-3 md:p-6 border-2 border-white/10 rounded-full text-white hover:border-[#55B4FF] transition-all"
                 >
-                  <ChevronLeft size={28} className="md:w-8 md:h-8" />
+                  <ChevronLeft size={24} className="md:w-8 md:h-8" />
                 </button>
               )}
               <button 
@@ -708,7 +708,7 @@ if (step === 4.2) {
                   (step === 10 && !formData.indirizzo) ||
                   (step === 11 && (!formData.nome || !formData.telefono || !formData.email || !formData.privacy))
                 }
-                className="flex-1 bg-[#55B4FF] text-[#022166] py-5 md:py-6 rounded-full font-black uppercase tracking-[0.2em] text-xs md:text-sm hover:bg-white transition-all disabled:opacity-20"
+                className="flex-1 bg-[#55B4FF] text-[#022166] py-4 md:py-6 rounded-full font-black uppercase tracking-[0.2em] text-[10px] md:text-sm hover:bg-white transition-all disabled:opacity-20"
               >
                 {isSending ? 'Invio in corso...' : (step === 11 ? 'Invia Richiesta' : 'Continua')}
               </button>
