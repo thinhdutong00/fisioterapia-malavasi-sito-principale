@@ -2,8 +2,10 @@
 
 import React, { useState, useEffect } from 'react';
 import { X } from 'lucide-react';
+import { usePathname } from 'next/navigation'; // Importiamo il controllo dell'URL
 
 export default function WhatsAppWidget() {
+  const pathname = usePathname(); // Otteniamo l'URL attuale
   const [isVisible, setIsVisible] = useState(false);
   const [showChat, setShowChat] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -36,8 +38,9 @@ export default function WhatsAppWidget() {
     };
   }, []);
 
-  // Se il widget non deve essere ancora visto o se il menu mobile è aperto, non renderizzare nulla
-  if (!isVisible || isMenuOpen) return null;
+  // LOGICA DI ESCLUSIONE: 
+  // Se l'URL contiene "prenota" (o il nome della tua pagina modulo), il widget ritorna null
+  if (pathname?.includes('/prenota') || !isVisible || isMenuOpen) return null;
 
   return (
     <div className="fixed bottom-6 right-6 md:bottom-8 md:right-8 z-[9999]">
