@@ -3,39 +3,23 @@
 import React from 'react';
 import Link from 'next/link';
 import { 
-  ChevronRight, 
   ArrowLeft, 
-  Activity, 
-  Target, 
-  RotateCw, 
-  Microscope, 
-  ShieldCheck,
-  Stethoscope
+  ChevronRight,
+  Activity,
+  ArrowUpRight, 
+  ShieldCheck, 
+  Brain,
+  Sparkles,
+  Target,
+  RefreshCw,
+  Search
 } from 'lucide-react';
 
-export default function CefaleeVertigini() {
-  const pilastriPercorso = [
-    {
-      icon: <Target className="text-[#55B4FF]" size={32} />,
-      titolo: "Valutazione Differenziale",
-      desc: "Identifichiamo l'origine del disturbo distinguendo tra cause muscolo-scheletriche (cervicali), vestibolari o tensive."
-    },
-    {
-      icon: <RotateCw className="text-[#55B4FF]" size={32} />,
-      titolo: "Ricalibrazione Vestibolare",
-      desc: "Protocolli specifici di esercizi per restituire equilibrio e stabilità, riducendo la sensazione di sbandamento e vertigine."
-    },
-    {
-      icon: <ShieldCheck className="text-[#55B4FF]" size={32} />,
-      titolo: "Terapia Manuale Mirata",
-      desc: "Trattamenti specialistici sul tratto cervicale e sulla muscolatura cranica per ridurre la frequenza e l'intensità delle cefalee."
-    }
-  ];
-
+export default function CervicalgiaPage() {
   return (
     <main className="min-h-screen bg-[#F8FAFC] text-slate-800 font-sans relative overflow-hidden">
       
-      {/* BACKGROUND - Ordine e Stabilità */}
+      {/* BACKGROUND - Coerente con il design system */}
       <div className="fixed inset-0 z-0 pointer-events-none">
         <div className="absolute top-[-5%] right-[-5%] w-[40%] h-[40%] bg-[#022166]/3 rounded-full blur-[100px]"></div>
         <div className="absolute bottom-[-5%] left-[-5%] w-[40%] h-[40%] bg-[#55B4FF]/5 rounded-full blur-[100px]"></div>
@@ -50,123 +34,171 @@ export default function CefaleeVertigini() {
             <ChevronRight size={14} />
             <Link href="/trattamenti" className="hover:text-[#022166] transition-colors">Trattamenti</Link>
             <ChevronRight size={14} />
-            <span className="text-[#022166] font-semibold">Cefalee e Vertigini</span>
+            <span className="text-[#022166] font-semibold">Cervicalgia e Disturbi Correlati</span>
           </nav>
 
-          {/* HERO - Il Ritorno all'Equilibrio */}
+          {/* HEADER SEZIONE - EMPATHY HOOK */}
           <header className="mb-24">
             <div className="flex items-center gap-3 mb-6">
               <div className="h-[1px] w-12 bg-[#55B4FF]"></div>
-              <span className="text-xs font-black uppercase tracking-[0.3em] text-[#55B4FF]">(R)enjoy your mo(ve)ments</span>
+              <span className="text-xs font-black uppercase tracking-[0.3em] text-[#55B4FF]">Soluzioni per il tratto cervicale</span>
             </div>
             <h1 className="text-5xl md:text-8xl font-bold text-[#022166] leading-[0.95] mb-10 tracking-tighter">
-              Ritrova la tua <br /><span className="text-[#55B4FF]">stabilità.</span>
+              Ritrova la <br />libertà di <span className="text-[#55B4FF]">guardare lontano.</span>
             </h1>
-            <p className="max-w-3xl text-xl md:text-2xl text-slate-600 leading-relaxed font-light">
-              Mal di testa e sbandamenti non devono condizionare le tue giornate. 
-              Attraverso un approccio clinico integrato, lavoriamo per risolvere le disfunzioni 
-              cervicali e vestibolari, restituendoti lucidità e sicurezza in ogni movimento.
+            <p className="max-w-3xl text-xl md:text-2xl text-slate-600 font-light leading-relaxed">
+              Dalla tensione muscolare alle vertigini: un approccio mirato per eliminare il dolore e restituire leggerezza al tuo collo.
             </p>
           </header>
 
-          {/* PILASTRI - Metodo Scientifico */}
-          <section className="grid md:grid-cols-3 gap-8 mb-24">
-            {pilastriPercorso.map((f, i) => (
-              <div key={i} className="group bg-white p-12 rounded-[3rem] border border-slate-100 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500">
-                <div className="mb-8 p-4 bg-[#F0F4F8] w-fit rounded-2xl group-hover:bg-[#022166] group-hover:text-white transition-colors duration-500">
-                  {f.icon}
-                </div>
-                <h3 className="text-2xl font-bold text-[#022166] mb-4 tracking-tight">{f.titolo}</h3>
-                <p className="text-slate-500 leading-relaxed text-sm md:text-base">
-                  {f.desc}
-                </p>
+          {/* SEZIONE 1: IDENTIFICAZIONE DEL PROBLEMA (INFORMATIVO) */}
+          <section className="mb-32">
+            <div className="grid lg:grid-cols-12 gap-12 items-start">
+              <div className="lg:col-span-4">
+                <span className="text-[10px] font-black uppercase tracking-[0.4em] text-[#022166] mb-4 block">
+                  Oltre il semplice dolore
+                </span>
+                <h2 className="text-3xl font-bold text-[#022166] tracking-tight">Cosa stai provando?</h2>
               </div>
-            ))}
-          </section>
-
-          {/* SEZIONE ARGOMENTATIVA - Precisione Clinica */}
-          <section className="relative mb-24">
-            <div className="absolute inset-0 bg-[#022166] rounded-[4rem] -rotate-1 scale-[1.02] opacity-5"></div>
-            <div className="relative bg-white border border-slate-100 rounded-[4rem] p-10 md:p-20 overflow-hidden">
-              <div className="grid lg:grid-cols-2 gap-16 items-center">
-                <div>
-                  <h2 className="text-3xl md:text-5xl font-black text-[#022166] mb-8 tracking-tight">
-                    Oltre il semplice <br />sintomo.
-                  </h2>
-                  <p className="text-slate-600 mb-10 text-lg leading-relaxed">
-                    Trattare una cefalea o una vertigine senza un'analisi accurata significa agire alla cieca. 
-                    Il nostro studio utilizza test clinici standardizzati per individuare il "driver" del disturbo, 
-                    garantendo trattamenti mirati che riducono drasticamente i tempi di recupero.
-                  </p>
-                  <div className="space-y-4">
-                    {[
-                      "Cefalea Tensiva e Cervicogenica",
-                      "Vertigine Parossistica Posizionale (VPPB)",
-                      "Instabilità di origine cervicale",
-                      "Emicrania (Gestione dei fattori scatenanti)",
-                      "Disturbi dell'articolazione Temporo-Mandibolare"
-                    ].map((item, i) => (
-                      <div key={i} className="flex items-center gap-4 text-[#022166] font-bold">
-                        <Activity size={20} className="text-[#55B4FF]" />
-                        <span className="text-sm md:text-base tracking-tight">{item}</span>
-                      </div>
-                    ))}
+              <div className="lg:col-span-8">
+                <div className="bg-white p-10 md:p-14 rounded-[2rem] border border-slate-100 shadow-sm transition-all duration-500 hover:shadow-xl">
+                  <div className="grid md:grid-cols-3 gap-8">
+                    <div className="space-y-4">
+                      <div className="w-10 h-10 bg-[#E0F2FE] rounded-xl flex items-center justify-center text-[#022166]"><Target size={20}/></div>
+                      <h4 className="font-bold text-[#022166]">Rigidità</h4>
+                      <p className="text-sm text-slate-500">Difficoltà nel ruotare il capo e tensione costante alle spalle.</p>
+                    </div>
+                    <div className="space-y-4">
+                      <div className="w-10 h-10 bg-[#F3E8FF] rounded-xl flex items-center justify-center text-[#022166]"><Brain size={20}/></div>
+                      <h4 className="font-bold text-[#022166]">Cefalee</h4>
+                      <p className="text-sm text-slate-500">Mal di testa che partono dalla nuca e si irradiano verso la fronte.</p>
+                    </div>
+                    <div className="space-y-4">
+                      <div className="w-10 h-10 bg-[#DCFCE7] rounded-xl flex items-center justify-center text-[#022166]"><RefreshCw size={20}/></div>
+                      <h4 className="font-bold text-[#022166]">Sbandamenti</h4>
+                      <p className="text-sm text-slate-500">Senso di instabilità o vertigini legate ai movimenti del collo.</p>
+                    </div>
                   </div>
                 </div>
-                
-                <div className="relative p-8 bg-[#F8FAFC] rounded-[3rem] border border-slate-200">
-                   <div className="absolute top-6 right-8 text-[#022166]/10">
-                      <Microscope size={100} />
-                   </div>
-                   <h4 className="text-2xl font-bold text-[#022166] mb-6 relative z-10">Diagnosi e Trattamento</h4>
-                   <p className="text-slate-500 text-sm leading-relaxed mb-8 relative z-10">
-                    Collaboriamo attivamente con specialisti otorinolaringoiatri e neurologi per offrire 
-                    una presa in carico completa. La tua sicurezza è garantita da protocolli basati 
-                    sulle più recenti linee guida internazionali.
-                   </p>
-                   <div className="p-6 bg-white rounded-2xl border border-[#55B4FF]/20 shadow-inner">
-                      <div className="text-xs text-[#55B4FF] font-black uppercase mb-2 tracking-widest">Focus Clinico</div>
-                      <div className="text-[#022166] font-bold italic">"Ripristino della corretta integrazione tra sistema visivo, vestibolare e cervicale."</div>
-                   </div>
-                </div>
               </div>
             </div>
           </section>
 
-          {/* CTA - Conversione Diretta */}
-          <section className="text-center py-10">
-            <h2 className="text-4xl md:text-6xl font-black text-[#022166] mb-8 tracking-tighter">
-              Riscopri il piacere di<br />sentirti al sicuro in ogni gesto.
-            </h2>
-            <p className="max-w-2xl mx-auto text-slate-500 mb-12 text-lg">
-              Una valutazione specialistica può fare la differenza tra una gestione approssimativa e una soluzione duratura. 
-              Prenota oggi il tuo controllo clinico.
-            </p>
-            <div className="flex flex-col sm:flex-row justify-center gap-6">
-              <Link 
-                href="/prenota" 
-                className="group bg-[#022166] text-white px-12 py-6 rounded-2xl font-black uppercase text-xs tracking-[0.3em] hover:bg-[#55B4FF] transition-all shadow-2xl shadow-[#022166]/30 flex items-center justify-center gap-3"
-              >
-                Inizia la Valutazione <ChevronRight size={18} className="group-hover:translate-x-2 transition-transform" />
-              </Link>
-              <a 
-                href="tel:+393338225464" 
-                className="bg-white text-[#022166] border-2 border-[#022166] px-12 py-6 rounded-2xl font-black uppercase text-xs tracking-[0.3em] hover:bg-[#F8FAFC] transition-all"
-              >
-                Chiamaci Ora
-              </a>
+          {/* SEZIONE 2: LA SOLUZIONE - TERAPIA MANUALE SPECIFICA (CORE VALUE) */}
+          <section className="mb-32">
+            <div className="grid lg:grid-cols-12 gap-12 items-center">
+              <div className="lg:col-span-6">
+                <div className="inline-flex items-center gap-3 bg-[#FEF9C3] text-[#022166] px-4 py-2 rounded-full mb-8">
+                  <Sparkles size={16} />
+                  <span className="text-[10px] font-black uppercase tracking-widest">Precisione Terapeutica</span>
+                </div>
+                <h2 className="text-4xl md:text-6xl font-bold text-[#022166] tracking-tighter leading-[0.95] mb-8">
+                  Agire dove <br /><span className="text-[#55B4FF]">serve davvero.</span>
+                </h2>
+                <p className="text-lg text-slate-600 font-medium leading-relaxed mb-10">
+                  Il tratto cervicale è delicato e complesso. Utilizziamo tecniche di <strong>Terapia Manuale</strong> gentili ma profonde per ripristinare il corretto scorrimento dei tessuti e la libertà articolare.
+                </p>
+                
+                <div className="space-y-6">
+                  <div className="flex items-start gap-4">
+                    <div className="mt-1 bg-[#55B4FF] p-1 rounded-full text-white"><ShieldCheck size={14}/></div>
+                    <div>
+                      <h4 className="text-[#022166] font-bold">Mobilizzazione Articolare</h4>
+                      <p className="text-sm text-slate-500">Per liberare le vertebre "bloccate" e ridurre la compressione nervosa.</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-4">
+                    <div className="mt-1 bg-[#55B4FF] p-1 rounded-full text-white"><ShieldCheck size={14}/></div>
+                    <div>
+                      <h4 className="text-[#022166] font-bold">Rilascio Miofasciale</h4>
+                      <p className="text-sm text-slate-500">Per sciogliere i nodi muscolari (Trigger Points) accumulati con lo stress e la postura.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="lg:col-span-6">
+                 <div className="relative p-8 bg-white rounded-[3rem] border border-slate-100 shadow-2xl">
+                    <div className="absolute -top-6 -right-6 w-24 h-24 bg-[#55B4FF] rounded-full flex items-center justify-center text-white shadow-lg animate-pulse">
+                       <Search size={32} />
+                    </div>
+                    <h4 className="text-[#022166] font-black text-xl mb-6">Il Focus Clinico</h4>
+                    <p className="text-slate-500 leading-relaxed italic mb-8">
+                      "Non ci limitiamo a massaggiare il collo. Analizziamo la postura davanti al PC, lo stile di vita e lo stato del sistema nervoso per dare una soluzione che duri nel tempo."
+                    </p>
+                    <div className="bg-[#F8FAFC] p-6 rounded-2xl border border-slate-50">
+                       <span className="text-[10px] font-black text-[#55B4FF] uppercase tracking-widest">Obiettivo</span>
+                       <p className="text-[#022166] font-bold">Eliminare la causa, non solo il sintomo.</p>
+                    </div>
+                 </div>
+              </div>
             </div>
           </section>
 
-          {/* Footer Back Link */}
+          {/* SEZIONE 3: I 3 STEP PER LA GUARIGIONE (FUNNEL) */}
+          <section className="mb-32">
+             <div className="grid md:grid-cols-3 gap-8">
+                {[
+                  { title: "Analisi", desc: "Test clinici per distinguere tra cervicalgia muscolare, articolare o neurologica.", icon: <Search/>, color: "bg-blue-50" },
+                  { title: "Sollievo", desc: "Intervento manuale immediato per disattivare il dolore acuto e la rigidità.", icon: <Sparkles/>, color: "bg-purple-50" },
+                  { title: "Controllo", desc: "Esercizi posturali specifici per rinforzare i muscoli che sostengono il capo.", icon: <Activity/>, color: "bg-green-50" }
+                ].map((step, i) => (
+                  <div key={i} className={`${step.color} p-12 rounded-[2.5rem] border border-white transition-transform hover:-translate-y-2 duration-500`}>
+                    <div className="text-[#022166] mb-6">{step.icon}</div>
+                    <h4 className="text-2xl font-bold text-[#022166] mb-4">{step.title}</h4>
+                    <p className="text-sm text-[#022166]/60 leading-relaxed font-medium">{step.desc}</p>
+                  </div>
+                ))}
+             </div>
+          </section>
+
+          {/* SEZIONE FINALE: CALL TO ACTION - CONVERSIONE */}
+          <section className="bg-[#022166] p-12 md:p-20 rounded-[3rem] shadow-2xl relative overflow-hidden group text-white">
+            <div className="absolute top-[-10%] right-[-10%] opacity-5 group-hover:scale-110 transition-transform duration-700">
+              <Activity size={400} />
+            </div>
+            
+            <div className="relative z-10 max-w-3xl">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="h-[1px] w-8 bg-[#55B4FF]"></div>
+                <span className="text-[#55B4FF] font-black text-[10px] uppercase tracking-[0.4em]">Fisioterapia Malavasi — Specialisti del Tratto Cervicale</span>
+              </div>
+              
+              <h3 className="text-4xl md:text-6xl font-bold mb-8 tracking-tighter leading-[0.95]">
+                Dì addio alla <br />
+                <span className="text-[#55B4FF]">tensione al collo.</span>
+              </h3>
+              
+              <p className="text-white/60 text-xl mb-12 font-light leading-relaxed max-w-xl">
+                Prenota ora la tua valutazione specialistica e torna a muoverti con leggerezza e lucidità.
+              </p>
+              
+              <div className="flex flex-wrap gap-6">
+                <Link 
+                  href="https://www.fisioterapiamalavasi.it/prenota" 
+                  className="bg-[#55B4FF] text-[#022166] px-12 py-6 rounded-2xl font-black text-center uppercase text-[11px] tracking-[0.3em] hover:bg-white hover:shadow-xl transition-all active:scale-95"
+                >
+                  Inizia il tuo Recupero
+                </Link>
+                <a 
+                  href="tel:+393338225464" 
+                  className="bg-white/5 backdrop-blur-md text-white border border-white/10 px-12 py-6 rounded-2xl font-black text-center uppercase text-[11px] tracking-[0.3em] hover:bg-white/10 transition-all active:scale-95"
+                >
+                  Parlaci del tuo dolore
+                </a>
+              </div>
+            </div>
+          </section>
+
+          {/* FOOTER NAVIGATION */}
           <div className="mt-24 border-t border-slate-200 pt-12 flex justify-between items-center text-slate-400">
             <Link 
               href="/trattamenti" 
               className="inline-flex items-center gap-2 font-bold hover:text-[#022166] transition-all"
             >
-              <ArrowLeft size={20} /> Torna all'Hub Trattamenti
+              <ArrowLeft size={20} /> Torna ai Trattamenti
             </Link>
-            <span className="text-[10px] uppercase tracking-widest font-black opacity-40 italic">Fisioterapia Malavasi — Specializzazione Cefalee e Vertigini</span>
+            <span className="text-[10px] uppercase tracking-widest font-black opacity-40">Hub Clinico — Fisioterapia e Riabilitazione</span>
           </div>
 
         </div>
