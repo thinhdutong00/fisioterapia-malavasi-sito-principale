@@ -167,7 +167,7 @@ export default function LombalgiaSciatalgiaPage() {
           </section>
 
 
-{/* --- SEZIONE RECENSIONI RESPONSIVE (SFONDO NEUTRO E FIX FRECCE) --- */}
+{/* --- SEZIONE RECENSIONI (SFONDO NEUTRO - NO FRECCE) --- */}
 <section id="recensioni" className="relative min-h-screen w-full py-16 md:py-32 px-4 overflow-hidden bg-transparent flex items-center">
   
   {/* Background decorativo soffuso */}
@@ -216,13 +216,9 @@ export default function LombalgiaSciatalgiaPage() {
     {/* Slider Area */}
     <div className="relative group px-0">
       <Swiper
-        modules={[Autoplay, Pagination, Navigation]}
+        modules={[Autoplay, Pagination]}
         spaceBetween={20}
         slidesPerView={1}
-        navigation={{
-          nextEl: '.swiper-button-next-custom',
-          prevEl: '.swiper-button-prev-custom',
-        }}
         autoplay={{ delay: 6000, disableOnInteraction: false }}
         pagination={{ 
           clickable: true, 
@@ -232,7 +228,6 @@ export default function LombalgiaSciatalgiaPage() {
           768: { slidesPerView: 2, spaceBetween: 25 }, 
           1280: { slidesPerView: 3, spaceBetween: 30 } 
         }}
-        /* FIX: !overflow-visible fondamentale per non tagliare le frecce */
         className="!pb-16 md:!pb-24 !overflow-visible"
       >
         {[
@@ -269,18 +264,8 @@ export default function LombalgiaSciatalgiaPage() {
           </SwiperSlide>
         ))}
       </Swiper>
-
-      {/* Navigazione Custom Desktop - Riposizionate per evitare tagli */}
-      <div className="hidden xl:block">
-        <button className="swiper-button-prev-custom absolute top-[45%] -left-12 -translate-y-1/2 z-50 w-16 h-16 bg-white border border-slate-100 rounded-full flex items-center justify-center text-[#022166] shadow-xl hover:bg-[#022166] hover:text-white transition-all cursor-pointer">
-          <ChevronLeft size={32} />
-        </button>
-        <button className="swiper-button-next-custom absolute top-[45%] -right-12 -translate-y-1/2 z-50 w-16 h-16 bg-white border border-slate-100 rounded-full flex items-center justify-center text-[#022166] shadow-xl hover:bg-[#022166] hover:text-white transition-all cursor-pointer">
-          <ChevronRight size={32} />
-        </button>
-      </div>
       
-      {/* Pagination Mobile dots */}
+      {/* Pagination dots (Unico metodo di navigazione visibile) */}
       <div className="swiper-pagination-custom flex justify-center mt-2 gap-2"></div>
     </div>
   </div>
