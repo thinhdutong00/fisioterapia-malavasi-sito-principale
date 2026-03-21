@@ -7,7 +7,6 @@ import Footer from "./components/footer";
 import WhatsAppWidget from "./components/WhatsAppWidget";
 import CookieBanner from "./components/CookieBanner";
 
-// Ottimizzazione Font con display swap
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -33,31 +32,49 @@ export default function RootLayout({
   return (
     <html lang="it" className="scroll-smooth">
       <head>
-        {/* Consenso Cookie spostato in Script per non bloccare il rendering */}
-        <Script id="google-consent" strategy="afterInteractive">
+        {/* 1. CONSENT MODE DEFAULT - Caricato immediatamente per conformità Google 2024 */}
+        <Script id="google-consent" strategy="beforeInteractive">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
+            
+            // Prova a recuperare il consenso esistente
+            var consentData = localStorage.getItem('cookieConsent');
+            var choices = { ads: false, analytics: false };
+            
+            if (consentData) {
+              try {
+                var parsed = JSON.parse(consentData);
+                choices.ads = parsed.ads === true;
+                choices.analytics = parsed.analytics === true;
+              } catch (e) {
+                // Se il formato vecchio era solo una stringa "accepted"
+                if (consentData === 'accepted') { choices.ads = true; choices.analytics = true; }
+              }
+            }
+
             gtag('consent', 'default', {
-              'ad_storage': 'denied',
-              'ad_user_data': 'denied',
-              'ad_ads_personalization': 'denied',
-              'analytics_storage': 'denied'
+              'ad_storage': choices.ads ? 'granted' : 'denied',
+              'ad_user_data': choices.ads ? 'granted' : 'denied',
+              'ad_ads_personalization': choices.ads ? 'granted' : 'denied',
+              'analytics_storage': choices.analytics ? 'granted' : 'denied',
+              'wait_for_update': 500
             });
           `}
         </Script>
 
+        {/* 2. GOOGLE TAG MANAGER */}
         <Script id="gtm-script" strategy="afterInteractive">
-    {`
-      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-      j=d.createElement(s),dl=l!='dataLayer'?'&l='+dl:'';j.async=true;j.src=
-      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-      })(window,document,'script','dataLayer','GTM-W9SJWP7K');
-    `}
-  </Script>
+          {`
+            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+dl:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','GTM-W9SJWP7K');
+          `}
+        </Script>
 
-        {/* Clarity caricato solo quando il browser è libero (lazy) */}
+        {/* 3. CLARITY */}
         <Script id="microsoft-clarity" strategy="lazyOnload">
           {`
             (function(c,l,a,r,i,t,y){
@@ -70,13 +87,13 @@ export default function RootLayout({
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased font-sans min-h-screen flex flex-col overflow-x-hidden`}>
         <noscript>
-    <iframe 
-      src="https://www.googletagmanager.com/ns.html?id=GTM-W9SJWP7K"
-      height="0" 
-      width="0" 
-      style={{ display: 'none', visibility: 'hidden' }}
-    />
-  </noscript>
+          <iframe 
+            src="https://www.googletagmanager.com/ns.html?id=GTM-W9SJWP7K"
+            height="0" 
+            width="0" 
+            style={{ display: 'none', visibility: 'hidden' }}
+          />
+        </noscript>
         
         <Navbar />
         
@@ -85,7 +102,7 @@ export default function RootLayout({
         </main>
 
         <Footer />
-        {/* Widget e Banner caricati dopo il contenuto principale */}
+        
         <WhatsAppWidget />
         <CookieBanner />
       </body>
