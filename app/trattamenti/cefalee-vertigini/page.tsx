@@ -54,7 +54,7 @@ export default function CervicalgiaPage() {
               <span className="text-xs font-black uppercase tracking-[0.3em] text-[#55B4FF]">Soluzioni per il tratto cervicale</span>
             </div>
             <h1 className="text-5xl md:text-8xl font-bold text-[#022166] leading-[0.95] mb-10 tracking-tighter">
-              Ritrova la <br />libertà di <span className="text-[#55B4FF]">guardare lontano.</span>
+              Trattamento Specialistico per Cervicalgia,<br />mal di testa <span className="text-[#55B4FF]">e vertigini.</span>
             </h1>
             <p className="max-w-3xl text-xl md:text-2xl text-slate-600 font-light leading-relaxed">
               Dalla tensione muscolare alle vertigini: un approccio mirato per eliminare il dolore e restituire leggerezza al tuo collo.
