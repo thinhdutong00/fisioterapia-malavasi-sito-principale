@@ -159,7 +159,7 @@ export default function Navbar() {
           <div className="hidden lg:flex items-center gap-3">
             <a href="tel:+393338225464" className={`${btnBaseClass} ${borderRadiusClass} ${isDarkTheme ? "bg-white/10 text-white border border-white/20" : "bg-[#022166]/5 text-[#022166] border border-[#022166]/10 hover:bg-[#022166] hover:text-white"}`}>
               <Phone size={14} />
-              <span className="hidden xl:inline">Contattaci</span>
+              <span className="hidden xl:inline">333 822 5464</span>
             </a>
             <Link href="/prenota" className={`${btnBaseClass} ${borderRadiusClass} ${isDarkTheme ? "bg-[#55B4FF] text-[#022166]" : "bg-[#022166] text-white"}`}>
               <CalendarCheck size={16} />
