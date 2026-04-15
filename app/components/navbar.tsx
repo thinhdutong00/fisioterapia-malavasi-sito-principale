@@ -60,6 +60,7 @@ export default function Navbar() {
         { n: "Lombalgia e Sciatalgia", h: "/trattamenti/lombalgia-sciatalgia" },
         { n: "Dolore Cronico", h: "/trattamenti/dolore-persistente" },
         { n: "Cervicalgia", h: "/trattamenti/cefalee-vertigini" },
+        { n: "Dolore ginocchio", h: "/trattamenti/patologie-ginocchio" },
         { n: "Riabilitazione Pre e Post-Chirurgica", h: "/trattamenti/chirurgica" },
         { n: "Fisioterapia Muscoloscheletrica", h: "/trattamenti/muscoloscheletrica" },
         { n: "Fisioterapia Sportiva", h: "/trattamenti/sportiva" },   
