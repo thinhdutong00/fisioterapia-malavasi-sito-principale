@@ -17,6 +17,7 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [openSubmenu, setOpenSubmenu] = useState<string | null>(null);
+  const [openInnerSubmenu, setOpenInnerSubmenu] = useState<string | null>(null);
   const lastScrollY = useRef(0);
 
   // Gestione Scroll
@@ -48,6 +49,7 @@ export default function Navbar() {
     } else {
       document.body.style.overflow = "unset";
       setOpenSubmenu(null);
+      setOpenInnerSubmenu(null);
     }
   }, [isMobileMenuOpen]);
 
@@ -156,39 +158,50 @@ export default function Navbar() {
                   {/* PRIMA TENDINA (Trattamenti) */}
                   <div className="absolute top-full left-1/2 -translate-x-1/2 pt-4 opacity-0 invisible group-hover/menu:opacity-100 group-hover/menu:visible transition-all duration-300 transform group-hover/menu:translate-y-0 translate-y-2">
                     <div className="bg-white rounded-2xl shadow-2xl border border-slate-100 overflow-visible min-w-[260px] p-2">
-                      {item.sub.map((subItem) => (
-                        <div key={subItem.n} className="relative group/inner">
-                          <div className="flex items-center justify-between px-5 py-3 hover:bg-slate-50 transition-colors rounded-xl group/item">
-                            <Link 
-                              href={subItem.h} 
-                              className="text-[10px] font-bold uppercase tracking-widest text-[#022166] group-hover/item:text-[#55B4FF] transition-colors flex-grow"
-                            >
-                              {subItem.n}
-                            </Link>
-                            
-                            {subItem.innerSub && (
-                              <ChevronDown size={12} className="-rotate-90 text-slate-300 group-hover/inner:text-[#55B4FF] transition-transform" />
-                            )}
+                      {item.sub.map((sub) => (
+  <div key={sub.n} className="flex flex-col">
+    <div className="flex items-center justify-between w-full">
+      <Link 
+        href={sub.h} 
+        onClick={() => setIsMobileMenuOpen(false)} 
+        className="block py-3 pl-4 text-sm font-semibold text-slate-700 hover:text-[#55B4FF] flex-grow"
+      >
+        {sub.n}
+      </Link>
+      
+      {/* Mostra la freccia solo se ci sono sottomenu */}
+      {sub.innerSub && (
+        <button 
+          onClick={() => setOpenInnerSubmenu(openInnerSubmenu === sub.n ? null : sub.n)} 
+          className="p-3 mr-2"
+        >
+          <ChevronDown 
+            size={16} 
+            className={`transition-transform duration-300 text-slate-400 ${openInnerSubmenu === sub.n ? "rotate-180 text-[#55B4FF]" : ""}`} 
+          />
+        </button>
+      )}
+    </div>
 
-                            {/* SECONDA TENDINA (Patologie specifiche - LCA, Menisco, ecc) */}
-                            {subItem.innerSub && (
-                              <div className="absolute left-full top-0 ml-2 opacity-0 invisible group-hover/inner:opacity-100 group-hover/inner:visible transition-all duration-300 transform translate-x-2 group-hover/inner:translate-x-0">
-                                <div className="bg-white rounded-2xl shadow-2xl border border-slate-100 overflow-hidden min-w-[220px] p-2">
-                                  {subItem.innerSub.map((inner) => (
-                                    <Link 
-                                      key={inner.n} 
-                                      href={inner.h} 
-                                      className="block px-5 py-3 text-[10px] font-bold uppercase tracking-widest text-[#022166] hover:bg-slate-50 hover:text-[#55B4FF] transition-colors rounded-xl"
-                                    >
-                                      {inner.n}
-                                    </Link>
-                                  ))}
-                                </div>
-                              </div>
-                            )}
-                          </div>
-                        </div>
-                      ))}
+    {/* Tendina di secondo livello */}
+    {sub.innerSub && (
+      <div className={`overflow-hidden transition-all duration-300 bg-slate-50/50 rounded-xl ml-4 ${
+        openInnerSubmenu === sub.n ? "max-h-[300px] mb-2" : "max-h-0"
+      }`}>
+        {sub.innerSub.map((inner) => (
+          <Link 
+            key={inner.n} 
+            href={inner.h} 
+            onClick={() => setIsMobileMenuOpen(false)} 
+            className="block py-3 pl-6 text-xs font-medium text-slate-500 hover:text-[#55B4FF] border-l border-slate-200"
+          >
+            {inner.n}
+          </Link>
+        ))}
+      </div>
+    )}
+  </div>
+))}
                     </div>
                   </div>
                 </div>
