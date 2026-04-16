@@ -76,9 +76,9 @@ export default function Navbar() {
           n: "Dolore alla Spalla", 
           h: "/trattamenti/patologie-spalla",
           innerSub: [
-            { n: "Cuffia dei Rotatori", h: "/trattamenti/patologie-spalla/tendinopatia-cuffia" },
+            { n: "Tendinopatia della cuffia dei rotatori", h: "/trattamenti/patologie-spalla/tendinopatia-cuffia" },
             { n: "Spalla Congelata", h: "/trattamenti/patologie-spalla/capsulite-adesiva" },
-            { n: "Instabilità e Lussazione", h: "/trattamenti/patologie-spalla/lussazione-spalla" },
+            { n: "Instabilità/Lussazione", h: "/trattamenti/patologie-spalla/lussazione-spalla" },
           ]
         },
         { n: "Riabilitazione Pre e Post-Chirurgica", h: "/trattamenti/chirurgica" },
@@ -157,7 +157,7 @@ export default function Navbar() {
                   
                   {/* PRIMA TENDINA DESKTOP */}
                   <div className="absolute top-full left-1/2 -translate-x-1/2 pt-4 opacity-0 invisible group-hover/menu:opacity-100 group-hover/menu:visible transition-all duration-300 transform group-hover/menu:translate-y-0 translate-y-2">
-                    <div className="bg-white rounded-2xl shadow-2xl border border-slate-100 min-w-[260px] p-2">
+                    <div className="bg-white rounded-2xl shadow-2xl border border-slate-100 min-w-[280px] p-2">
                       {item.sub.map((subItem) => (
                         <div key={subItem.n} className="relative group/inner">
                           <div className="flex items-center justify-between px-5 py-3 hover:bg-slate-50 transition-colors rounded-xl group/item">
@@ -169,10 +169,10 @@ export default function Navbar() {
                               <ChevronDown size={12} className="-rotate-90 text-slate-300 group-hover/inner:text-[#55B4FF] transition-transform" />
                             )}
 
-                            {/* SECONDA TENDINA DESKTOP (Flyout) */}
+                            {/* SECONDA TENDINA DESKTOP (Flyout per patologie specifiche) */}
                             {subItem.innerSub && (
                               <div className="absolute left-full top-0 ml-2 opacity-0 invisible group-hover/inner:opacity-100 group-hover/inner:visible transition-all duration-300 transform translate-x-2 group-hover/inner:translate-x-0">
-                                <div className="bg-white rounded-2xl shadow-2xl border border-slate-100 min-w-[220px] p-2">
+                                <div className="bg-white rounded-2xl shadow-2xl border border-slate-100 min-w-[240px] p-2">
                                   {subItem.innerSub.map((inner) => (
                                     <Link key={inner.n} href={inner.h} className="block px-5 py-3 text-[10px] font-bold uppercase tracking-widest text-[#022166] hover:bg-slate-50 hover:text-[#55B4FF] transition-colors rounded-xl">
                                       {inner.n}
@@ -253,7 +253,7 @@ export default function Navbar() {
                         </button>
                       </div>
                       
-                      {/* MOBILE LIVELLO 1 */}
+                      {/* MOBILE LIVELLO 1 (Es. Elenco Trattamenti) */}
                       <div className={`overflow-hidden transition-all duration-300 ${openSubmenu === item.n ? "max-h-[1500px] mb-4" : "max-h-0"}`}>
                         {item.sub.map((sub) => (
                           <div key={sub.n} className="flex flex-col">
@@ -271,10 +271,10 @@ export default function Navbar() {
                               )}
                             </div>
                             
-                            {/* MOBILE LIVELLO 2 (Inner Sub) */}
+                            {/* MOBILE LIVELLO 2 (Es. Gonartrosi, LCA, etc.) */}
                             {sub.innerSub && (
                               <div className={`overflow-hidden transition-all duration-300 bg-slate-50 rounded-xl ml-4 ${
-                                openInnerSubmenu === sub.n ? "max-h-[400px] mb-2" : "max-h-0"
+                                openInnerSubmenu === sub.n ? "max-h-[500px] mb-2" : "max-h-0"
                               }`}>
                                 {sub.innerSub.map((inner) => (
                                   <Link key={inner.n} href={inner.h} onClick={() => setIsMobileMenuOpen(false)} className="block py-3 pl-6 text-xs font-medium text-slate-500 border-l border-slate-200">
