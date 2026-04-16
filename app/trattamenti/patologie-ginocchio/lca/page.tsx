@@ -80,13 +80,13 @@ export default function LCASpecialistPage() {
                     <Star size={14} className="fill-[#55B4FF] text-[#55B4FF]" /> Professional Elite Background
                   </div>
                   <h2 className="text-3xl md:text-5xl font-bold text-[#022166] tracking-tight">
-                    Dall'élite del calcio <br />alla tua riabilitazione.
+                    Standard da Serie A <br />per il tuo ginocchio.
                   </h2>
                   <p className="text-lg text-slate-600 leading-relaxed font-light">
-                    Il mio approccio clinico è stato forgiato sui campi del professionismo. Dal 2017 al 2021, ho servito il <strong>Carpi F.C. 1909</strong>, curando prima il settore giovanile e poi la <strong>Prima Squadra in Lega Pro</strong>. 
+                    Ho vissuto quattro stagioni intense al Carpi F.C. 1909, curando il ritorno in campo dei professionisti.
                   </p>
                   <p className="text-slate-500 leading-relaxed">
-                    Questa esperienza sul campo mi ha permesso di affinare competenze d'eccellenza nella gestione del trauma acuto e nel recupero accelerato dell'atleta, applicando oggi gli stessi standard di rigore e precisione a ogni singolo paziente.
+                    Quella stessa attenzione al dettaglio e quella rapidità d'azione che ho applicato in Lega Pro sono oggi le fondamenta del tuo percorso di guarigione. Perché per me, ogni paziente è un atleta che deve tornare a vincere la propria sfida.
                   </p>
                 </div>
                 
