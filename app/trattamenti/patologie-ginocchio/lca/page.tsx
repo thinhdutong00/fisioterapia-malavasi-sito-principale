@@ -39,7 +39,7 @@ export default function LCASpecialistPage() {
   </div>
   
   {/* Titolo ottimizzato: equilibrio perfetto tra impatto e leggibilità */}
-  <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-[#022166] leading-[1.05] mb-8 tracking-tight">
+  <h1 className="text-5xl md:text-7xl lg:text-[5rem] font-extrabold text-[#022166] leading-[1.05] mb-8 tracking-tight">
     Lesione LCA: <br />
     <span className="text-[#55B4FF]">Stabilità e Performance</span>
     <br /> 
