@@ -38,15 +38,15 @@ export default function LCASpecialistPage() {
     <Trophy size={14} /> Specialist Return to Play
   </div>
   
-  {/* Titolo ridimensionato per una migliore gerarchia visiva */}
-  <h1 className="text-3xl md:text-5xl lg:text-6xl font-extrabold text-[#022166] leading-[1.1] mb-8 tracking-tight">
+  {/* Titolo ottimizzato: equilibrio perfetto tra impatto e leggibilità */}
+  <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-[#022166] leading-[1.05] mb-8 tracking-tight">
     Lesione LCA: <br />
     <span className="text-[#55B4FF]">Stabilità e Performance</span>
     <br /> 
     senza compromessi.
   </h1>
 
-  <p className="max-w-3xl text-lg md:text-xl text-slate-600 font-medium leading-relaxed mb-10">
+  <p className="max-w-3xl text-lg md:text-2xl text-slate-600 font-medium leading-relaxed mb-10">
     Che tu scelga la ricostruzione chirurgica o l'approccio conservativo, la stabilità del tuo ginocchio dipende dalla qualità del percorso neuro-cognitivo. Non riabilitiamo solo un legamento, ricostruiamo la tua capacità di muoverti nello spazio.
   </p>
 
