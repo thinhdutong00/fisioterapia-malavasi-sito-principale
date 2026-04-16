@@ -2,6 +2,8 @@
 
 import React from 'react';
 import Link from 'next/link';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay, Pagination } from 'swiper/modules';
 import { 
   ArrowLeft, ChevronRight, Activity, 
   ShieldCheck, Zap, Waves, Target, 
@@ -9,6 +11,10 @@ import {
   Phone, Calendar, MousePointer2, 
   Trophy, Timer, Gauge, Star
 } from 'lucide-react';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/pagination';
 
 export default function LCASpecialistPage() {
   return (
@@ -34,39 +40,38 @@ export default function LCASpecialistPage() {
 
           {/* HERO SECTION - AUTORITÀ CLINICA */}
           <header className="mb-20 md:mb-32">
-  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#022166] text-[#55B4FF] text-[10px] font-black uppercase tracking-[0.2em] mb-6">
-    <Trophy size={14} /> Specialist Return to Play
-  </div>
-  
-  {/* Titolo ottimizzato: equilibrio perfetto tra impatto e leggibilità */}
-  <h1 className="text-5xl md:text-7xl lg:text-[5rem] font-extrabold text-[#022166] leading-[1.05] mb-8 tracking-tight">
-    Lesione LCA: <br />
-    <span className="text-[#55B4FF]">Stabilità e Performance</span>
-    <br /> 
-    senza compromessi.
-  </h1>
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#022166] text-[#55B4FF] text-[10px] font-black uppercase tracking-[0.2em] mb-6">
+              <Trophy size={14} /> Specialist Return to Play
+            </div>
+            
+            <h1 className="text-5xl md:text-7xl lg:text-[5rem] font-extrabold text-[#022166] leading-[1.05] mb-8 tracking-tight">
+              Lesione LCA: <br />
+              <span className="text-[#55B4FF]">Stabilità e Performance</span>
+              <br /> 
+              senza compromessi.
+            </h1>
 
-  <p className="max-w-3xl text-lg md:text-2xl text-slate-600 font-medium leading-relaxed mb-10">
-    Che tu scelga la ricostruzione chirurgica o l'approccio conservativo, la stabilità del tuo ginocchio dipende dalla qualità del percorso neuro-cognitivo. Non riabilitiamo solo un legamento, ricostruiamo la tua capacità di muoverti nello spazio.
-  </p>
+            <p className="max-w-3xl text-lg md:text-2xl text-slate-600 font-medium leading-relaxed mb-10">
+              Che tu scelga la ricostruzione chirurgica o l'approccio conservativo, la stabilità del tuo ginocchio dipende dalla qualità del percorso neuro-cognitivo. Non riabilitiamo solo un legamento, ricostruiamo la tua capacità di muoverti nello spazio.
+            </p>
 
-  <div className="flex flex-col sm:flex-row gap-4">
-    <Link 
-      href="#protocollo" 
-      className="bg-[#022166] text-white px-8 py-5 rounded-xl font-bold text-sm uppercase tracking-widest flex items-center justify-center gap-3 hover:bg-[#55B4FF] hover:text-[#022166] transition-all shadow-lg active:scale-95"
-    >
-      Inizia il Recupero <MousePointer2 size={18} />
-    </Link>
-    <a 
-      href="tel:+393338225464" 
-      className="bg-white text-[#022166] border-2 border-slate-100 px-8 py-5 rounded-xl font-bold text-sm uppercase tracking-widest flex items-center justify-center gap-3 hover:border-[#55B4FF] transition-all active:scale-95"
-    >
-      Consulenza OMPT <Phone size={18} />
-    </a>
-  </div>
-</header>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Link 
+                href="#protocollo" 
+                className="bg-[#022166] text-white px-8 py-5 rounded-xl font-bold text-sm uppercase tracking-widest flex items-center justify-center gap-3 hover:bg-[#55B4FF] hover:text-[#022166] transition-all shadow-lg active:scale-95"
+              >
+                Inizia il Recupero <MousePointer2 size={18} />
+              </Link>
+              <a 
+                href="tel:+393338225464" 
+                className="bg-white text-[#022166] border-2 border-slate-100 px-8 py-5 rounded-xl font-bold text-sm uppercase tracking-widest flex items-center justify-center gap-3 hover:border-[#55B4FF] transition-all active:scale-95"
+              >
+                Consulenza OMPT <Phone size={18} />
+              </a>
+            </div>
+          </header>
 
-          {/* SEZIONE ESPERIENZA PROFESSIONALE - CARPI FC */}
+          {/* SEZIONE ESPERIENZA PROFESSIONALE - CARPI FC (CON CAROSELLO) */}
           <section className="mb-32">
             <div className="bg-white rounded-[3rem] p-8 md:p-16 border border-slate-100 shadow-sm overflow-hidden relative">
               <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -84,20 +89,35 @@ export default function LCASpecialistPage() {
                     Questa esperienza sul campo mi ha permesso di affinare competenze d'eccellenza nella gestione del trauma acuto e nel recupero accelerato dell'atleta, applicando oggi gli stessi standard di rigore e precisione a ogni singolo paziente.
                   </p>
                 </div>
+                
                 <div className="relative group">
-                  <div className="aspect-[4/3] rounded-[2rem] bg-slate-100 overflow-hidden relative">
-                    {/* Placeholder per immagine denominata: fisioterapia-carpi-calcio.jpeg */}
-                    <div className="absolute inset-0 flex items-center justify-center text-slate-400 text-xs font-bold uppercase tracking-widest text-center p-4">
-                      [fisioterapia-carpi-calcio.jpeg]
-                    </div>
-                    <img 
-                      src="/fisioterapia-carpi-calcio.jpeg" 
-                      alt="Fisioterapia Carpi Calcio" 
-                      className="w-full h-full object-cover opacity-20 group-hover:scale-105 transition-transform duration-700"
-                    />
+                  <div className="aspect-[4/3] rounded-[2rem] overflow-hidden relative shadow-2xl">
+                    <Swiper
+                      modules={[Autoplay, Pagination]}
+                      spaceBetween={0}
+                      slidesPerView={1}
+                      autoplay={{ delay: 4000, disableOnInteraction: false }}
+                      pagination={{ clickable: true, dynamicBullets: true }}
+                      className="w-full h-full"
+                    >
+                      {[
+                        { src: "/fisioterapia-carpi-calcio.jpeg", alt: "Fisioterapia Carpi Calcio" },
+                        { src: "/fisioterapia-campo-pro.jpeg", alt: "Recupero in campo" },
+                        { src: "/allenamento-lca.jpeg", alt: "Allenamento specifico LCA" }
+                      ].map((img, index) => (
+                        <SwiperSlide key={index}>
+                          <img 
+                            src={img.src} 
+                            alt={img.alt} 
+                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
+                          />
+                        </SwiperSlide>
+                      ))}
+                    </Swiper>
                   </div>
+                  
                   {/* Badge Società */}
-                  <div className="absolute -bottom-6 -right-6 bg-[#022166] text-white p-6 rounded-2xl shadow-xl hidden md:block">
+                  <div className="absolute -bottom-6 -right-6 bg-[#022166] text-white p-6 rounded-2xl shadow-xl hidden md:block z-20">
                     <p className="text-[10px] font-black uppercase tracking-[0.2em] mb-1">Società Partner</p>
                     <p className="text-lg font-bold">Carpi F.C. 1909</p>
                   </div>
