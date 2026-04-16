@@ -17,6 +17,7 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [openSubmenu, setOpenSubmenu] = useState<string | null>(null);
+  const [openInnerSubmenu, setOpenInnerSubmenu] = useState<string | null>(null);
   const lastScrollY = useRef(0);
 
   // Gestione Scroll
@@ -48,9 +49,11 @@ export default function Navbar() {
     } else {
       document.body.style.overflow = "unset";
       setOpenSubmenu(null);
+      setOpenInnerSubmenu(null);
     }
   }, [isMobileMenuOpen]);
 
+  // STRUTTURA NAVIGAZIONE NIDIFICATA
   const navLinks = [
     { n: "Informazioni", h: "/informazioni" },
     { 
@@ -60,8 +63,24 @@ export default function Navbar() {
         { n: "Lombalgia e Sciatalgia", h: "/trattamenti/lombalgia-sciatalgia" },
         { n: "Cervicalgia", h: "/trattamenti/cefalee-vertigini" },
         { n: "Dolore Cronico", h: "/trattamenti/dolore-persistente" },
-        { n: "Dolore Ginocchio", h: "/trattamenti/patologie-ginocchio" },
-        { n: "Dolore alla Spalla", h: "/trattamenti/patologie-spalla" },
+        { 
+          n: "Dolore Ginocchio", 
+          h: "/trattamenti/patologie-ginocchio",
+          innerSub: [
+            { n: "Gonartrosi", h: "/trattamenti/patologie-ginocchio/gonartrosi" },
+            { n: "Lesioni Meniscali", h: "/trattamenti/patologie-ginocchio/lesioni-meniscali" },
+            { n: "Ricostruzione LCA", h: "/trattamenti/patologie-ginocchio/lca" },
+          ]
+        },
+        { 
+          n: "Dolore alla Spalla", 
+          h: "/trattamenti/patologie-spalla",
+          innerSub: [
+            { n: "Cuffia dei Rotatori", h: "/trattamenti/patologie-spalla/tendinopatia-cuffia" },
+            { n: "Spalla Congelata", h: "/trattamenti/patologie-spalla/capsulite-adesiva" },
+            { n: "Instabilità e Lussazione", h: "/trattamenti/patologie-spalla/lussazione-spalla" },
+          ]
+        },
         { n: "Riabilitazione Pre e Post-Chirurgica", h: "/trattamenti/chirurgica" },
         { n: "Fisioterapia Muscoloscheletrica", h: "/trattamenti/muscoloscheletrica" },
         { n: "Fisioterapia Sportiva", h: "/trattamenti/sportiva" },   
@@ -130,18 +149,40 @@ export default function Navbar() {
           {navLinks.map((item) => (
             <div key={item.n} className="relative group/menu">
               {item.sub ? (
-                <div className="flex items-center gap-1 py-2">
+                <div className="flex items-center gap-1 py-2 cursor-default">
                   <Link href={item.h} className={`relative font-bold text-[11px] uppercase tracking-[0.1em] transition-all group-hover/menu:text-[#55B4FF] whitespace-nowrap ${textColor}`}>
                     {item.n}
                   </Link>
                   <ChevronDown size={14} className={`transition-transform duration-300 group-hover/menu:rotate-180 ${textColor} group-hover/menu:text-[#55B4FF]`} />
                   
+                  {/* PRIMA TENDINA DESKTOP */}
                   <div className="absolute top-full left-1/2 -translate-x-1/2 pt-4 opacity-0 invisible group-hover/menu:opacity-100 group-hover/menu:visible transition-all duration-300 transform group-hover/menu:translate-y-0 translate-y-2">
-                    <div className="bg-white rounded-2xl shadow-2xl border border-slate-100 overflow-hidden min-w-[240px] p-2">
+                    <div className="bg-white rounded-2xl shadow-2xl border border-slate-100 min-w-[260px] p-2">
                       {item.sub.map((subItem) => (
-                        <Link key={subItem.n} href={subItem.h} className="block px-5 py-3 text-[10px] font-bold uppercase tracking-widest text-[#022166] hover:bg-slate-50 hover:text-[#55B4FF] transition-colors rounded-xl">
-                          {subItem.n}
-                        </Link>
+                        <div key={subItem.n} className="relative group/inner">
+                          <div className="flex items-center justify-between px-5 py-3 hover:bg-slate-50 transition-colors rounded-xl group/item">
+                            <Link href={subItem.h} className="text-[10px] font-bold uppercase tracking-widest text-[#022166] group-hover/item:text-[#55B4FF] transition-colors flex-grow">
+                              {subItem.n}
+                            </Link>
+                            
+                            {subItem.innerSub && (
+                              <ChevronDown size={12} className="-rotate-90 text-slate-300 group-hover/inner:text-[#55B4FF] transition-transform" />
+                            )}
+
+                            {/* SECONDA TENDINA DESKTOP (Flyout) */}
+                            {subItem.innerSub && (
+                              <div className="absolute left-full top-0 ml-2 opacity-0 invisible group-hover/inner:opacity-100 group-hover/inner:visible transition-all duration-300 transform translate-x-2 group-hover/inner:translate-x-0">
+                                <div className="bg-white rounded-2xl shadow-2xl border border-slate-100 min-w-[220px] p-2">
+                                  {subItem.innerSub.map((inner) => (
+                                    <Link key={inner.n} href={inner.h} className="block px-5 py-3 text-[10px] font-bold uppercase tracking-widest text-[#022166] hover:bg-slate-50 hover:text-[#55B4FF] transition-colors rounded-xl">
+                                      {inner.n}
+                                    </Link>
+                                  ))}
+                                </div>
+                              </div>
+                            )}
+                          </div>
+                        </div>
                       ))}
                     </div>
                   </div>
@@ -182,7 +223,6 @@ export default function Navbar() {
         }`}
       >
         <div className="flex flex-col h-full overflow-y-auto">
-          {/* HEADER (Logo + X) - Scorre via con il menu */}
           <div className="w-full flex items-center justify-between py-8 px-6 border-b border-slate-50 shrink-0">
             <Link href="/" onClick={() => setIsMobileMenuOpen(false)}>
               <div className="relative w-48 h-10">
@@ -194,7 +234,6 @@ export default function Navbar() {
             </button>
           </div>
 
-          {/* AREA LINK */}
           <div className="flex flex-col px-8 pb-12">
             <nav className="flex flex-col">
               <Link href="/" onClick={() => setIsMobileMenuOpen(false)} className="text-lg font-bold text-[#022166] uppercase py-5 border-b border-slate-50">
@@ -210,14 +249,41 @@ export default function Navbar() {
                           {item.n}
                         </Link>
                         <button onClick={() => setOpenSubmenu(openSubmenu === item.n ? null : item.n)} className="p-5">
-                          <ChevronDown size={20} className={`transition-transform duration-300 ${openSubmenu === item.n ? "rotate-180" : ""}`} />
+                          <ChevronDown size={20} className={`transition-transform duration-300 ${openSubmenu === item.n ? "rotate-180 text-[#55B4FF]" : ""}`} />
                         </button>
                       </div>
-                      <div className={`overflow-hidden transition-all duration-300 ${openSubmenu === item.n ? "max-h-[500px] mb-4" : "max-h-0"}`}>
+                      
+                      {/* MOBILE LIVELLO 1 */}
+                      <div className={`overflow-hidden transition-all duration-300 ${openSubmenu === item.n ? "max-h-[1500px] mb-4" : "max-h-0"}`}>
                         {item.sub.map((sub) => (
-                          <Link key={sub.n} href={sub.h} onClick={() => setIsMobileMenuOpen(false)} className="block py-3 pl-4 text-sm font-semibold text-slate-500 hover:text-[#55B4FF]">
-                            {sub.n}
-                          </Link>
+                          <div key={sub.n} className="flex flex-col">
+                            <div className="flex items-center justify-between w-full pr-4">
+                              <Link href={sub.h} onClick={() => setIsMobileMenuOpen(false)} className="block py-3 pl-4 text-sm font-semibold text-slate-700 flex-grow">
+                                {sub.n}
+                              </Link>
+                              {sub.innerSub && (
+                                <button 
+                                  onClick={() => setOpenInnerSubmenu(openInnerSubmenu === sub.n ? null : sub.n)} 
+                                  className="p-3"
+                                >
+                                  <ChevronDown size={16} className={`transition-transform ${openInnerSubmenu === sub.n ? "rotate-180 text-[#55B4FF]" : "text-slate-400"}`} />
+                                </button>
+                              )}
+                            </div>
+                            
+                            {/* MOBILE LIVELLO 2 (Inner Sub) */}
+                            {sub.innerSub && (
+                              <div className={`overflow-hidden transition-all duration-300 bg-slate-50 rounded-xl ml-4 ${
+                                openInnerSubmenu === sub.n ? "max-h-[400px] mb-2" : "max-h-0"
+                              }`}>
+                                {sub.innerSub.map((inner) => (
+                                  <Link key={inner.n} href={inner.h} onClick={() => setIsMobileMenuOpen(false)} className="block py-3 pl-6 text-xs font-medium text-slate-500 border-l border-slate-200">
+                                    {inner.n}
+                                  </Link>
+                                ))}
+                              </div>
+                            )}
+                          </div>
                         ))}
                       </div>
                     </div>
@@ -230,7 +296,6 @@ export default function Navbar() {
               ))}
             </nav>
 
-            {/* BOTTONI FINALI AZIONE */}
             <div className="mt-10 space-y-4">
               <a href="tel:+393338225464" className="w-full flex items-center justify-center gap-4 bg-slate-100 text-[#022166] py-5 rounded-2xl font-black uppercase text-xs tracking-widest">
                 <Phone size={20} /> Chiama Studio
