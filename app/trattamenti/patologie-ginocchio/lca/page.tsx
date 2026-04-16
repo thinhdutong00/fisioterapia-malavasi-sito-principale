@@ -34,33 +34,37 @@ export default function LCASpecialistPage() {
 
           {/* HERO SECTION - AUTORITÀ CLINICA */}
           <header className="mb-20 md:mb-32">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#022166] text-[#55B4FF] text-[10px] font-black uppercase tracking-[0.2em] mb-6">
-              <Trophy size={14} /> Specialist Return to Play
-            </div>
-            <h1 className="text-4xl md:text-7xl lg:text-8xl font-extrabold text-[#022166] leading-[1.1] md:leading-[0.95] mb-8 tracking-tight">
-              Lesione LCA: <br />
-              <span className="text-[#55B4FF]">Stabilità e Performance</span>
-              <br /> 
-              senza compromessi.
-            </h1>
-            <p className="max-w-3xl text-lg md:text-2xl text-slate-600 font-medium leading-relaxed mb-10">
-              Che tu scelga la ricostruzione chirurgica o l'approccio conservativo, la stabilità del tuo ginocchio dipende dalla qualità del percorso neuro-cognitivo. Non riabilitiamo solo un legamento, ricostruiamo la tua capacità di muoverti nello spazio.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Link 
-                href="#protocollo" 
-                className="bg-[#022166] text-white px-8 py-5 rounded-xl font-bold text-sm uppercase tracking-widest flex items-center justify-center gap-3 hover:bg-[#55B4FF] hover:text-[#022166] transition-all shadow-lg active:scale-95"
-              >
-                Inizia il Recupero <MousePointer2 size={18} />
-              </Link>
-              <a 
-                href="tel:+393338225464" 
-                className="bg-white text-[#022166] border-2 border-slate-100 px-8 py-5 rounded-xl font-bold text-sm uppercase tracking-widest flex items-center justify-center gap-3 hover:border-[#55B4FF] transition-all active:scale-95"
-              >
-                Consulenza OMPT <Phone size={18} />
-              </a>
-            </div>
-          </header>
+  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#022166] text-[#55B4FF] text-[10px] font-black uppercase tracking-[0.2em] mb-6">
+    <Trophy size={14} /> Specialist Return to Play
+  </div>
+  
+  {/* Titolo ridimensionato per una migliore gerarchia visiva */}
+  <h1 className="text-3xl md:text-5xl lg:text-6xl font-extrabold text-[#022166] leading-[1.1] mb-8 tracking-tight">
+    Lesione LCA: <br />
+    <span className="text-[#55B4FF]">Stabilità e Performance</span>
+    <br /> 
+    senza compromessi.
+  </h1>
+
+  <p className="max-w-3xl text-lg md:text-xl text-slate-600 font-medium leading-relaxed mb-10">
+    Che tu scelga la ricostruzione chirurgica o l'approccio conservativo, la stabilità del tuo ginocchio dipende dalla qualità del percorso neuro-cognitivo. Non riabilitiamo solo un legamento, ricostruiamo la tua capacità di muoverti nello spazio.
+  </p>
+
+  <div className="flex flex-col sm:flex-row gap-4">
+    <Link 
+      href="#protocollo" 
+      className="bg-[#022166] text-white px-8 py-5 rounded-xl font-bold text-sm uppercase tracking-widest flex items-center justify-center gap-3 hover:bg-[#55B4FF] hover:text-[#022166] transition-all shadow-lg active:scale-95"
+    >
+      Inizia il Recupero <MousePointer2 size={18} />
+    </Link>
+    <a 
+      href="tel:+393338225464" 
+      className="bg-white text-[#022166] border-2 border-slate-100 px-8 py-5 rounded-xl font-bold text-sm uppercase tracking-widest flex items-center justify-center gap-3 hover:border-[#55B4FF] transition-all active:scale-95"
+    >
+      Consulenza OMPT <Phone size={18} />
+    </a>
+  </div>
+</header>
 
           {/* SEZIONE ESPERIENZA PROFESSIONALE - CARPI FC */}
           <section className="mb-32">
