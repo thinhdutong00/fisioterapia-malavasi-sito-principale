@@ -86,7 +86,7 @@ export default function LCASpecialistPage() {
                       [fisioterapia-carpi-calcio.jpeg]
                     </div>
                     <img 
-                      src="/api/placeholder/800/600" 
+                      src="/fisioterapia-carpi-calcio.jpeg" 
                       alt="Fisioterapia Carpi Calcio" 
                       className="w-full h-full object-cover opacity-20 group-hover:scale-105 transition-transform duration-700"
                     />
