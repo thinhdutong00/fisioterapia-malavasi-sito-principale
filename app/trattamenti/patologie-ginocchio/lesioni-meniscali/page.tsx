@@ -46,7 +46,7 @@ export default function LesioniMeniscaliAdsPage() {
               Lesione al Menisco: <br /><span className="text-[#55B4FF]">Recupera senza fretta di operare.</span>
             </h1>
             <p className="max-w-3xl text-xl md:text-2xl text-slate-600 font-light leading-relaxed">
-              Sappiamo quanto possa spaventare l'idea di un intervento. La moderna fisioterapia OMPT offre percorsi personalizzati per stabilizzare il ginocchio, eliminare il dolore e tornare allo sport in sicurezza.
+              Sappiamo quanto possa spaventare l'idea di un intervento. La moderna fisioterapia OMPT offre percorsi personalizzati per stabilizzare il ginocchio, eliminare il dolore, tornare in forma e tutto in sicurezza.
             </p>
           </header>
 
