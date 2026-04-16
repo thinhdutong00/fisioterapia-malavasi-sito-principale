@@ -190,9 +190,9 @@ export default function SpallaRiabilitazionePage() {
       className="!pb-20"
     >
       {[
-        { n: "Matteo Caramaschi", t: "la mia esperienza è stata una lussazione alla spalla dx a giocare a calcio, grazie a mirco che conosco da 4/5 anni ed è sempre disponibile, ora sono tornato al meglio fisicamente e con la condizione mentale di non avere paura, dopo 2 mesi ero già in campo. Ottimi programmi di riabilitazione.", d: "1 mese fa" },
-        { n: "Gianluca Folloni", t: "Molto professionale ed empatico. Mi sono rivolto a Mirco 2 volte per 2 problematiche diverse e in poche sedute ha individuato e risolto il problema, oltre a fornirmi i mezzi per affrontare tali problematiche in modo autonomo.", d: "2 mesi fa" },
-        { n: "Roberto Delvai", t: "professionale e preparatissimo, non si limita a curare i problemi fisici, ma ti spiega passo per passo quale sarà l'evoluzione a breve e lungo termine della guarigione rendendoti partecipe in prima persona alla risoluzione del problema.un metodo innovativo incredibile. Ne sono rimasto entusiasta. Molto bello e funzionale il nuovo studio", d: "3 settimane fa" }
+        { n: "Matteo Caramaschi", t: "la mia esperienza è stata una lussazione alla spalla dx a giocare a calcio, grazie a mirco che conosco da 4/5 anni ed è sempre disponibile, ora sono tornato al meglio fisicamente e con la condizione mentale di non avere paura, dopo 2 mesi ero già in campo. Ottimi programmi di riabilitazione.", d: "3 anni fa" },
+        { n: "Gianluca Folloni", t: "Molto professionale ed empatico. Mi sono rivolto a Mirco 2 volte per 2 problematiche diverse e in poche sedute ha individuato e risolto il problema, oltre a fornirmi i mezzi per affrontare tali problematiche in modo autonomo.", d: "2 anni fa" },
+        { n: "Roberto Delvai", t: "professionale e preparatissimo, non si limita a curare i problemi fisici, ma ti spiega passo per passo quale sarà l'evoluzione a breve e lungo termine della guarigione rendendoti partecipe in prima persona alla risoluzione del problema.un metodo innovativo incredibile. Ne sono rimasto entusiasta. Molto bello e funzionale il nuovo studio", d: "2 anni fa" }
       ].map((rev, i) => (
         <SwiperSlide key={i}>
           <div className="bg-white p-10 rounded-[3rem] border border-slate-100 shadow-sm h-full">

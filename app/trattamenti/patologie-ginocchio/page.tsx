@@ -220,11 +220,9 @@ export default function GinocchioRiabilitazionePage() {
         className="!pb-16 md:!pb-24 !overflow-visible"
       >
         {[
-          { n: "Luca B.", t: "Dopo la lesione al crociato temevo di non tornare più in campo. Mirco mi ha seguito con un protocollo incredibile, lavorando sulla forza ma anche sulla mia paura di caricare. Ieri ho fatto il mio primo allenamento!", d: "2 settimane fa" },
-          { n: "Elena M.", t: "Il dolore anteriore al ginocchio non mi faceva più scendere le scale. Con la terapia manuale e esercizi specifici per l'anca, il problema si è risolto in un mese. Professionisti veri.", d: "1 mese fa" },
-          { n: "Roberto G.", t: "Convivievo con l'artrosi e prendevo anti-infiammatori ogni giorno. Qui ho imparato che il ginocchio deve muoversi. Ora con gli esercizi di rinforzo e le manipolazioni OMPT ho ridotto i farmaci del 90%.", d: "3 settimane fa" },
-          { n: "Sonia F.", t: "Fisioterapia eccellente post-operazione menisco. Lo staff OMPT ha una competenza rara nell'analisi del movimento.", d: "10 mesi fa" },
-          { n: "Matteo V.", t: "Ottimo approccio clinico. Non ti attaccano a macchinari, ma ti insegnano a muoverti e a caricare nel modo corretto.", d: "1 anno fa" }
+          { n: "Samuele Pini", t: "mi sono rotto il crociato e subito ho deciso di iniziare il mio percorso preoperatorio grazie al quale ho potuto affrontare la riabilitazione molto meglio, psicplogicamente piu sollevato. Grazie al dott.Mirco e al suo staff, dotato ci ottima preparazione", d: "2 mesi fa" },
+          { n: "Luisa Tirelli", t: "Ottimo professionista. Mi ha risolto, con esercizi mirati, nel giro di 2 mesi, un problema invalidante al ginocchio. Oltre all'indubbia competenza, ti ascolta e ti spiega alla perfezione gli esercizi che ti propone x il tuo problema. Grazie mille, Mirco. Consigliatissimo!!!", d: "1 anno fa" },
+          { n: "Edoardo Massarenti", t: "Esperienza super positiva. Mi sono rivolto al dottor Malavasi per curare una tendinopatia al ginocchio, in poco più di due mesi abbiamo risolto! Ho trovato grande professionalità e conoscenza della materia sia dal dottor Malavasi che dal suo collega Lorenzo. Lo consiglio caldamente!", d: "2 anni fa" }
         ].map((rev, i) => (
           <SwiperSlide key={i} className="!h-auto flex">
             <div className="bg-white p-8 md:p-12 rounded-[2.5rem] md:rounded-[3rem] border border-slate-100 h-full flex flex-col shadow-sm relative group/card w-full">
