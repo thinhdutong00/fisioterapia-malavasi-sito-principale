@@ -102,8 +102,7 @@ export default function LCASpecialistPage() {
                     >
                       {[
                         { src: "/fisioterapia-carpi-calcio.jpeg", alt: "Fisioterapia Carpi Calcio" },
-                        { src: "/fisioterapia-campo-pro.jpeg", alt: "Recupero in campo" },
-                        { src: "/allenamento-lca.jpeg", alt: "Allenamento specifico LCA" }
+                        { src: "/fisioterapia-campo-pro.jpeg", alt: "Recupero in campo" }
                       ].map((img, index) => (
                         <SwiperSlide key={index}>
                           <img 
@@ -118,7 +117,7 @@ export default function LCASpecialistPage() {
                   
                   {/* Badge Società */}
                   <div className="absolute -bottom-6 -right-6 bg-[#022166] text-white p-6 rounded-2xl shadow-xl hidden md:block z-20">
-                    <p className="text-[10px] font-black uppercase tracking-[0.2em] mb-1">Società Partner</p>
+                    <p className="text-[10px] font-black uppercase tracking-[0.2em] mb-1">Alcuni momenti con il</p>
                     <p className="text-lg font-bold">Carpi F.C. 1909</p>
                   </div>
                 </div>
