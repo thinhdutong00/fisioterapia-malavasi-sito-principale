@@ -33,33 +33,35 @@ export default function CapsuliteAdesivaPage() {
             <span className="text-[#022166]">Capsulite Adesiva</span>
           </nav>
 
-          {/* HERO SECTION - TYPOGRAPHY ENHANCED */}
-          <header className="mb-24 md:mb-36">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#022166] text-[#55B4FF] text-[10px] font-black uppercase tracking-[0.3em] mb-8 shadow-sm">
-              <ThermometerSnowflake size={14} /> Frozen Shoulder Specialist
+          {/* HERO SECTION - ALLINEATA A STILE CERVICALGIA */}
+          <header className="mb-24">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="h-[1px] w-12 bg-[#55B4FF]"></div>
+              <span className="text-xs font-black uppercase tracking-[0.3em] text-[#55B4FF]">Specialista Spalla Congelata</span>
             </div>
-            
-            <h1 className="text-5xl md:text-7xl lg:text-[6rem] font-black text-[#022166] leading-[0.9] mb-10 tracking-[-0.04em]">
+
+            {/* Applicazione del font: font-bold, leading-[0.95] e tracking-tighter */}
+            <h1 className="text-5xl md:text-8xl font-bold text-[#022166] leading-[0.95] mb-10 tracking-tighter">
               Sblocca la tua <br />
-              <span className="text-[#55B4FF] drop-shadow-sm">libertà di movimento.</span>
+              libertà di <span className="text-[#55B4FF]">movimento.</span>
             </h1>
 
-            <p className="max-w-3xl text-xl md:text-2xl text-slate-500 font-light leading-relaxed mb-12 border-l-2 border-[#55B4FF] pl-6 md:pl-8">
-              La spalla congelata non è solo un dolore: è un ostacolo alla tua vita quotidiana. Un approccio specialistico **OMPT** può ridurre drasticamente i tempi di guarigione, guidandoti fuori dalla fase infiammatoria.
+            <p className="max-w-3xl text-xl md:text-2xl text-slate-600 font-light leading-relaxed">
+              La spalla congelata non è solo un dolore: è un ostacolo alla tua vita quotidiana. Un approccio specialistico <strong>OMPT</strong> può ridurre drasticamente i tempi di guarigione, guidandoti fuori dalla fase infiammatoria.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-5">
+            <div className="flex flex-col sm:flex-row gap-6 mt-12">
               <Link 
                 href="#percorso" 
-                className="bg-[#022166] text-white px-10 py-6 rounded-2xl font-black text-xs uppercase tracking-[0.2em] flex items-center justify-center gap-3 hover:bg-[#55B4FF] hover:text-[#022166] transition-all shadow-xl active:scale-95"
+                className="bg-[#022166] text-white px-12 py-6 rounded-2xl font-black text-center uppercase text-[11px] tracking-[0.3em] hover:bg-[#55B4FF] hover:shadow-[0_20px_40px_rgba(85,180,255,0.2)] transition-all active:scale-95"
               >
-                Inizia lo sblocco <MousePointer2 size={18} />
+                Inizia lo sblocco
               </Link>
               <a 
                 href="tel:+393338225464" 
-                className="bg-white text-[#022166] border-2 border-slate-200 px-10 py-6 rounded-2xl font-black text-xs uppercase tracking-[0.2em] flex items-center justify-center gap-3 hover:border-[#55B4FF] transition-all active:scale-95"
+                className="bg-white/5 backdrop-blur-md text-[#022166] border border-slate-200 px-12 py-6 rounded-2xl font-black text-center uppercase text-[11px] tracking-[0.3em] hover:bg-slate-50 transition-all active:scale-95"
               >
-                Consulenza OMPT <Phone size={18} />
+                Consulenza OMPT
               </a>
             </div>
           </header>
