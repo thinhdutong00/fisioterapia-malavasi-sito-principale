@@ -102,7 +102,7 @@ export default function CookieBanner() {
 
               <label className="flex items-center justify-between p-4 bg-white/50 rounded-2xl border border-blue-50 cursor-pointer hover:bg-blue-50/30 transition-colors">
                 <div>
-                  <p className="font-bold text-sm">Marketing (Ads)</p>
+                  <p className="font-bold text-sm">Personalizzazione dell’esperienza d’acquisto</p>
                   <p className="text-[11px] text-slate-500 italic">Contenuti su misura (Google/Meta)</p>
                 </div>
                 <input 
