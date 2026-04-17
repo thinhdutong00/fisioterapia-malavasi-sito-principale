@@ -31,19 +31,36 @@ export default function GonartrosiAdsPage() {
             <span className="text-[#022166] font-semibold text-xs uppercase tracking-widest">Gonartrosi</span>
           </nav>
 
-          {/* HEADER SEZIONE - STRATEGIA ADS: EMPATIA E PROMESSA CHIARA */}
-          <header className="mb-24">
+          {/* HEADER SEZIONE - ALLINEATA A STILE CERVICALGIA (GONARTROSI SPECIALIST) */}
+          <header className="mb-24 md:mb-32">
             <div className="flex items-center gap-3 mb-6">
               <div className="h-[1px] w-12 bg-[#55B4FF]"></div>
               <span className="text-xs font-black uppercase tracking-[0.3em] text-[#55B4FF]">Centro di Riabilitazione d'Eccellenza</span>
             </div>
+            
             <h1 className="text-5xl md:text-8xl font-bold text-[#022166] leading-[0.95] mb-10 tracking-tighter">
               Artrosi al Ginocchio: <br />
-              <span className="text-[#55B4FF]">Riprendi i tuoi passi.</span>
+              <span className="text-[#55B4FF]">riprendi i tuoi passi.</span>
             </h1>
-            <p className="max-w-3xl text-xl md:text-2xl text-slate-600 font-light leading-relaxed">
-              Il dolore da gonartrosi non deve definire i tuoi limiti. Attraverso il metodo OMPT, aiutiamo i nostri pazienti a ridurre l'infiammazione e a ritrovare la forza necessaria per camminare senza pensieri, evitando quando possibile la sala operatoria.
+
+            <p className="max-w-3xl text-xl md:text-2xl text-slate-600 font-light leading-relaxed mb-12">
+              Il dolore da gonartrosi non deve definire i tuoi limiti. Attraverso il metodo <strong>OMPT</strong>, riduciamo l'infiammazione e ricostruiamo la forza necessaria per camminare senza pensieri, proteggendo la tua articolazione nel tempo.
             </p>
+
+            <div className="flex flex-col sm:flex-row gap-6">
+              <Link 
+                href="#protocollo" 
+                className="bg-[#022166] text-white px-12 py-6 rounded-2xl font-black text-center uppercase text-[11px] tracking-[0.3em] hover:bg-[#55B4FF] hover:shadow-[0_20px_40px_rgba(85,180,255,0.2)] transition-all active:scale-95"
+              >
+                Scopri il Metodo
+              </Link>
+              <a 
+                href="tel:+393338225464" 
+                className="bg-white/5 backdrop-blur-md text-[#022166] border border-slate-200 px-12 py-6 rounded-2xl font-black text-center uppercase text-[11px] tracking-[0.3em] hover:bg-slate-50 transition-all active:scale-95"
+              >
+                Prenota una Valutazione
+              </a>
+            </div>
           </header>
 
           {/* SEZIONE 1: ANALISI EMPATICA (GENTILE MA DIRETTA) */}

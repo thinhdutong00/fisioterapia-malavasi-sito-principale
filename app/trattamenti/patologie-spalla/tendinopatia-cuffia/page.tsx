@@ -38,35 +38,34 @@ export default function TendinopatiaSpallaPage() {
             <span className="text-[#022166]">Tendinopatia Cuffia dei Rotatori</span>
           </nav>
 
-          {/* HERO SECTION - Landing Page Mode (Google Ads optimized) */}
-          <header className="mb-20 md:mb-32">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#E0F2FE] text-[#022166] text-[10px] font-black uppercase tracking-[0.2em] mb-6">
-              <Activity size={14} className="text-[#55B4FF]" /> Specialista Riabilitazione Spalla
+          {/* HERO SECTION - ALLINEATA A STILE CERVICALGIA (SEO & ADS) */}
+          <header className="mb-24">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="h-[1px] w-12 bg-[#55B4FF]"></div>
+              <span className="text-xs font-black uppercase tracking-[0.3em] text-[#55B4FF]">Specialista Riabilitazione Spalla</span>
             </div>
             
-            <h1 className="text-5xl md:text-7xl lg:text-[5.5rem] font-extrabold text-[#022166] leading-[1.05] mb-8 tracking-tight">
+            <h1 className="text-5xl md:text-8xl font-bold text-[#022166] leading-[0.95] mb-10 tracking-tighter">
               Torna ad alzare <br />
-              <span className="text-[#55B4FF]">il braccio.</span>
-              <br /> 
-              Senza dolore.
+              il braccio <span className="text-[#55B4FF]">senza dolore.</span>
             </h1>
 
-            <p className="max-w-3xl text-lg md:text-2xl text-slate-600 font-medium leading-relaxed mb-10">
+            <p className="max-w-3xl text-xl md:text-2xl text-slate-600 font-light leading-relaxed">
               Il dolore alla spalla non si risolve con il solo riposo. Che si tratti di un'infiammazione o di una lesione della cuffia, la soluzione è recuperare la <strong>meccanica del movimento</strong> attraverso la terapia manuale OMPT.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-6 mt-12">
               <Link 
                 href="#protocollo" 
-                className="bg-[#022166] text-white px-8 py-5 rounded-xl font-bold text-sm uppercase tracking-widest flex items-center justify-center gap-3 hover:bg-[#55B4FF] hover:text-[#022166] transition-all shadow-lg active:scale-95"
+                className="bg-[#022166] text-white px-12 py-6 rounded-2xl font-black text-center uppercase text-[11px] tracking-[0.3em] hover:bg-[#55B4FF] hover:shadow-[0_20px_40px_rgba(85,180,255,0.2)] transition-all active:scale-95"
               >
-                Inizia il Recupero <MousePointer2 size={18} />
+                Inizia il tuo Recupero
               </Link>
               <a 
                 href="tel:+393338225464" 
-                className="bg-white text-[#022166] border-2 border-slate-100 px-8 py-5 rounded-xl font-bold text-sm uppercase tracking-widest flex items-center justify-center gap-3 hover:border-[#55B4FF] transition-all active:scale-95"
+                className="bg-white/5 backdrop-blur-md text-[#022166] border border-slate-200 px-12 py-6 rounded-2xl font-black text-center uppercase text-[11px] tracking-[0.3em] hover:bg-slate-50 transition-all active:scale-95"
               >
-                Consulenza Specialistica <Phone size={18} />
+                Consulenza Specialistica
               </a>
             </div>
           </header>
