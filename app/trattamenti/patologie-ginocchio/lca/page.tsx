@@ -38,7 +38,7 @@ export default function LCASpecialistPage() {
             <span className="text-[#022166]">Specialista LCA</span>
           </nav>
 
-          {/* HERO SECTION - ALLINEATA A STILE CERVICALGIA */}
+          {/* HERO SECTION */}
           <header className="mb-24">
             <div className="flex items-center gap-3 mb-6">
               <div className="h-[1px] w-12 bg-[#55B4FF]"></div>
@@ -76,7 +76,7 @@ export default function LCASpecialistPage() {
               <div className="grid lg:grid-cols-2 gap-12 items-center">
                 <div className="space-y-6">
                   <div className="inline-flex items-center gap-2 text-[#022166] font-black text-[10px] uppercase tracking-[0.3em]">
-                    <Star size={14} className="fill-[#55B4FF] text-[#55B4FF]" /> Professional Elite Background
+                    <Star size={14} className="fill-[#55B4FF] text-[#55B4FF]" /> Professional Background
                   </div>
                   <h2 className="text-3xl md:text-5xl font-bold text-[#022166] tracking-tight leading-tight">
                     Standard da Serie A <br />per il tuo ginocchio.
@@ -85,7 +85,7 @@ export default function LCASpecialistPage() {
                     Ho vissuto quattro stagioni intense al <strong>Carpi F.C. 1909</strong>, curando il ritorno in campo di calciatori professionisti in Lega Pro.
                   </p>
                   <p className="text-slate-500 leading-relaxed font-light">
-                    Quella stessa attenzione al dettaglio e la gestione dei carichi d'élite sono oggi le fondamenta del tuo percorso. Ogni paziente, dallo sportivo amatoriale a chi vuole semplicemente camminare sicuro, riceve un trattamento di livello professionale.
+                    Quella stessa attenzione al dettaglio e la gestione dei carichi atletici sono oggi le fondamenta del tuo percorso. Ogni paziente riceve un trattamento basato su protocolli di livello professionistico, adattati alle proprie esigenze.
                   </p>
                 </div>
                 
@@ -114,7 +114,7 @@ export default function LCASpecialistPage() {
                     </Swiper>
                   </div>
                   <div className="absolute -bottom-6 -right-6 bg-[#022166] text-white p-6 rounded-2xl shadow-xl hidden md:block z-20">
-                    <p className="text-[10px] font-black uppercase tracking-[0.2em] mb-1 text-[#55B4FF]">Elite Experience</p>
+                    <p className="text-[10px] font-black uppercase tracking-[0.2em] mb-1 text-[#55B4FF]">Pro Experience</p>
                     <p className="text-lg font-bold">Carpi F.C. 1909</p>
                   </div>
                 </div>
@@ -122,7 +122,7 @@ export default function LCASpecialistPage() {
             </div>
           </section>
 
-          {/* CLINICAL FOCUS - CHIRURGIA & FISIOTERAPIA */}
+          {/* CLINICAL FOCUS */}
           <section className="mb-32 grid lg:grid-cols-12 gap-8 md:gap-16 items-start">
             <div className="lg:col-span-7 space-y-8">
               <h2 className="text-3xl md:text-5xl font-bold text-[#022166] tracking-tight leading-tight">
@@ -130,14 +130,14 @@ export default function LCASpecialistPage() {
                 <span className="text-slate-400">La tua funzione sì.</span>
               </h2>
               <p className="text-lg text-slate-600 leading-relaxed font-light">
-                La riuscita di una ricostruzione LCA dipende dall'integrazione perfetta tra chirurgia e riabilitazione. Come specialisti <strong>OMPT</strong>, non ci limitiamo a "muovere" il ginocchio: alleniamo il sistema nervoso a proteggerlo, gestendo ogni fase del recupero meccanico.
+                La riuscita di una ricostruzione LCA dipende dall'integrazione perfetta tra chirurgia e riabilitazione. Come specialisti <strong>OMPT</strong>, alleniamo il sistema nervoso a proteggere il ginocchio, gestendo ogni fase del recupero meccanico.
               </p>
               
               <div className="grid sm:grid-cols-2 gap-6 pt-6">
                 {[
                   { t: "Pre-Abilitazione", d: "Preparare il ginocchio all'intervento riduce i tempi di recupero post-operatorio del 30%." },
                   { t: "Controllo Motorio", d: "Rieduchiamo il cervello a stabilizzare l'articolazione in frazioni di secondo." },
-                  { t: "Test Isocinetici", d: "Misuriamo oggettivamente la forza per autorizzare il ritorno all'attività." },
+                  { t: "Test di Forza", d: "Misuriamo oggettivamente i valori per autorizzare il ritorno all'attività." },
                   { t: "Return to Play", d: "Protocolli specifici per cambi di direzione e gestione degli impatti." }
                 ].map((item, i) => (
                   <div key={i} className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
@@ -161,14 +161,14 @@ export default function LCASpecialistPage() {
                     <span className="text-xs uppercase font-bold tracking-widest text-white/60 pb-2 leading-tight">Simmetria di forza <br/>necessaria al rientro</span>
                   </div>
                   <p className="text-sm text-white/70 italic border-t border-white/10 pt-6 font-light">
-                    "Il fallimento di un intervento è quasi sempre legato a una riabilitazione incompleta. Il nostro compito è rendere quel nuovo legamento indistruttibile."
+                    "Il successo di un intervento è legato a una riabilitazione scientifica. Il nostro compito è rendere quel nuovo legamento pronto ad ogni sollecitazione."
                   </p>
                 </div>
               </div>
             </div>
           </section>
 
-          {/* ROADMAP - FASI CLINICHE */}
+          {/* ROADMAP */}
           <section id="protocollo" className="mb-32">
             <div className="text-center max-w-3xl mx-auto mb-20">
               <h2 className="text-3xl md:text-6xl font-bold text-[#022166] tracking-tighter mb-6">Dalla lesione al campo.</h2>
