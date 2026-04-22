@@ -51,7 +51,7 @@ export default function InstabilitaLussazionePage() {
     6.5: "Documentazione clinica",
     7: "Profilo anagrafico",
     8: "Disponibilità e Urgenza",
-    9: "Luogo del trattamento",
+    9: "Luogo della seduta",
     10: "Logistica domicilio",
     11: "Conferma e Contatti"
   };
