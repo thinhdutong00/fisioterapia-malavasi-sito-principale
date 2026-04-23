@@ -267,19 +267,74 @@ export default function LesioniMeniscaliAdvancedPage() {
                 )}
 
                 {step === 8 && (
-                  <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-4">
-                    <h3 className="text-2xl font-bold text-white mb-4 tracking-tight">Quando saresti libero?</h3>
-                    <div className="grid grid-cols-3 gap-2">
-                      {['Lun', 'Mar', 'Mer', 'Gio', 'Ven', 'Sab'].map((g) => (
-                        <button key={g} onClick={() => toggleGiorno(g)} className={`p-2 rounded-lg border-2 text-[10px] font-bold transition-all ${formData.giorniPreferiti.includes(g) ? 'border-[#55B4FF] bg-[#55B4FF] text-[#022166]' : 'border-white/10 text-white hover:border-white/30'}`}>{g}</button>
-                      ))}
-                    </div>
-                    <div className="pt-4 border-t border-white/10">
-                      <p className="text-[9px] uppercase tracking-widest text-[#55B4FF] font-bold mb-3">È un dolore acuto?</p>
-                      <button onClick={() => setFormData({...formData, urgenza: 'Sì'})} className={`w-full p-3 rounded-xl border-2 font-bold text-[10px] transition-all flex justify-center items-center gap-2 ${formData.urgenza === 'Sì' ? 'border-[#55B4FF] bg-[#55B4FF] text-[#022166]' : 'border-white/10 text-white'}`}>SÌ, HO DOLORE ORA</button>
-                    </div>
-                  </div>
-                )}
+  <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-6">
+    <div className="space-y-4">
+      {/* SELEZIONE GIORNI */}
+      <div>
+        <p className="text-[9px] uppercase tracking-widest text-[#55B4FF] font-bold mb-2">Giorni preferiti</p>
+        <div className="grid grid-cols-3 gap-2">
+          {['Lun', 'Mar', 'Mer', 'Gio', 'Ven', 'Sab'].map((g) => (
+            <button 
+              key={g} 
+              type="button"
+              onClick={() => toggleGiorno(g)} 
+              className={`p-2 rounded-lg border-2 text-[10px] font-bold transition-all ${
+                formData.giorniPreferiti.includes(g) 
+                ? 'border-[#55B4FF] bg-[#55B4FF] text-[#022166]' 
+                : 'border-white/10 text-white hover:border-white/30'
+              }`}
+            >
+              {g}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* SELEZIONE FASCIA ORARIA (CODICE DA AGGIUNGERE) */}
+      <div>
+        <p className="text-[9px] uppercase tracking-widest text-[#55B4FF] font-bold mb-2">Fascia oraria</p>
+        <div className="grid grid-cols-3 gap-2">
+          {['Mattina', 'Pomeriggio', 'Sera'].map((f) => (
+            <button 
+              key={f} 
+              type="button"
+              onClick={() => setFormData({...formData, fasciaOraria: f})} 
+              className={`p-2 rounded-lg border-2 text-[10px] font-bold transition-all ${
+                formData.fasciaOraria === f 
+                ? 'border-[#55B4FF] bg-[#55B4FF] text-[#022166]' 
+                : 'border-white/10 text-white hover:border-white/30'
+              }`}
+            >
+              {f}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* URGENZA */}
+      <div className="pt-4 border-t border-white/10">
+        <p className="text-[9px] uppercase tracking-widest text-[#55B4FF] font-bold mb-3">È urgente (dolore acuto)?</p>
+        <div className="flex gap-2">
+          {['Sì', 'No'].map((u) => (
+            <button 
+              key={u} 
+              type="button"
+              onClick={() => setFormData({...formData, urgenza: u})} 
+              className={`flex-1 p-3 rounded-xl border-2 font-bold text-[10px] transition-all flex justify-center items-center gap-2 ${
+                formData.urgenza === u 
+                ? 'border-[#55B4FF] bg-[#55B4FF] text-[#022166]' 
+                : 'border-white/10 bg-white/5 text-white hover:border-white/40'
+              }`}
+            >
+              {u === 'Sì' && <AlertTriangle size={12} />}
+              <span className="uppercase">{u === 'Sì' ? 'Sì, ho dolore' : 'No'}</span>
+            </button>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+)}
 
                 {step === 9 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-3">
