@@ -314,7 +314,7 @@ export default function InstabilitaLussazionePage() {
                 {/* STEP 5: STORICO */}
                 {step === 5 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-3">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Hai già fatto fisio?</h3>
+                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Hai già fatto fisioterapia per questo problema?</h3>
                     {['Sì', 'No'].map((opzione) => (
                       <button 
                         key={opzione}
