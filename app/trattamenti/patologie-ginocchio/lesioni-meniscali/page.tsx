@@ -348,16 +348,63 @@ export default function LesioniMeniscaliAdvancedPage() {
                 )}
 
                 {step === 11 && (
-                  <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-4">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Concludiamo</h3>
-                    <input type="text" placeholder="Nome e Cognome" className="w-full bg-white/5 border-b-2 border-white/20 p-3 text-white font-bold outline-none" value={formData.nome} onChange={(e) => setFormData({...formData, nome: e.target.value})} />
-                    <input type="tel" placeholder="Cellulare" className="w-full bg-white/5 border-b-2 border-white/20 p-3 text-white font-bold outline-none" value={formData.telefono} onChange={(e) => setFormData({...formData, telefono: e.target.value})} />
-                    <label className="flex items-center gap-3 cursor-pointer mt-4">
-                      <input type="checkbox" className="accent-[#55B4FF]" checked={formData.privacy} onChange={(e) => setFormData({...formData, privacy: e.target.checked})} />
-                      <span className="text-[9px] text-white/40 uppercase font-bold">Accetto Privacy Policy</span>
-                    </label>
-                  </div>
-                )}
+  <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-4">
+    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Concludiamo</h3>
+    
+    <div className="space-y-4">
+      {/* NOME E COGNOME */}
+      <div className="space-y-1">
+        <p className="text-[9px] uppercase tracking-widest text-[#55B4FF] font-bold ml-1">Nome e Cognome</p>
+        <input 
+          type="text" 
+          placeholder="Inserisci il tuo nome" 
+          className="w-full bg-white/5 border-b-2 border-white/20 p-3 text-white font-bold outline-none focus:border-[#55B4FF] transition-colors" 
+          value={formData.nome} 
+          onChange={(e) => setFormData({...formData, nome: e.target.value})} 
+        />
+      </div>
+
+      {/* CELLULARE */}
+      <div className="space-y-1">
+        <p className="text-[9px] uppercase tracking-widest text-[#55B4FF] font-bold ml-1">Cellulare</p>
+        <input 
+          type="tel" 
+          placeholder="Il tuo numero di telefono" 
+          className="w-full bg-white/5 border-b-2 border-white/20 p-3 text-white font-bold outline-none focus:border-[#55B4FF] transition-colors" 
+          value={formData.telefono} 
+          onChange={(e) => setFormData({...formData, telefono: e.target.value})} 
+        />
+      </div>
+
+      {/* EMAIL */}
+      <div className="space-y-1">
+        <p className="text-[9px] uppercase tracking-widest text-[#55B4FF] font-bold ml-1">Email</p>
+        <input 
+          type="email" 
+          placeholder="latua@email.it" 
+          className="w-full bg-white/5 border-b-2 border-white/20 p-3 text-white font-bold outline-none focus:border-[#55B4FF] transition-colors" 
+          value={formData.email} 
+          onChange={(e) => setFormData({...formData, email: e.target.value})} 
+        />
+      </div>
+    </div>
+
+    {/* PRIVACY CHECKBOX */}
+    <label className="flex items-start gap-3 cursor-pointer mt-6 group">
+      <div className="mt-1">
+        <input 
+          type="checkbox" 
+          className="accent-[#55B4FF] h-4 w-4" 
+          checked={formData.privacy} 
+          onChange={(e) => setFormData({...formData, privacy: e.target.checked})} 
+        />
+      </div>
+      <span className="text-[9px] text-white/40 uppercase font-bold tracking-widest leading-tight group-hover:text-white/60 transition-colors">
+        Accetto il trattamento dei dati personali secondo la Privacy Policy
+      </span>
+    </label>
+  </div>
+)}
               </div>
 
               {/* NAVIGAZIONE MODULO */}
