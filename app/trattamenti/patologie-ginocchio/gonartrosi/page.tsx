@@ -245,7 +245,7 @@ export default function GonartrosiAdsPage() {
 
                 {step === 5 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-3">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Hai già fatto infiltrazioni?</h3>
+                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Hai già fatto riabilitazione in precedenza?</h3>
                     {['Sì', 'No'].map((opzione) => (
                       <button key={opzione} onClick={() => setFormData({...formData, giaFattoFisio: opzione})} className={`w-full p-4 rounded-xl border-2 font-bold transition-all text-left flex justify-between items-center ${formData.giaFattoFisio === opzione ? 'border-[#55B4FF] bg-[#55B4FF] text-[#022166]' : 'border-white/10 bg-white/5 text-white hover:border-white/40'}`}>
                         <span className="text-sm uppercase">{opzione}</span>
