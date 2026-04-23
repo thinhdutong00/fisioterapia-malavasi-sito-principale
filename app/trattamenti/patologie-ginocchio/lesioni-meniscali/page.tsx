@@ -352,11 +352,12 @@ export default function LesioniMeniscaliAdvancedPage() {
     <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Concludiamo</h3>
     
     <div className="space-y-4">
-      {/* NOME E COGNOME */}
+      {/* NOME E COGNOME - OBBLIGATORIO */}
       <div className="space-y-1">
-        <p className="text-[9px] uppercase tracking-widest text-[#55B4FF] font-bold ml-1">Nome e Cognome</p>
+        <p className="text-[9px] uppercase tracking-widest text-[#55B4FF] font-bold ml-1">Nome e Cognome *</p>
         <input 
           type="text" 
+          required
           placeholder="Inserisci il tuo nome" 
           className="w-full bg-white/5 border-b-2 border-white/20 p-3 text-white font-bold outline-none focus:border-[#55B4FF] transition-colors" 
           value={formData.nome} 
@@ -364,11 +365,12 @@ export default function LesioniMeniscaliAdvancedPage() {
         />
       </div>
 
-      {/* CELLULARE */}
+      {/* CELLULARE - OBBLIGATORIO */}
       <div className="space-y-1">
-        <p className="text-[9px] uppercase tracking-widest text-[#55B4FF] font-bold ml-1">Cellulare</p>
+        <p className="text-[9px] uppercase tracking-widest text-[#55B4FF] font-bold ml-1">Cellulare *</p>
         <input 
           type="tel" 
+          required
           placeholder="Il tuo numero di telefono" 
           className="w-full bg-white/5 border-b-2 border-white/20 p-3 text-white font-bold outline-none focus:border-[#55B4FF] transition-colors" 
           value={formData.telefono} 
@@ -376,33 +378,40 @@ export default function LesioniMeniscaliAdvancedPage() {
         />
       </div>
 
-      {/* EMAIL */}
+      {/* EMAIL - FACOLTATIVO */}
       <div className="space-y-1">
-        <p className="text-[9px] uppercase tracking-widest text-[#55B4FF] font-bold ml-1">Email</p>
+        <p className="text-[9px] uppercase tracking-widest text-[#55B4FF] font-bold ml-1 opacity-60">Email (Facoltativo)</p>
         <input 
           type="email" 
           placeholder="latua@email.it" 
-          className="w-full bg-white/5 border-b-2 border-white/20 p-3 text-white font-bold outline-none focus:border-[#55B4FF] transition-colors" 
+          className="w-full bg-white/5 border-b-2 border-white/20 p-3 text-white font-bold outline-none focus:border-[#55B4FF] transition-colors opacity-80" 
           value={formData.email} 
           onChange={(e) => setFormData({...formData, email: e.target.value})} 
         />
       </div>
     </div>
 
-    {/* PRIVACY CHECKBOX */}
-    <label className="flex items-start gap-3 cursor-pointer mt-6 group">
-      <div className="mt-1">
-        <input 
-          type="checkbox" 
-          className="accent-[#55B4FF] h-4 w-4" 
-          checked={formData.privacy} 
-          onChange={(e) => setFormData({...formData, privacy: e.target.checked})} 
-        />
-      </div>
-      <span className="text-[9px] text-white/40 uppercase font-bold tracking-widest leading-tight group-hover:text-white/60 transition-colors">
-        Accetto il trattamento dei dati personali secondo la Privacy Policy
-      </span>
-    </label>
+    {/* PRIVACY CHECKBOX - OBBLIGATORIO */}
+<label className="flex items-start gap-3 cursor-pointer mt-6 group">
+  <div className="mt-1">
+    <input 
+      type="checkbox" 
+      className="accent-[#55B4FF] h-4 w-4 shadow-sm" 
+      checked={formData.privacy} 
+      onChange={(e) => setFormData({...formData, privacy: e.target.checked})} 
+    />
+  </div>
+  <span className="text-[9px] text-white/40 uppercase font-bold tracking-widest leading-tight group-hover:text-white/60 transition-colors">
+    Accetto il trattamento dei dati personali secondo la{' '}
+    <Link 
+      href="/privacy-policy" 
+      target="_blank" 
+      className="text-[#55B4FF] underline underline-offset-2 hover:text-white transition-colors"
+    >
+      Privacy Policy
+    </Link> *
+  </span>
+</label>
   </div>
 )}
               </div>
@@ -415,12 +424,19 @@ export default function LesioniMeniscaliAdvancedPage() {
                   </button>
                 )}
                 <button 
-                  onClick={step === 11 ? inviaPrenotazione : nextStep}
-                  disabled={isSending || (step === 11 && !formData.privacy)}
-                  className="flex-1 bg-[#55B4FF] text-[#022166] py-4 rounded-xl font-black uppercase tracking-widest text-[10px] hover:bg-white transition-all disabled:opacity-30"
-                >
-                  {isSending ? 'Invio...' : (step === 11 ? 'Invia Richiesta' : 'Continua')}
-                </button>
+  onClick={step === 11 ? inviaPrenotazione : nextStep}
+  disabled={
+    isSending || 
+    (step === 11 && (
+      !formData.nome.trim() || 
+      !formData.telefono.trim() || 
+      !formData.privacy
+    ))
+  }
+  className="flex-1 bg-[#55B4FF] text-[#022166] py-4 rounded-xl font-black uppercase tracking-widest text-[10px] hover:bg-white transition-all disabled:opacity-30 disabled:cursor-not-allowed"
+>
+  {isSending ? 'Invio in corso...' : (step === 11 ? 'Invia Richiesta' : 'Continua')}
+</button>
               </div>
             </div>
           </header>
