@@ -178,15 +178,19 @@ export default function ChirurgiaPage() {
     Dalla preparazione pre-operatoria al ritorno alla vita quotidiana: un percorso guidato per garantire il successo della tua operazione.
   </p>
 
-  {/* --- SEZIONE AGGIORNATA: IMMAGINI SEGNAPOSTO SOVRAPPOSTE --- */}
+  {/* SEZIONE IMMAGINI REALI SOVRAPPOSTE */}
   <div className="flex items-center gap-4">
-     <div className="flex -space-x-4"> {/* Aumentato leggermente lo spazio negativo */}
-       {[1, 2, 3].map((i) => (
-         <div key={i} className="relative w-11 h-11"> {/* Dimensione leggermente maggiore (w-11) */}
+     <div className="flex -space-x-4">
+       {[
+         "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=150&h=150",
+         "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=150&h=150",
+         "https://images.unsplash.com/photo-1554151228-14d9def656e4?auto=format&fit=crop&q=80&w=150&h=150"
+       ].map((url, i) => (
+         <div key={i} className="relative w-11 h-11">
            <img
-             src={`https://via.placeholder.com/150?text=Paziente+${i}`}
-             alt={`Paziente Segnaposto ${i}`}
-             className="w-full h-full rounded-full border-4 border-white object-cover shadow-md"
+             src={url}
+             alt={`Paziente soddisfatto ${i + 1}`}
+             className="w-full h-full rounded-full border-4 border-white object-cover shadow-lg"
            />
          </div>
        ))}
