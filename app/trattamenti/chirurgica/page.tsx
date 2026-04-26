@@ -317,23 +317,41 @@ export default function ChirurgiaPage() {
                 )}
 
                 {step === 8 && (
-                  <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-6">
-                    <div className="space-y-4">
-                      <div>
-                        <p className="text-[9px] uppercase tracking-widest text-[#55B4FF] font-bold mb-2">Giorni preferiti</p>
-                        <div className="grid grid-cols-3 gap-2">
-                          {['Lun', 'Mar', 'Mer', 'Gio', 'Ven', 'Sab'].map((g) => (
-                            <button key={g} onClick={() => toggleGiorno(g)} className={`p-2 rounded-lg border-2 text-[10px] font-bold transition-all ${formData.giorniPreferiti.includes(g) ? 'border-[#55B4FF] bg-[#55B4FF] text-[#022166]' : 'border-white/10 text-white hover:border-white/30'}`}>{g}</button>
-                          ))}
-                        </div>
-                      </div>
-                      <div className="pt-4 border-t border-white/10">
-                         <p className="text-[9px] uppercase tracking-widest text-[#55B4FF] font-bold mb-3 italic">Priorità Post-Operatoria</p>
-                         <button onClick={() => setFormData({...formData, urgenza: 'Sì'})} className={`w-full p-3 rounded-xl border-2 font-bold text-[10px] flex justify-center items-center gap-2 ${formData.urgenza === 'Sì' ? 'border-[#55B4FF] bg-[#55B4FF] text-[#022166]' : 'border-white/10 text-white'}`}><AlertTriangle size={12}/> DIMISSIONE RECENTE</button>
-                      </div>
-                    </div>
-                  </div>
-                )}
+  <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-6">
+    <div className="space-y-4">
+      {/* Selezione Giorni */}
+      <div>
+        <p className="text-[9px] uppercase tracking-widest text-[#55B4FF] font-bold mb-2">Giorni preferiti</p>
+        <div className="grid grid-cols-3 gap-2">
+          {['Lun', 'Mar', 'Mer', 'Gio', 'Ven', 'Sab'].map((g) => (
+            <button key={g} onClick={() => toggleGiorno(g)} className={`p-2 rounded-lg border-2 text-[10px] font-bold transition-all ${formData.giorniPreferiti.includes(g) ? 'border-[#55B4FF] bg-[#55B4FF] text-[#022166]' : 'border-white/10 text-white hover:border-white/30'}`}>{g}</button>
+          ))}
+        </div>
+      </div>
+
+      {/* NUOVO: Selezione Fascia Oraria */}
+      <div>
+        <p className="text-[9px] uppercase tracking-widest text-[#55B4FF] font-bold mb-2">Fascia oraria</p>
+        <div className="grid grid-cols-3 gap-2">
+          {['Mattina', 'Pomeriggio', 'Sera'].map((f) => (
+            <button 
+              key={f} 
+              onClick={() => setFormData({...formData, fasciaOraria: f})} 
+              className={`p-2 rounded-lg border-2 text-[10px] font-bold transition-all ${formData.fasciaOraria === f ? 'border-[#55B4FF] bg-[#55B4FF] text-[#022166]' : 'border-white/10 text-white hover:border-white/30'}`}
+            >
+              {f}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <div className="pt-4 border-t border-white/10">
+         <p className="text-[9px] uppercase tracking-widest text-[#55B4FF] font-bold mb-3 italic">Priorità Post-Operatoria</p>
+         <button onClick={() => setFormData({...formData, urgenza: 'Sì'})} className={`w-full p-3 rounded-xl border-2 font-bold text-[10px] flex justify-center items-center gap-2 ${formData.urgenza === 'Sì' ? 'border-[#55B4FF] bg-[#55B4FF] text-[#022166]' : 'border-white/10 text-white'}`}><AlertTriangle size={12}/> DIMISSIONE RECENTE</button>
+      </div>
+    </div>
+  </div>
+)}
 
                 {step === 9 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-3">
