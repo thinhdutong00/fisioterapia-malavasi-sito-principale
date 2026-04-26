@@ -182,9 +182,9 @@ export default function ChirurgiaPage() {
   <div className="flex items-center gap-4">
      <div className="flex -space-x-4">
        {[
-         "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=150&h=150",
-         "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=150&h=150",
-         "https://images.unsplash.com/photo-1554151228-14d9def656e4?auto=format&fit=crop&q=80&w=150&h=150"
+         "review01.png",
+         "review02.png",
+         "review03.png"
        ].map((url, i) => (
          <div key={i} className="relative w-11 h-11">
            <img
