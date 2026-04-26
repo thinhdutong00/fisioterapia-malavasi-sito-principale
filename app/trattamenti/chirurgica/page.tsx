@@ -180,7 +180,7 @@ export default function ChirurgiaPage() {
                    {[1,2,3].map(i => <div key={i} className="w-10 h-10 rounded-full border-2 border-white bg-slate-200" />)}
                  </div>
                  <div className="text-sm">
-                   <p className="font-bold text-[#022166]">Oltre 500 pazienti operati</p>
+                   <p className="font-bold text-[#022166]">Oltre 50 pazienti operati</p>
                    <p className="text-slate-500 italic">seguiti con successo quest'anno</p>
                  </div>
               </div>
