@@ -342,18 +342,37 @@ export default function GonartrosiAdsPage() {
                   </div>
                 )}
 
-                {step === 11 && (
-                  <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-4">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Ultimi dati</h3>
-                    <input type="text" placeholder="Nome e Cognome" className="w-full bg-white/5 border-b-2 border-white/20 p-3 text-white font-bold outline-none" value={formData.nome} onChange={(e) => setFormData({...formData, nome: e.target.value})} />
-                    <input type="tel" placeholder="Cellulare" className="w-full bg-white/5 border-b-2 border-white/20 p-3 text-white font-bold outline-none" value={formData.telefono} onChange={(e) => setFormData({...formData, telefono: e.target.value})} />
-                    <input type="email" placeholder="Email" className="w-full bg-white/5 border-b-2 border-white/20 p-3 text-white font-bold outline-none" value={formData.email} onChange={(e) => setFormData({...formData, email: e.target.value})} />
-                    <label className="flex items-center gap-3 cursor-pointer mt-4">
-                      <input type="checkbox" className="accent-[#55B4FF]" checked={formData.privacy} onChange={(e) => setFormData({...formData, privacy: e.target.checked})} />
-                      <span className="text-[9px] text-white/40 uppercase font-bold tracking-widest">Accetto Privacy Policy</span>
-                    </label>
-                  </div>
-                )}
+                {/* STEP 11: CONTATTI (Versione con Link Privacy) */}
+{step === 11 && (
+  <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-4">
+    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Ultime informazioni</h3>
+    <input type="text" placeholder="Nome e Cognome" className="w-full bg-white/5 border-b-2 border-white/20 p-3 text-white font-bold outline-none focus:border-[#55B4FF]" value={formData.nome} onChange={(e) => setFormData({...formData, nome: e.target.value})} />
+    <input type="tel" placeholder="Telefono" className="w-full bg-white/5 border-b-2 border-white/20 p-3 text-white font-bold outline-none focus:border-[#55B4FF]" value={formData.telefono} onChange={(e) => setFormData({...formData, telefono: e.target.value})} />
+    <input type="email" placeholder="Email" className="w-full bg-white/5 border-b-2 border-white/20 p-3 text-white font-bold outline-none focus:border-[#55B4FF]" value={formData.email} onChange={(e) => setFormData({...formData, email: e.target.value})} />
+    
+    {/* CHECKBOX PRIVACY AGGIORNATA */}
+    <div className="flex items-start gap-3 mt-6">
+      <input 
+        type="checkbox" 
+        id="privacy"
+        className="mt-1 accent-[#55B4FF] w-4 h-4 cursor-pointer" 
+        checked={formData.privacy} 
+        onChange={(e) => setFormData({...formData, privacy: e.target.checked})} 
+      />
+      <label htmlFor="privacy" className="text-[10px] text-white/50 leading-relaxed font-medium cursor-pointer">
+        Ho letto e accetto l'
+        <Link 
+          href="/privacy-policy" 
+          target="_blank" 
+          className="text-[#55B4FF] hover:underline ml-1 font-bold"
+        >
+          informativa sulla privacy
+        </Link>
+        . I tuoi dati saranno trattati solo per gestire la richiesta di prenotazione.
+      </label>
+    </div>
+  </div>
+)}
               </div>
 
               {/* NAVIGAZIONE */}
