@@ -165,26 +165,38 @@ export default function ChirurgiaPage() {
           {/* HERO SECTION CON MODULO */}
           <header className="mb-24 grid lg:grid-cols-2 gap-12 items-start">
             <div>
-              <div className="flex items-center gap-3 mb-6">
-                <div className="h-[1px] w-12 bg-[#55B4FF]"></div>
-                <span className="text-xs font-black uppercase tracking-[0.3em] text-[#55B4FF]">Riabilitazione Ortopedica Avanzata</span>
-              </div>
-              <h1 className="text-5xl md:text-8xl font-bold text-[#022166] leading-[0.95] mb-10 tracking-tighter">
-                Ottimizza il tuo <br />recupero <span className="text-[#55B4FF]">chirurgico.</span>
-              </h1>
-              <p className="max-w-xl text-xl md:text-2xl text-slate-600 font-light leading-relaxed mb-8">
-                Dalla preparazione pre-operatoria al ritorno alla vita quotidiana: un percorso guidato per garantire il successo della tua operazione.
-              </p>
-              <div className="flex gap-4">
-                 <div className="flex -space-x-3">
-                   {[1,2,3].map(i => <div key={i} className="w-10 h-10 rounded-full border-2 border-white bg-slate-200" />)}
-                 </div>
-                 <div className="text-sm">
-                   <p className="font-bold text-[#022166]">Oltre 50 pazienti operati</p>
-                   <p className="text-slate-500 italic">seguiti con successo quest'anno</p>
-                 </div>
-              </div>
-            </div>
+  <div className="flex items-center gap-3 mb-6">
+    <div className="h-[1px] w-12 bg-[#55B4FF]"></div>
+    <span className="text-xs font-black uppercase tracking-[0.3em] text-[#55B4FF]">Riabilitazione Ortopedica Avanzata</span>
+  </div>
+  
+  <h1 className="text-5xl md:text-8xl font-bold text-[#022166] leading-[0.95] mb-10 tracking-tighter">
+    Ottimizza il tuo <br />recupero <span className="text-[#55B4FF]">chirurgico.</span>
+  </h1>
+
+  <p className="max-w-xl text-xl md:text-2xl text-slate-600 font-light leading-relaxed mb-8">
+    Dalla preparazione pre-operatoria al ritorno alla vita quotidiana: un percorso guidato per garantire il successo della tua operazione.
+  </p>
+
+  {/* --- SEZIONE AGGIORNATA: IMMAGINI SEGNAPOSTO SOVRAPPOSTE --- */}
+  <div className="flex items-center gap-4">
+     <div className="flex -space-x-4"> {/* Aumentato leggermente lo spazio negativo */}
+       {[1, 2, 3].map((i) => (
+         <div key={i} className="relative w-11 h-11"> {/* Dimensione leggermente maggiore (w-11) */}
+           <img
+             src={`https://via.placeholder.com/150?text=Paziente+${i}`}
+             alt={`Paziente Segnaposto ${i}`}
+             className="w-full h-full rounded-full border-4 border-white object-cover shadow-md"
+           />
+         </div>
+       ))}
+     </div>
+     <div className="text-sm">
+       <p className="font-bold text-[#022166] leading-tight">Oltre 50 pazienti operati</p>
+       <p className="text-slate-500 italic mt-0.5">seguiti con successo quest'anno</p>
+     </div>
+  </div>
+</div>
 
             {/* MODULO MULTISTEP */}
             <div className="bg-[#022166] rounded-[2.5rem] p-6 md:p-10 shadow-2xl relative overflow-hidden min-h-[600px] flex flex-col">
