@@ -182,9 +182,9 @@ export default function ChirurgiaPage() {
   <div className="flex items-center gap-4">
      <div className="flex -space-x-4">
        {[
-         "review01.png",
-         "review02.png",
-         "review03.png"
+         "/review01.png",
+         "/review02.png",
+         "/review03.png"
        ].map((url, i) => (
          <div key={i} className="relative w-11 h-11">
            <img
