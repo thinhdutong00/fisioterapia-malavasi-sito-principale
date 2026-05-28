@@ -1,125 +1,18 @@
-"use client";
-
-import React, { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
-import Link from 'next/link';
 import Image from 'next/image';
-
-import Script from 'next/script';
-
 import {
-  Activity, X, ChevronRight, Zap, UserRound, CheckCircle,
-  Phone, ArrowRight, Menu, Users, Star, Home, MapPin, HeartPulse,
-  Calendar, Clock, Plus, ChevronLeft, Upload, FileText, RotateCw,
-  Accessibility, HandIcon, Move, Brain, Spline, Scale,
-  Stethoscope, Dumbbell, UserCheck, GitCommitVertical,
-  Dna, MoveVertical, Footprints, Layers,
-  MessageCircle, ClipboardCheck, Quote, CalendarCheck,
-  Shield
+  CheckCircle,
+  Phone,
+  ArrowRight,
+  Home,
+  MessageCircle,
+  ClipboardCheck,
+  Shield,
 } from 'lucide-react';
-
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Pagination, Navigation } from 'swiper/modules';
-
-import 'swiper/css';
-import 'swiper/css/pagination';
-import 'swiper/css/navigation';
-
-if (typeof window !== 'undefined') {
-  const style = document.createElement('style');
-  style.innerHTML = `
-    html, body { 
-      max-width: 100vw; 
-      overflow-x: hidden; 
-      position: relative;
-      margin: 0;
-      padding: 0;
-    }
-    * { box-sizing: border-box; }
-  `;
-  document.head.appendChild(style);
-}
+import HomeTreatments from './components/HomeTreatments';
+import LocationMap from './components/LocationMap';
+import ReviewsSection from './components/ReviewsSection';
 
 export default function FisioterapiaMalavasi() {
-  const router = useRouter();
-  
-  // --- STATI INTERFACCIA ---
-  const [mapUrl, setMapUrl] = useState("https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2836.216234033104!2d11.026365!3d44.838499!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDTCsDUwJzE4LjYiTiAxMcKwMDEnMzQuOSJF!5e0!3m2!1sit!2sit!4v1700000000000!5m2!1sit!2sit");
-  const [selectedTrattamento, setSelectedTrattamento] = useState<any>(null);
-  const [isHoursOpen, setIsHoursOpen] = useState(false);
-  const [mounted, setMounted] = useState(false);
-
-  // --- STATI MODULO MULTISTEP ---
-  const [step, setStep] = useState(1);
-  const [file, setFile] = useState<File | null>(null);
-  const [formData, setFormData] = useState({
-    motivo: '',
-    sede: '',
-    data: '',
-    ora: '',
-    nome: '',
-    telefono: '',
-    email: '',
-    privacy: false
-  });
-
-  // --- LOGICA CALENDARIO ---
-  const oggi = new Date();
-  const giorniMese = Array.from({ length: 28 }, (_, i) => {
-    const d = new Date();
-    d.setDate(oggi.getDate() + i);
-    return d;
-  });
-
-  const generaOrari = () => {
-    const slots = [];
-    const intervalli = [{ start: 9, end: 13 }, { start: 15, end: 21 }];
-    intervalli.forEach(range => {
-      for (let ora = range.start; ora < range.end; ora++) {
-        for (let min = 0; min < 60; min += 15) {
-          const h = ora.toString().padStart(2, '0');
-          const m = min.toString().padStart(2, '0');
-          slots.push(`${h}:${m}`);
-        }
-      }
-    });
-    slots.push("13:00", "21:00");
-    return [...new Set(slots)].sort();
-  };
-
-  const orariDisponibili = generaOrari();
-  const nextStep = () => setStep(step + 1);
-  const prevStep = () => setStep(step - 1);
-
-  // --- FUNZIONE INVIO EMAIL ---
-  const inviaPrenotazione = async () => {
-    try {
-      const data = new FormData();
-      data.append('nome', formData.nome);
-      data.append('email', formData.email);
-      data.append('telefono', formData.telefono);
-      data.append('sede', formData.sede);
-      data.append('data', formData.data);
-      data.append('ora', formData.ora);
-      data.append('motivo', formData.motivo || ""); 
-      
-      if (file) data.append('file', file);
-
-      const response = await fetch('/api/send', {
-        method: 'POST',
-        body: data,
-      });
-
-      if (response.ok) {
-        window.location.href = '/grazie';
-      } else {
-        alert("Errore nell'invio. Riprova tra poco.");
-      }
-    } catch (error) {
-      alert("Errore di connessione.");
-    }
-  };
-
   return (
     /* MODIFICATO: rimosso h-screen, overflow-y-auto e snap-scroll. Aggiunto min-h-screen e rimosso snap-mandatory */
    <main className="relative min-h-screen w-full bg-[#F0F4F8] text-slate-800 font-sans scroll-smooth">
@@ -139,11 +32,11 @@ export default function FisioterapiaMalavasi() {
       <section id="home" className="relative min-h-screen w-full flex items-center justify-center px-4 md:px-8 overflow-hidden bg-[#022166]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://github.com/thinhdutong00/image-fisioterapia-malavasi/blob/main/1.png?raw=true"
-            alt="Sfondo Anatomia"
+            src="/studio-fisioterapia-malavasi.jpg"
+            alt="Studio Fisioterapia Malavasi"
             fill
-            className="object-cover opacity-40"
-            priority
+            className="hidden md:block object-cover opacity-40"
+            quality={45}
             sizes="100vw"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-[#022166]/80 via-[#022166]/60 to-[#022166]/90"></div>
@@ -153,7 +46,7 @@ export default function FisioterapiaMalavasi() {
           <div className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-md border border-white/20 text-white px-5 py-2 rounded-full text-[10px] font-black uppercase tracking-[0.2em] mb-8 shadow-sm">
             <div className="relative h-5 w-10">
               <Image
-                src="https://github.com/thinhdutong00/Fisioterapia-Malavasi---landing-page-1/blob/main/public/Progetto%20senza%20titolo%20-%202026-02-23T223838.202.png?raw=true"
+                src="/Progetto senza titolo - 2026-02-23T223838.202.png"
                 alt="Logo Malavasi"
                 fill
                 className="object-contain brightness-0 invert"
@@ -167,7 +60,7 @@ export default function FisioterapiaMalavasi() {
   <span className="text-[#55B4FF]">a Cavezzo</span>
 </h1>
 
-          <p className="text-lg md:text-xl text-white/80 mb-10 max-w-2xl mx-auto font-medium leading-relaxed">
+          <p className="hidden sm:block text-base md:text-xl text-white/80 mb-10 max-w-xl md:max-w-2xl mx-auto font-medium leading-relaxed">
             Valutazioni precise e trattamenti fisioterapici basati su evidenze scientifiche, pensati per ridurre il dolore, migliorare la mobilità e accompagnarti verso un recupero stabile e reale.
           </p>
 
@@ -209,126 +102,8 @@ export default function FisioterapiaMalavasi() {
             </h2>
           </div>
 
-          {/* Grid Trattamenti */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            {[
-              { 
-                id: 1, 
-                titolo: "Riabilitazione Post-Chirurgica", 
-                icona: <GitCommitVertical size={28} />, 
-                breve: "Recupero della mobilità dopo interventi di protesi (anca/ginocchio) o ricostruzione legamentosa.", 
-                descrizione: "L'intervento chirurgico è solo il primo passo: il vero successo dipende dalla riabilitazione. Seguo protocolli basati sulle più recenti evidenze scientifiche per restituirti la piena autonomia nel minor tempo possibile.", 
-                link: "/trattamenti/chirurgica" // MODIFICATO
-              },
-              { 
-                id: 2, 
-                titolo: "Dolore Persistente", // MODIFICATO
-                icona: <MoveVertical size={28} />, 
-                breve: "Approccio multidisciplinare per la gestione di dolori cronici e problematiche della colonna che non trovano sollievo.", 
-                descrizione: "Il dolore persistente richiede un approccio che vada oltre la semplice terapia locale. Attraverso l'educazione al dolore e tecniche manuali specifiche, lavoriamo per desensibilizzare il sistema nervoso e farti tornare a muoverti con fiducia.", 
-                link: "/trattamenti/dolore-persistente" // MODIFICATO
-              },
-              { 
-                id: 3, 
-                titolo: "Fisioterapia Sportiva", 
-                icona: <Footprints size={28} />, 
-                breve: "Trattamento specialistico per distorsioni, lesioni muscolari e problematiche articolari traumatiche.", 
-                descrizione: "Mi occupo del trattamento di traumi acuti e cronici, applicando tecniche che accelerano la riparazione dei tessuti e prevengono future recidive per garantirti la massima performance.", 
-                link: "/trattamenti/sportiva" 
-              },
-              { 
-                id: 4, 
-                titolo: "Cefalee e Vertigini", // MODIFICATO
-                icona: <RotateCw size={28} />, 
-                breve: "Valutazione e trattamento di mal di testa di origine cervicale e disturbi dell'equilibrio.", 
-                descrizione: "Molte cefalee e vertigini dipendono da disfunzioni del tratto cervicale superiore. Attraverso tecniche manuali mirate e rieducazione specifica, riduciamo la frequenza degli attacchi e miglioriamo la stabilità posturale.", 
-                link: "/trattamenti/cefalee-vertigini" // MODIFICATO
-              },
-              { 
-                id: 5, 
-                titolo: "Riabilitazione Neurologica", 
-                icona: <Brain size={28} />, 
-                breve: "Recupero funzionale per esiti di ictus, Parkinson, sclerosi multipla o lesioni nervose.", 
-                descrizione: "Attraverso esercizi neurocognitivi e stimolazioni specifiche, lavoriamo per riprogrammare il movimento, migliorare l'equilibrio e contrastare la spasticità.", 
-                link: "/trattamenti/neurologica" 
-              },
-              { 
-                id: 6, 
-                titolo: "Fisioterapia Oncologica", 
-                icona: <HeartPulse size={28} />, 
-                breve: "Gestione del linfedema, del dolore e della stanchezza cronica (fatigue) post-oncologica.", 
-                descrizione: "Trattamento del linfedema tramite linfodrenaggio manuale e bendaggi, oltre al recupero della mobilità articolare post-chirurgia. Un supporto concreto per la qualità della vita.", 
-                link: "/trattamenti/oncologica" 
-              }
-            ].map((item) => (
-              <div 
-                key={item.id} 
-                onClick={() => setSelectedTrattamento(item)} 
-                className="group p-8 rounded-[2rem] bg-white border border-slate-100 hover:border-[#55B4FF]/30 hover:shadow-[0_20px_40px_rgba(2,33,102,0.05)] transition-all duration-500 cursor-pointer flex flex-col h-full"
-              >
-                <div className="w-14 h-14 bg-[#F8FAFC] text-[#022166] rounded-2xl flex items-center justify-center mb-8 group-hover:bg-[#022166] group-hover:text-[#55B4FF] transition-all duration-500 shadow-sm">
-                  {item.icona}
-                </div>
-                
-                <h3 className="text-xl font-bold text-[#022166] mb-4 leading-tight tracking-tight">
-                  {item.titolo}
-                </h3>
-                
-                <p className="text-slate-500 text-sm leading-relaxed mb-8 flex-grow">
-                  {item.breve}
-                </p>
-
-                <div className="flex items-center gap-2 text-[#55B4FF] font-black text-[10px] uppercase tracking-widest opacity-0 group-hover:opacity-100 group-hover:translate-x-2 transition-all duration-500">
-                  Dettagli <ChevronRight size={14} />
-                </div>
-              </div>
-            ))}
-          </div>
+          <HomeTreatments />
         </div>
-
-        {/* MODAL / POPUP DETTAGLI */}
-        {selectedTrattamento && (
-          <div className="fixed inset-0 z-[10000] flex items-center justify-center p-4 md:p-6 bg-[#022166]/20 backdrop-blur-md animate-in fade-in duration-300">
-            <div className="bg-white w-full max-w-2xl rounded-[2.5rem] shadow-2xl overflow-hidden relative animate-in zoom-in-95 duration-300">
-              
-              <button 
-                onClick={() => setSelectedTrattamento(null)}
-                className="absolute top-6 right-6 p-2 bg-slate-50 text-[#022166] rounded-full hover:bg-slate-100 transition-colors z-10"
-              >
-                <X size={20} />
-              </button>
-
-              <div className="p-8 md:p-12">
-                <div className="w-16 h-16 bg-[#022166] text-[#55B4FF] rounded-2xl flex items-center justify-center mb-8">
-                  {selectedTrattamento.icona}
-                </div>
-                
-                <h3 className="text-3xl md:text-4xl font-bold text-[#022166] mb-6 tracking-tighter">
-                  {selectedTrattamento.titolo}
-                </h3>
-                
-                <p className="text-lg text-slate-600 leading-relaxed mb-10 font-light">
-                  {selectedTrattamento.descrizione}
-                </p>
-
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <Link 
-                    href={selectedTrattamento.link}
-                    className="flex-1 inline-flex items-center justify-center gap-3 bg-[#022166] text-white px-8 py-5 rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-[#55B4FF] transition-all group"
-                  >
-                    Scopri di più <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-                  </Link>
-                  <button 
-                    onClick={() => setSelectedTrattamento(null)}
-                    className="flex-1 inline-flex items-center justify-center px-8 py-5 rounded-2xl font-black text-xs uppercase tracking-widest text-slate-400 border border-slate-100 hover:bg-slate-50 transition-all"
-                  >
-                    Chiudi
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
       </section>
 
       {/* --- SEZIONE DOMICILIO --- */}
@@ -432,7 +207,7 @@ export default function FisioterapiaMalavasi() {
             />
           </div>
           <span className="bg-[#f0f9ff] text-[#55B4FF] border border-[#55B4FF]/20 px-4 py-1.5 rounded-full font-black text-[8px] md:text-[9px] uppercase tracking-widest mb-4">{membro.ruolo}</span>
-          <h3 className="text-2xl md:text-3xl font-black text-[#022166] mb-3 group-hover:text-[#55B4FF] transition-colors">{membro.nome}</h3>
+          <h2 className="text-2xl md:text-3xl font-black text-[#022166] mb-3 group-hover:text-[#55B4FF] transition-colors">{membro.nome}</h2>
           <p className="text-slate-500 text-xs md:text-sm font-bold italic max-w-[220px]">{membro.specialita}</p>
         </div>
       ))}
@@ -440,94 +215,7 @@ export default function FisioterapiaMalavasi() {
   </div>
 </section>
 
-{/* --- RECENSIONI --- */}
-{/* MODIFICATO: rimosso h-screen e classi snap. Aggiunto min-h-screen e flex items-center */}
-<section id="recensioni" className="relative min-h-screen w-full py-20 md:py-32 px-4 overflow-x-hidden bg-gradient-to-b from-white to-[#F0F4F8] flex items-center">
-  <div className="max-w-7xl mx-auto w-full">
-    <div className="flex flex-col md:flex-row items-center justify-between mb-12 md:mb-16 gap-8">
-      <div className="text-center md:text-left">
-        <h2 className="text-4xl md:text-5xl font-black text-[#022166] tracking-tight mb-4">
-          La parola ai nostri <span className="text-[#55B4FF]">Pazienti</span>
-        </h2>
-        <p className="text-slate-500 font-medium text-lg">Esperienze reali tratte dal nostro profilo ufficiale Google Business.</p>
-      </div>
-      
-      <div className="bg-white p-6 rounded-[2rem] shadow-xl shadow-blue-900/5 border border-slate-100 flex items-center gap-6">
-        <div className="flex-shrink-0 w-12 h-12 bg-[#4285F4] rounded-xl flex items-center justify-center">
-          <svg 
-            className="w-6 h-6 text-white" 
-            fill="currentColor" 
-            viewBox="0 0 24 24" 
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
-            <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
-            <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" />
-            <path d="M12 5.38c1.62 0 3.06.56 4.21 1.66l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" />
-          </svg>
-        </div>
-        <div>
-          <div className="flex gap-1 text-yellow-400 mb-1">
-            {[...Array(5)].map((_, i) => <Star key={i} size={18} fill="currentColor" />)}
-          </div>
-          <p className="text-[#022166] font-black text-sm uppercase tracking-tighter">Eccellenza 5.0 su Google</p>
-        </div>
-      </div>
-    </div>
-
-    <div className="relative group px-2 md:px-16">
-      <div className="md:[mask-image:linear-gradient(to_right,transparent_0%,black_15%,black_85%,transparent_100%)]">
-        <Swiper
-          modules={[Autoplay, Pagination, Navigation]}
-          spaceBetween={20}
-          slidesPerView={1}
-          navigation={{
-            nextEl: '.swiper-button-next-custom',
-            prevEl: '.swiper-button-prev-custom',
-          }}
-          autoplay={{ delay: 5000, disableOnInteraction: false }}
-          pagination={{ clickable: true, el: '.swiper-pagination-custom' }}
-          breakpoints={{ 768: { slidesPerView: 2, spaceBetween: 30 }, 1024: { slidesPerView: 3 } }}
-          className="!pb-16 md:!pb-20 overflow-hidden md:!overflow-visible"
-        >
-          {[
-            { n: "Rosalba Cantuti", t: "Lo studio Malavasi è molto serio e professionale, Mirco segue molto bene il paziente e da’ consigli utili x continuare a migliorare nel percorso di riabilitazione.", d: "2 settimane fa" },
-            { n: "Samuele Pini", t: "Mi sono rotto il crociato e subito ho deciso di iniziare il mio percorso preoperatorio grazie al quale ho potuto affrontare la riabilitazione molto meglio, psicologicamente più sollevato. Grazie al Dott. Mirco e al suo staff, dotato di ottima preparazione", d: "1 mese fa" },
-            { n: "Federico Zagni", t: "Professionista e collega di alto livello! Grande empatia e professionalità!", d: "3 settimane fa" },
-            { n: "Alessandro Papazzoni", t: "Ci sono andato per la mia caviglia e mi hanno aiutato con molta cura e attenzione, in più sono migliorato velocemente.", d: "10 mesi fa" },
-            { n: "Elisa Cavazzoli", t: "Con Mirco mi sono trovata bene fin da subito. È ATTENTO e molto preparato nonostante la giovane età. Con i giusti esercizi e le giuste tempistiche sono riuscita a gestire e risolvere il mio problema, sono molto contenta! Consigliatissimo a tutti!!", d: "1 anno fa" },
-            { n: "Edoardo Marchesi", t: "Ho portato mia mamma da lui perchè aveva male al piede destro faceva fatica a camminare, a scendere le scale non se ne parla e dopo due infiltrazioni di cortisone non era migliorata, quindi si è decisa ad andarci con ottimi risultati non solo il piede non le duole più, ma ha acquisito un po' più di sicurezza nel camminare e a fare le scale. Grazie Mirco", d: "1 anno fa" }
-          ].map((rev, i) => (
-            <SwiperSlide key={i} className="h-auto px-2 md:px-0">
-              <div className="bg-white p-7 md:p-10 rounded-[2.5rem] border border-slate-100 h-full flex flex-col relative shadow-lg shadow-blue-900/[0.02] hover:shadow-2xl transition-all duration-500 group">
-                <div className="flex gap-0.5 text-yellow-400 mb-6">
-                  {[...Array(5)].map((_, i) => <Star key={i} size={16} fill="currentColor" />)}
-                </div>
-                <p className="text-slate-700 font-medium text-base md:text-lg leading-relaxed flex-grow italic">"{rev.t}"</p>
-                <div className="flex items-center gap-4 mt-8 md:mt-10 pt-6 md:pt-8 border-t border-slate-50">
-                  <div className="w-12 h-12 md:w-14 md:h-14 bg-gradient-to-br from-[#022166] to-[#0a3a8a] rounded-2xl flex items-center justify-center text-white font-black text-lg shadow-lg">{rev.n[0]}</div>
-                  <div>
-                    <p className="font-black text-[#022166] text-base md:text-lg leading-none">{rev.n}</p>
-                    <p className="text-[10px] text-slate-400 font-bold uppercase tracking-widest mt-1.5">{rev.d}</p>
-                  </div>
-                </div>
-              </div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      </div>
-
-      <button className="swiper-button-prev-custom hidden md:flex absolute top-1/2 -left-6 -translate-y-1/2 z-50 w-14 h-14 bg-white border border-slate-100 rounded-full items-center justify-center text-[#022166] shadow-2xl hover:bg-[#55B4FF] hover:text-white transition-all">
-        <ChevronLeft size={28} />
-      </button>
-      <button className="swiper-button-next-custom hidden md:flex absolute top-1/2 -right-6 -translate-y-1/2 z-50 w-14 h-14 bg-white border border-slate-100 rounded-full items-center justify-center text-[#022166] shadow-2xl hover:bg-[#55B4FF] hover:text-white transition-all">
-        <ChevronRight size={28} />
-      </button>
-      
-      <div className="swiper-pagination-custom flex justify-center mt-6 gap-2"></div>
-    </div>
-  </div>
-</section>
+<ReviewsSection />
 
 
 {/* --- SEZIONE COME LAVORIAMO (PROCESSO) --- */}
@@ -588,9 +276,9 @@ export default function FisioterapiaMalavasi() {
               </div>
             </div>
 
-            <h3 className="text-2xl font-black text-[#022166] mb-4 tracking-tight group-hover:text-[#55B4FF] transition-colors">
+            <h2 className="text-2xl font-black text-[#022166] mb-4 tracking-tight group-hover:text-[#55B4FF] transition-colors">
               {step.titolo}
-            </h3>
+            </h2>
             
             <p className="text-slate-500 font-bold text-sm leading-relaxed italic">
               {step.desc}
@@ -608,127 +296,7 @@ export default function FisioterapiaMalavasi() {
   </div>
 </section>
 
-{/* --- DOVE SIAMO --- */}
-{/* MODIFICATO: rimosso h-screen e snap-scroll. Usato min-h-screen */}
-<section id="dove-siamo" className="relative z-10 bg-white flex flex-col lg:flex-row min-h-screen w-full overflow-hidden">
-  
-  {/* LATO TESTI E SELEZIONE */}
-  <div className="lg:w-2/5 w-full p-6 md:p-16 lg:p-24 flex flex-col justify-center bg-gradient-to-br from-white to-slate-50 relative overflow-hidden">
-    {/* Decorazione bloccata per non creare scroll */}
-    <div className="absolute top-0 right-0 w-32 h-32 bg-[#55B4FF]/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl pointer-events-none"></div>
-    
-    <div className="relative z-10 w-full">
-      <span className="text-[#55B4FF] font-black text-xs uppercase tracking-[0.3em] mb-4 block">Vicinanza e Accessibilità</span>
-      <h2 className="text-4xl md:text-5xl font-black text-[#022166] tracking-tight mb-4">Dove <span className="text-[#55B4FF]">Trovarci</span></h2>
-      <p className="text-slate-500 font-medium mb-12 max-w-sm">Scegli la sede più vicina a te e visualizza il percorso interattivo.</p>
-      
-      <div className="space-y-4 w-full">
-        {[
-          { n: 'Cavezzo (MO)', a: 'Via I maggio, 95', u: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2836.32688402506!2d11.026417776652431!3d44.83533497107052!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x477f9754f738e681%3A0x867041a677332c8c!2sVia%20I%20Maggio%2C%2095%2C%2041032%20Cavezzo%20MO!5e0!3m2!1sit!2sit!4v1709574488954!5m2!1sit!2sit" },
-          { n: 'Rovereto sulla Secchia (MO)', a: 'Via Savino Forti, 61', u: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2834.782531652156!2d10.957581576654!3d44.86566877107044!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x477f98c8c68c928b%3A0x6a2c27072c72b25b!2sVia%20Savino%20Forti%2C%2061%2C%2041039%20Rovereto%20sulla%20Secchia%20MO!5e0!3m2!1sit!2sit!4v1709574542231!5m2!1sit!2sit" }
-        ].map(loc => (
-          <button 
-            key={loc.n} 
-            onClick={() => setMapUrl(loc.u)} 
-            className={`group w-full flex items-center gap-4 p-5 rounded-[2rem] transition-all duration-500 border ${
-              mapUrl === loc.u 
-              ? 'bg-[#022166] text-white shadow-xl border-[#022166]' 
-              : 'bg-white border-slate-100 text-[#022166]'
-            }`}
-          >
-            <div className={`p-3 rounded-2xl shrink-0 transition-colors ${
-              mapUrl === loc.u ? 'bg-[#55B4FF] text-[#022166]' : 'bg-slate-100 text-[#022166]'
-            }`}>
-              <MapPin size={22} />
-            </div>
-            <div className="text-left overflow-hidden">
-              <p className="font-black text-base leading-none mb-1 truncate">{loc.n}</p>
-              <p className={`text-[10px] font-bold uppercase tracking-widest truncate ${mapUrl === loc.u ? 'text-[#55B4FF]' : 'text-slate-400'}`}>{loc.a}</p>
-            </div>
-          </button>
-        ))}
-      </div>
-
-      {/* FISARMONICA ORARI */}
-      <div className="mt-8 overflow-hidden rounded-[2rem] border border-slate-100 bg-white shadow-sm w-full">
-        <button 
-          onClick={() => setIsHoursOpen(!isHoursOpen)}
-          className="w-full flex items-center justify-between p-5 hover:bg-slate-50 transition-colors"
-          type="button"
-        >
-          <div className="flex items-center gap-4">
-            <div className="w-10 h-10 bg-[#55B4FF]/10 rounded-xl flex items-center justify-center text-[#55B4FF]">
-              <Clock size={20} />
-            </div>
-            <span className="font-black text-[#022166] text-sm uppercase tracking-widest">Orari di Apertura</span>
-          </div>
-          <div className={`transition-transform duration-300 ${isHoursOpen ? 'rotate-180' : ''}`}>
-            <ChevronRight size={20} className="text-slate-400 rotate-90" />
-          </div>
-        </button>
-        
-        <div className={`transition-all duration-500 ease-in-out ${isHoursOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'} overflow-hidden`}>
-          <div className="p-5 pt-0 space-y-3 border-t border-slate-50">
-            {[
-              { d: 'Lunedì', o: '09–13, 15–20' },
-              { d: 'Martedì', o: '09–13, 15–21' },
-              { d: 'Mercoledì', o: '09–13, 15–21' },
-              { d: 'Giovedì', o: '09–13, 15–21' },
-              { d: 'Venerdì', o: '09–13, 15–20' },
-              { d: 'Sabato', o: '09–13' },
-              { d: 'Domenica', o: 'Chiuso' },
-            ].map((item, idx) => (
-              <div key={idx} className="flex justify-between items-center gap-4">
-                <span className="text-[10px] font-bold text-slate-400 uppercase tracking-tighter shrink-0">{item.d}</span>
-                <span className={`text-xs font-black ${item.o === 'Chiuso' ? 'text-red-400' : 'text-[#022166]'} text-right`}>{item.o}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  {/* LATO MAPPA */}
-  <div className="lg:w-3/5 w-full h-[400px] lg:h-auto min-h-[400px] relative bg-slate-200">
-    <iframe 
-      src={mapUrl} 
-      title="Mappa Sedi Studio Fisioterapia Malavasi"
-      className="w-full h-full grayscale-[0.2] contrast-[1.1]" 
-      style={{ border: 0 }} 
-      allowFullScreen 
-      loading="lazy"
-    ></iframe>
-  </div>
-</section>
-
-
-
-      {/* --- MODALE TRATTAMENTI SEZIONE 2 --- */}
-      {selectedTrattamento && (
-        <div className="fixed inset-0 z-[200] flex items-center justify-center p-4 md:p-6">
-          <div className="absolute inset-0 bg-[#022166]/60 backdrop-blur-xl" onClick={() => setSelectedTrattamento(null)}></div>
-          
-          <div className="relative bg-white rounded-[2.5rem] md:rounded-[4rem] p-6 md:p-16 max-w-2xl w-full max-h-[90vh] shadow-2xl animate-in fade-in zoom-in duration-300 flex flex-col overflow-hidden">
-            <button onClick={() => setSelectedTrattamento(null)} className="absolute top-4 right-4 md:top-10 md:right-10 p-2 text-[#022166] hover:rotate-90 transition-transform z-10 bg-slate-100 md:bg-transparent rounded-full">
-              <X size={28} />
-            </button>
-
-            <div className="overflow-y-auto pr-2 custom-scrollbar">
-              <div className="text-[#55B4FF] mb-4 md:mb-8">
-                {React.cloneElement(selectedTrattamento.icona as React.ReactElement<any>, { size: 48 })}
-              </div>
-              <h3 className="text-2xl md:text-4xl font-black text-[#022166] mb-4 md:mb-8 tracking-tighter leading-tight">{selectedTrattamento.titolo}</h3>
-              <div className="w-12 h-1 bg-[#55B4FF] mb-6 rounded-full"></div>
-              <p className="text-slate-600 text-base md:text-xl leading-relaxed mb-10 font-medium">{selectedTrattamento.descrizione}</p>
-            </div>
-
-            <div className="pt-4 mt-auto">
-              <a href="#prenota" onClick={() => setSelectedTrattamento(null)} className="block w-full text-center bg-[#022166] text-white py-4 md:py-6 rounded-2xl md:rounded-full font-black uppercase tracking-widest hover:bg-[#55B4FF] transition-all shadow-xl text-sm md:text-base">Prenota Visita</a>
-            </div>
-          </div>
-        </div>
-      )}
+<LocationMap />
       
     </main>
   );

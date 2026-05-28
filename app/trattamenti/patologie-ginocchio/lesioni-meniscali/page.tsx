@@ -179,7 +179,7 @@ export default function LesioniMeniscaliAdvancedPage() {
 
                 {step === 1 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-3">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Qual è il sintomo principale?</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Qual è il sintomo principale?</h2>
                     {['Dolore fitta laterale', 'Ginocchio bloccato', 'Instabilità / Cedimento', 'Altro'].map((opzione) => (
                       <button key={opzione} onClick={() => setFormData({...formData, problema: opzione})} className={`w-full p-4 rounded-xl border-2 font-bold transition-all text-left flex justify-between items-center ${formData.problema === opzione ? 'border-[#55B4FF] bg-[#55B4FF] text-[#022166]' : 'border-white/10 bg-white/5 text-white hover:border-white/40'}`}>
                         <span className="text-sm uppercase tracking-tighter">{opzione}</span>
@@ -191,14 +191,14 @@ export default function LesioniMeniscaliAdvancedPage() {
 
                 {step === 1.2 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Specifica il tuo dolore</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Specifica il tuo dolore</h2>
                     <input type="text" placeholder="Es: dolore durante le torsioni..." className="w-full bg-white/5 border-b-2 border-white/20 p-4 outline-none focus:border-[#55B4FF] text-white font-bold" value={formData.problemaSpecifico} onChange={(e) => setFormData({...formData, problemaSpecifico: e.target.value})} />
                   </div>
                 )}
 
                 {step === 2 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-3">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Quando è successo?</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Quando è successo?</h2>
                     {['Infortunio recente', 'Dolore cronico (>3 mesi)', 'Post-intervento'].map((opzione) => (
                       <button key={opzione} onClick={() => setFormData({...formData, durata: opzione})} className={`w-full p-4 rounded-xl border-2 font-bold transition-all text-left flex justify-between items-center ${formData.durata === opzione ? 'border-[#55B4FF] bg-[#55B4FF] text-[#022166]' : 'border-white/10 bg-white/5 text-white hover:border-white/40'}`}>
                         <span className="text-sm uppercase">{opzione}</span>
@@ -210,7 +210,7 @@ export default function LesioniMeniscaliAdvancedPage() {
 
                 {step === 3 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-3">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Cosa non riesci a fare?</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Cosa non riesci a fare?</h2>
                     {['Piegare tutto il ginocchio', 'Correre / Saltare', 'Scale senza dolore'].map((opzione) => (
                       <button key={opzione} onClick={() => setFormData({...formData, limitazione: opzione})} className={`w-full p-4 rounded-xl border-2 font-bold transition-all text-left flex justify-between items-center ${formData.limitazione === opzione ? 'border-[#55B4FF] bg-[#55B4FF] text-[#022166]' : 'border-white/10 bg-white/5 text-white hover:border-white/40'}`}>
                         <span className="text-sm uppercase">{opzione}</span>
@@ -222,7 +222,7 @@ export default function LesioniMeniscaliAdvancedPage() {
 
                 {step === 4 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-3">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Il tuo obiettivo?</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Il tuo obiettivo?</h2>
                     {['Evitare l\'operazione', 'Tornare allo sport', 'Sbloccare il ginocchio', 'Altro'].map((opzione) => (
                       <button key={opzione} onClick={() => setFormData({...formData, obiettivo: opzione})} className={`w-full p-4 rounded-xl border-2 font-bold transition-all text-left flex justify-between items-center ${formData.obiettivo === opzione ? 'border-[#55B4FF] bg-[#55B4FF] text-[#022166]' : 'border-white/10 bg-white/5 text-white hover:border-white/40'}`}>
                         <span className="text-sm uppercase tracking-tighter">{opzione}</span>
@@ -234,14 +234,14 @@ export default function LesioniMeniscaliAdvancedPage() {
 
                 {step === 4.2 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Dettaglio obiettivo</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Dettaglio obiettivo</h2>
                     <input type="text" placeholder="Es: tornare a sciare a febbraio..." className="w-full bg-white/5 border-b-2 border-white/20 p-4 outline-none focus:border-[#55B4FF] text-white font-bold" value={formData.obiettivoSpecifico} onChange={(e) => setFormData({...formData, obiettivoSpecifico: e.target.value})} />
                   </div>
                 )}
 
                 {step === 5 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-3">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Sei già stato operato?</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Sei già stato operato?</h2>
                     {['Sì', 'No, vorrei evitarlo', 'In lista d\'attesa'].map((opzione) => (
                       <button key={opzione} onClick={() => setFormData({...formData, giaFattoFisio: opzione})} className={`w-full p-4 rounded-xl border-2 font-bold transition-all text-left flex justify-between items-center ${formData.giaFattoFisio === opzione ? 'border-[#55B4FF] bg-[#55B4FF] text-[#022166]' : 'border-white/10 bg-white/5 text-white hover:border-white/40'}`}>
                         <span className="text-sm uppercase">{opzione}</span>
@@ -253,7 +253,7 @@ export default function LesioniMeniscaliAdvancedPage() {
 
                 {step === 6 && (
                    <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-3">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Hai un referto RM?</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Hai un referto RM?</h2>
                     {['Sì', 'No'].map((opzione) => (
                       <button key={opzione} onClick={() => setFormData({...formData, diagnosiMedica: opzione})} className={`w-full p-4 rounded-xl border-2 font-bold transition-all text-left flex justify-between items-center ${formData.diagnosiMedica === opzione ? 'border-[#55B4FF] bg-[#55B4FF] text-[#022166]' : 'border-white/10 bg-white/5 text-white hover:border-white/40'}`}>
                         <span className="text-sm uppercase">{opzione}</span>
@@ -265,7 +265,7 @@ export default function LesioniMeniscaliAdvancedPage() {
 
                 {step === 6.5 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-6">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Carica il referto</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Carica il referto</h2>
                     <div className="border-2 border-dashed border-white/20 rounded-[2rem] p-12 text-center hover:border-[#55B4FF] transition-all group">
                       <input type="file" id="file-upload" className="hidden" onChange={(e) => setFile(e.target.files ? e.target.files[0] : null)} />
                       <label htmlFor="file-upload" className="cursor-pointer flex flex-col items-center">
@@ -279,7 +279,7 @@ export default function LesioniMeniscaliAdvancedPage() {
                 
                 {step === 7 && (
                    <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-3">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Fascia d'età</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Fascia d'età</h2>
                     {['Sotto i 25', '25–45', '46–65', 'Over 65'].map((opzione) => (
                       <button key={opzione} onClick={() => setFormData({...formData, eta: opzione})} className={`w-full p-4 rounded-xl border-2 font-bold transition-all text-left flex justify-between items-center ${formData.eta === opzione ? 'border-[#55B4FF] bg-[#55B4FF] text-[#022166]' : 'border-white/10 bg-white/5 text-white hover:border-white/40'}`}>
                         <span className="text-sm uppercase">{opzione}</span>
@@ -325,7 +325,7 @@ export default function LesioniMeniscaliAdvancedPage() {
 
                 {step === 9 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-3">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Sede preferita</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Sede preferita</h2>
                     {['Sede Cavezzo', 'Sede Rovereto', 'Domicilio'].map((s) => (
                       <button key={s} onClick={() => setFormData({...formData, sede: s})} className={`w-full p-4 rounded-xl border-2 font-bold transition-all text-left flex justify-between items-center ${formData.sede === s ? 'border-[#55B4FF] bg-[#55B4FF] text-[#022166]' : 'border-white/10 bg-white/5 text-white hover:border-white/40'}`}>
                         <span className="text-sm uppercase">{s}</span>
@@ -337,7 +337,7 @@ export default function LesioniMeniscaliAdvancedPage() {
 
                 {step === 10 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-4">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Dati Domicilio</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Dati Domicilio</h2>
                     <div className="space-y-1">
                       <p className="text-[9px] uppercase tracking-widest text-[#55B4FF] font-bold ml-1">Indirizzo completo *</p>
                       <input type="text" placeholder="Via, Civico, Città" className="w-full bg-white/5 border-b-2 border-white/20 p-3 text-white font-bold outline-none focus:border-[#55B4FF]" value={formData.indirizzo} onChange={(e) => setFormData({...formData, indirizzo: e.target.value})} />
@@ -347,7 +347,7 @@ export default function LesioniMeniscaliAdvancedPage() {
 
                 {step === 11 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-4">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Concludiamo</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Concludiamo</h2>
                     <div className="space-y-4">
                       <div className="space-y-1">
                         <p className="text-[9px] uppercase tracking-widest text-[#55B4FF] font-bold ml-1">Nome e Cognome *</p>
@@ -408,7 +408,7 @@ export default function LesioniMeniscaliAdvancedPage() {
                   { t: "Gonfiore Post-Sforzo", d: "L'articolazione si infiamma dopo aver camminato o corso." }
                 ].map((item, i) => (
                   <div key={i} className="bg-white p-8 rounded-[2rem] border border-slate-100 flex flex-col justify-center hover:border-[#55B4FF]/30 transition-colors">
-                    <h4 className="font-black text-[#022166] text-[11px] uppercase mb-2 tracking-widest">{item.t}</h4>
+                    <h3 className="font-black text-[#022166] text-[11px] uppercase mb-2 tracking-widest">{item.t}</h3>
                     <p className="text-slate-500 text-sm font-light leading-relaxed">{item.d}</p>
                   </div>
                 ))}
@@ -463,7 +463,7 @@ export default function LesioniMeniscaliAdvancedPage() {
               ].map((step, idx) => (
                 <div key={idx} className="bg-white p-10 rounded-[2.5rem] border border-slate-100 hover:shadow-xl transition-all group">
                   <step.i className="text-[#55B4FF] mb-6 group-hover:scale-110 transition-transform" size={40} />
-                  <h4 className="text-2xl font-bold text-[#022166] mb-4 tracking-tight">{step.t}</h4>
+                  <h3 className="text-2xl font-bold text-[#022166] mb-4 tracking-tight">{step.t}</h3>
                   <p className="text-slate-500 text-sm font-light leading-relaxed">{step.d}</p>
                 </div>
               ))}

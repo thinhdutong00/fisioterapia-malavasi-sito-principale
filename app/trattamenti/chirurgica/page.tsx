@@ -217,7 +217,7 @@ export default function ChirurgiaPage() {
                 {/* STEP 1: INTERVENTO */}
                 {step === 1 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-3">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Per quale chirurgia?</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Per quale chirurgia?</h2>
                     {['Protesi (Anca/Ginocchio)', 'Legamenti/Menischi', 'Spalla/Cuffia', 'Altro'].map((opzione) => (
                       <button key={opzione} onClick={() => setFormData({...formData, problema: opzione})} className={`w-full p-4 rounded-xl border-2 font-bold transition-all text-left flex justify-between items-center ${formData.problema === opzione ? 'border-[#55B4FF] bg-[#55B4FF] text-[#022166]' : 'border-white/10 bg-white/5 text-white hover:border-white/40'}`}>
                         <span className="text-sm uppercase">{opzione}</span>
@@ -230,7 +230,7 @@ export default function ChirurgiaPage() {
                 {/* STEP 1.2 */}
                 {step === 1.2 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Specifica l'intervento</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Specifica l'intervento</h2>
                     <input type="text" placeholder="Es: Alluce valgo, Colonna..." className="w-full bg-white/5 border-b-2 border-white/20 p-4 outline-none focus:border-[#55B4FF] text-white font-bold" value={formData.problemaSpecifico} onChange={(e) => setFormData({...formData, problemaSpecifico: e.target.value})} />
                   </div>
                 )}
@@ -238,7 +238,7 @@ export default function ChirurgiaPage() {
                 {/* STEP 2: TEMPISTICA */}
                 {step === 2 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-3">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Quando ti operi/sei operato?</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Quando ti operi/sei operato?</h2>
                     {['Devo ancora operarmi', 'Operato da meno di 15gg', 'Operato da oltre 15gg'].map((opzione) => (
                       <button key={opzione} onClick={() => setFormData({...formData, durata: opzione})} className={`w-full p-4 rounded-xl border-2 font-bold transition-all text-left flex justify-between items-center ${formData.durata === opzione ? 'border-[#55B4FF] bg-[#55B4FF] text-[#022166]' : 'border-white/10 bg-white/5 text-white hover:border-white/40'}`}>
                         <span className="text-sm uppercase">{opzione}</span>
@@ -251,7 +251,7 @@ export default function ChirurgiaPage() {
                 {/* STEP 3: LIMITAZIONE */}
                 {step === 3 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-3">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Grado di autonomia attuale?</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Grado di autonomia attuale?</h2>
                     {['Uso stampelle/tutore', 'Cammino ma con dolore', 'Autonomo ma limitato'].map((opzione) => (
                       <button key={opzione} onClick={() => setFormData({...formData, limitazione: opzione})} className={`w-full p-4 rounded-xl border-2 font-bold transition-all text-left flex justify-between items-center ${formData.limitazione === opzione ? 'border-[#55B4FF] bg-[#55B4FF] text-[#022166]' : 'border-white/10 bg-white/5 text-white hover:border-white/40'}`}>
                         <span className="text-sm uppercase">{opzione}</span>
@@ -264,7 +264,7 @@ export default function ChirurgiaPage() {
                 {/* STEP 4: OBIETTIVO */}
                 {step === 4 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-3">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Cosa vuoi ottenere?</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Cosa vuoi ottenere?</h2>
                     {['Recupero mobilità base', 'Ritorno allo Sport', 'Eliminare il dolore', 'Altro'].map((opzione) => (
                       <button key={opzione} onClick={() => setFormData({...formData, obiettivo: opzione})} className={`w-full p-4 rounded-xl border-2 font-bold transition-all text-left flex justify-between items-center ${formData.obiettivo === opzione ? 'border-[#55B4FF] bg-[#55B4FF] text-[#022166]' : 'border-white/10 bg-white/5 text-white hover:border-white/40'}`}>
                         <span className="text-sm uppercase">{opzione}</span>
@@ -277,7 +277,7 @@ export default function ChirurgiaPage() {
                 {/* STEP 4.2 */}
                 {step === 4.2 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Dettaglia l'obiettivo</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Dettaglia l'obiettivo</h2>
                     <textarea placeholder="..." className="w-full bg-white/5 border-b-2 border-white/20 p-4 text-white font-bold min-h-[100px]" value={formData.obiettivoSpecifico} onChange={(e) => setFormData({...formData, obiettivoSpecifico: e.target.value})} />
                   </div>
                 )}
@@ -285,7 +285,7 @@ export default function ChirurgiaPage() {
                 {/* STEP 5 */}
                 {step === 5 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-3">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Hai già iniziato riabilitazione?</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Hai già iniziato riabilitazione?</h2>
                     {['Sì, in clinica', 'No, inizio ora'].map((opzione) => (
                       <button key={opzione} onClick={() => setFormData({...formData, giaFattoFisio: opzione})} className={`w-full p-4 rounded-xl border-2 font-bold transition-all text-left flex justify-between items-center ${formData.giaFattoFisio === opzione ? 'border-[#55B4FF] bg-[#55B4FF] text-[#022166]' : 'border-white/10 bg-white/5 text-white hover:border-white/40'}`}>
                         <span className="text-sm uppercase">{opzione}</span>
@@ -298,7 +298,7 @@ export default function ChirurgiaPage() {
                 {/* STEP 6 */}
                 {step === 6 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-3">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Hai la lettera di dimissioni?</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Hai la lettera di dimissioni?</h2>
                     {['Sì', 'No'].map((opzione) => (
                       <button key={opzione} onClick={() => setFormData({...formData, diagnosiMedica: opzione})} className={`w-full p-4 rounded-xl border-2 font-bold transition-all text-left flex justify-between items-center ${formData.diagnosiMedica === opzione ? 'border-[#55B4FF] bg-[#55B4FF] text-[#022166]' : 'border-white/10 bg-white/5 text-white hover:border-white/40'}`}>
                         <span className="text-sm uppercase">{opzione}</span>
@@ -311,7 +311,7 @@ export default function ChirurgiaPage() {
                 {/* STEP 6.5 */}
                 {step === 6.5 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 text-center">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Carica Protocollo Chirurgico</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Carica Protocollo Chirurgico</h2>
                     <div className="relative group p-8 border-2 border-dashed border-white/20 rounded-2xl bg-white/5">
                       <input type="file" onChange={(e) => setFile(e.target.files ? e.target.files[0] : null)} className="absolute inset-0 opacity-0 cursor-pointer" />
                       {file ? <><FileText size={32} className="mx-auto text-[#55B4FF] mb-2" /><p className="text-white text-xs font-bold">{file.name}</p></> : <><Upload size={32} className="mx-auto text-white/20 mb-2" /><p className="text-white/40 text-[10px] uppercase font-bold tracking-widest">Carica PDF/Foto</p></>}
@@ -322,7 +322,7 @@ export default function ChirurgiaPage() {
                 {/* STEP 7-11: Standard */}
                 {step === 7 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-3">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Tua fascia d'età?</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Tua fascia d'età?</h2>
                     {['Sotto i 30', '31–50', '51–65', '65+'].map((opzione) => (
                       <button key={opzione} onClick={() => setFormData({...formData, eta: opzione})} className={`w-full p-4 rounded-xl border-2 font-bold transition-all text-left flex justify-between items-center ${formData.eta === opzione ? 'border-[#55B4FF] bg-[#55B4FF] text-[#022166]' : 'border-white/10 bg-white/5 text-white hover:border-white/40'}`}>
                         <span className="text-sm uppercase">{opzione}</span>
@@ -371,7 +371,7 @@ export default function ChirurgiaPage() {
 
                 {step === 9 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-3">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Sede preferita?</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Sede preferita?</h2>
                     {['Sede Cavezzo (Mo)', 'Sede Rovereto (Mo)', 'Domicilio'].map((s) => (
                       <button key={s} onClick={() => setFormData({...formData, sede: s})} className={`w-full p-4 rounded-xl border-2 font-bold transition-all text-left flex justify-between items-center ${formData.sede === s ? 'border-[#55B4FF] bg-[#55B4FF] text-[#022166]' : 'border-white/10 bg-white/5 text-white hover:border-white/40'}`}>
                         <span className="text-sm uppercase">{s}</span>
@@ -383,7 +383,7 @@ export default function ChirurgiaPage() {
 
                 {step === 10 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight flex items-center gap-2"><MapPin size={24} /> Indirizzo</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight flex items-center gap-2"><MapPin size={24} /> Indirizzo</h2>
                     <input type="text" placeholder="Via, Civico, Città" className="w-full bg-white/5 border-b-2 border-white/20 p-4 text-white font-bold" value={formData.indirizzo} onChange={(e) => setFormData({...formData, indirizzo: e.target.value})} />
                   </div>
                 )}
@@ -391,7 +391,7 @@ export default function ChirurgiaPage() {
                 {/* STEP 11: CONTATTI (Versione con Link Privacy) */}
 {step === 11 && (
   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-4">
-    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Ultime informazioni</h3>
+    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Ultime informazioni</h2>
     <input type="text" placeholder="Nome e Cognome" className="w-full bg-white/5 border-b-2 border-white/20 p-3 text-white font-bold outline-none focus:border-[#55B4FF]" value={formData.nome} onChange={(e) => setFormData({...formData, nome: e.target.value})} />
     <input type="tel" placeholder="Telefono" className="w-full bg-white/5 border-b-2 border-white/20 p-3 text-white font-bold outline-none focus:border-[#55B4FF]" value={formData.telefono} onChange={(e) => setFormData({...formData, telefono: e.target.value})} />
     <input type="email" placeholder="Email" className="w-full bg-white/5 border-b-2 border-white/20 p-3 text-white font-bold outline-none focus:border-[#55B4FF]" value={formData.email} onChange={(e) => setFormData({...formData, email: e.target.value})} />
@@ -444,11 +444,11 @@ export default function ChirurgiaPage() {
                 <div className="bg-white p-10 md:p-14 rounded-[2rem] border border-slate-100 shadow-sm transition-all duration-500 hover:shadow-xl">
                   <div className="grid md:grid-cols-2 gap-10">
                     <div>
-                      <h3 className="text-[#55B4FF] font-bold text-lg mb-4 uppercase tracking-tighter">Pre-Operatorio</h3>
+                      <h2 className="text-[#55B4FF] font-bold text-lg mb-4 uppercase tracking-tighter">Pre-Operatorio</h2>
                       <p className="text-slate-500 text-base leading-relaxed">Arrivare all'intervento con muscoli forti e articolazioni mobili riduce drasticamente i tempi di recupero e migliora l'esito della chirurgia.</p>
                     </div>
                     <div>
-                      <h3 className="text-[#022166] font-bold text-lg mb-4 uppercase tracking-tighter">Post-Operatorio</h3>
+                      <h2 className="text-[#022166] font-bold text-lg mb-4 uppercase tracking-tighter">Post-Operatorio</h2>
                       <p className="text-slate-500 text-base leading-relaxed">Gestire il dolore, l'edema e recuperare il corretto schema di movimento. La riabilitazione tempestiva evita aderenze cicatriziali.</p>
                     </div>
                   </div>
@@ -471,7 +471,7 @@ export default function ChirurgiaPage() {
               </div>
               <div className="lg:col-span-6">
                  <div className="bg-[#E0F2FE] p-12 rounded-[3rem] border border-white">
-                    <h4 className="text-[#022166] font-black text-xs uppercase tracking-[0.3em] mb-8">Interventi comuni trattati:</h4>
+                    <h3 className="text-[#022166] font-black text-xs uppercase tracking-[0.3em] mb-8">Interventi comuni trattati:</h3>
                     <div className="space-y-4">
                        {["Protesi d'Anca e Ginocchio", "Ricostruzione LCA (Crociato)", "Chirurgia della Spalla", "Interventi alla Colonna"].map((item, index) => (
                          <div key={index} className="flex justify-between items-center py-4 border-b border-[#022166]/10">
@@ -491,17 +491,17 @@ export default function ChirurgiaPage() {
                 <div className="relative z-10 grid md:grid-cols-3 gap-12">
                   <div className="space-y-6">
                     <div className="w-12 h-12 bg-[#55B4FF] rounded-xl flex items-center justify-center text-[#022166]"><Timer size={24}/></div>
-                    <h4 className="text-2xl font-bold tracking-tight">Fase 1: <br />Protezione</h4>
+                    <h3 className="text-2xl font-bold tracking-tight">Fase 1: <br />Protezione</h3>
                     <p className="text-white/60 text-sm">Controllo del dolore, riduzione del gonfiore e protezione del tessuto.</p>
                   </div>
                   <div className="space-y-6">
                     <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center text-white border border-white/20"><Activity size={24}/></div>
-                    <h4 className="text-2xl font-bold tracking-tight">Fase 2: <br />Mobilità</h4>
+                    <h3 className="text-2xl font-bold tracking-tight">Fase 2: <br />Mobilità</h3>
                     <p className="text-white/60 text-sm">Recupero dell'arco di movimento completo e riattivazione muscolare.</p>
                   </div>
                   <div className="space-y-6">
                     <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center text-white border border-white/20"><Dumbbell size={24}/></div>
-                    <h4 className="text-2xl font-bold tracking-tight">Fase 3: <br />Funzione</h4>
+                    <h3 className="text-2xl font-bold tracking-tight">Fase 3: <br />Funzione</h3>
                     <p className="text-white/60 text-sm">Rinforzo avanzato e ritorno alle attività sportive o lavorative.</p>
                   </div>
                 </div>
@@ -552,7 +552,7 @@ export default function ChirurgiaPage() {
           <section className="bg-white p-12 md:p-20 rounded-[3rem] shadow-xl border border-slate-100 relative overflow-hidden group">
             <div className="relative z-10 max-w-3xl">
               <div className="flex items-center gap-3 mb-6"><div className="h-[1px] w-8 bg-[#55B4FF]"></div><span className="text-[#022166] font-black text-[10px] uppercase tracking-[0.4em]">Fisioterapia Malavasi — Hub Riabilitativo</span></div>
-              <h3 className="text-4xl md:text-6xl font-bold mb-8 tracking-tighter text-[#022166]">Assicura il successo <br /><span className="text-[#55B4FF]">del tuo intervento.</span></h3>
+              <h2 className="text-4xl md:text-6xl font-bold mb-8 tracking-tighter text-[#022166]">Assicura il successo <br /><span className="text-[#55B4FF]">del tuo intervento.</span></h2>
               <p className="text-slate-500 text-xl mb-12 font-light max-w-xl">Ogni giorno perso è un giorno di ritardo nel tuo recupero. Inizia oggi il tuo percorso.</p>
               <div className="flex flex-wrap gap-6">
                 <button onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})} className="bg-[#022166] text-white px-12 py-6 rounded-2xl font-black text-center uppercase text-[11px] tracking-[0.3em] hover:bg-[#55B4FF] hover:text-[#022166] transition-all">Prenota Valutazione</button>

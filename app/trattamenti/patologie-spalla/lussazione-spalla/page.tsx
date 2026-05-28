@@ -211,7 +211,7 @@ export default function InstabilitaLussazionePage() {
                 {/* STEP 1: SPECIFICO PER LUSSAZIONE */}
                 {step === 1 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-3">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Cosa è successo?</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Cosa è successo?</h2>
                     {['Lussazione Spalla', 'Altro'].map((opzione) => (
                       <button 
                         key={opzione}
@@ -230,7 +230,7 @@ export default function InstabilitaLussazionePage() {
                 {/* STEP 1.2: SPECIFICA ALTRO */}
                 {step === 1.2 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Descrivi il problema</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Descrivi il problema</h2>
                     <input 
                       type="text"
                       placeholder="Es: Sublussazione rotula, instabilità cronica..." 
@@ -244,7 +244,7 @@ export default function InstabilitaLussazionePage() {
                 {/* STEP 2: DURATA */}
                 {step === 2 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-3">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Da quanto persiste?</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Da quanto persiste?</h2>
                     {['Da pochi giorni', 'Da settimane', 'Da mesi / anni'].map((opzione) => (
                       <button 
                         key={opzione}
@@ -263,7 +263,7 @@ export default function InstabilitaLussazionePage() {
                 {/* STEP 3: LIMITAZIONE */}
                 {step === 3 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-3">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Quanto ti limita?</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Quanto ti limita?</h2>
                     {['Poco', 'Abbastanza', 'Molto'].map((opzione) => (
                       <button 
                         key={opzione}
@@ -282,7 +282,7 @@ export default function InstabilitaLussazionePage() {
                 {/* STEP 4: OBIETTIVO */}
                 {step === 4 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-3">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Il tuo obiettivo?</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Il tuo obiettivo?</h2>
                     {['Eliminare il dolore', 'Tornare ad allenarmi', 'Muovermi senza timore', 'Evitare intervento', 'Altro'].map((opzione) => (
                       <button 
                         key={opzione}
@@ -301,7 +301,7 @@ export default function InstabilitaLussazionePage() {
                 {/* STEP 4.2: DETTAGLIO OBIETTIVO */}
                 {step === 4.2 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Dettaglia il traguardo</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Dettaglia il traguardo</h2>
                     <textarea 
                       placeholder="Descrivi qui..." 
                       className="w-full bg-white/5 border-b-2 border-white/20 p-4 outline-none focus:border-[#55B4FF] text-white font-bold min-h-[100px] resize-none" 
@@ -314,7 +314,7 @@ export default function InstabilitaLussazionePage() {
                 {/* STEP 5: STORICO */}
                 {step === 5 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-3">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Hai già fatto fisioterapia per questo problema?</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Hai già fatto fisioterapia per questo problema?</h2>
                     {['Sì', 'No'].map((opzione) => (
                       <button 
                         key={opzione}
@@ -333,7 +333,7 @@ export default function InstabilitaLussazionePage() {
                 {/* STEP 6: DIAGNOSI */}
                 {step === 6 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-3">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Hai una diagnosi?</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Hai una diagnosi?</h2>
                     {['Sì', 'No'].map((opzione) => (
                       <button 
                         key={opzione}
@@ -352,7 +352,7 @@ export default function InstabilitaLussazionePage() {
                 {/* STEP 6.5: CARICAMENTO FILE */}
                 {step === 6.5 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 text-center">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Carica referto</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Carica referto</h2>
                     <div className="relative group p-8 border-2 border-dashed border-white/20 rounded-2xl bg-white/5">
                       <input type="file" onChange={(e) => setFile(e.target.files ? e.target.files[0] : null)} className="absolute inset-0 opacity-0 cursor-pointer" />
                       {file ? <><FileText size={32} className="mx-auto text-[#55B4FF] mb-2" /><p className="text-white text-xs font-bold">{file.name}</p></> : <><Upload size={32} className="mx-auto text-white/20 mb-2" /><p className="text-white/40 text-[10px] uppercase font-bold tracking-widest">Seleziona PDF o JPG</p></>}
@@ -363,7 +363,7 @@ export default function InstabilitaLussazionePage() {
                 {/* STEP 7: ETA */}
                 {step === 7 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-3">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Tua età?</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Tua età?</h2>
                     {['18–25', '26–35', '36–50', '50+'].map((opzione) => (
                       <button 
                         key={opzione}
@@ -428,7 +428,7 @@ export default function InstabilitaLussazionePage() {
                 {/* STEP 9: SEDE */}
                 {step === 9 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-3">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Dove preferisci?</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Dove preferisci?</h2>
                     {['Sede Cavezzo (Mo)', 'Sede Rovereto (Mo)', 'Domicilio'].map((s) => (
                       <button 
                         key={s} 
@@ -447,7 +447,7 @@ export default function InstabilitaLussazionePage() {
                 {/* STEP 10: INDIRIZZO */}
                 {step === 10 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight flex items-center gap-2"><MapPin size={24} /> Indirizzo</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight flex items-center gap-2"><MapPin size={24} /> Indirizzo</h2>
                     <input type="text" placeholder="Via, Civico, Città" className="w-full bg-white/5 border-b-2 border-white/20 p-4 text-white font-bold" value={formData.indirizzo} onChange={(e) => setFormData({...formData, indirizzo: e.target.value})} />
                   </div>
                 )}
@@ -455,7 +455,7 @@ export default function InstabilitaLussazionePage() {
                 {/* STEP 11: CONTATTI */}
                 {step === 11 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-4">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Ultimi dettagli</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Ultimi dettagli</h2>
                     <input type="text" placeholder="Nome e Cognome" className="w-full bg-white/5 border-b-2 border-white/20 p-3 text-white font-bold" value={formData.nome} onChange={(e) => setFormData({...formData, nome: e.target.value})} />
                     <input type="tel" placeholder="Telefono" className="w-full bg-white/5 border-b-2 border-white/20 p-3 text-white font-bold" value={formData.telefono} onChange={(e) => setFormData({...formData, telefono: e.target.value})} />
                     <input type="email" placeholder="Email" className="w-full bg-white/5 border-b-2 border-white/20 p-3 text-white font-bold" value={formData.email} onChange={(e) => setFormData({...formData, email: e.target.value})} />
@@ -504,7 +504,7 @@ export default function InstabilitaLussazionePage() {
                   { t: "Debolezza Funzionale", d: "Mancanza di forza proprio nelle posizioni che senti 'critiche'." }
                 ].map((item, i) => (
                   <div key={i} className="bg-white p-8 rounded-[2rem] border border-slate-100 flex flex-col justify-center hover:border-[#55B4FF]/30 transition-all">
-                    <h4 className="font-black text-[#022166] text-[11px] uppercase mb-2 tracking-widest">{item.t}</h4>
+                    <h3 className="font-black text-[#022166] text-[11px] uppercase mb-2 tracking-widest">{item.t}</h3>
                     <p className="text-slate-500 text-sm font-light leading-relaxed">{item.d}</p>
                   </div>
                 ))}
@@ -559,7 +559,7 @@ export default function InstabilitaLussazionePage() {
               ].map((step, idx) => (
                 <div key={idx} className="bg-white p-10 rounded-[2.5rem] border border-slate-100 hover:shadow-xl transition-all group">
                   <step.i className="text-[#55B4FF] mb-6 group-hover:scale-110 transition-transform" size={40} />
-                  <h4 className="text-2xl font-bold text-[#022166] mb-4 tracking-tight">{step.t}</h4>
+                  <h3 className="text-2xl font-bold text-[#022166] mb-4 tracking-tight">{step.t}</h3>
                   <p className="text-slate-500 text-sm font-light leading-relaxed">{step.d}</p>
                 </div>
               ))}

@@ -207,7 +207,7 @@ export default function LombalgiaSciatalgiaPage() {
                 {/* STEP 1: CONTESTO DOLORE SCHIENA */}
                 {step === 1 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-3">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Qual è il problema principale?</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Qual è il problema principale?</h2>
                     {['Mal di schiena (Lombalgia)', 'Dolore alla gamba (Sciatica)', 'Altro'].map((opzione) => (
                       <button 
                         key={opzione}
@@ -226,7 +226,7 @@ export default function LombalgiaSciatalgiaPage() {
                 {/* STEP 1.2: SPECIFICA ALTRO */}
                 {step === 1.2 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Descrivi i sintomi</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Descrivi i sintomi</h2>
                     <input 
                       type="text"
                       placeholder="Es: fitte al gluteo, rigidità mattutina..." 
@@ -240,7 +240,7 @@ export default function LombalgiaSciatalgiaPage() {
                 {/* STEP 2: DURATA */}
                 {step === 2 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-3">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Da quanto tempo senti dolore?</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Da quanto tempo senti dolore?</h2>
                     {['Meno di 2 settimane', 'Da 2 a 8 settimane', 'Oltre 2 mesi'].map((opzione) => (
                       <button 
                         key={opzione}
@@ -259,7 +259,7 @@ export default function LombalgiaSciatalgiaPage() {
                 {/* STEP 3: LIMITAZIONE */}
                 {step === 3 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-3">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Quanto limita la tua giornata?</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Quanto limita la tua giornata?</h2>
                     {['Riesco a fare quasi tutto', 'Evito alcuni movimenti', 'Blocco quasi totale'].map((opzione) => (
                       <button 
                         key={opzione}
@@ -278,7 +278,7 @@ export default function LombalgiaSciatalgiaPage() {
                 {/* STEP 4: OBIETTIVO */}
                 {step === 4 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-3">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Il tuo obiettivo?</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Il tuo obiettivo?</h2>
                     {['Togliere il dolore acuto', 'Tornare a fare sport', 'Mantenimento/Prevenzione', 'Altro'].map((opzione) => (
                       <button 
                         key={opzione}
@@ -297,7 +297,7 @@ export default function LombalgiaSciatalgiaPage() {
                 {/* STEP 4.2 */}
                 {step === 4.2 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Dettaglia il traguardo</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Dettaglia il traguardo</h2>
                     <textarea placeholder="Descrivi qui..." className="w-full bg-white/5 border-b-2 border-white/20 p-4 outline-none focus:border-[#55B4FF] text-white font-bold min-h-[100px] resize-none" value={formData.obiettivoSpecifico} onChange={(e) => setFormData({...formData, obiettivoSpecifico: e.target.value})} />
                   </div>
                 )}
@@ -305,7 +305,7 @@ export default function LombalgiaSciatalgiaPage() {
                 {/* STEP 5 */}
                 {step === 5 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-3">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Hai già fatto fisioterapia?</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Hai già fatto fisioterapia?</h2>
                     {['Sì', 'No'].map((opzione) => (
                       <button key={opzione} onClick={() => setFormData({...formData, giaFattoFisio: opzione})} className={`w-full p-4 rounded-xl border-2 font-bold transition-all text-left flex justify-between items-center ${formData.giaFattoFisio === opzione ? 'border-[#55B4FF] bg-[#55B4FF] text-[#022166]' : 'border-white/10 bg-white/5 text-white hover:border-white/40'}`}>
                         <span className="text-sm uppercase">{opzione}</span>
@@ -318,7 +318,7 @@ export default function LombalgiaSciatalgiaPage() {
                 {/* STEP 6 */}
                 {step === 6 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-3">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Hai una diagnosi medica?</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Hai una diagnosi medica?</h2>
                     {['Sì', 'No'].map((opzione) => (
                       <button key={opzione} onClick={() => setFormData({...formData, diagnosiMedica: opzione})} className={`w-full p-4 rounded-xl border-2 font-bold transition-all text-left flex justify-between items-center ${formData.diagnosiMedica === opzione ? 'border-[#55B4FF] bg-[#55B4FF] text-[#022166]' : 'border-white/10 bg-white/5 text-white hover:border-white/40'}`}>
                         <span className="text-sm uppercase">{opzione}</span>
@@ -331,7 +331,7 @@ export default function LombalgiaSciatalgiaPage() {
                 {/* STEP 6.5 */}
                 {step === 6.5 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 text-center">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Carica referto (RM/RX)</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Carica referto (RM/RX)</h2>
                     <div className="relative group p-8 border-2 border-dashed border-white/20 rounded-2xl bg-white/5">
                       <input type="file" onChange={(e) => setFile(e.target.files ? e.target.files[0] : null)} className="absolute inset-0 opacity-0 cursor-pointer" />
                       {file ? <><FileText size={32} className="mx-auto text-[#55B4FF] mb-2" /><p className="text-white text-xs font-bold">{file.name}</p></> : <><Upload size={32} className="mx-auto text-white/20 mb-2" /><p className="text-white/40 text-[10px] uppercase font-bold tracking-widest">Seleziona PDF o Immagine</p></>}
@@ -342,7 +342,7 @@ export default function LombalgiaSciatalgiaPage() {
                 {/* STEP 7 */}
                 {step === 7 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-3">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Tua fascia d'età?</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Tua fascia d'età?</h2>
                     {['Sotto i 30', '31–50', '51–65', '65+'].map((opzione) => (
                       <button key={opzione} onClick={() => setFormData({...formData, eta: opzione})} className={`w-full p-4 rounded-xl border-2 font-bold transition-all text-left flex justify-between items-center ${formData.eta === opzione ? 'border-[#55B4FF] bg-[#55B4FF] text-[#022166]' : 'border-white/10 bg-white/5 text-white hover:border-white/40'}`}>
                         <span className="text-sm uppercase">{opzione}</span>
@@ -390,7 +390,7 @@ export default function LombalgiaSciatalgiaPage() {
                 {/* STEP 9 */}
                 {step === 9 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-3">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Sede preferita?</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Sede preferita?</h2>
                     {['Sede Cavezzo (Mo)', 'Sede Rovereto (Mo)', 'Domicilio'].map((s) => (
                       <button key={s} onClick={() => setFormData({...formData, sede: s})} className={`w-full p-4 rounded-xl border-2 font-bold transition-all text-left flex justify-between items-center ${formData.sede === s ? 'border-[#55B4FF] bg-[#55B4FF] text-[#022166]' : 'border-white/10 bg-white/5 text-white hover:border-white/40'}`}>
                         <span className="text-sm uppercase">{s}</span>
@@ -403,7 +403,7 @@ export default function LombalgiaSciatalgiaPage() {
                 {/* STEP 10 */}
                 {step === 10 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight flex items-center gap-2"><MapPin size={24} /> Indirizzo</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight flex items-center gap-2"><MapPin size={24} /> Indirizzo</h2>
                     <input type="text" placeholder="Via, Civico, Città" className="w-full bg-white/5 border-b-2 border-white/20 p-4 text-white font-bold" value={formData.indirizzo} onChange={(e) => setFormData({...formData, indirizzo: e.target.value})} />
                   </div>
                 )}
@@ -411,7 +411,7 @@ export default function LombalgiaSciatalgiaPage() {
                 {/* STEP 11: CONTATTI (Versione con Link Privacy) */}
 {step === 11 && (
   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-4">
-    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Ultime informazioni</h3>
+    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Ultime informazioni</h2>
     <input type="text" placeholder="Nome e Cognome" className="w-full bg-white/5 border-b-2 border-white/20 p-3 text-white font-bold outline-none focus:border-[#55B4FF]" value={formData.nome} onChange={(e) => setFormData({...formData, nome: e.target.value})} />
     <input type="tel" placeholder="Telefono" className="w-full bg-white/5 border-b-2 border-white/20 p-3 text-white font-bold outline-none focus:border-[#55B4FF]" value={formData.telefono} onChange={(e) => setFormData({...formData, telefono: e.target.value})} />
     <input type="email" placeholder="Email" className="w-full bg-white/5 border-b-2 border-white/20 p-3 text-white font-bold outline-none focus:border-[#55B4FF]" value={formData.email} onChange={(e) => setFormData({...formData, email: e.target.value})} />
@@ -472,13 +472,13 @@ export default function LombalgiaSciatalgiaPage() {
                 <div className="bg-white p-10 md:p-14 rounded-[2rem] border border-slate-100 shadow-sm transition-all duration-500 hover:shadow-xl">
                   <div className="grid md:grid-cols-2 gap-10">
                     <div>
-                      <h3 className="text-[#55B4FF] font-bold text-lg mb-4 uppercase tracking-tighter">Lombalgia</h3>
+                      <h2 className="text-[#55B4FF] font-bold text-lg mb-4 uppercase tracking-tighter">Lombalgia</h2>
                       <p className="text-slate-500 text-base leading-relaxed">
                         Non è solo "mal di schiena". È un segnale del corpo che indica un sovraccarico funzionale, una rigidità articolare o una debolezza dei muscoli stabilizzatori. Ignorarla significa rischiare la cronicità.
                       </p>
                     </div>
                     <div>
-                      <h3 className="text-[#022166] font-bold text-lg mb-4 uppercase tracking-tighter">Sciatalgia</h3>
+                      <h2 className="text-[#022166] font-bold text-lg mb-4 uppercase tracking-tighter">Sciatalgia</h2>
                       <p className="text-slate-500 text-base leading-relaxed">
                         Quando il dolore scende lungo la gamba, spesso accompagnato da formicolio, il nervo sciatico è sotto pressione. Può essere dovuto a un'ernia del disco, ma anche a tensioni muscolari profonde.
                       </p>
@@ -519,11 +519,11 @@ export default function LombalgiaSciatalgiaPage() {
               <div className="lg:col-span-6 grid grid-cols-2 gap-4">
                 <div className="bg-[#022166] p-8 rounded-[2rem] text-white flex flex-col justify-end min-h-[250px]">
                   <Waves className="mb-4 text-[#55B4FF]" size={40} />
-                  <h4 className="font-bold text-xl leading-tight">Drenaggio Infiammazione</h4>
+                  <h3 className="font-bold text-xl leading-tight">Drenaggio Infiammazione</h3>
                 </div>
                 <div className="bg-white p-8 rounded-[2rem] border border-slate-100 shadow-sm flex flex-col justify-end min-h-[250px]">
                   <Activity className="mb-4 text-[#022166]" size={40} />
-                  <h4 className="font-bold text-xl text-[#022166] leading-tight">Ripristino Funzionale</h4>
+                  <h3 className="font-bold text-xl text-[#022166] leading-tight">Ripristino Funzionale</h3>
                 </div>
               </div>
             </div>
@@ -541,19 +541,19 @@ export default function LombalgiaSciatalgiaPage() {
                   <div className="relative">
                     <div className="text-[80px] font-black text-[#55B4FF]/10 absolute top-[-40px] left-0">01</div>
                     <ClipboardCheck className="text-[#55B4FF] mb-6" size={32} />
-                    <h4 className="text-xl font-bold text-[#022166] mb-4">Valutazione Iniziale</h4>
+                    <h3 className="text-xl font-bold text-[#022166] mb-4">Valutazione Iniziale</h3>
                     <p className="text-sm text-slate-500 leading-relaxed">Identifichiamo l'origine del dolore attraverso test ortopedici e neurologici specifici.</p>
                   </div>
                   <div className="relative">
                     <div className="text-[80px] font-black text-[#55B4FF]/10 absolute top-[-40px] left-0">02</div>
                     <Stethoscope className="text-[#55B4FF] mb-6" size={32} />
-                    <h4 className="text-xl font-bold text-[#022166] mb-4">Fase Operativa</h4>
+                    <h3 className="text-xl font-bold text-[#022166] mb-4">Fase Operativa</h3>
                     <p className="text-sm text-slate-500 leading-relaxed">Trattamento manuale per ridurre il dolore acuto e liberare i movimenti bloccati.</p>
                   </div>
                   <div className="relative">
                     <div className="text-[80px] font-black text-[#55B4FF]/10 absolute top-[-40px] left-0">03</div>
                     <Clock className="text-[#55B4FF] mb-6" size={32} />
-                    <h4 className="text-xl font-bold text-[#022166] mb-4">Mantenimento</h4>
+                    <h3 className="text-xl font-bold text-[#022166] mb-4">Mantenimento</h3>
                     <p className="text-sm text-slate-500 leading-relaxed">Esercizi di rinforzo personalizzati per evitare che il dolore torni in futuro.</p>
                   </div>
                 </div>
@@ -660,10 +660,10 @@ export default function LombalgiaSciatalgiaPage() {
                 <span className="text-[#55B4FF] font-black text-[10px] uppercase tracking-[0.4em]">Fisioterapia Malavasi — Specialisti della Colonna</span>
               </div>
               
-              <h3 className="text-4xl md:text-6xl font-bold mb-8 tracking-tighter leading-[0.95]">
+              <h2 className="text-4xl md:text-6xl font-bold mb-8 tracking-tighter leading-[0.95]">
                 Non aspettare che il <br />
                 <span className="text-[#55B4FF]">dolore peggiori.</span>
-              </h3>
+              </h2>
               
               <p className="text-white/60 text-xl mb-12 font-light leading-relaxed max-w-xl">
                 Usa il modulo in alto per inviare i tuoi dati e ricevere una valutazione personalizzata.

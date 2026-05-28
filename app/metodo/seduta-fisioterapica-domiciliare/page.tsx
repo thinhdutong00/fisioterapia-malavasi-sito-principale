@@ -79,7 +79,7 @@ export default function SedutaDomiciliarePage() {
               <div className="bg-[#F3E8FF] p-10 rounded-[2rem] border border-white/50 flex flex-col justify-between">
                 <div>
                   <MapPin className="text-[#A855F7] mb-6" size={32} />
-                  <h3 className="text-xl font-bold text-[#022166] mb-2">Area di Intervento</h3>
+                  <h2 className="text-xl font-bold text-[#022166] mb-2">Area di Intervento</h2>
                   <p className="text-[#022166]/60 text-sm font-medium">Copriamo l'intera area urbana e le zone limitrofe con interventi programmati.</p>
                 </div>
               </div>
@@ -88,7 +88,7 @@ export default function SedutaDomiciliarePage() {
               <div className="bg-[#E0F2FE] p-10 rounded-[2rem] border border-white/50 flex flex-col justify-between">
                 <div>
                   <ShieldCheck className="text-[#0EA5E9] mb-6" size={32} />
-                  <h3 className="text-xl font-bold text-[#022166] mb-2">Qualità Garantita</h3>
+                  <h2 className="text-xl font-bold text-[#022166] mb-2">Qualità Garantita</h2>
                   <p className="text-[#022166]/60 text-sm font-medium">Utilizziamo presidi portatili professionali per test ed esercizi terapeutici.</p>
                 </div>
               </div>
@@ -97,7 +97,7 @@ export default function SedutaDomiciliarePage() {
               <div className="bg-[#DCFCE7] p-10 rounded-[2rem] border border-white/50 flex flex-col justify-between">
                 <div>
                   <Clock className="text-[#22C55E] mb-6" size={32} />
-                  <h3 className="text-xl font-bold text-[#022166] mb-2">Durata Seduta</h3>
+                  <h2 className="text-xl font-bold text-[#022166] mb-2">Durata Seduta</h2>
                   <p className="text-[#022166]/60 text-sm font-medium">Circa 60 minuti, comprensivi di valutazione continua e trattamento attivo.</p>
                 </div>
               </div>
@@ -111,7 +111,7 @@ export default function SedutaDomiciliarePage() {
               <Home size={400} />
             </div>
             <div className="relative z-10 max-w-2xl">
-              <h3 className="text-3xl md:text-5xl font-bold mb-6 tracking-tighter">Prenota la tua seduta a casa.</h3>
+              <h2 className="text-3xl md:text-5xl font-bold mb-6 tracking-tighter">Prenota la tua seduta a casa.</h2>
               <p className="text-white/60 text-lg mb-10 font-light">
                 Contattaci per verificare la disponibilità nella tua zona e programmare il primo incontro valutativo domiciliare.
               </p>

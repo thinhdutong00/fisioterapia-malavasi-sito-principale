@@ -48,7 +48,7 @@ export default function SedutaFisioterapicaPage() {
           </header>
 
           {/* SEZIONE 1: PREMESSA */}
-          <section className="mb-32">
+          <section className="mb-32 mt-24 md:mt-0">
             <div className="grid lg:grid-cols-12 gap-12 items-start">
               <div className="lg:col-span-4">
                 <span className="text-[10px] font-black uppercase tracking-[0.4em] text-[#022166] mb-4 block">
@@ -58,10 +58,10 @@ export default function SedutaFisioterapicaPage() {
               </div>
               <div className="lg:col-span-8">
                 <div className="bg-white p-10 md:p-14 rounded-[2rem] border border-slate-100 shadow-sm transition-all duration-500 hover:shadow-xl">
-                  <p className="text-xl md:text-2xl text-slate-600 font-light leading-relaxed mb-8">
+                  <p className="text-base md:text-2xl text-slate-600 font-light leading-relaxed mb-8">
                     Il primo passo, quello fondamentale, è di instaurare fiducia reciproca con i pazienti che riceviamo per intraprendere ogni percorso con serenità e trasparenza.
                   </p>
-                  <p className="text-slate-500 text-base md:text-lg leading-relaxed font-medium opacity-90">
+                  <p className="text-slate-500 text-sm md:text-lg leading-relaxed font-medium opacity-90">
                     Creare un legame tra il fisioterapista ed il paziente significa costruire delle fondamenta solide basate sull'ascolto e sulla comprensione della problematica di salute da trattare: prima della presa in carico si terrà un appropriato colloquio con un'appropriata comprensione del significato che il paziente dà al proprio disturbo, in seguito, stabiliremo degli obiettivi condivisi con il paziente, passo dopo passo nel percorso, breve o lungo che sia.
                   </p>
                 </div>
@@ -93,7 +93,7 @@ export default function SedutaFisioterapicaPage() {
                       </div>
                       <div>
                         <span className="text-[10px] font-black uppercase tracking-[0.2em] text-[#022166]/50">Fase 01</span>
-                        <h3 className="text-2xl font-bold text-[#022166] tracking-tight">Anamnesi</h3>
+                        <h2 className="text-2xl font-bold text-[#022166] tracking-tight">Anamnesi</h2>
                         <p className="text-[#022166]/70 font-medium">Primo colloquio approfondito.</p>
                       </div>
                     </div>
@@ -107,7 +107,7 @@ export default function SedutaFisioterapicaPage() {
                       </div>
                       <div>
                         <span className="text-[10px] font-black uppercase tracking-[0.2em] text-[#022166]/50">Fase 02</span>
-                        <h3 className="text-2xl font-bold text-[#022166] tracking-tight">Esame Obiettivo</h3>
+                        <h2 className="text-2xl font-bold text-[#022166] tracking-tight">Esame Obiettivo</h2>
                         <p className="text-[#022166]/70 font-medium">Valutazione clinica e test funzionali.</p>
                       </div>
                     </div>
@@ -121,7 +121,7 @@ export default function SedutaFisioterapicaPage() {
                       </div>
                       <div>
                         <span className="text-[10px] font-black uppercase tracking-[0.2em] text-[#022166]/50">Fase 03</span>
-                        <h3 className="text-2xl font-bold text-[#022166] tracking-tight">Trattamento e Esercizio</h3>
+                        <h2 className="text-2xl font-bold text-[#022166] tracking-tight">Trattamento e Esercizio</h2>
                         <p className="text-[#022166]/70 font-medium">Intervento terapeutico e prescrizione di esercizi domiciliari.</p>
                       </div>
                     </div>
@@ -163,7 +163,7 @@ export default function SedutaFisioterapicaPage() {
                     <div className="flex gap-6">
                       <span className="text-[#55B4FF] font-black text-xl opacity-40">01</span>
                       <div>
-                        <h4 className="text-[#022166] font-bold text-lg mb-2 uppercase tracking-tight">Sintomatologia</h4>
+                        <h3 className="text-[#022166] font-bold text-lg mb-2 uppercase tracking-tight">Sintomatologia</h3>
                         <p className="text-slate-500 font-medium leading-relaxed">
                           Analisi di tutti i sintomi (difficoltà di movimento, dolore, rigidità o formicolio) con le proprie caratteristiche e le problematiche correlate.
                         </p>
@@ -174,7 +174,7 @@ export default function SedutaFisioterapicaPage() {
                     <div className="flex gap-6">
                       <span className="text-[#55B4FF] font-black text-xl opacity-40">02</span>
                       <div>
-                        <h4 className="text-[#022166] font-bold text-lg mb-2 uppercase tracking-tight">Stile di Vita</h4>
+                        <h3 className="text-[#022166] font-bold text-lg mb-2 uppercase tracking-tight">Stile di Vita</h3>
                         <p className="text-slate-500 font-medium leading-relaxed">
                           Aspetti legati alla vita quotidiana: lavoro, sport, attività ludiche o qualunque altra attività che possa essere la causa del disturbo.
                         </p>
@@ -185,7 +185,7 @@ export default function SedutaFisioterapicaPage() {
                     <div className="flex gap-6">
                       <span className="text-[#55B4FF] font-black text-xl opacity-40">03</span>
                       <div>
-                        <h4 className="text-[#022166] font-bold text-lg mb-2 uppercase tracking-tight">Quadro Medico Generale</h4>
+                        <h3 className="text-[#022166] font-bold text-lg mb-2 uppercase tracking-tight">Quadro Medico Generale</h3>
                         <p className="text-slate-500 font-medium leading-relaxed">
                           Diagnosi clinica, presenza di altre patologie, necessità di farmaci o familiarità per specifiche condizioni mediche.
                         </p>
@@ -196,7 +196,7 @@ export default function SedutaFisioterapicaPage() {
                     <div className="flex gap-6">
                       <span className="text-[#55B4FF] font-black text-xl opacity-40">04</span>
                       <div>
-                        <h4 className="text-[#022166] font-bold text-lg mb-2 uppercase tracking-tight">Note Significative</h4>
+                        <h3 className="text-[#022166] font-bold text-lg mb-2 uppercase tracking-tight">Note Significative</h3>
                         <p className="text-slate-500 font-medium leading-relaxed">
                           Qualunque altro aspetto che il paziente o il fisioterapista ritengano rilevante per la completa comprensione del caso.
                         </p>
@@ -258,7 +258,7 @@ export default function SedutaFisioterapicaPage() {
 
                   {/* Conclusione Valutazione - Card Evidenziata */}
                   <div className="bg-[#F3E8FF] p-8 rounded-[1.5rem] border border-white/50">
-                    <h4 className="text-[#022166] font-black text-[10px] uppercase tracking-[0.2em] mb-4">Esito della valutazione</h4>
+                    <h3 className="text-[#022166] font-black text-[10px] uppercase tracking-[0.2em] mb-4">Esito della valutazione</h3>
                     <p className="text-[#022166]/80 font-medium leading-relaxed mb-6 text-sm md:text-base">
                       Terminato l'esame obiettivo, il fisioterapista mostrerà al paziente gli esiti della valutazione e le radici del problema emerse. Verrà stabilito il piano di trattamento (tipologia, numero di sedute e frequenza) per garantire una risoluzione efficace.
                     </p>
@@ -304,10 +304,10 @@ export default function SedutaFisioterapicaPage() {
                   <div className="space-y-6 mb-12">
                     {/* Esercizi Terapeutici */}
                     <div className="p-8 bg-[#DCFCE7] rounded-[1.5rem] border border-white/50">
-                      <h4 className="text-[#022166] font-bold text-lg mb-4 flex items-center gap-3">
+                      <h3 className="text-[#022166] font-bold text-lg mb-4 flex items-center gap-3">
                         <div className="w-2 h-2 bg-[#022166] rounded-full"></div>
                         Esercizi Terapeutici Mirati
-                      </h4>
+                      </h3>
                       <p className="text-[#022166]/70 text-sm md:text-base leading-relaxed font-medium">
                         Rinforzo muscolare, incremento della mobilità articolare, riduzione della rigidità, miglioramento del controllo motorio, incremento dell'estensibilità e della resistenza muscolare.
                       </p>
@@ -315,10 +315,10 @@ export default function SedutaFisioterapicaPage() {
 
                     {/* Tecniche Manuali */}
                     <div className="p-8 bg-[#E0F2FE] rounded-[1.5rem] border border-white/50">
-                      <h4 className="text-[#022166] font-bold text-lg mb-4 flex items-center gap-3">
+                      <h3 className="text-[#022166] font-bold text-lg mb-4 flex items-center gap-3">
                         <div className="w-2 h-2 bg-[#022166] rounded-full"></div>
                         Tecniche Manuali
-                      </h4>
+                      </h3>
                       <p className="text-[#022166]/70 text-sm md:text-base leading-relaxed font-medium">
                         Mobilizzazioni o manipolazioni articolari e tecniche muscolari specifiche per la riduzione del dolore e il ripristino del movimento.
                       </p>
@@ -332,7 +332,7 @@ export default function SedutaFisioterapicaPage() {
                         <ArrowUpRight size={24} />
                       </div>
                       <div>
-                        <h4 className="text-xl font-bold text-[#022166] mb-3 tracking-tight">Prescrizione ed Esercizio Domiciliare</h4>
+                        <h3 className="text-xl font-bold text-[#022166] mb-3 tracking-tight">Prescrizione ed Esercizio Domiciliare</h3>
                         <p className="text-slate-500 font-medium leading-relaxed italic">
                           "Al termine del trattamento preliminare, il fisioterapista prescriverà al paziente esercizi terapeutici specifici in modo da renderlo autonomo nella gestione del proprio problema anche fuori dallo studio."
                         </p>
@@ -360,10 +360,10 @@ export default function SedutaFisioterapicaPage() {
                 <span className="text-[#55B4FF] font-black text-[10px] uppercase tracking-[0.4em]">Riabilitazione e Fisioterapia Malavasi</span>
               </div>
               
-              <h3 className="text-4xl md:text-6xl font-bold mb-8 tracking-tighter leading-[0.95]">
+              <h2 className="text-4xl md:text-6xl font-bold mb-8 tracking-tighter leading-[0.95]">
                 Riprendi il controllo <br />
                 <span className="text-[#55B4FF]">in studio.</span>
-              </h3>
+              </h2>
               
               <p className="text-white/60 text-xl mb-12 font-light leading-relaxed max-w-xl">
                 Accedi a tecnologie d'avanguardia e a un ambiente progettato per massimizzare i risultati della tua riabilitazione.

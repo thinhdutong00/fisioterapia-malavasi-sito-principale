@@ -86,13 +86,13 @@ export default function SmallClassPage() {
               <div className="lg:col-span-8">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="bg-[#E0F2FE] p-8 rounded-[2rem] border border-white/50 transition-all hover:shadow-lg">
-                    <h4 className="text-[#022166] font-bold text-lg mb-3">Post-Riabilitazione</h4>
+                    <h3 className="text-[#022166] font-bold text-lg mb-3">Post-Riabilitazione</h3>
                     <p className="text-[#022166]/70 text-sm leading-relaxed font-medium">
                       Per chi ha terminato il percorso riabilitativo individuale e desidera mantenere i risultati ottenuti in un ambiente sicuro.
                     </p>
                   </div>
                   <div className="bg-[#F3E8FF] p-8 rounded-[2rem] border border-white/50 transition-all hover:shadow-lg">
-                    <h4 className="text-[#022166] font-bold text-lg mb-3">Gestione Cronicità</h4>
+                    <h3 className="text-[#022166] font-bold text-lg mb-3">Gestione Cronicità</h3>
                     <p className="text-[#022166]/70 text-sm leading-relaxed font-medium">
                       Per chi vuole intraprendere un percorso preventivo o curativo basato sull'esercizio come medicina.
                     </p>
@@ -123,7 +123,7 @@ export default function SmallClassPage() {
                         <Users size={24} />
                       </div>
                       <div>
-                        <h4 className="text-[#022166] font-bold text-xl mb-2">Rapporto 1:5</h4>
+                        <h3 className="text-[#022166] font-bold text-xl mb-2">Rapporto 1:5</h3>
                         <p className="text-slate-500 font-medium leading-relaxed">
                           A differenza delle palestre commerciali, garantiamo un massimo di 5 partecipanti per classe. Questo permette al fisioterapista di correggere ogni singolo movimento in tempo reale.
                         </p>
@@ -135,7 +135,7 @@ export default function SmallClassPage() {
                         <HeartPulse size={24} />
                       </div>
                       <div>
-                        <h4 className="text-[#022166] font-bold text-xl mb-2">Supervisione Clinica</h4>
+                        <h3 className="text-[#022166] font-bold text-xl mb-2">Supervisione Clinica</h3>
                         <p className="text-slate-500 font-medium leading-relaxed">
                           Ogni lezione è guidata da un fisioterapista esperto in patologie muscolo-scheletriche, non da un semplice istruttore. Hai un professionista sanitario a tua disposizione ad ogni incontro.
                         </p>
@@ -147,7 +147,7 @@ export default function SmallClassPage() {
                         <Dumbbell size={24} />
                       </div>
                       <div>
-                        <h4 className="text-[#022166] font-bold text-xl mb-2">Palestra Riabilitativa</h4>
+                        <h3 className="text-[#022166] font-bold text-xl mb-2">Palestra Riabilitativa</h3>
                         <p className="text-slate-500 font-medium leading-relaxed">
                           Le attività si svolgono all'interno della nostra struttura, utilizzando attrezzature specifiche per la riabilitazione e il recupero funzionale.
                         </p>
@@ -200,10 +200,10 @@ export default function SmallClassPage() {
       <span className="text-[#55B4FF] font-black text-[10px] uppercase tracking-[0.4em]">Inizia il tuo percorso</span>
     </div>
     
-    <h3 className="text-4xl md:text-6xl font-bold mb-8 tracking-tighter leading-[0.95]">
+    <h2 className="text-4xl md:text-6xl font-bold mb-8 tracking-tighter leading-[0.95]">
       Prenota il tuo posto <br />
       <span className="text-[#55B4FF]">nella prossima classe.</span>
-    </h3>
+    </h2>
     
     <p className="text-white/60 text-xl mb-12 font-light leading-relaxed max-w-xl">
       La qualità del servizio richiede una pianificazione anticipata. Assicurati il tuo spazio nel gruppo guidato dai nostri fisioterapisti.

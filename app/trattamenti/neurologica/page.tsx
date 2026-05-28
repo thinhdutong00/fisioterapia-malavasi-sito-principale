@@ -77,7 +77,7 @@ export default function FisioterapiaNeurologica() {
                 <div className="mb-8 p-4 bg-[#F8FAFC] w-fit rounded-2xl group-hover:bg-[#022166] group-hover:text-white transition-colors duration-500">
                   {p.icon}
                 </div>
-                <h3 className="text-2xl font-bold text-[#022166] mb-4 tracking-tight">{p.titolo}</h3>
+                <h2 className="text-2xl font-bold text-[#022166] mb-4 tracking-tight">{p.titolo}</h2>
                 <p className="text-slate-500 leading-relaxed text-sm md:text-base">
                   {p.desc}
                 </p>
@@ -126,7 +126,7 @@ export default function FisioterapiaNeurologica() {
                 <div className="lg:col-span-2">
                   <div className="bg-white/10 backdrop-blur-md border border-white/20 p-12 rounded-[3rem] relative">
                     <Heart className="text-[#55B4FF] mb-8" size={48} />
-                    <h4 className="text-2xl font-bold mb-4 tracking-tight">Oltre la terapia fisica</h4>
+                    <h3 className="text-2xl font-bold mb-4 tracking-tight">Oltre la terapia fisica</h3>
                     <p className="text-white/70 text-base leading-relaxed">
                       Sappiamo che il percorso può essere lungo. La nostra promessa è quella di non lasciarvi mai soli, 
                       fornendo obiettivi chiari e misurabili per mantenere alta la motivazione e la fiducia nel recupero.
@@ -160,10 +160,10 @@ export default function FisioterapiaNeurologica() {
       <div className="lg:col-span-11 p-10 md:p-16">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-8 mb-12">
           <div className="max-w-2xl">
-            <h3 className="text-3xl md:text-5xl font-bold text-[#022166] mb-6 tracking-tighter leading-tight">
+            <h2 className="text-3xl md:text-5xl font-bold text-[#022166] mb-6 tracking-tighter leading-tight">
               La continuità terapeutica <br />
               <span className="text-[#55B4FF]">oltre i limiti logistici.</span>
-            </h3>
+            </h2>
             <p className="text-slate-600 text-lg md:text-xl font-light leading-relaxed">
               Le barriere architettoniche e le difficoltà di trasporto non devono condizionare l'esito della riabilitazione. 
               Garantiamo l'intervento specialistico direttamente a domicilio per pazienti con mobilità ridotta o quadri clinici complessi.
@@ -179,19 +179,19 @@ export default function FisioterapiaNeurologica() {
 
         <div className="grid md:grid-cols-3 gap-8 pt-10 border-t border-slate-100">
           <div className="space-y-3">
-            <h4 className="text-sm font-black uppercase tracking-widest text-[#022166]">Efficacia Clinica</h4>
+            <h3 className="text-sm font-black uppercase tracking-widest text-[#022166]">Efficacia Clinica</h3>
             <p className="text-sm text-slate-500 leading-relaxed font-medium">
               Manteniamo gli stessi standard qualitativi e strumentali del setting ambulatoriale.
             </p>
           </div>
           <div className="space-y-3">
-            <h4 className="text-sm font-black uppercase tracking-widest text-[#022166]">Risparmio Energetico</h4>
+            <h3 className="text-sm font-black uppercase tracking-widest text-[#022166]">Risparmio Energetico</h3>
             <p className="text-sm text-slate-500 leading-relaxed font-medium">
               Preserviamo le risorse fisiche del paziente per il focus esclusivo sull'attività riabilitativa.
             </p>
           </div>
           <div className="space-y-3">
-            <h4 className="text-sm font-black uppercase tracking-widest text-[#022166]">Analisi Ambientale</h4>
+            <h3 className="text-sm font-black uppercase tracking-widest text-[#022166]">Analisi Ambientale</h3>
             <p className="text-sm text-slate-500 leading-relaxed font-medium">
               Valutiamo il contesto domestico per ottimizzare l'autonomia nelle attività quotidiane.
             </p>

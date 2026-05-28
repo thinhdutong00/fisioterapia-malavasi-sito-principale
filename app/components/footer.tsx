@@ -1,5 +1,3 @@
-"use client";
-
 import Link from 'next/link';
 import Image from 'next/image';
 import { Phone, MapPin, Mail, Instagram, Facebook } from 'lucide-react';
@@ -21,7 +19,7 @@ export default function Footer() {
             />
           </div>
           
-          <p className="text-white/50 text-[13px] leading-relaxed font-medium max-w-xs tracking-tight">
+          <p className="text-white/80 text-[13px] leading-relaxed font-medium max-w-xs tracking-tight">
             Professionalità e cura del paziente al centro di ogni trattamento. Specialisti nel recupero funzionale e nel benessere motorio.
           </p>
           
@@ -30,6 +28,7 @@ export default function Footer() {
               href="https://www.instagram.com/fisioterapiamalavasi/" 
               target="_blank" 
               rel="noopener noreferrer"
+              aria-label="Profilo Instagram Fisioterapia Malavasi"
               className="p-3 bg-white/5 rounded-xl hover:bg-[#55B4FF] hover:text-[#022166] transition-all duration-500 ease-out border border-white/5"
             >
               <Instagram size={18} />
@@ -38,6 +37,7 @@ export default function Footer() {
               href="https://www.facebook.com/Dott.MircoMalavasi" 
               target="_blank" 
               rel="noopener noreferrer"
+              aria-label="Pagina Facebook Fisioterapia Malavasi"
               className="p-3 bg-white/5 rounded-xl hover:bg-[#55B4FF] hover:text-[#022166] transition-all duration-500 ease-out border border-white/5"
             >
               <Facebook size={18} />
@@ -47,8 +47,8 @@ export default function Footer() {
 
         {/* Link */}
         <div className="space-y-6">
-          <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-[#55B4FF]">Navigazione</h4>
-          <ul className="space-y-4 text-[11px] font-black uppercase tracking-widest text-white/60">
+          <p className="text-[10px] font-black uppercase tracking-[0.3em] text-[#55B4FF]">Navigazione</p>
+          <ul className="space-y-4 text-[11px] font-black uppercase tracking-widest text-white/80">
             <li><Link href="/informazioni" className="hover:text-[#55B4FF] transition-colors">Informazioni</Link></li>
             <li><Link href="/trattamenti" className="hover:text-[#55B4FF] transition-colors">Trattamenti</Link></li>
             <li><Link href="/metodo" className="hover:text-[#55B4FF] transition-colors">Modalità seduta</Link></li>
@@ -58,8 +58,8 @@ export default function Footer() {
 
         {/* Contatti */}
         <div className="space-y-6">
-          <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-[#55B4FF]">Contatti</h4>
-          <ul className="space-y-5 text-[12px] font-bold text-white/70">
+          <p className="text-[10px] font-black uppercase tracking-[0.3em] text-[#55B4FF]">Contatti</p>
+          <ul className="space-y-5 text-[12px] font-bold text-white/85">
             <li className="flex items-center gap-3 hover:text-white transition-colors cursor-default">
               <Phone size={16} className="text-[#55B4FF]" /> 
               <span>333 822 5464</span>
@@ -81,8 +81,8 @@ export default function Footer() {
 
         {/* Orari */}
         <div className="space-y-6">
-          <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-[#55B4FF]">Orari</h4>
-          <div className="text-[11px] font-black uppercase tracking-widest space-y-3 text-white/50">
+          <p className="text-[10px] font-black uppercase tracking-[0.3em] text-[#55B4FF]">Orari</p>
+          <div className="text-[11px] font-black uppercase tracking-widest space-y-3 text-white/80">
             <p className="flex justify-between items-center border-b border-white/5 pb-2">
               <span>Lun - Ven</span> 
               <span className="text-white">09:00 - 21:00</span>
@@ -91,12 +91,12 @@ export default function Footer() {
               <span>Sabato</span> 
               <span className="text-white">09:00 - 13:00</span>
             </p>
-            <p className="text-[9px] italic font-medium lowercase tracking-normal text-white/30">Domenica Chiuso</p>
+            <p className="text-[9px] italic font-medium lowercase tracking-normal text-white/80">Domenica Chiuso</p>
           </div>
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto mt-20 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 opacity-40">
+      <div className="max-w-7xl mx-auto mt-20 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-white/80">
   <div className="flex flex-col md:flex-row items-center gap-2 text-center md:text-left">
     <p className="text-[10px] font-black uppercase tracking-widest">
       © 2026 | Dott. Malavasi Mirco FISIOTERAPISTA | Via I Maggio n°95 41032 Cavezzo (MO) | P. IVA 03890170362 |

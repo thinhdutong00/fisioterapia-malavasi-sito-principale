@@ -106,9 +106,9 @@ export default function TrattamentiPage() {
                   <div className="flex justify-end items-start mb-8">
                     <ArrowUpRight size={20} className="text-[#022166]/30 group-hover:text-[#022166] transition-colors" />
                   </div>
-                  <h3 className="text-2xl font-bold text-[#022166] mb-4 leading-tight tracking-tight">
+                  <h2 className="text-2xl font-bold text-[#022166] mb-4 leading-tight tracking-tight">
                     {t.titolo}
-                  </h3>
+                  </h2>
                   <p className="text-[#022166]/70 text-sm md:text-base leading-relaxed mb-8 font-medium">
                     {t.desc}
                   </p>
@@ -122,7 +122,7 @@ export default function TrattamentiPage() {
 
             {/* 9. VALUTAZIONE CLINICA (Card CTA finale) */}
             <div className="bg-[#022166] p-12 rounded-[2rem] shadow-xl flex flex-col justify-center text-white relative overflow-hidden group">
-               <h3 className="text-3xl font-black mb-6 relative z-10 leading-tight">Valutazione <br />Clinica</h3>
+               <h2 className="text-3xl font-black mb-6 relative z-10 leading-tight">Valutazione <br />Clinica</h2>
                <p className="text-white/60 mb-10 relative z-10 text-sm leading-relaxed">
                  Non sai quale percorso sia più adatto a te? I nostri professionisti sono a disposizione per definire la strategia corretta.
                </p>

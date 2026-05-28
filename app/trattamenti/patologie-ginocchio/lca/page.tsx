@@ -187,7 +187,7 @@ export default function LCASpecialistPage() {
 
                 {step === 1 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-3">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Qual è la tua situazione?</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Qual è la tua situazione?</h2>
                     {['Rottura Totale LCA', 'Rottura Parziale', 'Post-Operatorio', 'Altro'].map((opzione) => (
                       <button key={opzione} onClick={() => setFormData({...formData, problema: opzione})} className={`w-full p-4 rounded-xl border-2 font-bold transition-all text-left flex justify-between items-center ${formData.problema === opzione ? 'border-[#55B4FF] bg-[#55B4FF] text-[#022166]' : 'border-white/10 bg-white/5 text-white hover:border-white/40'}`}>
                         <span className="text-sm uppercase tracking-tighter">{opzione}</span>
@@ -199,14 +199,14 @@ export default function LCASpecialistPage() {
 
                 {step === 1.2 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Dettagli lesione</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Dettagli lesione</h2>
                     <input type="text" placeholder="Es: lesione associata al menisco..." className="w-full bg-white/5 border-b-2 border-white/20 p-4 outline-none focus:border-[#55B4FF] text-white font-bold" value={formData.problemaSpecifico} onChange={(e) => setFormData({...formData, problemaSpecifico: e.target.value})} />
                   </div>
                 )}
 
                 {step === 2 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-3">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Quando è successo?</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Quando è successo?</h2>
                     {['Recente (< 1 mese)', 'Da diversi mesi', 'Appena operato'].map((opzione) => (
                       <button key={opzione} onClick={() => setFormData({...formData, durata: opzione})} className={`w-full p-4 rounded-xl border-2 font-bold transition-all text-left flex justify-between items-center ${formData.durata === opzione ? 'border-[#55B4FF] bg-[#55B4FF] text-[#022166]' : 'border-white/10 bg-white/5 text-white hover:border-white/40'}`}>
                         <span className="text-sm uppercase">{opzione}</span>
@@ -218,7 +218,7 @@ export default function LCASpecialistPage() {
 
                 {step === 3 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-3">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Qual è il limite maggiore?</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Qual è il limite maggiore?</h2>
                     {['Instabilità (cede)', 'Dolore / Gonfiore', 'Paura di muovermi'].map((opzione) => (
                       <button key={opzione} onClick={() => setFormData({...formData, limitazione: opzione})} className={`w-full p-4 rounded-xl border-2 font-bold transition-all text-left flex justify-between items-center ${formData.limitazione === opzione ? 'border-[#55B4FF] bg-[#55B4FF] text-[#022166]' : 'border-white/10 bg-white/5 text-white hover:border-white/40'}`}>
                         <span className="text-sm uppercase">{opzione}</span>
@@ -230,7 +230,7 @@ export default function LCASpecialistPage() {
 
                 {step === 4 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-3">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Il tuo obiettivo?</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Il tuo obiettivo?</h2>
                     {['Tornare allo sport', 'Evitare chirurgia', 'Recupero post-op', 'Altro'].map((opzione) => (
                       <button key={opzione} onClick={() => setFormData({...formData, obiettivo: opzione})} className={`w-full p-4 rounded-xl border-2 font-bold transition-all text-left flex justify-between items-center ${formData.obiettivo === opzione ? 'border-[#55B4FF] bg-[#55B4FF] text-[#022166]' : 'border-white/10 bg-white/5 text-white hover:border-white/40'}`}>
                         <span className="text-sm uppercase tracking-tighter">{opzione}</span>
@@ -242,14 +242,14 @@ export default function LCASpecialistPage() {
 
                 {step === 4.2 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Specifica obiettivo</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Specifica obiettivo</h2>
                     <input type="text" placeholder="Es: tornare a giocare a calcio..." className="w-full bg-white/5 border-b-2 border-white/20 p-4 outline-none focus:border-[#55B4FF] text-white font-bold" value={formData.obiettivoSpecifico} onChange={(e) => setFormData({...formData, obiettivoSpecifico: e.target.value})} />
                   </div>
                 )}
 
                 {step === 5 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-3">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Hai già una data intervento?</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Hai già una data intervento?</h2>
                     {['Sì, già fissata', 'No, in valutazione', 'Già operato'].map((opzione) => (
                       <button key={opzione} onClick={() => setFormData({...formData, giaFattoFisio: opzione})} className={`w-full p-4 rounded-xl border-2 font-bold transition-all text-left flex justify-between items-center ${formData.giaFattoFisio === opzione ? 'border-[#55B4FF] bg-[#55B4FF] text-[#022166]' : 'border-white/10 bg-white/5 text-white hover:border-white/40'}`}>
                         <span className="text-sm uppercase">{opzione}</span>
@@ -261,7 +261,7 @@ export default function LCASpecialistPage() {
 
                 {step === 6 && (
                    <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-3">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Hai il referto della RM?</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Hai il referto della RM?</h2>
                     {['Sì', 'No'].map((opzione) => (
                       <button key={opzione} onClick={() => setFormData({...formData, diagnosiMedica: opzione})} className={`w-full p-4 rounded-xl border-2 font-bold transition-all text-left flex justify-between items-center ${formData.diagnosiMedica === opzione ? 'border-[#55B4FF] bg-[#55B4FF] text-[#022166]' : 'border-white/10 bg-white/5 text-white hover:border-white/40'}`}>
                         <span className="text-sm uppercase">{opzione}</span>
@@ -273,7 +273,7 @@ export default function LCASpecialistPage() {
 
                 {step === 6.5 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-6">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Carica Referto</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Carica Referto</h2>
                     <div className="border-2 border-dashed border-white/20 rounded-[2rem] p-12 text-center hover:border-[#55B4FF] transition-all group">
                       <input type="file" id="file-upload" className="hidden" onChange={(e) => setFile(e.target.files ? e.target.files[0] : null)} />
                       <label htmlFor="file-upload" className="cursor-pointer flex flex-col items-center">
@@ -286,7 +286,7 @@ export default function LCASpecialistPage() {
 
                 {step === 7 && (
                    <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-3">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Fascia d'età</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Fascia d'età</h2>
                     {['Under 20', '21–35', '36–50', 'Over 50'].map((opzione) => (
                       <button key={opzione} onClick={() => setFormData({...formData, eta: opzione})} className={`w-full p-4 rounded-xl border-2 font-bold transition-all text-left flex justify-between items-center ${formData.eta === opzione ? 'border-[#55B4FF] bg-[#55B4FF] text-[#022166]' : 'border-white/10 bg-white/5 text-white hover:border-white/40'}`}>
                         <span className="text-sm uppercase">{opzione}</span>
@@ -321,7 +321,7 @@ export default function LCASpecialistPage() {
 
                 {step === 9 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-3">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Sede preferita</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Sede preferita</h2>
                     {['Sede Cavezzo', 'Sede Rovereto', 'Domicilio'].map((s) => (
                       <button key={s} onClick={() => setFormData({...formData, sede: s})} className={`w-full p-4 rounded-xl border-2 font-bold transition-all text-left flex justify-between items-center ${formData.sede === s ? 'border-[#55B4FF] bg-[#55B4FF] text-[#022166]' : 'border-white/10 bg-white/5 text-white hover:border-white/40'}`}>
                         <span className="text-sm uppercase">{s}</span>
@@ -333,7 +333,7 @@ export default function LCASpecialistPage() {
 
                 {step === 10 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-4">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Dati Domicilio</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Dati Domicilio</h2>
                     <div className="space-y-1">
                       <p className="text-[9px] uppercase tracking-widest text-[#55B4FF] font-bold ml-1">Indirizzo completo *</p>
                       <input type="text" placeholder="Via, Civico, Città" className="w-full bg-white/5 border-b-2 border-white/20 p-3 text-white font-bold outline-none focus:border-[#55B4FF]" value={formData.indirizzo} onChange={(e) => setFormData({...formData, indirizzo: e.target.value})} />
@@ -343,7 +343,7 @@ export default function LCASpecialistPage() {
 
                 {step === 11 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-4">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Concludiamo</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Concludiamo</h2>
                     <div className="space-y-4">
                       <div className="space-y-1">
                         <p className="text-[9px] uppercase tracking-widest text-[#55B4FF] font-bold ml-1">Nome e Cognome *</p>
@@ -449,7 +449,7 @@ export default function LCASpecialistPage() {
                 ].map((item, i) => (
                   <div key={i} className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
                     <CheckCircle2 className="text-[#55B4FF] mb-3" size={24} />
-                    <h4 className="font-bold text-[#022166] text-sm uppercase mb-2">{item.t}</h4>
+                    <h3 className="font-bold text-[#022166] text-sm uppercase mb-2">{item.t}</h3>
                     <p className="text-slate-500 text-xs leading-relaxed">{item.d}</p>
                   </div>
                 ))}
@@ -461,7 +461,7 @@ export default function LCASpecialistPage() {
                 <div className="absolute top-0 right-0 p-10 opacity-10 text-[#55B4FF]">
                   <Scaling size={150} />
                 </div>
-                <h3 className="text-2xl font-bold mb-6 relative z-10 text-white">L'importanza del percorso</h3>
+                <h2 className="text-2xl font-bold mb-6 relative z-10 text-white">L'importanza del percorso</h2>
                 <div className="space-y-8 relative z-10">
                   <div className="flex items-end gap-4">
                     <span className="text-5xl font-black text-[#55B4FF]">90%</span>
@@ -489,7 +489,7 @@ export default function LCASpecialistPage() {
                 <div key={idx} className="bg-white p-8 rounded-3xl border border-slate-100 hover:shadow-xl transition-all group">
                   <step.i className="text-[#55B4FF] group-hover:scale-110 transition-transform mb-6" size={32} />
                   <span className="text-[10px] font-black uppercase text-slate-400 tracking-widest block mb-2">{step.t}</span>
-                  <h4 className="text-xl font-bold text-[#022166] mb-4">{step.s}</h4>
+                  <h3 className="text-xl font-bold text-[#022166] mb-4">{step.s}</h3>
                   <p className="text-sm text-slate-500 leading-relaxed font-light">{step.d}</p>
                 </div>
               ))}

@@ -78,7 +78,7 @@ export default function FisioterapiaOncologica() {
                 <div className="mb-8 p-4 bg-[#F8FAFC] w-fit rounded-2xl group-hover:bg-[#022166] group-hover:text-white transition-colors duration-500">
                   {b.icon}
                 </div>
-                <h3 className="text-2xl font-bold text-[#022166] mb-4 tracking-tight">{b.titolo}</h3>
+                <h2 className="text-2xl font-bold text-[#022166] mb-4 tracking-tight">{b.titolo}</h2>
                 <p className="text-slate-500 leading-relaxed text-sm md:text-base">
                   {b.desc}
                 </p>
@@ -119,7 +119,7 @@ export default function FisioterapiaOncologica() {
                    <div className="absolute top-6 right-8 text-[#022166]/10">
                       <FileText size={100} />
                    </div>
-                   <h4 className="text-2xl font-bold text-[#022166] mb-6 relative z-10">Collaborazione Medica</h4>
+                   <h3 className="text-2xl font-bold text-[#022166] mb-6 relative z-10">Collaborazione Medica</h3>
                    <p className="text-slate-500 text-sm leading-relaxed mb-8 relative z-10">
                     Lavoriamo in stretta sinergia con il tuo oncologo e il tuo team medico. Ogni fase del trattamento 
                     viene calibrata in base al tuo stato di salute e al ciclo di cure.
@@ -153,10 +153,10 @@ export default function FisioterapiaOncologica() {
       <div className="lg:col-span-11 p-10 md:p-16">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-8 mb-12">
           <div className="max-w-2xl">
-            <h3 className="text-3xl md:text-5xl font-bold text-[#022166] mb-6 tracking-tighter leading-tight">
+            <h2 className="text-3xl md:text-5xl font-bold text-[#022166] mb-6 tracking-tighter leading-tight">
               La continuità terapeutica <br />
               <span className="text-[#55B4FF]">oltre i limiti logistici.</span>
-            </h3>
+            </h2>
             <p className="text-slate-600 text-lg md:text-xl font-light leading-relaxed">
               Le barriere architettoniche e le difficoltà di trasporto non devono condizionare l'esito della riabilitazione. 
               Garantiamo l'intervento specialistico direttamente a domicilio per pazienti con mobilità ridotta o quadri clinici complessi.
@@ -172,19 +172,19 @@ export default function FisioterapiaOncologica() {
 
         <div className="grid md:grid-cols-3 gap-8 pt-10 border-t border-slate-100">
           <div className="space-y-3">
-            <h4 className="text-sm font-black uppercase tracking-widest text-[#022166]">Efficacia Clinica</h4>
+            <h3 className="text-sm font-black uppercase tracking-widest text-[#022166]">Efficacia Clinica</h3>
             <p className="text-sm text-slate-500 leading-relaxed font-medium">
               Manteniamo gli stessi standard qualitativi e strumentali del setting ambulatoriale.
             </p>
           </div>
           <div className="space-y-3">
-            <h4 className="text-sm font-black uppercase tracking-widest text-[#022166]">Risparmio Energetico</h4>
+            <h3 className="text-sm font-black uppercase tracking-widest text-[#022166]">Risparmio Energetico</h3>
             <p className="text-sm text-slate-500 leading-relaxed font-medium">
               Preserviamo le risorse fisiche del paziente per il focus esclusivo sull'attività riabilitativa.
             </p>
           </div>
           <div className="space-y-3">
-            <h4 className="text-sm font-black uppercase tracking-widest text-[#022166]">Analisi Ambientale</h4>
+            <h3 className="text-sm font-black uppercase tracking-widest text-[#022166]">Analisi Ambientale</h3>
             <p className="text-sm text-slate-500 leading-relaxed font-medium">
               Valutiamo il contesto domestico per ottimizzare l'autonomia nelle attività quotidiane.
             </p>

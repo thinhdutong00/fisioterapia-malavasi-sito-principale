@@ -208,7 +208,7 @@ export default function CapsuliteAdesivaPage() {
                 {/* STEP 1: CONTESTO CAPSULITE */}
                 {step === 1 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-3">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Qual è il problema principale?</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Qual è il problema principale?</h2>
                     {['Spalla bloccata', 'Dolore notturno spalla', 'Altro'].map((opzione) => (
                       <button 
                         key={opzione}
@@ -227,7 +227,7 @@ export default function CapsuliteAdesivaPage() {
                 {/* STEP 1.2: SPECIFICA ALTRO */}
                 {step === 1.2 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Descrivi i sintomi</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Descrivi i sintomi</h2>
                     <input 
                       type="text"
                       placeholder="Es: fitte improvvise, braccio pesante..." 
@@ -241,7 +241,7 @@ export default function CapsuliteAdesivaPage() {
                 {/* STEP 2: DURATA */}
                 {step === 2 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-3">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Da quanto tempo è bloccata?</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Da quanto tempo è bloccata?</h2>
                     {['Meno di 3 mesi', 'Da 3 a 9 mesi', 'Oltre 9 mesi'].map((opzione) => (
                       <button 
                         key={opzione}
@@ -260,7 +260,7 @@ export default function CapsuliteAdesivaPage() {
                 {/* STEP 3: LIMITAZIONE */}
                 {step === 3 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-3">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Quanto limita il sonno/lavoro?</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Quanto limita il sonno/lavoro?</h2>
                     {['Poco', 'Abbastanza', 'Molto (non dormo)'].map((opzione) => (
                       <button 
                         key={opzione}
@@ -279,7 +279,7 @@ export default function CapsuliteAdesivaPage() {
                 {/* STEP 4: OBIETTIVO */}
                 {step === 4 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-3">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Il tuo obiettivo?</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Il tuo obiettivo?</h2>
                     {['Ridurre il dolore', 'Recuperare movimento', 'Tornare a dormire', 'Evitare infiltrazioni', 'Altro'].map((opzione) => (
                       <button 
                         key={opzione}
@@ -298,14 +298,14 @@ export default function CapsuliteAdesivaPage() {
                 {/* STEP 4.2, 5, 6, 6.5, 7 - (Standard) */}
                 {step === 4.2 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Dettaglia il traguardo</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Dettaglia il traguardo</h2>
                     <textarea placeholder="Descrivi qui..." className="w-full bg-white/5 border-b-2 border-white/20 p-4 outline-none focus:border-[#55B4FF] text-white font-bold min-h-[100px] resize-none" value={formData.obiettivoSpecifico} onChange={(e) => setFormData({...formData, obiettivoSpecifico: e.target.value})} />
                   </div>
                 )}
 
                 {step === 5 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-3">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Hai già fatto fisioterapia?</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Hai già fatto fisioterapia?</h2>
                     {['Sì', 'No'].map((opzione) => (
                       <button key={opzione} onClick={() => setFormData({...formData, giaFattoFisio: opzione})} className={`w-full p-4 rounded-xl border-2 font-bold transition-all text-left flex justify-between items-center ${formData.giaFattoFisio === opzione ? 'border-[#55B4FF] bg-[#55B4FF] text-[#022166]' : 'border-white/10 bg-white/5 text-white hover:border-white/40'}`}>
                         <span className="text-sm uppercase">{opzione}</span>
@@ -317,7 +317,7 @@ export default function CapsuliteAdesivaPage() {
 
                 {step === 6 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-3">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Hai una diagnosi medica?</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Hai una diagnosi medica?</h2>
                     {['Sì', 'No'].map((opzione) => (
                       <button key={opzione} onClick={() => setFormData({...formData, diagnosiMedica: opzione})} className={`w-full p-4 rounded-xl border-2 font-bold transition-all text-left flex justify-between items-center ${formData.diagnosiMedica === opzione ? 'border-[#55B4FF] bg-[#55B4FF] text-[#022166]' : 'border-white/10 bg-white/5 text-white hover:border-white/40'}`}>
                         <span className="text-sm uppercase">{opzione}</span>
@@ -329,7 +329,7 @@ export default function CapsuliteAdesivaPage() {
 
                 {step === 6.5 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 text-center">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Carica referto</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Carica referto</h2>
                     <div className="relative group p-8 border-2 border-dashed border-white/20 rounded-2xl bg-white/5">
                       <input type="file" onChange={(e) => setFile(e.target.files ? e.target.files[0] : null)} className="absolute inset-0 opacity-0 cursor-pointer" />
                       {file ? <><FileText size={32} className="mx-auto text-[#55B4FF] mb-2" /><p className="text-white text-xs font-bold">{file.name}</p></> : <><Upload size={32} className="mx-auto text-white/20 mb-2" /><p className="text-white/40 text-[10px] uppercase font-bold tracking-widest">Seleziona PDF o JPG</p></>}
@@ -339,7 +339,7 @@ export default function CapsuliteAdesivaPage() {
 
                 {step === 7 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-3">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Tua fascia d'età?</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Tua fascia d'età?</h2>
                     {['18–35', '36–50', '51–65', '65+'].map((opzione) => (
                       <button key={opzione} onClick={() => setFormData({...formData, eta: opzione})} className={`w-full p-4 rounded-xl border-2 font-bold transition-all text-left flex justify-between items-center ${formData.eta === opzione ? 'border-[#55B4FF] bg-[#55B4FF] text-[#022166]' : 'border-white/10 bg-white/5 text-white hover:border-white/40'}`}>
                         <span className="text-sm uppercase">{opzione}</span>
@@ -387,7 +387,7 @@ export default function CapsuliteAdesivaPage() {
                 {/* STEP 9-11 (Standard) */}
                 {step === 9 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-3">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Sede preferita?</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Sede preferita?</h2>
                     {['Sede Cavezzo (Mo)', 'Sede Rovereto (Mo)', 'Domicilio'].map((s) => (
                       <button key={s} onClick={() => setFormData({...formData, sede: s})} className={`w-full p-4 rounded-xl border-2 font-bold transition-all text-left flex justify-between items-center ${formData.sede === s ? 'border-[#55B4FF] bg-[#55B4FF] text-[#022166]' : 'border-white/10 bg-white/5 text-white hover:border-white/40'}`}>
                         <span className="text-sm uppercase">{s}</span>
@@ -399,7 +399,7 @@ export default function CapsuliteAdesivaPage() {
 
                 {step === 10 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight flex items-center gap-2"><MapPin size={24} /> Indirizzo</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight flex items-center gap-2"><MapPin size={24} /> Indirizzo</h2>
                     <input type="text" placeholder="Via, Civico, Città" className="w-full bg-white/5 border-b-2 border-white/20 p-4 text-white font-bold" value={formData.indirizzo} onChange={(e) => setFormData({...formData, indirizzo: e.target.value})} />
                   </div>
                 )}
@@ -407,7 +407,7 @@ export default function CapsuliteAdesivaPage() {
                 {/* STEP 11: CONTATTI (Versione con Link Privacy) */}
 {step === 11 && (
   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-4">
-    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Ultime informazioni</h3>
+    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Ultime informazioni</h2>
     <input type="text" placeholder="Nome e Cognome" className="w-full bg-white/5 border-b-2 border-white/20 p-3 text-white font-bold outline-none focus:border-[#55B4FF]" value={formData.nome} onChange={(e) => setFormData({...formData, nome: e.target.value})} />
     <input type="tel" placeholder="Telefono" className="w-full bg-white/5 border-b-2 border-white/20 p-3 text-white font-bold outline-none focus:border-[#55B4FF]" value={formData.telefono} onChange={(e) => setFormData({...formData, telefono: e.target.value})} />
     <input type="email" placeholder="Email" className="w-full bg-white/5 border-b-2 border-white/20 p-3 text-white font-bold outline-none focus:border-[#55B4FF]" value={formData.email} onChange={(e) => setFormData({...formData, email: e.target.value})} />
@@ -472,12 +472,12 @@ export default function CapsuliteAdesivaPage() {
                   <div className="grid grid-cols-2 gap-4">
                     <div className="p-6 bg-[#F8FAFC] rounded-3xl">
                       <LockIcon className="text-[#022166] mb-3" size={24} />
-                      <h4 className="font-bold text-[#022166] text-sm uppercase mb-2">Fase Blocco</h4>
+                      <h3 className="font-bold text-[#022166] text-sm uppercase mb-2">Fase Blocco</h3>
                       <p className="text-slate-500 text-xs italic">Dolore intenso, specialmente di notte.</p>
                     </div>
                     <div className="p-6 bg-[#E0F2FE] rounded-3xl">
                       <UnlockIcon size={24} className="text-[#55B4FF] mb-3" />
-                      <h4 className="font-bold text-[#022166] text-sm uppercase mb-2">Fase Recupero</h4>
+                      <h3 className="font-bold text-[#022166] text-sm uppercase mb-2">Fase Recupero</h3>
                       <p className="text-slate-500 text-xs italic">Graduale ritorno alla mobilità attiva.</p>
                     </div>
                   </div>
@@ -485,7 +485,7 @@ export default function CapsuliteAdesivaPage() {
                 <div className="relative flex items-center justify-center">
                    <div className="absolute inset-0 bg-[#022166]/5 rounded-[3rem] -rotate-2"></div>
                    <div className="relative bg-white p-8 md:p-12 rounded-[3rem] border border-slate-100 shadow-lg z-10 w-full">
-                      <h3 className="text-xl font-bold text-[#022166] mb-8">Il dolore non deve durare anni.</h3>
+                      <h2 className="text-xl font-bold text-[#022166] mb-8">Il dolore non deve durare anni.</h2>
                       <ul className="space-y-6">
                         {[
                           "Trattamenti manuali per il controllo del dolore",
@@ -527,7 +527,7 @@ export default function CapsuliteAdesivaPage() {
                   <div className="w-16 h-16 bg-[#F8FAFC] group-hover:bg-[#55B4FF] rounded-2xl flex items-center justify-center mb-8 transition-colors">
                     <step.i className="text-[#022166] group-hover:text-white transition-colors" size={32} />
                   </div>
-                  <h4 className="text-2xl font-bold text-[#022166] mb-4">{step.t}</h4>
+                  <h3 className="text-2xl font-bold text-[#022166] mb-4">{step.t}</h3>
                   <p className="text-slate-500 leading-relaxed font-light">{step.d}</p>
                 </div>
               ))}
@@ -541,9 +541,9 @@ export default function CapsuliteAdesivaPage() {
              </div>
              <div className="relative z-10 grid lg:grid-cols-2 gap-16 items-center text-left">
                 <div>
-                  <h3 className="text-4xl md:text-6xl font-bold tracking-tighter mb-8 leading-tight">
+                  <h2 className="text-4xl md:text-6xl font-bold tracking-tighter mb-8 leading-tight">
                     Smetti di convivere <br />con il <span className="text-[#55B4FF]">blocco.</span>
-                  </h3>
+                  </h2>
                   <p className="text-white/60 text-xl font-light mb-10 leading-relaxed">
                     Ogni giorno perso è un giorno di dolore inutile. Prenota oggi la tua valutazione e ricevi un piano d'azione chiaro e professionale.
                   </p>

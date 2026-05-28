@@ -75,13 +75,13 @@ export default function GinocchioRiabilitazionePage() {
                 <div className="bg-white p-10 md:p-14 rounded-[2rem] border border-slate-100 shadow-sm transition-all duration-500 hover:shadow-xl">
                   <div className="grid md:grid-cols-2 gap-10">
                     <div>
-                      <h3 className="text-[#55B4FF] font-bold text-lg mb-4 uppercase tracking-tighter">Problematiche Meccaniche</h3>
+                      <h2 className="text-[#55B4FF] font-bold text-lg mb-4 uppercase tracking-tighter">Problematiche Meccaniche</h2>
                       <p className="text-slate-500 text-base leading-relaxed">
                         Un dolore anteriore o un blocco meniscale non sempre richiedono chirurgia. Spesso sono il risultato di un deficit di controllo motorio dell'anca o di una rigidità della caviglia. La nostra priorità è ripristinare la funzione.
                       </p>
                     </div>
                     <div>
-                      <h3 className="text-[#022166] font-bold text-lg mb-4 uppercase tracking-tighter">Condizioni Degenerative</h3>
+                      <h2 className="text-[#022166] font-bold text-lg mb-4 uppercase tracking-tighter">Condizioni Degenerative</h2>
                       <p className="text-slate-500 text-base leading-relaxed">
                         L'artrosi non è un verdetto. L'evidenza scientifica dimostra che un ginocchio "consumato" può essere asintomatico e performante se adeguatamente supportato da una muscolatura forte e da una biomeccanica corretta.
                       </p>
@@ -122,11 +122,11 @@ export default function GinocchioRiabilitazionePage() {
               <div className="lg:col-span-6 grid grid-cols-2 gap-4">
                 <div className="bg-[#022166] p-8 rounded-[2rem] text-white flex flex-col justify-end min-h-[250px]">
                   <Weight className="mb-4 text-[#55B4FF]" size={40} />
-                  <h4 className="font-bold text-xl leading-tight">Carico <br/>Gestito</h4>
+                  <h3 className="font-bold text-xl leading-tight">Carico <br/>Gestito</h3>
                 </div>
                 <div className="bg-white p-8 rounded-[2rem] border border-slate-100 shadow-sm flex flex-col justify-end min-h-[250px]">
                   <Target className="mb-4 text-[#022166]" size={40} />
-                  <h4 className="font-bold text-xl text-[#022166] leading-tight">Precisione <br/>Biomeccanica</h4>
+                  <h3 className="font-bold text-xl text-[#022166] leading-tight">Precisione <br/>Biomeccanica</h3>
                 </div>
               </div>
             </div>
@@ -144,19 +144,19 @@ export default function GinocchioRiabilitazionePage() {
                   <div className="relative">
                     <div className="text-[80px] font-black text-[#55B4FF]/10 absolute top-[-40px] left-0">01</div>
                     <Target className="text-[#55B4FF] mb-6" size={32} />
-                    <h4 className="text-xl font-bold text-[#022166] mb-4">Valutazione Biomeccanica</h4>
+                    <h3 className="text-xl font-bold text-[#022166] mb-4">Valutazione Biomeccanica</h3>
                     <p className="text-sm text-slate-500 leading-relaxed">Non guardiamo solo il ginocchio. Analizziamo come cammini, salti e ti muovi per trovare la vera causa del sovraccarico.</p>
                   </div>
                   <div className="relative">
                     <div className="text-[80px] font-black text-[#55B4FF]/10 absolute top-[-40px] left-0">02</div>
                     <BrainCircuit className="text-[#55B4FF] mb-6" size={32} />
-                    <h4 className="text-xl font-bold text-[#022166] mb-4">Ricalibrazione e Controllo</h4>
+                    <h3 className="text-xl font-bold text-[#022166] mb-4">Ricalibrazione e Controllo</h3>
                     <p className="text-sm text-slate-500 leading-relaxed">Usiamo la terapia manuale per ridurre il dolore acuto e esercizi specifici per "riaccendere" i muscoli stabilizzatori.</p>
                   </div>
                   <div className="relative">
                     <div className="text-[80px] font-black text-[#55B4FF]/10 absolute top-[-40px] left-0">03</div>
                     <Weight className="text-[#55B4FF] mb-6" size={32} />
-                    <h4 className="text-xl font-bold text-[#022166] mb-4">Carico e Performance</h4>
+                    <h3 className="text-xl font-bold text-[#022166] mb-4">Carico e Performance</h3>
                     <p className="text-sm text-slate-500 leading-relaxed">Costruiamo una struttura solida. Aumentiamo gradualmente il carico per preparare il tuo ginocchio al ritorno alla vita quotidiana o allo sport.</p>
                   </div>
                 </div>
@@ -271,10 +271,10 @@ export default function GinocchioRiabilitazionePage() {
                 <span className="text-[#55B4FF] font-black text-[10px] uppercase tracking-[0.4em]">Fisioterapia Malavasi — Specialisti della Biomeccanica</span>
               </div>
               
-              <h3 className="text-4xl md:text-6xl font-bold mb-8 tracking-tighter leading-[0.95]">
+              <h2 className="text-4xl md:text-6xl font-bold mb-8 tracking-tighter leading-[0.95]">
                 Ripara la tua biomeccanica, <br />
                 <span className="text-[#55B4FF]">riprendi il controllo.</span>
-              </h3>
+              </h2>
               
               <p className="text-white/60 text-xl mb-12 font-light leading-relaxed max-w-xl">
                 Ogni giorno di dolore è un giorno di carico errato per le tue articolazioni. Prenota oggi una valutazione clinica specialistica OMPT.

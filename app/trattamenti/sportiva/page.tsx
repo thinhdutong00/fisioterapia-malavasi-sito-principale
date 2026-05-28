@@ -76,7 +76,7 @@ export default function FisioterapiaSportiva() {
                 <div className="mb-8 p-4 bg-[#F8FAFC] w-fit rounded-2xl group-hover:bg-[#022166] group-hover:text-white transition-colors duration-500">
                   {p.icon}
                 </div>
-                <h3 className="text-2xl font-bold text-[#022166] mb-4 tracking-tight">{p.titolo}</h3>
+                <h2 className="text-2xl font-bold text-[#022166] mb-4 tracking-tight">{p.titolo}</h2>
                 <p className="text-slate-500 leading-relaxed text-sm md:text-base">
                   {p.desc}
                 </p>
@@ -97,21 +97,21 @@ export default function FisioterapiaSportiva() {
                     <div className="flex gap-5">
                       <div className="flex-shrink-0 w-12 h-12 bg-[#F8FAFC] text-[#022166] rounded-2xl flex items-center justify-center font-black border border-slate-100">01</div>
                       <div>
-                        <h4 className="font-bold text-[#022166] text-lg mb-1">Valutazione Biomeccanica Specifica</h4>
+                        <h3 className="font-bold text-[#022166] text-lg mb-1">Valutazione Biomeccanica Specifica</h3>
                         <p className="text-slate-500 text-sm">Analisi del gesto tecnico specifico della tua disciplina per individuare squilibri funzionali.</p>
                       </div>
                     </div>
                     <div className="flex gap-5">
                       <div className="flex-shrink-0 w-12 h-12 bg-[#F8FAFC] text-[#022166] rounded-2xl flex items-center justify-center font-black border border-slate-100">02</div>
                       <div>
-                        <h4 className="font-bold text-[#022166] text-lg mb-1">Monitoraggio Rigoroso del Carico</h4>
+                        <h3 className="font-bold text-[#022166] text-lg mb-1">Monitoraggio Rigoroso del Carico</h3>
                         <p className="text-slate-500 text-sm">Gestione scientifica dello stress tissutale per garantire una progressione sicura senza ricadute.</p>
                       </div>
                     </div>
                     <div className="flex gap-5">
                       <div className="flex-shrink-0 w-12 h-12 bg-[#F8FAFC] text-[#022166] rounded-2xl flex items-center justify-center font-black border border-slate-100">03</div>
                       <div>
-                        <h4 className="font-bold text-[#022166] text-lg mb-1">Integrazione Manuale e Attiva</h4>
+                        <h3 className="font-bold text-[#022166] text-lg mb-1">Integrazione Manuale e Attiva</h3>
                         <p className="text-slate-500 text-sm">Sinergia tra terapia manuale specialistica ed esercizio terapeutico ad alto carico.</p>
                       </div>
                     </div>
@@ -120,7 +120,7 @@ export default function FisioterapiaSportiva() {
                 
                 <div className="bg-[#022166] rounded-[3rem] p-12 text-white shadow-2xl relative overflow-hidden">
                    <TrendingUp size={240} className="absolute -bottom-16 -right-16 text-white/5" />
-                   <h3 className="text-2xl font-black mb-8 relative z-10">Cosa trattiamo:</h3>
+                   <h2 className="text-2xl font-black mb-8 relative z-10">Cosa trattiamo:</h2>
                    <ul className="space-y-5 relative z-10">
                      {[
                        "Lesioni muscolari (strappi, stiramenti)",

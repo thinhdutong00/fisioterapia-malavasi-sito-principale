@@ -4,10 +4,7 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { 
-  Users, 
   ChevronRight, 
-  Mail, 
-  MapPin, 
   Stethoscope, 
   HeartPulse, 
   Plus, 
@@ -55,7 +52,7 @@ export default function LavoraConNoi() {
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="relative aspect-square md:aspect-video lg:aspect-square rounded-[3rem] overflow-hidden shadow-2xl">
               <Image 
-                src="biglietto-da-visita-malavasi.png" 
+                src="/biglietto-da-visita-malavasi.png" 
                 alt="Ambiente di lavoro Studio Malavasi"
                 fill
                 className="object-cover"
@@ -94,7 +91,7 @@ export default function LavoraConNoi() {
                       {item.icon}
                     </div>
                     <div>
-                      <h3 className="font-bold text-[#022166] text-lg mb-1">{item.title}</h3>
+                      <h2 className="font-bold text-[#022166] text-lg mb-1">{item.title}</h2>
                       <p className="text-slate-500 text-sm leading-relaxed">{item.desc}</p>
                     </div>
                   </div>

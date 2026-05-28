@@ -177,7 +177,7 @@ export default function GonartrosiAdsPage() {
 
                 {step === 1 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-3">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Qual è il problema principale?</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Qual è il problema principale?</h2>
                     {['Dolore nel camminare', 'Rigidità mattutina', 'Gonfiore al ginocchio', 'Altro'].map((opzione) => (
                       <button 
                         key={opzione}
@@ -195,14 +195,14 @@ export default function GonartrosiAdsPage() {
 
                 {step === 1.2 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Specifica i sintomi</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Specifica i sintomi</h2>
                     <input type="text" placeholder="Es: dolore scendendo le scale..." className="w-full bg-white/5 border-b-2 border-white/20 p-4 outline-none focus:border-[#55B4FF] text-white font-bold" value={formData.problemaSpecifico} onChange={(e) => setFormData({...formData, problemaSpecifico: e.target.value})} />
                   </div>
                 )}
 
                 {step === 2 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-3">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Da quanto dura il dolore?</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Da quanto dura il dolore?</h2>
                     {['Meno di 6 mesi', 'Da 6 a 12 mesi', 'Oltre un anno'].map((opzione) => (
                       <button key={opzione} onClick={() => setFormData({...formData, durata: opzione})} className={`w-full p-4 rounded-xl border-2 font-bold transition-all text-left flex justify-between items-center ${formData.durata === opzione ? 'border-[#55B4FF] bg-[#55B4FF] text-[#022166]' : 'border-white/10 bg-white/5 text-white hover:border-white/40'}`}>
                         <span className="text-sm uppercase">{opzione}</span>
@@ -214,7 +214,7 @@ export default function GonartrosiAdsPage() {
 
                 {step === 3 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-3">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Quanto limita i tuoi passi?</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Quanto limita i tuoi passi?</h2>
                     {['Poco (fastidio)', 'Abbastanza (cammino meno)', 'Molto (difficoltà scale)'].map((opzione) => (
                       <button key={opzione} onClick={() => setFormData({...formData, limitazione: opzione})} className={`w-full p-4 rounded-xl border-2 font-bold transition-all text-left flex justify-between items-center ${formData.limitazione === opzione ? 'border-[#55B4FF] bg-[#55B4FF] text-[#022166]' : 'border-white/10 bg-white/5 text-white hover:border-white/40'}`}>
                         <span className="text-sm uppercase">{opzione}</span>
@@ -226,7 +226,7 @@ export default function GonartrosiAdsPage() {
 
                 {step === 4 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-3">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Il tuo obiettivo?</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Il tuo obiettivo?</h2>
                     {['Camminare senza dolore', 'Evitare la protesi', 'Tornare a fare sport', 'Ridurre i farmaci', 'Altro'].map((opzione) => (
                       <button key={opzione} onClick={() => setFormData({...formData, obiettivo: opzione})} className={`w-full p-4 rounded-xl border-2 font-bold transition-all text-left flex justify-between items-center ${formData.obiettivo === opzione ? 'border-[#55B4FF] bg-[#55B4FF] text-[#022166]' : 'border-white/10 bg-white/5 text-white hover:border-white/40'}`}>
                         <span className="text-sm uppercase tracking-tighter">{opzione}</span>
@@ -238,14 +238,14 @@ export default function GonartrosiAdsPage() {
 
                 {step === 4.2 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Dettaglia il tuo traguardo</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Dettaglia il tuo traguardo</h2>
                     <textarea placeholder="Es: tornare a fare trekking..." className="w-full bg-white/5 border-b-2 border-white/20 p-4 outline-none focus:border-[#55B4FF] text-white font-bold min-h-[100px] resize-none" value={formData.obiettivoSpecifico} onChange={(e) => setFormData({...formData, obiettivoSpecifico: e.target.value})} />
                   </div>
                 )}
 
                 {step === 5 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-3">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Hai già fatto riabilitazione in precedenza?</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Hai già fatto riabilitazione in precedenza?</h2>
                     {['Sì', 'No'].map((opzione) => (
                       <button key={opzione} onClick={() => setFormData({...formData, giaFattoFisio: opzione})} className={`w-full p-4 rounded-xl border-2 font-bold transition-all text-left flex justify-between items-center ${formData.giaFattoFisio === opzione ? 'border-[#55B4FF] bg-[#55B4FF] text-[#022166]' : 'border-white/10 bg-white/5 text-white hover:border-white/40'}`}>
                         <span className="text-sm uppercase">{opzione}</span>
@@ -257,7 +257,7 @@ export default function GonartrosiAdsPage() {
 
                 {step === 6 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-3">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Hai una RX o Risonanza?</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Hai una RX o Risonanza?</h2>
                     {['Sì', 'No'].map((opzione) => (
                       <button key={opzione} onClick={() => setFormData({...formData, diagnosiMedica: opzione})} className={`w-full p-4 rounded-xl border-2 font-bold transition-all text-left flex justify-between items-center ${formData.diagnosiMedica === opzione ? 'border-[#55B4FF] bg-[#55B4FF] text-[#022166]' : 'border-white/10 bg-white/5 text-white hover:border-white/40'}`}>
                         <span className="text-sm uppercase">{opzione}</span>
@@ -269,7 +269,7 @@ export default function GonartrosiAdsPage() {
 
                 {step === 6.5 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 text-center">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Allega referto</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Allega referto</h2>
                     <div className="relative group p-8 border-2 border-dashed border-white/20 rounded-2xl bg-white/5">
                       <input type="file" onChange={(e) => setFile(e.target.files ? e.target.files[0] : null)} className="absolute inset-0 opacity-0 cursor-pointer" />
                       {file ? <><FileText size={32} className="mx-auto text-[#55B4FF] mb-2" /><p className="text-white text-xs font-bold">{file.name}</p></> : <><Upload size={32} className="mx-auto text-white/20 mb-2" /><p className="text-white/40 text-[10px] uppercase font-bold tracking-widest">Seleziona PDF o JPG</p></>}
@@ -279,7 +279,7 @@ export default function GonartrosiAdsPage() {
 
                 {step === 7 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-3">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">La tua fascia d'età?</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">La tua fascia d'età?</h2>
                     {['40–55', '56–70', '71–85', '85+'].map((opzione) => (
                       <button key={opzione} onClick={() => setFormData({...formData, eta: opzione})} className={`w-full p-4 rounded-xl border-2 font-bold transition-all text-left flex justify-between items-center ${formData.eta === opzione ? 'border-[#55B4FF] bg-[#55B4FF] text-[#022166]' : 'border-white/10 bg-white/5 text-white hover:border-white/40'}`}>
                         <span className="text-sm uppercase">{opzione}</span>
@@ -325,7 +325,7 @@ export default function GonartrosiAdsPage() {
 
                 {step === 9 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-3">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Dove vuoi vederci?</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Dove vuoi vederci?</h2>
                     {['Sede Cavezzo (Mo)', 'Sede Rovereto (Mo)', 'Domicilio'].map((s) => (
                       <button key={s} onClick={() => setFormData({...formData, sede: s})} className={`w-full p-4 rounded-xl border-2 font-bold transition-all text-left flex justify-between items-center ${formData.sede === s ? 'border-[#55B4FF] bg-[#55B4FF] text-[#022166]' : 'border-white/10 bg-white/5 text-white hover:border-white/40'}`}>
                         <span className="text-sm uppercase">{s}</span>
@@ -337,7 +337,7 @@ export default function GonartrosiAdsPage() {
 
                 {step === 10 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight flex items-center gap-2"><MapPin size={24} /> Indirizzo</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight flex items-center gap-2"><MapPin size={24} /> Indirizzo</h2>
                     <input type="text" placeholder="Via, Civico, Città" className="w-full bg-white/5 border-b-2 border-white/20 p-4 text-white font-bold" value={formData.indirizzo} onChange={(e) => setFormData({...formData, indirizzo: e.target.value})} />
                   </div>
                 )}
@@ -345,7 +345,7 @@ export default function GonartrosiAdsPage() {
                 {/* STEP 11: CONTATTI (Versione con Link Privacy) */}
 {step === 11 && (
   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-4">
-    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Ultime informazioni</h3>
+    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Ultime informazioni</h2>
     <input type="text" placeholder="Nome e Cognome" className="w-full bg-white/5 border-b-2 border-white/20 p-3 text-white font-bold outline-none focus:border-[#55B4FF]" value={formData.nome} onChange={(e) => setFormData({...formData, nome: e.target.value})} />
     <input type="tel" placeholder="Telefono" className="w-full bg-white/5 border-b-2 border-white/20 p-3 text-white font-bold outline-none focus:border-[#55B4FF]" value={formData.telefono} onChange={(e) => setFormData({...formData, telefono: e.target.value})} />
     <input type="email" placeholder="Email" className="w-full bg-white/5 border-b-2 border-white/20 p-3 text-white font-bold outline-none focus:border-[#55B4FF]" value={formData.email} onChange={(e) => setFormData({...formData, email: e.target.value})} />
@@ -407,7 +407,7 @@ export default function GonartrosiAdsPage() {
               </div>
               <div className="lg:col-span-8">
                 <div className="bg-white p-10 md:p-14 rounded-[3rem] border border-slate-100 shadow-sm transition-all hover:shadow-xl">
-                  <h3 className="text-2xl font-bold text-[#022166] mb-8 tracking-tight">Perché la scienza è dalla tua parte:</h3>
+                  <h2 className="text-2xl font-bold text-[#022166] mb-8 tracking-tight">Perché la scienza è dalla tua parte:</h2>
                   <p className="text-slate-600 text-lg leading-relaxed mb-10 italic">
                     "L'artrosi non è una malattia da 'usura', ma una condizione che risponde incredibilmente bene al carico graduale."
                   </p>
@@ -421,7 +421,7 @@ export default function GonartrosiAdsPage() {
                       <div key={i} className="flex gap-4">
                         <CheckCircle2 className="text-[#55B4FF] flex-shrink-0" size={24} />
                         <div>
-                          <h4 className="font-bold text-[#022166] text-sm uppercase tracking-wide">{item.t}</h4>
+                          <h3 className="font-bold text-[#022166] text-sm uppercase tracking-wide">{item.t}</h3>
                           <p className="text-slate-500 text-xs leading-relaxed">{item.d}</p>
                         </div>
                       </div>
@@ -462,7 +462,7 @@ export default function GonartrosiAdsPage() {
                   <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:scale-110 transition-transform">
                     <Move size={150} />
                   </div>
-                  <h4 className="text-2xl font-bold mb-6 tracking-tight italic">"Il ginocchio non è vecchio, è solo il modo in cui lavora che va aggiornato."</h4>
+                  <h3 className="text-2xl font-bold mb-6 tracking-tight italic">"Il ginocchio non è vecchio, è solo il modo in cui lavora che va aggiornato."</h3>
                   <div className="space-y-4 relative z-10">
                     <div className="flex items-center gap-3">
                       <div className="w-2 h-2 bg-[#55B4FF] rounded-full"></div>
@@ -494,7 +494,7 @@ export default function GonartrosiAdsPage() {
                   ].map((step, i) => (
                     <div key={i}>
                       <span className="text-4xl font-black text-[#55B4FF] block mb-4">/ {step.n}</span>
-                      <h4 className="text-xl font-bold text-[#022166] mb-3">{step.t}</h4>
+                      <h3 className="text-xl font-bold text-[#022166] mb-3">{step.t}</h3>
                       <p className="text-sm text-slate-500 leading-relaxed">{step.d}</p>
                     </div>
                   ))}
@@ -514,10 +514,10 @@ export default function GonartrosiAdsPage() {
                 <span className="text-[#55B4FF] font-black text-[10px] uppercase tracking-[0.4em]">Fisioterapia Malavasi</span>
               </div>
               
-              <h3 className="text-4xl md:text-6xl font-bold mb-8 tracking-tighter leading-[0.95]">
+              <h2 className="text-4xl md:text-6xl font-bold mb-8 tracking-tighter leading-[0.95]">
                 Torna a vivere <br />
                 <span className="text-[#55B4FF]">senza rassegnazione.</span>
-              </h3>
+              </h2>
               
               <button 
                 onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}

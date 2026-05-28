@@ -19,28 +19,56 @@ export default function Navbar() {
   const [openSubmenu, setOpenSubmenu] = useState<string | null>(null);
   const [openInnerSubmenu, setOpenInnerSubmenu] = useState<string | null>(null);
   const lastScrollY = useRef(0);
+  const isVisibleRef = useRef(isVisible);
+  const isScrolledRef = useRef(isScrolled);
+  const isMobileMenuOpenRef = useRef(isMobileMenuOpen);
+  const rafRef = useRef<number | null>(null);
+
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false);
+    setOpenSubmenu(null);
+    setOpenInnerSubmenu(null);
+  };
 
   // Gestione Scroll
   useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      setIsScrolled(currentScrollY > 80);
+    isMobileMenuOpenRef.current = isMobileMenuOpen;
+  }, [isMobileMenuOpen]);
 
-      if (currentScrollY < 10) {
-        setIsVisible(true);
-      } else if (currentScrollY > lastScrollY.current) {
-        if (!isMobileMenuOpen) {
-          setIsVisible(false);
+  useEffect(() => {
+    const handleScroll = () => {
+      if (rafRef.current !== null) return;
+
+      rafRef.current = window.requestAnimationFrame(() => {
+        const currentScrollY = window.scrollY;
+        const nextScrolled = currentScrollY > 80;
+        let nextVisible = true;
+
+        if (currentScrollY >= 10 && currentScrollY > lastScrollY.current && !isMobileMenuOpenRef.current) {
+          nextVisible = false;
         }
-      } else {
-        setIsVisible(true);
-      }
-      lastScrollY.current = currentScrollY;
+
+        if (nextScrolled !== isScrolledRef.current) {
+          isScrolledRef.current = nextScrolled;
+          setIsScrolled(nextScrolled);
+        }
+
+        if (nextVisible !== isVisibleRef.current) {
+          isVisibleRef.current = nextVisible;
+          setIsVisible(nextVisible);
+        }
+
+        lastScrollY.current = currentScrollY;
+        rafRef.current = null;
+      });
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [isMobileMenuOpen]);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      if (rafRef.current !== null) window.cancelAnimationFrame(rafRef.current);
+    };
+  }, []);
 
   // Blocca lo scroll della pagina principale quando l'hamburger menu è aperto
   useEffect(() => {
@@ -48,8 +76,6 @@ export default function Navbar() {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "unset";
-      setOpenSubmenu(null);
-      setOpenInnerSubmenu(null);
     }
   }, [isMobileMenuOpen]);
 
@@ -138,7 +164,7 @@ export default function Navbar() {
           <div className={`relative transition-all duration-500 ${
             isScrolled ? "w-36 h-8 md:w-44 h-9" : "w-52 h-10 md:w-72 h-14"
           }`}>
-            <Image src={logoSrc} alt="Logo Malavasi" fill priority className="object-contain transition-all duration-500" />
+            <Image src={logoSrc} alt="Logo Malavasi" fill className="object-contain transition-all duration-500" />
           </div>
         </Link>
 
@@ -210,7 +236,7 @@ export default function Navbar() {
             </Link>
           </div>
 
-          <button onClick={() => setIsMobileMenuOpen(true)} className={`lg:hidden p-2 transition-colors ${textColor}`}>
+          <button onClick={() => setIsMobileMenuOpen(true)} aria-label="Apri menu di navigazione" className={`lg:hidden p-2 transition-colors ${textColor}`}>
             <Menu size={32} />
           </button>
         </div>
@@ -224,19 +250,19 @@ export default function Navbar() {
       >
         <div className="flex flex-col h-full overflow-y-auto">
           <div className="w-full flex items-center justify-between py-8 px-6 border-b border-slate-50 shrink-0">
-            <Link href="/" onClick={() => setIsMobileMenuOpen(false)}>
+            <Link href="/" onClick={closeMobileMenu}>
               <div className="relative w-48 h-10">
                 <Image src="/logo-fisioterapia-malavasi.png" alt="Logo Malavasi" fill className="object-contain" />
               </div>
             </Link>
-            <button onClick={() => setIsMobileMenuOpen(false)} className="p-2 text-[#022166]">
+            <button onClick={closeMobileMenu} aria-label="Chiudi menu di navigazione" className="p-2 text-[#022166]">
               <X size={32} />
             </button>
           </div>
 
           <div className="flex flex-col px-8 pb-12">
             <nav className="flex flex-col">
-              <Link href="/" onClick={() => setIsMobileMenuOpen(false)} className="text-lg font-bold text-[#022166] uppercase py-5 border-b border-slate-50">
+              <Link href="/" onClick={closeMobileMenu} className="text-lg font-bold text-[#022166] uppercase py-5 border-b border-slate-50">
                 Home
               </Link>
               
@@ -245,10 +271,10 @@ export default function Navbar() {
                   {item.sub ? (
                     <div className="flex flex-col">
                       <div className="flex items-center justify-between w-full">
-                        <Link href={item.h} onClick={() => setIsMobileMenuOpen(false)} className="text-lg font-bold text-[#022166] uppercase py-5 flex-grow">
+                        <Link href={item.h} onClick={closeMobileMenu} className="text-lg font-bold text-[#022166] uppercase py-5 flex-grow">
                           {item.n}
                         </Link>
-                        <button onClick={() => setOpenSubmenu(openSubmenu === item.n ? null : item.n)} className="p-5">
+                        <button onClick={() => setOpenSubmenu(openSubmenu === item.n ? null : item.n)} aria-label={`Apri sottomenu ${item.n}`} className="p-5">
                           <ChevronDown size={20} className={`transition-transform duration-300 ${openSubmenu === item.n ? "rotate-180 text-[#55B4FF]" : ""}`} />
                         </button>
                       </div>
@@ -258,12 +284,13 @@ export default function Navbar() {
                         {item.sub.map((sub) => (
                           <div key={sub.n} className="flex flex-col">
                             <div className="flex items-center justify-between w-full pr-4">
-                              <Link href={sub.h} onClick={() => setIsMobileMenuOpen(false)} className="block py-3 pl-4 text-sm font-semibold text-slate-700 flex-grow">
+                              <Link href={sub.h} onClick={closeMobileMenu} className="block py-3 pl-4 text-sm font-semibold text-slate-700 flex-grow">
                                 {sub.n}
                               </Link>
                               {sub.innerSub && (
                                 <button 
                                   onClick={() => setOpenInnerSubmenu(openInnerSubmenu === sub.n ? null : sub.n)} 
+                                  aria-label={`Apri sottomenu ${sub.n}`}
                                   className="p-3"
                                 >
                                   <ChevronDown size={16} className={`transition-transform ${openInnerSubmenu === sub.n ? "rotate-180 text-[#55B4FF]" : "text-slate-400"}`} />
@@ -277,7 +304,7 @@ export default function Navbar() {
                                 openInnerSubmenu === sub.n ? "max-h-[500px] mb-2" : "max-h-0"
                               }`}>
                                 {sub.innerSub.map((inner) => (
-                                  <Link key={inner.n} href={inner.h} onClick={() => setIsMobileMenuOpen(false)} className="block py-3 pl-6 text-xs font-medium text-slate-500 border-l border-slate-200">
+                                  <Link key={inner.n} href={inner.h} onClick={closeMobileMenu} className="block py-3 pl-6 text-xs font-medium text-slate-500 border-l border-slate-200">
                                     {inner.n}
                                   </Link>
                                 ))}
@@ -288,7 +315,7 @@ export default function Navbar() {
                       </div>
                     </div>
                   ) : (
-                    <Link href={item.h} onClick={() => setIsMobileMenuOpen(false)} className="text-lg font-bold text-[#022166] uppercase py-5">
+                    <Link href={item.h} onClick={closeMobileMenu} className="text-lg font-bold text-[#022166] uppercase py-5">
                       {item.n}
                     </Link>
                   )}
@@ -300,7 +327,7 @@ export default function Navbar() {
               <a href="tel:+393338225464" className="w-full flex items-center justify-center gap-4 bg-slate-100 text-[#022166] py-5 rounded-2xl font-black uppercase text-xs tracking-widest">
                 <Phone size={20} /> Chiama Studio
               </a>
-              <Link href="/prenota" onClick={() => setIsMobileMenuOpen(false)} className="w-full flex items-center justify-center gap-4 bg-[#022166] text-white py-5 rounded-2xl font-black uppercase text-xs tracking-widest shadow-xl">
+              <Link href="/prenota" onClick={closeMobileMenu} className="w-full flex items-center justify-center gap-4 bg-[#022166] text-white py-5 rounded-2xl font-black uppercase text-xs tracking-widest shadow-xl">
                 <CalendarCheck size={20} /> Prenota Ora
               </Link>
             </div>

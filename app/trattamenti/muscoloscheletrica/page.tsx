@@ -77,7 +77,7 @@ export default function FisioterapiaMuscoloscheletrica() {
                 <div className="mb-8 p-4 bg-[#F8FAFC] w-fit rounded-2xl group-hover:bg-[#022166] group-hover:text-white transition-colors duration-500">
                   {p.icon}
                 </div>
-                <h3 className="text-2xl font-bold text-[#022166] mb-4 tracking-tight">{p.titolo}</h3>
+                <h2 className="text-2xl font-bold text-[#022166] mb-4 tracking-tight">{p.titolo}</h2>
                 <p className="text-slate-500 leading-relaxed text-sm md:text-base">
                   {p.desc}
                 </p>
@@ -162,7 +162,7 @@ export default function FisioterapiaMuscoloscheletrica() {
                    <div className="absolute top-6 right-8 text-[#022166]/10">
                       <Stethoscope size={100} />
                    </div>
-                   <h4 className="text-2xl font-bold text-[#022166] mb-6 relative z-10">Metodologia di cura</h4>
+                   <h3 className="text-2xl font-bold text-[#022166] mb-6 relative z-10">Metodologia di cura</h3>
                    <p className="text-slate-500 text-sm leading-relaxed mb-8 relative z-10">
                     Ogni trattamento integra tecniche di terapia manuale ed esercizio correttivo, 
                     mirando non solo alla riduzione del dolore, ma al potenziamento della resilienza strutturale dei tessuti.

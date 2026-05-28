@@ -178,7 +178,7 @@ export default function TendinopatiaSpallaPage() {
 
                 {step === 1 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-3">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Cosa senti alla spalla?</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Cosa senti alla spalla?</h2>
                     {['Dolore solo nel movimento', 'Dolore a riposo/notte', 'Debolezza improvvisa', 'Altro'].map((opzione) => (
                       <button 
                         key={opzione}
@@ -196,14 +196,14 @@ export default function TendinopatiaSpallaPage() {
 
                 {step === 1.2 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 text-left">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight text-left">Specifica i sintomi</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight text-left">Specifica i sintomi</h2>
                     <input type="text" placeholder="Es: dolore acuto quando tolgo la maglia..." className="w-full bg-white/5 border-b-2 border-white/20 p-4 outline-none focus:border-[#55B4FF] text-white font-bold" value={formData.problemaSpecifico} onChange={(e) => setFormData({...formData, problemaSpecifico: e.target.value})} />
                   </div>
                 )}
 
                 {step === 2 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-3">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Da quanto dura il dolore?</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Da quanto dura il dolore?</h2>
                     {['Pochi giorni', 'Da qualche mese', 'Oltre 6 mesi'].map((opzione) => (
                       <button key={opzione} onClick={() => setFormData({...formData, durata: opzione})} className={`w-full p-4 rounded-xl border-2 font-bold transition-all text-left flex justify-between items-center ${formData.durata === opzione ? 'border-[#55B4FF] bg-[#55B4FF] text-[#022166]' : 'border-white/10 bg-white/5 text-white hover:border-white/40'}`}>
                         <span className="text-sm uppercase">{opzione}</span>
@@ -215,7 +215,7 @@ export default function TendinopatiaSpallaPage() {
 
                 {step === 3 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-3">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Come impatta sulla vita?</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Come impatta sulla vita?</h2>
                     {['Lieve fastidio', 'Difficoltà nel lavoro/sport', 'Blocco totale movimenti'].map((opzione) => (
                       <button key={opzione} onClick={() => setFormData({...formData, limitazione: opzione})} className={`w-full p-4 rounded-xl border-2 font-bold transition-all text-left flex justify-between items-center ${formData.limitazione === opzione ? 'border-[#55B4FF] bg-[#55B4FF] text-[#022166]' : 'border-white/10 bg-white/5 text-white hover:border-white/40'}`}>
                         <span className="text-sm uppercase">{opzione}</span>
@@ -227,7 +227,7 @@ export default function TendinopatiaSpallaPage() {
 
                 {step === 4 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-3">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Il tuo obiettivo principale?</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Il tuo obiettivo principale?</h2>
                     {['Ridurre il dolore', 'Tornare allo sport', 'Recuperare forza', 'Evitare intervento', 'Altro'].map((opzione) => (
                       <button key={opzione} onClick={() => setFormData({...formData, obiettivo: opzione})} className={`w-full p-4 rounded-xl border-2 font-bold transition-all text-left flex justify-between items-center ${formData.obiettivo === opzione ? 'border-[#55B4FF] bg-[#55B4FF] text-[#022166]' : 'border-white/10 bg-white/5 text-white hover:border-white/40'}`}>
                         <span className="text-sm uppercase tracking-tighter">{opzione}</span>
@@ -239,14 +239,14 @@ export default function TendinopatiaSpallaPage() {
 
                 {step === 4.2 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Descrivi il tuo traguardo</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Descrivi il tuo traguardo</h2>
                     <textarea placeholder="Descrivi qui..." className="w-full bg-white/5 border-b-2 border-white/20 p-4 outline-none focus:border-[#55B4FF] text-white font-bold min-h-[100px] resize-none" value={formData.obiettivoSpecifico} onChange={(e) => setFormData({...formData, obiettivoSpecifico: e.target.value})} />
                   </div>
                 )}
 
                 {step === 5 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-3">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Hai già fatto fisioterapia per questo problema?</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Hai già fatto fisioterapia per questo problema?</h2>
                     {['Sì', 'No'].map((opzione) => (
                       <button key={opzione} onClick={() => setFormData({...formData, giaFattoFisio: opzione})} className={`w-full p-4 rounded-xl border-2 font-bold transition-all text-left flex justify-between items-center ${formData.giaFattoFisio === opzione ? 'border-[#55B4FF] bg-[#55B4FF] text-[#022166]' : 'border-white/10 bg-white/5 text-white hover:border-white/40'}`}>
                         <span className="text-sm uppercase">{opzione}</span>
@@ -258,7 +258,7 @@ export default function TendinopatiaSpallaPage() {
 
                 {step === 6 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-3">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Hai una Risonanza o Ecografia?</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Hai una Risonanza o Ecografia?</h2>
                     {['Sì', 'No'].map((opzione) => (
                       <button key={opzione} onClick={() => setFormData({...formData, diagnosiMedica: opzione})} className={`w-full p-4 rounded-xl border-2 font-bold transition-all text-left flex justify-between items-center ${formData.diagnosiMedica === opzione ? 'border-[#55B4FF] bg-[#55B4FF] text-[#022166]' : 'border-white/10 bg-white/5 text-white hover:border-white/40'}`}>
                         <span className="text-sm uppercase">{opzione}</span>
@@ -270,7 +270,7 @@ export default function TendinopatiaSpallaPage() {
 
                 {step === 6.5 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 text-center text-left">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Allega il referto</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Allega il referto</h2>
                     <div className="relative group p-8 border-2 border-dashed border-white/20 rounded-2xl bg-white/5">
                       <input type="file" onChange={(e) => setFile(e.target.files ? e.target.files[0] : null)} className="absolute inset-0 opacity-0 cursor-pointer" />
                       {file ? <><FileText size={32} className="mx-auto text-[#55B4FF] mb-2" /><p className="text-white text-xs font-bold">{file.name}</p></> : <><Upload size={32} className="mx-auto text-white/20 mb-2" /><p className="text-white/40 text-[10px] uppercase font-bold tracking-widest text-left">Trascina qui o seleziona</p></>}
@@ -280,7 +280,7 @@ export default function TendinopatiaSpallaPage() {
 
                 {step === 7 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-3">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">La tua fascia d'età</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">La tua fascia d'età</h2>
                     {['Sotto i 30', '31–50', '51–70', '70+'].map((opzione) => (
                       <button key={opzione} onClick={() => setFormData({...formData, eta: opzione})} className={`w-full p-4 rounded-xl border-2 font-bold transition-all text-left flex justify-between items-center ${formData.eta === opzione ? 'border-[#55B4FF] bg-[#55B4FF] text-[#022166]' : 'border-white/10 bg-white/5 text-white hover:border-white/40'}`}>
                         <span className="text-sm uppercase">{opzione}</span>
@@ -326,7 +326,7 @@ export default function TendinopatiaSpallaPage() {
 
                 {step === 9 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-3">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Dove preferisci la seduta?</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Dove preferisci la seduta?</h2>
                     {['Sede Cavezzo (Mo)', 'Sede Rovereto (Mo)', 'Domicilio'].map((s) => (
                       <button key={s} onClick={() => setFormData({...formData, sede: s})} className={`w-full p-4 rounded-xl border-2 font-bold transition-all text-left flex justify-between items-center ${formData.sede === s ? 'border-[#55B4FF] bg-[#55B4FF] text-[#022166]' : 'border-white/10 bg-white/5 text-white hover:border-white/40'}`}>
                         <span className="text-sm uppercase">{s}</span>
@@ -338,14 +338,14 @@ export default function TendinopatiaSpallaPage() {
 
                 {step === 10 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 text-left">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight flex items-center gap-2"><MapPin size={24} /> Indirizzo domicilio</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight flex items-center gap-2"><MapPin size={24} /> Indirizzo domicilio</h2>
                     <input type="text" placeholder="Via, Civico, Città" className="w-full bg-white/5 border-b-2 border-white/20 p-4 text-white font-bold" value={formData.indirizzo} onChange={(e) => setFormData({...formData, indirizzo: e.target.value})} />
                   </div>
                 )}
 
                 {step === 11 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-4 text-left">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Dati di contatto</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Dati di contatto</h2>
                     <input type="text" placeholder="Nome e Cognome" className="w-full bg-white/5 border-b-2 border-white/20 p-3 text-white font-bold outline-none" value={formData.nome} onChange={(e) => setFormData({...formData, nome: e.target.value})} />
                     <input type="tel" placeholder="Cellulare" className="w-full bg-white/5 border-b-2 border-white/20 p-3 text-white font-bold outline-none" value={formData.telefono} onChange={(e) => setFormData({...formData, telefono: e.target.value})} />
                     <input type="email" placeholder="Email" className="w-full bg-white/5 border-b-2 border-white/20 p-3 text-white font-bold outline-none" value={formData.email} onChange={(e) => setFormData({...formData, email: e.target.value})} />
@@ -384,7 +384,7 @@ export default function TendinopatiaSpallaPage() {
                      <AlertCircle size={200} />
                    </div>
                    <div className="space-y-8 relative z-10 text-left">
-                      <h3 className="text-2xl font-bold text-[#022166]">Ti riconosci in questi sintomi?</h3>
+                      <h2 className="text-2xl font-bold text-[#022166]">Ti riconosci in questi sintomi?</h2>
                       <ul className="space-y-6">
                         {[
                           { t: "Dolore Notturno", d: "Difficoltà a dormire sul lato della spalla interessata." },
@@ -397,7 +397,7 @@ export default function TendinopatiaSpallaPage() {
                               <div className="h-2 w-2 rounded-full bg-[#55B4FF]"></div>
                             </div>
                             <div>
-                              <h4 className="font-bold text-[#022166] text-sm uppercase">{item.t}</h4>
+                              <h3 className="font-bold text-[#022166] text-sm uppercase">{item.t}</h3>
                               <p className="text-slate-500 text-sm leading-relaxed">{item.d}</p>
                             </div>
                           </li>
@@ -449,7 +449,7 @@ export default function TendinopatiaSpallaPage() {
                     <div key={i} className="flex gap-4">
                       <item.i className="text-[#55B4FF] flex-shrink-0" size={28} />
                       <div>
-                        <h4 className="font-bold text-sm uppercase mb-2 tracking-widest text-white">{item.t}</h4>
+                        <h3 className="font-bold text-sm uppercase mb-2 tracking-widest text-white">{item.t}</h3>
                         <p className="text-white/50 text-sm leading-relaxed">{item.d}</p>
                       </div>
                     </div>
@@ -474,7 +474,7 @@ export default function TendinopatiaSpallaPage() {
               ].map((step, idx) => (
                 <div key={idx} className="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl transition-all text-left">
                   <span className="text-[10px] font-black uppercase text-[#55B4FF] tracking-[0.2em] block mb-4">{step.t}</span>
-                  <h4 className="text-xl font-bold text-[#022166] mb-4">{step.s}</h4>
+                  <h3 className="text-xl font-bold text-[#022166] mb-4">{step.s}</h3>
                   <p className="text-sm text-slate-500 leading-relaxed">{step.d}</p>
                 </div>
               ))}
@@ -485,9 +485,9 @@ export default function TendinopatiaSpallaPage() {
           <section className="bg-white p-10 md:p-24 rounded-[4rem] border border-slate-100 shadow-sm relative overflow-hidden group text-left">
             <div className="grid lg:grid-cols-2 gap-12 items-center relative z-10">
               <div>
-                <h3 className="text-4xl md:text-5xl font-bold text-[#022166] mb-8 tracking-tighter">
+                <h2 className="text-4xl md:text-5xl font-bold text-[#022166] mb-8 tracking-tighter">
                   Non lasciare che la spalla <br />diventi un limite.
-                </h3>
+                </h2>
                 <p className="text-slate-600 text-lg mb-10 font-light leading-relaxed">
                   Una valutazione precoce può evitare l'aggravarsi della lesione. Prenota ora la tua consulenza OMPT.
                 </p>

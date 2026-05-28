@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function ThankYouPage() {
   return (
     <div className="min-h-screen bg-slate-50 flex items-center justify-center p-6 font-sans">
@@ -14,12 +16,12 @@ export default function ThankYouPage() {
           Il Dr. Malavasi o la segreteria ti contatteranno entro le prossime **24 ore** per confermare l'appuntamento.
         </p>
 
-        <a 
+        <Link 
           href="/" 
           className="block w-full py-4 px-6 bg-[#04285F] hover:bg-blue-900 text-white font-semibold rounded-xl transition duration-200 shadow-lg shadow-blue-900/20"
         >
           Torna alla Home
-        </a>
+        </Link>
       </div>
     </div>
   );

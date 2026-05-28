@@ -2,8 +2,12 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 
+type ConsentWindow = Window & {
+  gtag?: (...args: unknown[]) => void;
+  dataLayer?: unknown[];
+};
+
 export default function CookieBanner() {
-  const [mounted, setMounted] = useState(false);
   const [showBanner, setShowBanner] = useState(false);
   const [view, setView] = useState<"main" | "preferences">("main");
   
@@ -13,33 +17,38 @@ export default function CookieBanner() {
   });
 
   useEffect(() => {
-    setMounted(true);
-    const consent = localStorage.getItem("cookieConsent");
-    if (!consent) setShowBanner(true);
+    const timer = window.setTimeout(() => {
+      const consent = localStorage.getItem("cookieConsent");
+      if (!consent) setShowBanner(true);
+    }, 9000);
+
+    return () => window.clearTimeout(timer);
   }, []);
 
   const updateConsent = (choices: { analytics: boolean; ads: boolean }) => {
     localStorage.setItem("cookieConsent", JSON.stringify(choices));
+    const consentWindow = window as ConsentWindow;
     
-    if (typeof window !== "undefined" && (window as any).gtag) {
-      (window as any).gtag('consent', 'update', {
+    if (consentWindow.gtag) {
+      consentWindow.gtag('consent', 'update', {
         'ad_storage': choices.ads ? 'granted' : 'denied',
         'ad_user_data': choices.ads ? 'granted' : 'denied',
         'ad_ads_personalization': choices.ads ? 'granted' : 'denied',
         'analytics_storage': choices.analytics ? 'granted' : 'denied',
       });
       
-      (window as any).dataLayer.push({ 
+      consentWindow.dataLayer?.push({ 
         event: 'consent_updated',
         analytics_consent: choices.analytics ? 'granted' : 'denied',
         ads_consent: choices.ads ? 'granted' : 'denied'
       });
     }
+    window.dispatchEvent(new Event("cookie-consent-updated"));
     setShowBanner(false);
   };
 
   // Evita errori di idratazione in Next.js
-  if (!mounted || !showBanner) return null;
+  if (!showBanner) return null;
 
   return (
     <div className="fixed bottom-8 left-1/2 -translate-x-1/2 w-[calc(100%-3rem)] max-w-2xl z-[9999]">
@@ -68,7 +77,7 @@ export default function CookieBanner() {
                 Gestisci preferenze
               </button>
             </div>
-            <p className="text-[10px] text-center text-slate-400 uppercase tracking-widest font-medium">
+            <p className="text-[10px] text-center text-slate-600 uppercase tracking-widest font-medium">
               Consulta la <Link href="/cookie" className="underline hover:text-[#55B4FF]">Cookie Policy</Link>
             </p>
           </div>
@@ -117,7 +126,7 @@ export default function CookieBanner() {
             <div className="flex items-center justify-between pt-2">
               <button 
                 onClick={() => setView("main")}
-                className="text-slate-400 font-bold text-xs uppercase tracking-widest hover:text-[#022166]"
+                className="text-slate-600 font-bold text-xs uppercase tracking-widest hover:text-[#022166]"
               >
                 Indietro
               </button>

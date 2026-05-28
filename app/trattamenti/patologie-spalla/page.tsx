@@ -75,13 +75,13 @@ export default function SpallaRiabilitazionePage() {
                 <div className="bg-white p-10 md:p-14 rounded-[2rem] border border-slate-100 shadow-sm transition-all duration-500 hover:shadow-xl">
                   <div className="grid md:grid-cols-2 gap-10">
                     <div>
-                      <h3 className="text-[#55B4FF] font-bold text-lg mb-4 uppercase tracking-tighter">Dolore Notturno</h3>
+                      <h2 className="text-[#55B4FF] font-bold text-lg mb-4 uppercase tracking-tighter">Dolore Notturno</h2>
                       <p className="text-slate-500 text-base leading-relaxed">
                         Spesso legato a fenomeni infiammatori o borsiti. È il segnale che lo spazio sub-acromiale è ridotto e i tessuti sono in sofferenza. Ignorarlo può portare a rigidità cronica.
                       </p>
                     </div>
                     <div>
-                      <h3 className="text-[#022166] font-bold text-lg mb-4 uppercase tracking-tighter">Debolezza e Blocchi</h3>
+                      <h2 className="text-[#022166] font-bold text-lg mb-4 uppercase tracking-tighter">Debolezza e Blocchi</h2>
                       <p className="text-slate-500 text-base leading-relaxed">
                         Se avverti una "scossa" o mancanza di forza nei movimenti sopra la testa, potrebbe esserci un deficit di stabilità della scapola o una sofferenza dei tendini della cuffia.
                       </p>
@@ -122,11 +122,11 @@ export default function SpallaRiabilitazionePage() {
               <div className="lg:col-span-6 grid grid-cols-2 gap-4">
                 <div className="bg-[#022166] p-8 rounded-[2rem] text-white flex flex-col justify-end min-h-[250px]">
                   <MoveHorizontal className="mb-4 text-[#55B4FF]" size={40} />
-                  <h4 className="font-bold text-xl leading-tight">Recupero del <br/>Range of Motion</h4>
+                  <h3 className="font-bold text-xl leading-tight">Recupero del <br/>Range of Motion</h3>
                 </div>
                 <div className="bg-white p-8 rounded-[2rem] border border-slate-100 shadow-sm flex flex-col justify-end min-h-[250px]">
                   <Zap className="mb-4 text-[#022166]" size={40} />
-                  <h4 className="font-bold text-xl text-[#022166] leading-tight">Esercizio <br/>Funzionale</h4>
+                  <h3 className="font-bold text-xl text-[#022166] leading-tight">Esercizio <br/>Funzionale</h3>
                 </div>
               </div>
             </div>
@@ -144,19 +144,19 @@ export default function SpallaRiabilitazionePage() {
                   <div className="relative">
                     <div className="text-[80px] font-black text-[#55B4FF]/10 absolute top-[-40px] left-0">01</div>
                     <Stethoscope className="text-[#55B4FF] mb-6" size={32} />
-                    <h4 className="text-xl font-bold text-[#022166] mb-4">Screening Clinico</h4>
+                    <h3 className="text-xl font-bold text-[#022166] mb-4">Screening Clinico</h3>
                     <p className="text-sm text-slate-500 leading-relaxed">Test ortopedici di differenziazione per capire se l'origine è tendinea, articolare o riferita.</p>
                   </div>
                   <div className="relative">
                     <div className="text-[80px] font-black text-[#55B4FF]/10 absolute top-[-40px] left-0">02</div>
                     <RefreshCw className="text-[#55B4FF] mb-6" size={32} />
-                    <h4 className="text-xl font-bold text-[#022166] mb-4">Reset e Mobilità</h4>
+                    <h3 className="text-xl font-bold text-[#022166] mb-4">Reset e Mobilità</h3>
                     <p className="text-sm text-slate-500 leading-relaxed">Fase manuale per abbassare il dolore e "sbloccare" i segmenti rigidi (spalla e torace).</p>
                   </div>
                   <div className="relative">
                     <div className="text-[80px] font-black text-[#55B4FF]/10 absolute top-[-40px] left-0">03</div>
                     <Compass className="text-[#55B4FF] mb-6" size={32} />
-                    <h4 className="text-xl font-bold text-[#022166] mb-4">Autogestione</h4>
+                    <h3 className="text-xl font-bold text-[#022166] mb-4">Autogestione</h3>
                     <p className="text-sm text-slate-500 leading-relaxed">Ti forniamo gli strumenti per mantenere i risultati nel tempo in totale autonomia.</p>
                   </div>
                 </div>
@@ -212,9 +212,9 @@ export default function SpallaRiabilitazionePage() {
           {/* FINAL CTA - OTTIMIZZATA PER CONVERSIONE ADS */}
           <section className="bg-[#022166] p-12 md:p-24 rounded-[4rem] shadow-2xl relative overflow-hidden text-white">
             <div className="relative z-10 text-center">
-              <h3 className="text-4xl md:text-7xl font-bold mb-8 tracking-tighter">
+              <h2 className="text-4xl md:text-7xl font-bold mb-8 tracking-tighter">
                 Smetti di convivere <br />con il <span className="text-[#55B4FF]">dolore.</span>
-              </h3>
+              </h2>
               <p className="text-white/70 text-xl mb-12 max-w-2xl mx-auto font-light">
                 Unisciti alle centinaia di pazienti che hanno recuperato la piena funzionalità della spalla nel nostro studio.
               </p>

@@ -1,6 +1,3 @@
-"use client";
-
-import React from 'react';
 import Link from 'next/link';
 import { 
   ArrowLeft, 
@@ -82,9 +79,9 @@ export default function ModalitaSedutaPage() {
                     </span>
                     <ArrowUpRight size={24} className="text-[#022166]/30 group-hover:text-[#022166] transition-colors" />
                   </div>
-                  <h3 className="text-3xl font-bold text-[#022166] mb-6 leading-tight tracking-tight">
+                  <h2 className="text-3xl font-bold text-[#022166] mb-6 leading-tight tracking-tight">
                     {m.titolo}
-                  </h3>
+                  </h2>
                   <p className="text-[#022166]/70 text-base md:text-lg leading-relaxed mb-8 font-medium">
                     {m.desc}
                   </p>
@@ -98,14 +95,14 @@ export default function ModalitaSedutaPage() {
           </div>
 
           {/* Footer Back Link */}
-          <div className="mt-24 border-t border-slate-200 pt-12 flex flex-col md:flex-row justify-between items-center gap-6 text-slate-400">
+          <div className="mt-24 border-t border-slate-200 pt-12 flex flex-col md:flex-row justify-between items-center gap-6 text-slate-600">
             <Link 
               href="/" 
               className="inline-flex items-center gap-2 font-bold hover:text-[#022166] transition-all"
             >
               <ArrowLeft size={20} /> Torna alla Home
             </Link>
-            <span className="text-[10px] uppercase tracking-widest font-black opacity-40">Fisioterapia e Riabilitazione — Malavasi</span>
+            <span className="text-[10px] uppercase tracking-widest font-black">Fisioterapia e Riabilitazione — Malavasi</span>
           </div>
 
         </div>

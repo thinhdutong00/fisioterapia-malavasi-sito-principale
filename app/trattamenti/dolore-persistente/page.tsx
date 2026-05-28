@@ -75,7 +75,7 @@ export default function DolorePersistente() {
                 <div className="mb-8 p-4 bg-[#F0F4F8] w-fit rounded-2xl group-hover:bg-[#022166] group-hover:text-white transition-colors duration-500">
                   {f.icon}
                 </div>
-                <h3 className="text-2xl font-bold text-[#022166] mb-4 tracking-tight">{f.titolo}</h3>
+                <h2 className="text-2xl font-bold text-[#022166] mb-4 tracking-tight">{f.titolo}</h2>
                 <p className="text-slate-500 leading-relaxed text-sm md:text-base">
                   {f.desc}
                 </p>
@@ -116,7 +116,7 @@ export default function DolorePersistente() {
                    <div className="absolute top-6 right-8 text-[#022166]/10">
                       <Stethoscope size={100} />
                    </div>
-                   <h4 className="text-2xl font-bold text-[#022166] mb-6 relative z-10">La tua sicurezza al centro</h4>
+                   <h3 className="text-2xl font-bold text-[#022166] mb-6 relative z-10">La tua sicurezza al centro</h3>
                    <p className="text-slate-500 text-sm leading-relaxed mb-8 relative z-10">
                     Spesso chi soffre da tempo ha paura che il movimento possa peggiorare la situazione. 
                     Il nostro compito è dimostrarti, con i fatti e con la scienza, che puoi tornare a fare ciò che ami senza rischi.

@@ -58,6 +58,7 @@ export default function WhatsAppWidget() {
         <div className="bg-white rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.2)] border border-slate-100 p-5 w-[280px] md:w-[320px] animate-in slide-in-from-bottom-4 fade-in duration-500 relative">
           <button 
             onClick={handleCloseChat} 
+            aria-label="Chiudi chat WhatsApp"
             className="absolute top-3 right-3 text-slate-400 hover:text-slate-600 p-1 transition-colors"
           >
             <X size={16} />
@@ -95,6 +96,7 @@ export default function WhatsAppWidget() {
         /* --- L'ICONA --- */
         <button
           onClick={() => setShowChat(true)}
+          aria-label="Apri chat WhatsApp"
           className="bg-[#25D366] text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-all duration-300 flex items-center justify-center relative animate-in zoom-in duration-300"
         >
           <svg 

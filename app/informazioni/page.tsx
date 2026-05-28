@@ -1,6 +1,3 @@
-"use client";
-
-import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { 
@@ -10,25 +7,10 @@ import {
   ShieldCheck, 
   Award,
   Layout,
-  Dumbbell,
-  Stethoscope
+  Dumbbell
 } from 'lucide-react';
 
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, EffectFade } from 'swiper/modules';
-
-import 'swiper/css';
-import 'swiper/css/effect-fade';
-
 export default function InformazioniPage() {
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) return null;
-
   return (
     <main className="min-h-screen bg-[#F8FAFC] text-slate-800 font-sans relative overflow-hidden">
       
@@ -68,7 +50,7 @@ export default function InformazioniPage() {
 
           {/* CONTENUTO DETTAGLIATO TEAM */}
           <section className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-24 items-start mb-24 md:mb-40">
-            <div className="order-2 lg:order-1 space-y-6 md:space-y-8">
+            <div className="order-1 space-y-6 md:space-y-8">
               <div className="space-y-6 md:space-y-8 text-base md:text-xl text-slate-500 font-light leading-relaxed">
                 <p>
                   Nel nostro studio mettiamo al centro l’ascolto e la continuità del percorso. Ogni trattamento nasce da una valutazione approfondita basata sulle più recenti evidenze scientifiche.
@@ -82,32 +64,36 @@ export default function InformazioniPage() {
               </div>
             </div>
 
-            {/* Destra: Carosello Immagini */}
-            <div className="order-1 lg:order-2 relative group">
+            {/* Destra: Immagini team */}
+            <div className="order-2 relative group">
               <div className="relative bg-white p-2 md:p-3 rounded-[30px] md:rounded-[40px] shadow-2xl border border-white z-10">
-                <Swiper
-                  modules={[Autoplay, EffectFade]}
-                  effect="fade"
-                  loop={true}
-                  autoplay={{ delay: 4000, disableOnInteraction: false }}
-                  className="rounded-[24px] md:rounded-[32px] overflow-hidden aspect-square"
-                >
-                  {[
-                    "mirco.webp",
-                    "luca.webp",
-                    "alice.jpg"
-                  ].map((img, index) => (
-                    <SwiperSlide key={index}>
-                      <Image 
-                        src={`/${img}`} 
-                        alt={`Staff ${index + 1}`} 
-                        fill 
-                        priority={index === 0}
-                        className="object-cover object-top scale-105 transition-transform duration-700"
-                      />
-                    </SwiperSlide>
-                  ))}
-                </Swiper>
+                <div className="relative rounded-[24px] md:rounded-[32px] overflow-hidden aspect-square bg-slate-100">
+                  <Image
+                    src="/mirco.webp"
+                    alt="Dott. Mirco Malavasi"
+                    fill
+                    priority
+                    fetchPriority="high"
+                    sizes="(min-width: 1024px) 45vw, 100vw"
+                    className="object-cover object-top scale-105 transition-transform duration-700 group-hover:scale-100"
+                  />
+                  <div className="absolute bottom-4 left-4 right-4 grid grid-cols-2 gap-3">
+                    {[
+                      { src: "/luca.webp", alt: "Fisioterapista dello studio Malavasi" },
+                      { src: "/alice.jpg", alt: "Specialista dello studio Malavasi" },
+                    ].map((person) => (
+                      <div key={person.src} className="relative aspect-[4/3] overflow-hidden rounded-2xl border-2 border-white shadow-lg bg-white">
+                        <Image
+                          src={person.src}
+                          alt={person.alt}
+                          fill
+                          sizes="(min-width: 1024px) 11vw, 40vw"
+                          className="object-cover object-top"
+                        />
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </div>
               
               <div className="absolute -bottom-4 -right-2 md:-bottom-6 md:-right-6 bg-[#022166] text-white p-4 md:p-7 rounded-2xl md:rounded-3xl shadow-2xl z-20 border border-white/10 max-w-[180px] md:max-w-none">
@@ -147,9 +133,9 @@ export default function InformazioniPage() {
               ].map((item, i) => (
                 <div key={i} className="group bg-white p-8 md:p-12 rounded-2xl border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 flex flex-col justify-between">
                   <div>
-                    <h3 className="text-xl md:text-2xl font-bold text-[#022166] mb-4 tracking-tight uppercase">
+                    <h2 className="text-xl md:text-2xl font-bold text-[#022166] mb-4 tracking-tight uppercase">
                       {item.title}
-                    </h3>
+                    </h2>
                     <p className="text-slate-500 text-sm md:text-base leading-relaxed mb-8 md:mb-10 font-medium opacity-80">
                       {item.desc}
                     </p>
@@ -223,9 +209,9 @@ export default function InformazioniPage() {
                     <div className="w-12 h-12 bg-[#F8FAFC] rounded-xl flex items-center justify-center text-[#55B4FF] mb-6 group-hover:bg-[#55B4FF] group-hover:text-white transition-all duration-500">
                       {studio.icon}
                     </div>
-                    <h3 className="text-xl md:text-2xl font-black uppercase tracking-tight text-[#022166] mb-4">
+                    <h2 className="text-xl md:text-2xl font-black uppercase tracking-tight text-[#022166] mb-4">
                       {studio.title}
-                    </h3>
+                    </h2>
                     <p className="text-slate-500 text-sm md:text-base leading-relaxed font-medium opacity-80">
                       {studio.desc}
                     </p>
@@ -240,9 +226,9 @@ export default function InformazioniPage() {
             <div className="bg-[#022166] rounded-[2.5rem] md:rounded-[4rem] p-10 md:p-24 text-center relative overflow-hidden group">
                <div className="absolute inset-0 bg-gradient-to-r from-[#55B4FF]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
                <div className="relative z-10">
-                <h3 className="text-2xl md:text-6xl font-bold text-white mb-8 md:mb-10 tracking-tighter">
+                <h2 className="text-2xl md:text-6xl font-bold text-white mb-8 md:mb-10 tracking-tighter">
                   Recupera la tua libertà <br className="hidden md:block"/> di movimento.
-                </h3>
+                </h2>
                 <Link href="/prenota" className="w-full md:w-auto inline-flex items-center justify-center gap-4 bg-[#55B4FF] text-[#022166] px-8 md:px-12 py-5 md:py-6 rounded-xl md:rounded-2xl font-black uppercase text-[10px] md:text-[11px] tracking-[0.2em] md:tracking-[0.4em] hover:bg-white transition-all shadow-xl">
                   Prenota Valutazione <ArrowRight size={18} />
                 </Link>
@@ -251,14 +237,14 @@ export default function InformazioniPage() {
           </section>
 
           {/* FOOTER NAVIGATION */}
-          <div className="mt-16 md:mt-24 border-t border-slate-200 pt-8 md:pt-12 flex flex-col md:flex-row justify-between items-center gap-6 text-slate-400">
+          <div className="mt-16 md:mt-24 border-t border-slate-200 pt-8 md:pt-12 flex flex-col md:flex-row justify-between items-center gap-6 text-slate-600">
             <Link 
               href="/" 
               className="inline-flex items-center gap-2 font-bold hover:text-[#022166] transition-all"
             >
               <ArrowLeft size={20} /> Torna alla Home
             </Link>
-            <span className="text-[9px] md:text-[10px] uppercase tracking-widest font-black opacity-40 text-center">
+            <span className="text-[9px] md:text-[10px] uppercase tracking-widest font-black text-slate-500 text-center">
               Fisioterapia Malavasi — Hub Clinico
             </span>
           </div>

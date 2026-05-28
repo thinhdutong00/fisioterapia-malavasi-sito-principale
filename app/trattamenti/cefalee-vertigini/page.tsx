@@ -193,7 +193,7 @@ export default function CefaleeVertiginiPage() {
                 {/* STEP 1: TIPO DISTURBO */}
                 {step === 1 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-3">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Cosa senti principalmente?</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Cosa senti principalmente?</h2>
                     {['Cervicalgia (Dolore al collo)', 'Cefalea / Mal di testa', 'Vertigini / Sbandamenti', 'Altro'].map((opzione) => (
                       <button key={opzione} onClick={() => setFormData({...formData, problema: opzione})} className={`w-full p-4 rounded-xl border-2 font-bold transition-all text-left flex justify-between items-center ${formData.problema === opzione ? 'border-[#55B4FF] bg-[#55B4FF] text-[#022166]' : 'border-white/10 bg-white/5 text-white hover:border-white/40'}`}>
                         <span className="text-sm uppercase">{opzione}</span>
@@ -206,7 +206,7 @@ export default function CefaleeVertiginiPage() {
                 {/* STEP 1.2: SPECIFICA */}
                 {step === 1.2 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Descrivi il disturbo</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Descrivi il disturbo</h2>
                     <input type="text" placeholder="Es: Formicolio alle mani, ronzii..." className="w-full bg-white/5 border-b-2 border-white/20 p-4 outline-none focus:border-[#55B4FF] text-white font-bold" value={formData.problemaSpecifico} onChange={(e) => setFormData({...formData, problemaSpecifico: e.target.value})} />
                   </div>
                 )}
@@ -214,7 +214,7 @@ export default function CefaleeVertiginiPage() {
                 {/* STEP 2: DURATA */}
                 {step === 2 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-3">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Da quanto tempo ne soffri?</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Da quanto tempo ne soffri?</h2>
                     {['Meno di 1 mese', 'Da 1 a 6 mesi', 'Oltre 6 mesi (Cronico)'].map((opzione) => (
                       <button key={opzione} onClick={() => setFormData({...formData, durata: opzione})} className={`w-full p-4 rounded-xl border-2 font-bold transition-all text-left flex justify-between items-center ${formData.durata === opzione ? 'border-[#55B4FF] bg-[#55B4FF] text-[#022166]' : 'border-white/10 bg-white/5 text-white hover:border-white/40'}`}>
                         <span className="text-sm uppercase">{opzione}</span>
@@ -227,7 +227,7 @@ export default function CefaleeVertiginiPage() {
                 {/* STEP 3: SINTOMI ASSOCIATI */}
                 {step === 3 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-3">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Hai altri sintomi?</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Hai altri sintomi?</h2>
                     {['Nausea / Fastidio luce', 'Rigidità spalle', 'Difficoltà concentrazione', 'Nessun altro sintomo'].map((opzione) => (
                       <button key={opzione} onClick={() => setFormData({...formData, limitazione: opzione})} className={`w-full p-4 rounded-xl border-2 font-bold transition-all text-left flex justify-between items-center ${formData.limitazione === opzione ? 'border-[#55B4FF] bg-[#55B4FF] text-[#022166]' : 'border-white/10 bg-white/5 text-white hover:border-white/40'}`}>
                         <span className="text-sm uppercase">{opzione}</span>
@@ -240,7 +240,7 @@ export default function CefaleeVertiginiPage() {
                 {/* STEP 4: OBIETTIVO */}
                 {step === 4 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-3">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Cosa desideri ottenere?</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Cosa desideri ottenere?</h2>
                     {['Eliminare il dolore acuto', 'Ridurre frequenza attacchi', 'Migliore postura al lavoro', 'Altro'].map((opzione) => (
                       <button key={opzione} onClick={() => setFormData({...formData, obiettivo: opzione})} className={`w-full p-4 rounded-xl border-2 font-bold transition-all text-left flex justify-between items-center ${formData.obiettivo === opzione ? 'border-[#55B4FF] bg-[#55B4FF] text-[#022166]' : 'border-white/10 bg-white/5 text-white hover:border-white/40'}`}>
                         <span className="text-sm uppercase">{opzione}</span>
@@ -253,7 +253,7 @@ export default function CefaleeVertiginiPage() {
                 {/* STEP 4.2: DETTAGLIO OBIETTIVO */}
                 {step === 4.2 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Dettaglia l'obiettivo</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Dettaglia l'obiettivo</h2>
                     <textarea placeholder="..." className="w-full bg-white/5 border-b-2 border-white/20 p-4 text-white font-bold min-h-[100px]" value={formData.obiettivoSpecifico} onChange={(e) => setFormData({...formData, obiettivoSpecifico: e.target.value})} />
                   </div>
                 )}
@@ -261,7 +261,7 @@ export default function CefaleeVertiginiPage() {
                 {/* STEP 5: PRECEDENTI */}
                 {step === 5 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-3">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Hai già provato trattamenti?</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Hai già provato trattamenti?</h2>
                     {['Sì, ma senza successo', 'Sì, con beneficio parziale', 'No, è la prima volta'].map((opzione) => (
                       <button key={opzione} onClick={() => setFormData({...formData, giaFattoFisio: opzione})} className={`w-full p-4 rounded-xl border-2 font-bold transition-all text-left flex justify-between items-center ${formData.giaFattoFisio === opzione ? 'border-[#55B4FF] bg-[#55B4FF] text-[#022166]' : 'border-white/10 bg-white/5 text-white hover:border-white/40'}`}>
                         <span className="text-sm uppercase">{opzione}</span>
@@ -274,7 +274,7 @@ export default function CefaleeVertiginiPage() {
                 {/* STEP 6: DIAGNOSI */}
                 {step === 6 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-3">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Hai referti medici recenti?</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Hai referti medici recenti?</h2>
                     {['Sì', 'No'].map((opzione) => (
                       <button key={opzione} onClick={() => setFormData({...formData, diagnosiMedica: opzione})} className={`w-full p-4 rounded-xl border-2 font-bold transition-all text-left flex justify-between items-center ${formData.diagnosiMedica === opzione ? 'border-[#55B4FF] bg-[#55B4FF] text-[#022166]' : 'border-white/10 bg-white/5 text-white hover:border-white/40'}`}>
                         <span className="text-sm uppercase">{opzione}</span>
@@ -287,7 +287,7 @@ export default function CefaleeVertiginiPage() {
                 {/* STEP 6.5: UPLOAD */}
                 {step === 6.5 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 text-center">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Carica Referti (RX/RM)</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Carica Referti (RX/RM)</h2>
                     <div className="relative group p-8 border-2 border-dashed border-white/20 rounded-2xl bg-white/5">
                       <input type="file" onChange={(e) => setFile(e.target.files ? e.target.files[0] : null)} className="absolute inset-0 opacity-0 cursor-pointer" />
                       {file ? <><FileText size={32} className="mx-auto text-[#55B4FF] mb-2" /><p className="text-white text-xs font-bold">{file.name}</p></> : <><Upload size={32} className="mx-auto text-white/20 mb-2" /><p className="text-white/40 text-[10px] uppercase font-bold tracking-widest">Carica PDF/Foto</p></>}
@@ -298,7 +298,7 @@ export default function CefaleeVertiginiPage() {
                 {/* STEP 7: ETA */}
                 {step === 7 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-3">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Fascia d'età?</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Fascia d'età?</h2>
                     {['Sotto i 30', '31–50', '51–65', '65+'].map((opzione) => (
                       <button key={opzione} onClick={() => setFormData({...formData, eta: opzione})} className={`w-full p-4 rounded-xl border-2 font-bold transition-all text-left flex justify-between items-center ${formData.eta === opzione ? 'border-[#55B4FF] bg-[#55B4FF] text-[#022166]' : 'border-white/10 bg-white/5 text-white hover:border-white/40'}`}>
                         <span className="text-sm uppercase">{opzione}</span>
@@ -341,7 +341,7 @@ export default function CefaleeVertiginiPage() {
                 {/* STEP 9: SEDE */}
                 {step === 9 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-3">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Sede preferita?</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Sede preferita?</h2>
                     {['Sede Cavezzo (Mo)', 'Sede Rovereto (Mo)', 'Domicilio'].map((s) => (
                       <button key={s} onClick={() => setFormData({...formData, sede: s})} className={`w-full p-4 rounded-xl border-2 font-bold transition-all text-left flex justify-between items-center ${formData.sede === s ? 'border-[#55B4FF] bg-[#55B4FF] text-[#022166]' : 'border-white/10 bg-white/5 text-white hover:border-white/40'}`}>
                         <span className="text-sm uppercase">{s}</span>
@@ -354,7 +354,7 @@ export default function CefaleeVertiginiPage() {
                 {/* STEP 10: INDIRIZZO */}
                 {step === 10 && (
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight flex items-center gap-2"><MapPin size={24} /> Indirizzo Domicilio</h3>
+                    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight flex items-center gap-2"><MapPin size={24} /> Indirizzo Domicilio</h2>
                     <input type="text" placeholder="Via, Civico, Città" className="w-full bg-white/5 border-b-2 border-white/20 p-4 text-white font-bold focus:border-[#55B4FF] outline-none" value={formData.indirizzo} onChange={(e) => setFormData({...formData, indirizzo: e.target.value})} />
                   </div>
                 )}
@@ -362,7 +362,7 @@ export default function CefaleeVertiginiPage() {
                 {/* STEP 11: CONTATTI (Versione con Link Privacy) */}
 {step === 11 && (
   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-4">
-    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Ultime informazioni</h3>
+    <h2 className="text-2xl font-bold text-white mb-6 tracking-tight">Ultime informazioni</h2>
     <input type="text" placeholder="Nome e Cognome" className="w-full bg-white/5 border-b-2 border-white/20 p-3 text-white font-bold outline-none focus:border-[#55B4FF]" value={formData.nome} onChange={(e) => setFormData({...formData, nome: e.target.value})} />
     <input type="tel" placeholder="Telefono" className="w-full bg-white/5 border-b-2 border-white/20 p-3 text-white font-bold outline-none focus:border-[#55B4FF]" value={formData.telefono} onChange={(e) => setFormData({...formData, telefono: e.target.value})} />
     <input type="email" placeholder="Email" className="w-full bg-white/5 border-b-2 border-white/20 p-3 text-white font-bold outline-none focus:border-[#55B4FF]" value={formData.email} onChange={(e) => setFormData({...formData, email: e.target.value})} />
@@ -416,17 +416,17 @@ export default function CefaleeVertiginiPage() {
                   <div className="grid md:grid-cols-3 gap-8">
                     <div className="space-y-4">
                       <div className="w-10 h-10 bg-[#E0F2FE] rounded-xl flex items-center justify-center text-[#022166]"><Target size={20}/></div>
-                      <h4 className="font-bold text-[#022166]">Rigidità</h4>
+                      <h3 className="font-bold text-[#022166]">Rigidità</h3>
                       <p className="text-sm text-slate-500">Difficoltà nel ruotare il capo e tensione costante alle spalle.</p>
                     </div>
                     <div className="space-y-4">
                       <div className="w-10 h-10 bg-[#F3E8FF] rounded-xl flex items-center justify-center text-[#022166]"><Brain size={20}/></div>
-                      <h4 className="font-bold text-[#022166]">Cefalee</h4>
+                      <h3 className="font-bold text-[#022166]">Cefalee</h3>
                       <p className="text-sm text-slate-500">Mal di testa che partono dalla nuca e si irradiano verso la fronte.</p>
                     </div>
                     <div className="space-y-4">
                       <div className="w-10 h-10 bg-[#DCFCE7] rounded-xl flex items-center justify-center text-[#022166]"><RefreshCw size={20}/></div>
-                      <h4 className="font-bold text-[#022166]">Sbandamenti</h4>
+                      <h3 className="font-bold text-[#022166]">Sbandamenti</h3>
                       <p className="text-sm text-slate-500">Senso di instabilità o vertigini legate ai movimenti del collo.</p>
                     </div>
                   </div>
@@ -453,14 +453,14 @@ export default function CefaleeVertiginiPage() {
                   <div className="flex items-start gap-4">
                     <div className="mt-1 bg-[#55B4FF] p-1 rounded-full text-white"><ShieldCheck size={14}/></div>
                     <div>
-                      <h4 className="text-[#022166] font-bold">Mobilizzazione Articolare</h4>
+                      <h3 className="text-[#022166] font-bold">Mobilizzazione Articolare</h3>
                       <p className="text-sm text-slate-500">Per liberare le vertebre "bloccate" e ridurre la compressione nervosa.</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
                     <div className="mt-1 bg-[#55B4FF] p-1 rounded-full text-white"><ShieldCheck size={14}/></div>
                     <div>
-                      <h4 className="text-[#022166] font-bold">Rilascio Miofasciale</h4>
+                      <h3 className="text-[#022166] font-bold">Rilascio Miofasciale</h3>
                       <p className="text-sm text-slate-500">Per sciogliere i nodi muscolari (Trigger Points) accumulati con lo stress.</p>
                     </div>
                   </div>
@@ -471,7 +471,7 @@ export default function CefaleeVertiginiPage() {
                     <div className="absolute -top-6 -right-6 w-24 h-24 bg-[#55B4FF] rounded-full flex items-center justify-center text-white shadow-lg">
                        <Search size={32} />
                     </div>
-                    <h4 className="text-[#022166] font-black text-xl mb-6">Il Focus Clinico</h4>
+                    <h3 className="text-[#022166] font-black text-xl mb-6">Il Focus Clinico</h3>
                     <p className="text-slate-500 leading-relaxed italic mb-8">"Non ci limitiamo a massaggiare il collo. Analizziamo la postura davanti al PC, lo stile di vita e lo stato del sistema nervoso per dare una soluzione che duri nel tempo."</p>
                     <div className="bg-[#F8FAFC] p-6 rounded-2xl border border-slate-50">
                        <span className="text-[10px] font-black text-[#55B4FF] uppercase tracking-widest">Obiettivo</span>
@@ -492,7 +492,7 @@ export default function CefaleeVertiginiPage() {
                 ].map((step, i) => (
                   <div key={i} className={`${step.color} p-12 rounded-[2.5rem] border border-white transition-transform hover:-translate-y-2 duration-500`}>
                     <div className="text-[#022166] mb-6">{step.icon}</div>
-                    <h4 className="text-2xl font-bold text-[#022166] mb-4">{step.title}</h4>
+                    <h3 className="text-2xl font-bold text-[#022166] mb-4">{step.title}</h3>
                     <p className="text-sm text-[#022166]/60 leading-relaxed font-medium">{step.desc}</p>
                   </div>
                 ))}
@@ -544,7 +544,7 @@ export default function CefaleeVertiginiPage() {
             <div className="absolute top-[-10%] right-[-10%] opacity-5 group-hover:scale-110 transition-transform duration-700"><Activity size={400} /></div>
             <div className="relative z-10 max-w-3xl">
               <div className="flex items-center gap-3 mb-6"><div className="h-[1px] w-8 bg-[#55B4FF]"></div><span className="text-[#55B4FF] font-black text-[10px] uppercase tracking-[0.4em]">Fisioterapia Malavasi — Specialisti del Tratto Cervicale</span></div>
-              <h3 className="text-4xl md:text-6xl font-bold mb-8 tracking-tighter leading-[0.95]">Dì addio alla <br /><span className="text-[#55B4FF]">tensione al collo.</span></h3>
+              <h2 className="text-4xl md:text-6xl font-bold mb-8 tracking-tighter leading-[0.95]">Dì addio alla <br /><span className="text-[#55B4FF]">tensione al collo.</span></h2>
               <p className="text-white/60 text-xl mb-12 font-light max-w-xl">Prenota ora la tua valutazione specialistica e torna a muoverti con leggerezza e lucidità.</p>
               <div className="flex flex-wrap gap-6">
                 <button onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})} className="bg-[#55B4FF] text-[#022166] px-12 py-6 rounded-2xl font-black text-center uppercase text-[11px] tracking-[0.3em] hover:bg-white transition-all">Inizia il tuo Recupero</button>
