@@ -12,6 +12,21 @@ const nextConfig: NextConfig = {
   experimental: {
     optimizePackageImports: ['lucide-react'],
   },
+  async redirects() {
+    return [
+      {
+        source: '/:path*',
+        has: [
+          {
+            type: 'host',
+            value: 'fisioterapiamalavasi.it',
+          },
+        ],
+        destination: 'https://www.fisioterapiamalavasi.it/:path*',
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       {
