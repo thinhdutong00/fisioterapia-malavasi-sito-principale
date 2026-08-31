@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import TeamCarousel from './TeamCarousel';
 import { 
   ArrowLeft, 
   ChevronRight, 
@@ -67,33 +68,7 @@ export default function InformazioniPage() {
             {/* Destra: Immagini team */}
             <div className="order-2 relative group">
               <div className="relative bg-white p-2 md:p-3 rounded-[30px] md:rounded-[40px] shadow-2xl border border-white z-10">
-                <div className="relative rounded-[24px] md:rounded-[32px] overflow-hidden aspect-square bg-slate-100">
-                  <Image
-                    src="/mirco.webp"
-                    alt="Dott. Mirco Malavasi"
-                    fill
-                    priority
-                    fetchPriority="high"
-                    sizes="(min-width: 1024px) 45vw, 100vw"
-                    className="object-cover object-top scale-105 transition-transform duration-700 group-hover:scale-100"
-                  />
-                  <div className="absolute bottom-4 left-4 right-4 grid grid-cols-2 gap-3">
-                    {[
-                      { src: "/luca.webp", alt: "Fisioterapista dello studio Malavasi" },
-                      { src: "/alice.jpg", alt: "Specialista dello studio Malavasi" },
-                    ].map((person) => (
-                      <div key={person.src} className="relative aspect-[4/3] overflow-hidden rounded-2xl border-2 border-white shadow-lg bg-white">
-                        <Image
-                          src={person.src}
-                          alt={person.alt}
-                          fill
-                          sizes="(min-width: 1024px) 11vw, 40vw"
-                          className="object-cover object-top"
-                        />
-                      </div>
-                    ))}
-                  </div>
-                </div>
+                <TeamCarousel />
               </div>
               
               <div className="absolute -bottom-4 -right-2 md:-bottom-6 md:-right-6 bg-[#022166] text-white p-4 md:p-7 rounded-2xl md:rounded-3xl shadow-2xl z-20 border border-white/10 max-w-[180px] md:max-w-none">

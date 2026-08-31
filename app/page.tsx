@@ -191,10 +191,11 @@ export default function FisioterapiaMalavasi() {
       <h2 className="text-3xl md:text-6xl font-black text-[#022166] tracking-tighter mb-6">Il Nostro <span className="text-[#55B4FF]">Team</span></h2>
     </div>
     {/* Cambiato gap-8 in gap-6 per mobile */}
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
       {[
         { nome: "Mirco Malavasi", ruolo: "Fisioterapista OMPT", specialita: "Riabilitazione muscolo-scheletrica e oncologica", foto: "/mirco.webp" },
-        { nome: "Alice Nanetti", ruolo: "Fisioterapista", specialita: "Riabilitazione muscolo-scheletrica e neurologica", foto: "/alice.jpg" },
+        { nome: "Virginia Buffagni", ruolo: "Fisioterapista", specialita: "Riabilitazione neuro-muscoloscheletrico", foto: "/virginia-buffagni.jpg" },
+        { nome: "Alice Morsiani", ruolo: "Fisioterapista", specialita: "Dolore cronico e fisioterapia muscoloscheletrica", foto: "/alice-morsiani.jpg" },
         { nome: "Luca Rabaglia", ruolo: "Fisioterapista", specialita: "Riabilitazione muscolo-scheletrica e sportiva", foto: "/luca.webp" }
       ].map((membro, idx) => (
         <div key={idx} className="group bg-slate-50 rounded-[2.5rem] md:rounded-[3.5rem] p-4 pb-10 md:pb-12 transition-all duration-700 border border-slate-100 text-center flex flex-col items-center w-full max-w-[400px] mx-auto">
@@ -203,7 +204,7 @@ export default function FisioterapiaMalavasi() {
               src={membro.foto} 
               alt={membro.nome} 
               fill
-              className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
+              className={`object-cover ${membro.foto === "/alice-morsiani.jpg" ? "object-[center_65%]" : "object-top"} transition-transform duration-700 group-hover:scale-105`}
             />
           </div>
           <span className="bg-[#f0f9ff] text-[#55B4FF] border border-[#55B4FF]/20 px-4 py-1.5 rounded-full font-black text-[8px] md:text-[9px] uppercase tracking-widest mb-4">{membro.ruolo}</span>
