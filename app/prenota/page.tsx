@@ -532,7 +532,7 @@ if (step === 4.2) {
                       <Calendar size={20} className="text-[#55B4FF]"/> Giorni preferiti
                     </label>
                     <div className="grid grid-cols-3 sm:grid-cols-5 gap-2">
-                      {['Lun', 'Mar', 'Mer', 'Gio', 'Ven', "Sab"].map((g) => (
+                      {['Lun', 'Mar', 'Mer', 'Gio', 'Ven'].map((g) => (
                         <button 
                           key={g} 
                           type="button" 

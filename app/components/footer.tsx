@@ -89,7 +89,7 @@ export default function Footer() {
             </p>
             <p className="flex justify-between items-center border-b border-white/5 pb-2">
               <span>Sabato</span> 
-              <span className="text-white">09:00 - 13:00</span>
+              <span className="text-white">Chiuso</span>
             </p>
             <p className="text-[9px] italic font-medium lowercase tracking-normal text-white/80">Domenica Chiuso</p>
           </div>

@@ -302,7 +302,7 @@ export default function LCASpecialistPage() {
                       <div>
                         <p className="text-[9px] uppercase tracking-widest text-[#55B4FF] font-bold mb-2">Giorni preferiti</p>
                         <div className="grid grid-cols-3 gap-2">
-                          {['Lun', 'Mar', 'Mer', 'Gio', 'Ven', 'Sab'].map((g) => (
+                          {['Lun', 'Mar', 'Mer', 'Gio', 'Ven'].map((g) => (
                             <button key={g} type="button" onClick={() => toggleGiorno(g)} className={`p-2 rounded-lg border-2 text-[10px] font-bold transition-all ${formData.giorniPreferiti.includes(g) ? 'border-[#55B4FF] bg-[#55B4FF] text-[#022166]' : 'border-white/10 text-white hover:border-white/30'}`}>{g}</button>
                           ))}
                         </div>

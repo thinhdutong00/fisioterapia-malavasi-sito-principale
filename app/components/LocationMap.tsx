@@ -22,7 +22,7 @@ const hours = [
   { d: "Mercoledì", o: "09-13, 15-21" },
   { d: "Giovedì", o: "09-13, 15-21" },
   { d: "Venerdì", o: "09-13, 15-20" },
-  { d: "Sabato", o: "09-13" },
+  { d: "Sabato", o: "Chiuso" },
   { d: "Domenica", o: "Chiuso" },
 ];
 
