@@ -18,7 +18,7 @@ export default function FisioterapiaMalavasi() {
    <main className="relative min-h-screen w-full bg-[#F0F4F8] text-slate-800 font-sans scroll-smooth">
       
       {/* BACKGROUND DECORATIONS - Modificato per non creare overflow */}
-  <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden max-w-full">
+  <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden max-w-full hidden md:block">
     <div className="absolute top-[-2%] left-[-10%] w-[70%] md:w-[40%] h-[30%] bg-[#55B4FF]/10 rounded-full blur-[80px] md:blur-[100px]"></div>
     <div className="absolute bottom-[5%] right-[-10%] w-[60%] md:w-[30%] h-[30%] bg-[#022166]/5 rounded-full blur-[80px] md:blur-[100px]"></div>
   </div>
@@ -43,12 +43,14 @@ export default function FisioterapiaMalavasi() {
         </div>
 
         <div className="max-w-4xl mx-auto relative z-10 text-center py-32 md:py-40">
-          <div className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-md border border-white/20 text-white px-5 py-2 rounded-full text-[10px] font-black uppercase tracking-[0.2em] mb-8 shadow-sm">
+          <div className="inline-flex items-center gap-3 bg-white/10 md:backdrop-blur-md border border-white/20 text-white px-5 py-2 rounded-full text-[10px] font-black uppercase tracking-[0.2em] mb-8 shadow-sm">
             <div className="relative h-5 w-10">
               <Image
                 src="/Progetto senza titolo - 2026-02-23T223838.202.png"
                 alt="Logo Malavasi"
                 fill
+                sizes="40px"
+                quality={35}
                 className="object-contain brightness-0 invert"
               />
             </div>

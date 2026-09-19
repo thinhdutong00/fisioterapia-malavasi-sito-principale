@@ -445,7 +445,7 @@ export default function LesioniMeniscaliAdvancedPage() {
                <div className="relative h-full w-full bg-[#022166] rounded-[3rem] shadow-2xl p-12 flex flex-col justify-between overflow-hidden text-white">
                   <Activity className="text-[#55B4FF] relative z-10" size={48} />
                   <div className="relative z-10">
-                    <p className="text-7xl font-black text-white tracking-tighter mb-2">2-4</p>
+                    <p className="text-7xl font-black text-white tracking-tighter mb-2">6-8</p>
                     <p className="text-[#55B4FF] font-bold uppercase text-xs tracking-widest">Settimane per tornare <br />alla vita quotidiana.</p>
                   </div>
                   <Waves className="absolute -bottom-20 -right-20 text-white/5 w-full h-full" />

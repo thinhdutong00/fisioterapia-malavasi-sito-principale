@@ -19,14 +19,35 @@ export default function DeferredWidgets() {
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
-    const showWidgets = () => setReady(true);
-    const idleCallback = window.requestIdleCallback?.(showWidgets, { timeout: 3500 });
-    const timer = window.setTimeout(showWidgets, 3500);
+    let idleCallback: number | undefined;
+    let scheduled = false;
+    const events = ["pointerdown", "keydown", "scroll", "touchstart"];
 
-    return () => {
-      window.clearTimeout(timer);
-      if (idleCallback) window.cancelIdleCallback?.(idleCallback);
+    const scheduleWidgets = () => {
+      if (scheduled) return;
+      scheduled = true;
+      idleCallback = window.requestIdleCallback?.(showWidgets, { timeout: 1500 });
+      if (!idleCallback) window.setTimeout(showWidgets, 800);
     };
+
+    const fallbackTimer = window.setTimeout(scheduleWidgets, 60000);
+
+    const cleanup = () => {
+      window.clearTimeout(fallbackTimer);
+      if (idleCallback) window.cancelIdleCallback?.(idleCallback);
+      events.forEach((event) => window.removeEventListener(event, scheduleWidgets));
+    };
+
+    function showWidgets() {
+      cleanup();
+      setReady(true);
+    }
+
+    events.forEach((event) => {
+      window.addEventListener(event, scheduleWidgets, { once: true, passive: true });
+    });
+
+    return cleanup;
   }, []);
 
   if (!ready) return null;

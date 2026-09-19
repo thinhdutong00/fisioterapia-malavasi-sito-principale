@@ -20,7 +20,7 @@ export default function CookieBanner() {
     const timer = window.setTimeout(() => {
       const consent = localStorage.getItem("cookieConsent");
       if (!consent) setShowBanner(true);
-    }, 9000);
+    }, 0);
 
     return () => window.clearTimeout(timer);
   }, []);
@@ -33,7 +33,7 @@ export default function CookieBanner() {
       consentWindow.gtag('consent', 'update', {
         'ad_storage': choices.ads ? 'granted' : 'denied',
         'ad_user_data': choices.ads ? 'granted' : 'denied',
-        'ad_ads_personalization': choices.ads ? 'granted' : 'denied',
+        'ad_personalization': choices.ads ? 'granted' : 'denied',
         'analytics_storage': choices.analytics ? 'granted' : 'denied',
       });
       
