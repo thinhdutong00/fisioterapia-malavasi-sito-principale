@@ -47,7 +47,7 @@ export default function SpecialistPage({ page }: { page: SpecialistPageData }) {
           <header className="mb-24">
             <div className="flex items-center gap-3 mb-6">
               <div className="h-px w-12 shrink-0 bg-[#55B4FF]" aria-hidden="true" />
-              <span className="text-xs font-black uppercase tracking-[0.3em] text-[#55B4FF]">(R)enjoy your mo(ve)ments</span>
+              <span className="text-xs font-black uppercase tracking-[0.3em] text-[#022166]"><span className="text-[#55B4FF]">R</span>enjoy your mo<span className="text-[#55B4FF]">ve</span>ments</span>
             </div>
             <h1 className="text-5xl md:text-8xl font-bold text-[#022166] leading-[0.95] mb-10 tracking-tighter break-words">
               {page.hero.lead}<br /><span className="text-[#55B4FF]">{page.hero.accent}</span>

@@ -35,8 +35,8 @@ export default function InformazioniPage() {
           <header className="mb-16 md:mb-24">
             <div className="flex items-center gap-3 mb-6">
               <div className="h-[1px] w-8 md:w-12 bg-[#55B4FF]"></div>
-              <span className="text-[9px] md:text-xs font-black uppercase tracking-[0.2em] md:tracking-[0.3em] text-[#55B4FF]">
-                (R)enjoy your mo(ve)ments
+              <span className="text-[9px] md:text-xs font-black uppercase tracking-[0.2em] md:tracking-[0.3em] text-[#022166]">
+                <span className="text-[#55B4FF]">R</span>enjoy your mo<span className="text-[#55B4FF]">ve</span>ments
               </span>
             </div>
             <h1 className="text-4xl md:text-7xl lg:text-8xl font-bold text-[#022166] leading-[1.1] md:leading-[0.95] mb-8 md:mb-10 tracking-tighter">
