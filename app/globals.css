@@ -128,4 +128,9 @@ scroll-behavior: smooth;
     content-visibility: auto;
     contain-intrinsic-size: 900px;
   }
+
+  main .scroll-manifesto {
+    content-visibility: visible;
+    contain: none;
+  }
 }

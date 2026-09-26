@@ -11,6 +11,7 @@ import {
 import HomeTreatments from './components/HomeTreatments';
 import LocationMap from './components/LocationMap';
 import ReviewsSection from './components/ReviewsSection';
+import ScrollManifesto from './components/ScrollManifesto';
 
 export default function FisioterapiaMalavasi() {
   return (
@@ -82,6 +83,8 @@ export default function FisioterapiaMalavasi() {
           </div>
         </div>
       </section>
+
+      <ScrollManifesto />
 
 {/* --- TRATTAMENTI --- */}
       <section id="servizi" className="relative w-full py-24 md:py-32 px-6 bg-white overflow-hidden">
