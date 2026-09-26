@@ -30,17 +30,18 @@ export default function FisioterapiaMalavasi() {
 
      {/* --- HERO SECTION --- */}
       {/* MODIFICATO: rimosso h-screen e snap. Aggiunto min-h-screen */}
-      <section id="home" className="relative min-h-screen w-full flex items-center justify-center px-4 md:px-8 overflow-hidden bg-[#022166]">
+      <section id="home" className="relative min-h-screen w-full flex items-center justify-center px-4 md:px-8 overflow-hidden bg-slate-950">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/studio-fisioterapia-malavasi.jpg"
-            alt="Studio Fisioterapia Malavasi"
+            src="/palestra-riabilitativa.jpeg"
+            alt="Palestra riabilitativa dello Studio Fisioterapia Malavasi"
             fill
-            className="hidden md:block object-cover opacity-40"
-            quality={45}
+            className="object-cover object-[center_55%]"
+            quality={70}
             sizes="100vw"
+            priority
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#022166]/80 via-[#022166]/60 to-[#022166]/90"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/75"></div>
         </div>
 
         <div className="max-w-4xl mx-auto relative z-10 text-center py-32 md:py-40">
@@ -60,7 +61,7 @@ export default function FisioterapiaMalavasi() {
 
           <h1 className="text-[2.6rem] leading-[1.1] sm:text-5xl md:text-7xl xl:text-8xl font-bold text-white mb-8 tracking-tighter">
   Fisioterapia e <br className="sm:hidden" /> Riabilitazione <br />
-  <span className="text-[#55B4FF]">a Cavezzo</span>
+  <span style={{ color: '#55B4FF' }}>a Cavezzo</span>
 </h1>
 
           <p className="hidden sm:block text-base md:text-xl text-white/80 mb-10 max-w-xl md:max-w-2xl mx-auto font-medium leading-relaxed">
