@@ -104,8 +104,10 @@ export default function ScrollManifesto() {
     const updateProgress = () => {
       frameRef.current = null;
       const rect = section.getBoundingClientRect();
-      const scrollDistance = Math.max(section.offsetHeight - window.innerHeight, 1);
-      setProgress(clamp(-rect.top / scrollDistance));
+      const revealStart = window.innerHeight * 0.82;
+      const revealEnd = window.innerHeight * 0.18;
+      const scrollDistance = Math.max(section.offsetHeight + revealStart - revealEnd, 1);
+      setProgress(clamp((revealStart - rect.top) / scrollDistance));
     };
 
     const requestUpdate = () => {
@@ -127,16 +129,16 @@ export default function ScrollManifesto() {
     };
   }, []);
 
-  const headlineProgress = rangeProgress(progress, 0.02, 0.58);
-  const explanationProgress = rangeProgress(progress, 0.36, 0.98);
+  const headlineProgress = rangeProgress(progress, 0.02, 0.44);
+  const explanationProgress = rangeProgress(progress, 0.24, 0.8);
 
   return (
     <section
       ref={sectionRef}
       aria-labelledby="manifesto-title"
-      className="scroll-manifesto relative min-h-[170svh] bg-[#F8FAFC]"
+      className="scroll-manifesto relative overflow-hidden bg-[#F8FAFC]"
     >
-      <div className="sticky top-0 flex min-h-svh items-center overflow-hidden px-6 py-24 md:px-10">
+      <div className="relative px-6 py-28 md:px-10 md:py-40">
         <div className="pointer-events-none absolute -left-24 top-1/4 h-72 w-72 rounded-full bg-[#55B4FF]/10 blur-[100px]" />
         <div className="pointer-events-none absolute -right-32 bottom-1/4 h-96 w-96 rounded-full bg-[#022166]/5 blur-[120px]" />
 
@@ -171,12 +173,6 @@ export default function ScrollManifesto() {
             </p>
           </div>
 
-          <div className="mt-10 h-1 w-full overflow-hidden rounded-full bg-[#022166]/10" aria-hidden="true">
-            <div
-              className="h-full origin-left rounded-full bg-[#55B4FF]"
-              style={{ transform: `scaleX(${progress})` }}
-            />
-          </div>
         </div>
       </div>
     </section>
