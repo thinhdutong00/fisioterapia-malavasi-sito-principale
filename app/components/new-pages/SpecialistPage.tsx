@@ -19,6 +19,7 @@ import {
 } from "lucide-react";
 import Breadcrumbs from "@/app/components/new-pages/Breadcrumbs";
 import type { SpecialistPageData } from "@/app/data/specialist-pages";
+import { bookingHref } from "@/app/data/booking";
 
 const focusStyle = "focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#55B4FF]";
 
@@ -168,7 +169,7 @@ export default function SpecialistPage({ page }: { page: SpecialistPageData }) {
               <h2 id="valutazione-title" className={`text-4xl md:text-6xl font-black mb-8 tracking-tighter ${oncology ? "text-white" : "text-[#022166]"}`}>{page.cta.title}</h2>
               <p className={`max-w-2xl mx-auto mb-12 text-lg md:text-xl font-light ${oncology ? "text-white/70" : "text-slate-500"}`}>{page.cta.description}</p>
               <div className="flex flex-col sm:flex-row justify-center gap-6">
-                <Link href="/prenota" prefetch={false} className={`group px-8 md:px-12 py-6 rounded-2xl font-black uppercase text-xs tracking-[0.2em] transition-all flex items-center justify-center gap-3 shadow-xl ${oncology ? "bg-[#55B4FF] text-[#022166] hover:bg-white" : "bg-[#022166] text-white hover:bg-[#55B4FF] hover:text-[#022166]"} ${focusStyle}`}>
+                <Link href={bookingHref(page.path)} prefetch={false} className={`group px-8 md:px-12 py-6 rounded-2xl font-black uppercase text-xs tracking-[0.2em] transition-all flex items-center justify-center gap-3 shadow-xl ${oncology ? "bg-[#55B4FF] text-[#022166] hover:bg-white" : "bg-[#022166] text-white hover:bg-[#55B4FF] hover:text-[#022166]"} ${focusStyle}`}>
                   {oncology ? "Richiedi un colloquio" : "Richiedi valutazione"}<ChevronRight size={18} className="shrink-0" aria-hidden="true" />
                 </Link>
                 <a href="tel:+393338225464" className={`px-8 md:px-12 py-6 rounded-2xl font-black uppercase text-xs tracking-[0.2em] transition-all border-2 ${oncology ? "border-white/20 text-white hover:bg-white/10" : "bg-white border-[#022166] text-[#022166] hover:bg-[#F8FAFC]"} ${focusStyle}`}>

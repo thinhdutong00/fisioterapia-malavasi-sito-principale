@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import { bookingHref } from '@/app/data/booking';
 import { 
   ChevronRight, 
   ArrowLeft, 
@@ -185,7 +186,7 @@ export default function FisioterapiaMuscoloscheletrica() {
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-6">
               <Link 
-                href="/prenota" 
+                href={bookingHref("/trattamenti/muscoloscheletrica")}
                 className="group bg-[#022166] text-white px-12 py-6 rounded-2xl font-black uppercase text-xs tracking-[0.3em] hover:bg-[#55B4FF] transition-all shadow-2xl shadow-[#022166]/30 flex items-center justify-center gap-3"
               >
                 Prenota Valutazione <ChevronRight size={18} className="group-hover:translate-x-2 transition-transform" />

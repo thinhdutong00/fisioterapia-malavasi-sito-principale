@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Activity, ArrowLeft, ArrowUpRight, CheckCircle2, ChevronRight, Compass, Target } from "lucide-react";
 import type { MusculoskeletalTreatment } from "@/app/data/musculoskeletal";
+import { bookingHref } from "@/app/data/booking";
 import Breadcrumbs from "./Breadcrumbs";
 import NewAssessmentForm from "./NewAssessmentForm";
 
@@ -23,7 +24,21 @@ export default function MusculoskeletalPage({ treatment }: { treatment: Musculos
               <p className="max-w-xl text-xl md:text-2xl text-slate-600 font-light leading-relaxed mb-8">{treatment.intro}</p>
               <a href="tel:+393338225464" className="inline-flex items-center justify-center gap-2 bg-white border border-slate-200 px-8 py-4 rounded-xl font-bold text-[#022166] uppercase text-xs tracking-widest hover:bg-slate-50 transition-colors focus-visible:outline-2 focus-visible:outline-offset-4">Parliamone insieme</a>
             </div>
-            <NewAssessmentForm config={{ condition: treatment.label, symptoms: treatment.symptoms.map((item) => item.title), limitations: treatment.limitations, goals: treatment.goals }} />
+            <NewAssessmentForm
+              config={{
+                condition: treatment.label,
+                symptoms: treatment.symptoms.map((item) => item.title),
+                limitations: treatment.limitations,
+                goals: treatment.goals,
+                context: {
+                  kind: "area",
+                  areaLabel: treatment.category.label,
+                  treatmentId: treatment.id,
+                  treatmentLabel: treatment.label,
+                  sourcePath: treatment.path,
+                },
+              }}
+            />
           </header>
 
           <section className="mb-24 md:mb-32" aria-labelledby="symptom-title">
@@ -69,7 +84,7 @@ export default function MusculoskeletalPage({ treatment }: { treatment: Musculos
           </section>
 
           <section className="bg-[#022166] p-8 md:p-20 rounded-[3rem] md:rounded-[4rem] text-center relative overflow-hidden text-white">
-            <div className="relative max-w-2xl mx-auto"><h2 className="text-4xl md:text-6xl font-bold mb-8 tracking-tighter">Il prossimo passo<br /><span className="text-[#55B4FF]">parte da te.</span></h2><p className="text-white/80 text-lg mb-10 font-light leading-relaxed">Raccontaci cosa vorresti tornare a fare. La valutazione ci aiuta a definire priorità, obiettivi e un percorso adatto alla tua situazione.</p><a href="#valutazione" className="inline-flex items-center justify-center gap-3 bg-[#55B4FF] text-[#022166] px-8 md:px-12 py-5 rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-white transition-colors focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white">Richiedi una valutazione<ChevronRight size={18} aria-hidden="true" /></a><Link href="/prenota" className="block w-fit mx-auto mt-6 text-sm underline underline-offset-4 text-white/90 focus-visible:outline-2 focus-visible:outline-offset-4">Vai alla prenotazione generale</Link></div>
+            <div className="relative max-w-2xl mx-auto"><h2 className="text-4xl md:text-6xl font-bold mb-8 tracking-tighter">Il prossimo passo<br /><span className="text-[#55B4FF]">parte da te.</span></h2><p className="text-white/80 text-lg mb-10 font-light leading-relaxed">Raccontaci cosa vorresti tornare a fare. La valutazione ci aiuta a definire priorità, obiettivi e un percorso adatto alla tua situazione.</p><a href="#valutazione" className="inline-flex items-center justify-center gap-3 bg-[#55B4FF] text-[#022166] px-8 md:px-12 py-5 rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-white transition-colors focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white">Richiedi una valutazione<ChevronRight size={18} aria-hidden="true" /></a><Link href={bookingHref(treatment.path)} className="block w-fit mx-auto mt-6 text-sm underline underline-offset-4 text-white/90 focus-visible:outline-2 focus-visible:outline-offset-4">Apri la richiesta in una pagina dedicata</Link></div>
           </section>
           <div className="mt-20 pt-8 border-t border-slate-200"><Link href={treatment.category.href} className="inline-flex gap-2 items-center text-sm font-bold text-[#022166] hover:underline focus-visible:outline-2 focus-visible:outline-offset-4"><ArrowLeft size={16} aria-hidden="true" />{treatment.category.label}</Link></div>
         </div>

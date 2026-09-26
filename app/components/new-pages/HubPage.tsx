@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Activity, ArrowUpRight, CheckCircle2, ChevronRight } from "lucide-react";
 import Breadcrumbs from "./Breadcrumbs";
+import { bookingHref } from "@/app/data/booking";
 import { treatmentGroups } from "@/app/data/navigation";
 import type { TreatmentHub } from "@/app/data/treatment-hubs";
 
@@ -34,7 +35,7 @@ export default function HubPage({ hub }: { hub: TreatmentHub }) {
         <section className="bg-[#022166] text-white text-center rounded-[3rem] md:rounded-[4rem] p-8 md:p-20 shadow-xl">
           <h2 className="text-3xl md:text-5xl font-black tracking-tighter mb-6">Parliamo del tuo prossimo passo.</h2>
           <p className="text-white/80 text-lg max-w-2xl mx-auto mb-10">Raccontaci cosa limita le tue giornate. Insieme possiamo individuare da dove iniziare.</p>
-          <Link href="/prenota" prefetch={false} className="inline-flex items-center justify-center gap-3 px-7 py-5 rounded-2xl bg-[#55B4FF] text-[#022166] text-xs font-black uppercase tracking-widest hover:bg-white transition-colors">Richiedi una valutazione <ChevronRight size={18} aria-hidden="true" /></Link>
+          <Link href={bookingHref(hub.path)} prefetch={false} className="inline-flex items-center justify-center gap-3 px-7 py-5 rounded-2xl bg-[#55B4FF] text-[#022166] text-xs font-black uppercase tracking-widest hover:bg-white transition-colors">Richiedi una valutazione <ChevronRight size={18} aria-hidden="true" /></Link>
         </section>
         <div className="mt-16"><Link href="/trattamenti/tutti" prefetch={false} className="font-bold text-[#022166] underline underline-offset-4">Esplora tutti i trattamenti</Link></div>
       </div>

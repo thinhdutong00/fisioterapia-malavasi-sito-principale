@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import { bookingHref } from '@/app/data/booking';
 
 // Icone Lucide-React ottimizzate per la complessità della Spalla
 import { 
@@ -221,7 +222,7 @@ export default function SpallaRiabilitazionePage() {
               
               <div className="flex flex-col sm:flex-row justify-center gap-6">
                 <Link 
-                  href="/prenota" 
+                  href={bookingHref("/trattamenti/patologie-spalla")}
                   className="bg-[#55B4FF] text-[#022166] px-10 py-6 rounded-2xl font-black uppercase text-[12px] tracking-widest hover:bg-white transition-all flex items-center justify-center gap-3"
                 >
                   <CalendarCheck size={18} /> Prenota Valutazione
