@@ -37,9 +37,10 @@ export default function FisioterapiaMalavasi() {
             alt="Palestra riabilitativa dello Studio Fisioterapia Malavasi"
             fill
             className="object-cover object-[center_55%]"
-            quality={70}
+            quality={60}
             sizes="100vw"
-            priority
+            preload
+            fetchPriority="high"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/75"></div>
         </div>

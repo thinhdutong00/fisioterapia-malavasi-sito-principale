@@ -28,7 +28,8 @@ const explanation = [
   { text: "perché il tuo corpo funzioni meglio anche senza di noi." },
 ];
 
-const fadedColor = [203, 213, 225];
+// Muted but WCAG-compliant on the section background, including before the reveal starts.
+const fadedColor = [71, 85, 105];
 const primaryColor = [2, 33, 102];
 const accentColor = [0, 110, 184];
 
@@ -166,9 +167,9 @@ export default function ScrollManifesto() {
               </p>
             </div>
             <p
-              aria-label="Prendiamo in carico davvero la persona: non come un meccanico che aggiusta un pezzo e presenta il conto, ma come un istruttore di guida che ti insegna a capire il problema, gestirlo e renderti autonomo. Lo facciamo attraverso percorsi di esercizio terapeutico e Cognitive Functional Therapy, CFT, perché il tuo corpo funzioni meglio anche senza di noi."
               className="max-w-3xl text-lg font-medium leading-relaxed md:col-span-9 md:text-2xl md:leading-relaxed"
             >
+              <span className="sr-only">Prendiamo in carico davvero la persona: non come un meccanico che aggiusta un pezzo e presenta il conto, ma come un istruttore di guida che ti insegna a capire il problema, gestirlo e renderti autonomo. Lo facciamo attraverso percorsi di esercizio terapeutico e Cognitive Functional Therapy, CFT, perché il tuo corpo funzioni meglio anche senza di noi.</span>
               <ProgressiveText segments={explanation} progress={explanationProgress} />
             </p>
           </div>

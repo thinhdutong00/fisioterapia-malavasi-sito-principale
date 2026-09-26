@@ -351,9 +351,9 @@ export default function Navbar() {
             ? "max-w-[96%] rounded-2xl border-white/40 bg-white/95 px-6 py-3 shadow-[0_20px_50px_-12px_rgba(2,33,102,0.1)] backdrop-blur-2xl md:px-8"
             : "max-w-[98%] rounded-none border-transparent bg-transparent px-4 py-8 md:px-10"
         }`}>
-          <Link href="/" prefetch={false} onClick={closeMenus} aria-current={pathname === "/" ? "page" : undefined} className={`flex shrink-0 items-center rounded-lg ${focusStyle}`}>
-            <div className={`relative transition-all duration-500 ${isScrolled ? "h-8 w-36 md:h-9 md:w-44" : "h-10 w-52 md:h-14 md:w-72"}`}>
-              <Image src={logoSrc} alt="Logo Malavasi" fill sizes="(min-width: 768px) 288px, 208px" quality={35} className="object-contain transition-all duration-500" />
+          <Link href="/" prefetch={false} onClick={closeMenus} aria-current={pathname === "/" ? "page" : undefined} className={`flex shrink-0 items-center rounded-lg ${!isScrolled ? "-ml-1 md:ml-0" : ""} ${focusStyle}`}>
+            <div className={`relative transition-all duration-500 ${isScrolled ? "h-8 w-36 md:h-9 md:w-44" : "h-12 w-56 md:h-14 md:w-72"}`}>
+              <Image src={logoSrc} alt="Logo Malavasi" fill sizes="(min-width: 768px) 288px, 224px" quality={45} className={`object-contain transition-all duration-500 ${isScrolled ? "object-center" : "object-left md:object-center"}`} />
             </div>
           </Link>
 
@@ -383,7 +383,7 @@ export default function Navbar() {
                     </div>
                     {item.children && (
                       <div id={`desktop-panel-${item.id}`} hidden={!isOpen} className="absolute left-1/2 top-full -translate-x-1/2 pt-4">
-                        <DesktopPanel key={`${item.id}-${isOpen}`} item={item} pathname={pathname} onNavigate={closeMenus} />
+                        {isOpen && <DesktopPanel key={item.id} item={item} pathname={pathname} onNavigate={closeMenus} />}
                       </div>
                     )}
                   </li>
@@ -408,9 +408,10 @@ export default function Navbar() {
         </div>
       </header>
 
-      {/* Always rendered: destinations remain available in the server HTML. */}
-      <div hidden={!isMobileMenuOpen} className="fixed inset-0 z-[10000] bg-white min-[1440px]:hidden">
-        <div ref={dialogRef} id="mobile-navigation-dialog" role="dialog" aria-modal="true" aria-labelledby="mobile-navigation-title" className="flex h-dvh w-full flex-col overflow-hidden bg-white text-[#022166]">
+      {/* Keep the controlled target stable; mount the large navigation tree only while open. */}
+      <div id="mobile-navigation-dialog" hidden={!isMobileMenuOpen} className="fixed inset-0 z-[10000] bg-white min-[1440px]:hidden">
+        {isMobileMenuOpen && (
+        <div ref={dialogRef} role="dialog" aria-modal="true" aria-labelledby="mobile-navigation-title" className="flex h-dvh w-full flex-col overflow-hidden bg-white text-[#022166]">
           <div className="flex shrink-0 items-center justify-between gap-4 border-b border-slate-100 px-5 py-5">
             <Link href="/" prefetch={false} onClick={() => closeMobileMenu(false)} className={`rounded-lg ${focusStyle}`}>
               <div className="relative h-10 w-48">
@@ -438,6 +439,7 @@ export default function Navbar() {
             </div>
           </div>
         </div>
+        )}
       </div>
     </>
   );
