@@ -20,7 +20,7 @@ export default function Footer() {
           </div>
           
           <p className="text-white/80 text-[13px] leading-relaxed font-medium max-w-xs tracking-tight">
-            Professionalità e cura del paziente al centro di ogni trattamento. Specialisti nel recupero funzionale e nel benessere motorio.
+            Professionalità e cura del paziente al centro di ogni trattamento con il Dott. Mirco Malavasi, fisioterapista OMPT.
           </p>
           
           <div className="flex gap-4">

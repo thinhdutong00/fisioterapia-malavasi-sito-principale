@@ -221,7 +221,7 @@ export default function ChirurgiaPage() {
           {/* FOOTER */}
           <div className="mt-24 border-t border-slate-200 pt-12 flex justify-between items-center text-slate-400">
             <Link href="/trattamenti" className="inline-flex items-center gap-2 font-bold hover:text-[#022166] transition-all"><ArrowLeft size={20} /> Altri Trattamenti</Link>
-            <span className="text-[10px] uppercase tracking-widest font-black opacity-40">Specialisti in Riabilitazione Post-Chirurgica</span>
+            <span className="text-[10px] uppercase tracking-widest font-black opacity-40">Mirco Malavasi — Riabilitazione Post-Chirurgica</span>
           </div>
         </div>
       </div>

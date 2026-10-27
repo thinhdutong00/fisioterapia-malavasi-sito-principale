@@ -122,7 +122,7 @@ export default function TrattamentiPage() {
             <div className="bg-[#022166] p-12 rounded-[2rem] shadow-xl flex flex-col justify-center text-white relative overflow-hidden group">
                <h2 className="text-3xl font-black mb-6 relative z-10 leading-tight">Valutazione <br />Clinica</h2>
                <p className="text-white/60 mb-10 relative z-10 text-sm leading-relaxed">
-                 Non sai quale percorso sia più adatto a te? I nostri professionisti sono a disposizione per definire la strategia corretta.
+                 Non sai quale percorso sia più adatto a te? Il Dott. Mirco Malavasi è a disposizione per definire la strategia corretta.
                </p>
                <Link 
                 href="/prenota" 

@@ -13,7 +13,7 @@ export default function ThankYouPage() {
         <h1 className="text-3xl font-bold text-slate-900 mb-4">Richiesta Ricevuta!</h1>
         
         <p className="text-slate-600 mb-8 leading-relaxed">
-          Il Dr. Malavasi o la segreteria ti contatteranno entro le prossime **24 ore** per confermare l'appuntamento.
+          Il Dott. Mirco Malavasi ti contatterà entro le prossime <strong>24 ore</strong> per confermare l'appuntamento.
         </p>
 
         <Link 

@@ -231,7 +231,7 @@ export default function LombalgiaSciatalgiaPage() {
                 >
                   {[
                     { n: "Rosalba Cantuti", t: "Lo studio Malavasi è molto serio e professionale, Mirco segue molto bene il paziente e da’ consigli utili x continuare a migliorare nel percorso di riabilitazione.", d: "2 settimane fa" },
-                    { n: "Samuele Pini", t: "Mi sono rotto il crociato e subito ho deciso di iniziare il mio percorso preoperatorio grazie al quale ho potuto affrontare la riabilitazione molto meglio, psicologicamente più sollevato. Grazie al Dott. Mirco e al suo staff, dotato di ottima preparazione", d: "1 mese fa" },
+                    { n: "Samuele Pini", t: "Mi sono rotto il crociato e subito ho deciso di iniziare il mio percorso preoperatorio grazie al quale ho potuto affrontare la riabilitazione molto meglio, psicologicamente più sollevato. […]", d: "1 mese fa" },
                     { n: "Federico Zagni", t: "Professionista e collega di alto livello! Grande empatia e professionalità!", d: "3 settimane fa" },
                     { n: "Alessandro Papazzoni", t: "Ci sono andato per la mia caviglia e mi hanno aiutato con molta cura e attenzione, in più sono migliorato velocemente.", d: "10 mesi fa" },
                     { n: "Elisa Cavazzoli", t: "Con Mirco mi sono trovata bene fin da subito. È ATTENTO e molto preparato nonostante la giovane età. Con i giusti esercizi e le giuste tempistiche sono riuscita a gestire e risolvere il mio problema, sono molto contenta! Consigliatissimo a tutti!!", d: "1 anno fa" },
@@ -272,7 +272,7 @@ export default function LombalgiaSciatalgiaPage() {
             <div className="relative z-10 max-w-3xl">
               <div className="flex items-center gap-3 mb-6">
                 <div className="h-[1px] w-8 bg-[#55B4FF]"></div>
-                <span className="text-[#55B4FF] font-black text-[10px] uppercase tracking-[0.4em]">Fisioterapia Malavasi — Specialisti della Colonna</span>
+                <span className="text-[#55B4FF] font-black text-[10px] uppercase tracking-[0.4em]">Mirco Malavasi — Riabilitazione della Colonna</span>
               </div>
               
               <h2 className="text-4xl md:text-6xl font-bold mb-8 tracking-tighter leading-[0.95]">

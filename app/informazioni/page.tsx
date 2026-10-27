@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import TeamCarousel from './TeamCarousel';
 import { 
   ArrowLeft, 
   ChevronRight, 
@@ -31,7 +30,7 @@ export default function InformazioniPage() {
             <span className="text-[#022166] font-semibold">Informazioni</span>
           </nav>
 
-          {/* --- SEZIONE 1: IL TEAM (HEADER) --- */}
+          {/* --- MIRCO MALAVASI --- */}
           <header className="mb-16 md:mb-24">
             <div className="flex items-center gap-3 mb-6">
               <div className="h-[1px] w-8 md:w-12 bg-[#55B4FF]"></div>
@@ -40,35 +39,44 @@ export default function InformazioniPage() {
               </span>
             </div>
             <h1 className="text-4xl md:text-7xl lg:text-8xl font-bold text-[#022166] leading-[1.1] md:leading-[0.95] mb-8 md:mb-10 tracking-tighter">
-              Il nostro team <br />
-              di <span className="text-[#55B4FF]">specialisti.</span>
+              Mirco <br />
+              <span className="text-[#55B4FF]">Malavasi.</span>
             </h1>
             <p className="max-w-3xl text-lg md:text-2xl text-slate-600 leading-relaxed font-light">
-              Siamo un gruppo di fisioterapisti che condivide un’idea essenziale: 
+              Sono Mirco Malavasi, fisioterapista OMPT. Il mio lavoro parte da un’idea essenziale:
               <span className="text-[#022166] font-semibold"> la fisioterapia deve aiutare la persona</span>, non solo curare un sintomo.
             </p>
           </header>
 
-          {/* CONTENUTO DETTAGLIATO TEAM */}
+          {/* PRESENTAZIONE E RITRATTO */}
           <section className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-24 items-start mb-24 md:mb-40">
             <div className="order-1 space-y-6 md:space-y-8">
               <div className="space-y-6 md:space-y-8 text-base md:text-xl text-slate-500 font-light leading-relaxed">
                 <p>
-                  Nel nostro studio mettiamo al centro l’ascolto e la continuità del percorso. Ogni trattamento nasce da una valutazione approfondita basata sulle più recenti evidenze scientifiche.
+                  Mi occupo di riabilitazione muscolo-scheletrica e oncologica. Nel mio studio metto al centro l’ascolto e la continuità del percorso. Ogni trattamento nasce da una valutazione approfondita basata sulle più recenti evidenze scientifiche.
                 </p>
                 <div className="bg-white p-6 md:p-8 rounded-[2rem] border border-slate-100 shadow-sm italic text-slate-500 font-medium relative mt-8 md:mt-12">
                   <span className="absolute -top-4 left-6 md:left-8 bg-[#55B4FF] text-white p-2 rounded-lg shadow-lg">
                     <Award size={18} />
                   </span>
-                  "Il nostro compito non è solo rimetterti in piedi, ma restituirti equilibrio, sicurezza e libertà di movimento."
+                  "Il mio compito non è solo rimetterti in piedi, ma restituirti equilibrio, sicurezza e libertà di movimento."
                 </div>
               </div>
             </div>
 
-            {/* Destra: Immagini team */}
+            {/* Ritratto di Mirco Malavasi */}
             <div className="order-2 relative group">
               <div className="relative bg-white p-2 md:p-3 rounded-[30px] md:rounded-[40px] shadow-2xl border border-white z-10">
-                <TeamCarousel />
+                <div className="relative aspect-square overflow-hidden rounded-[24px] bg-slate-100 md:rounded-[32px]">
+                  <Image
+                    src="/mirco.webp"
+                    alt="Dott. Mirco Malavasi, fisioterapista OMPT"
+                    fill
+                    preload
+                    sizes="(min-width: 1152px) 528px, (min-width: 1024px) 45vw, 100vw"
+                    className="object-cover object-top"
+                  />
+                </div>
               </div>
               
               <div className="absolute -bottom-4 -right-2 md:-bottom-6 md:-right-6 bg-[#022166] text-white p-4 md:p-7 rounded-2xl md:rounded-3xl shadow-2xl z-20 border border-white/10 max-w-[180px] md:max-w-none">
@@ -77,9 +85,9 @@ export default function InformazioniPage() {
                     <ShieldCheck size={20} className="md:w-7 md:h-7" />
                   </div>
                   <div>
-                    <div className="text-xs md:text-xl font-bold tracking-tight">Certificati</div>
+                    <div className="text-xs md:text-xl font-bold tracking-tight">Fisioterapista OMPT</div>
                     <div className="text-[7px] md:text-[9px] leading-tight uppercase tracking-wider opacity-70 font-medium">
-                      Iscritti all'Albo Nazionale
+                      Iscritto all'Albo Nazionale
                     </div>
                   </div>
                 </div>

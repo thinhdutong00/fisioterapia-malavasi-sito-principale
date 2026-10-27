@@ -205,7 +205,7 @@ export default function CefaleeVertiginiPage() {
           <section className="bg-[#022166] p-12 md:p-20 rounded-[3rem] shadow-2xl relative overflow-hidden group text-white">
             <div className="absolute top-[-10%] right-[-10%] opacity-5 group-hover:scale-110 transition-transform duration-700"><Activity size={400} /></div>
             <div className="relative z-10 max-w-3xl">
-              <div className="flex items-center gap-3 mb-6"><div className="h-[1px] w-8 bg-[#55B4FF]"></div><span className="text-[#55B4FF] font-black text-[10px] uppercase tracking-[0.4em]">Fisioterapia Malavasi — Specialisti del Tratto Cervicale</span></div>
+              <div className="flex items-center gap-3 mb-6"><div className="h-[1px] w-8 bg-[#55B4FF]"></div><span className="text-[#55B4FF] font-black text-[10px] uppercase tracking-[0.4em]">Mirco Malavasi — Riabilitazione del Tratto Cervicale</span></div>
               <h2 className="text-4xl md:text-6xl font-bold mb-8 tracking-tighter leading-[0.95]">Dì addio alla <br /><span className="text-[#55B4FF]">tensione al collo.</span></h2>
               <p className="text-white/60 text-xl mb-12 font-light max-w-xl">Prenota ora la tua valutazione specialistica e torna a muoverti con leggerezza e lucidità.</p>
               <div className="flex flex-wrap gap-6">

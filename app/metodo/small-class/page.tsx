@@ -204,7 +204,7 @@ export default function SmallClassPage() {
     </h2>
     
     <p className="text-white/60 text-xl mb-12 font-light leading-relaxed max-w-xl">
-      La qualità del servizio richiede una pianificazione anticipata. Assicurati il tuo spazio nel gruppo guidato dai nostri fisioterapisti.
+      La qualità del servizio richiede una pianificazione anticipata. Assicurati il tuo spazio nel gruppo guidato dal Dott. Mirco Malavasi.
     </p>
     
     <div className="flex flex-wrap gap-6">

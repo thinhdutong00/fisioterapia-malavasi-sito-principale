@@ -118,7 +118,7 @@ export default function LCASpecialistPage() {
                 <span className="text-slate-400">La tua funzione sì.</span>
               </h2>
               <p className="text-lg text-slate-600 leading-relaxed font-light">
-                La riuscita di una ricostruzione LCA dipende dall'integrazione perfetta tra chirurgia e riabilitazione. Come specialisti <strong>OMPT</strong>, alleniamo il sistema nervoso a proteggere il ginocchio.
+                La riuscita di una ricostruzione LCA dipende dall'integrazione perfetta tra chirurgia e riabilitazione. Come fisioterapista <strong>OMPT</strong>, alleno il sistema nervoso a proteggere il ginocchio.
               </p>
               
               <div className="grid sm:grid-cols-2 gap-6 pt-6">

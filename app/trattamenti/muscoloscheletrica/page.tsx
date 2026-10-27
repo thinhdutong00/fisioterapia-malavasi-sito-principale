@@ -97,7 +97,7 @@ export default function FisioterapiaMuscoloscheletrica() {
                       <span className="text-xs font-black uppercase tracking-widest">Specializzazione Internazionale</span>
                     </div>
                     <h2 className="text-3xl md:text-5xl font-black mb-8 leading-tight">
-                      Fisioterapisti OMPT: <br />
+                      Mirco Malavasi OMPT: <br />
                       Terapia Manuale
                     </h2>
                     <p className="text-white/70 text-lg leading-relaxed mb-6">

@@ -196,7 +196,7 @@ export default function GinocchioRiabilitazionePage() {
           <div className="flex gap-0.5 text-yellow-400 mb-1">
             {[...Array(5)].map((_, i) => <Star key={i} size={16} fill="currentColor" stroke="none" />)}
           </div>
-          <p className="text-[#022166] font-black text-lg md:text-xl tracking-tighter leading-none">Specialisti Ginocchio</p>
+          <p className="text-[#022166] font-black text-lg md:text-xl tracking-tighter leading-none">Mirco Malavasi</p>
           <p className="text-slate-400 text-[9px] uppercase tracking-widest mt-1 font-bold">Eccellenza OMPT</p>
         </div>
       </div>
@@ -220,9 +220,9 @@ export default function GinocchioRiabilitazionePage() {
         className="!pb-16 md:!pb-24 !overflow-visible"
       >
         {[
-          { n: "Samuele Pini", t: "mi sono rotto il crociato e subito ho deciso di iniziare il mio percorso preoperatorio grazie al quale ho potuto affrontare la riabilitazione molto meglio, psicplogicamente piu sollevato. Grazie al dott.Mirco e al suo staff, dotato ci ottima preparazione", d: "2 mesi fa" },
+          { n: "Samuele Pini", t: "mi sono rotto il crociato e subito ho deciso di iniziare il mio percorso preoperatorio grazie al quale ho potuto affrontare la riabilitazione molto meglio, psicplogicamente piu sollevato. […]", d: "2 mesi fa" },
           { n: "Luisa Tirelli", t: "Ottimo professionista. Mi ha risolto, con esercizi mirati, nel giro di 2 mesi, un problema invalidante al ginocchio. Oltre all'indubbia competenza, ti ascolta e ti spiega alla perfezione gli esercizi che ti propone x il tuo problema. Grazie mille, Mirco. Consigliatissimo!!!", d: "1 anno fa" },
-          { n: "Edoardo Massarenti", t: "Esperienza super positiva. Mi sono rivolto al dottor Malavasi per curare una tendinopatia al ginocchio, in poco più di due mesi abbiamo risolto! Ho trovato grande professionalità e conoscenza della materia sia dal dottor Malavasi che dal suo collega Lorenzo. Lo consiglio caldamente!", d: "2 anni fa" }
+          { n: "Edoardo Massarenti", t: "Esperienza super positiva. Mi sono rivolto al dottor Malavasi per curare una tendinopatia al ginocchio, in poco più di due mesi abbiamo risolto! […]", d: "2 anni fa" }
         ].map((rev, i) => (
           <SwiperSlide key={i} className="!h-auto flex">
             <div className="bg-white p-8 md:p-12 rounded-[2.5rem] md:rounded-[3rem] border border-slate-100 h-full flex flex-col shadow-sm relative group/card w-full">
@@ -268,7 +268,7 @@ export default function GinocchioRiabilitazionePage() {
             <div className="relative z-10 max-w-3xl">
               <div className="flex items-center gap-3 mb-6">
                 <div className="h-[1px] w-8 bg-[#55B4FF]"></div>
-                <span className="text-[#55B4FF] font-black text-[10px] uppercase tracking-[0.4em]">Fisioterapia Malavasi — Specialisti della Biomeccanica</span>
+                <span className="text-[#55B4FF] font-black text-[10px] uppercase tracking-[0.4em]">Mirco Malavasi — Riabilitazione del Ginocchio</span>
               </div>
               
               <h2 className="text-4xl md:text-6xl font-bold mb-8 tracking-tighter leading-[0.95]">

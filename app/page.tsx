@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import {
   CheckCircle,
   Phone,
@@ -189,36 +190,28 @@ export default function FisioterapiaMalavasi() {
         </div>
       </section>
 
-{/* --- SEZIONE STAFF --- */}
-{/* MODIFICATO: rimosso h-screen e classi snap. Aggiunto min-h-screen */}
-<section id="team" className="relative py-20 md:py-32 px-4 bg-white overflow-hidden">
-  <div className="max-w-7xl mx-auto relative z-10 w-full">
-    <div className="text-center mb-12 md:mb-20">
-      <span className="text-[#55B4FF] font-black text-[10px] uppercase tracking-[0.3em] block mb-4">Professionalità e Competenza</span>
-      <h2 className="text-3xl md:text-6xl font-black text-[#022166] tracking-tighter mb-6">Il Nostro <span className="text-[#55B4FF]">Team</span></h2>
-    </div>
-    {/* Cambiato gap-8 in gap-6 per mobile */}
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-      {[
-        { nome: "Mirco Malavasi", ruolo: "Fisioterapista OMPT", specialita: "Riabilitazione muscolo-scheletrica e oncologica", foto: "/mirco.webp" },
-        { nome: "Virginia Buffagni", ruolo: "Fisioterapista", specialita: "Riabilitazione neuro-muscoloscheletrico", foto: "/virginia-buffagni.jpg" },
-        { nome: "Alice Morsiani", ruolo: "Fisioterapista", specialita: "Dolore cronico e fisioterapia muscoloscheletrica", foto: "/alice-morsiani.jpg" },
-        { nome: "Luca Rabaglia", ruolo: "Fisioterapista", specialita: "Riabilitazione muscolo-scheletrica e sportiva", foto: "/luca.webp" }
-      ].map((membro, idx) => (
-        <div key={idx} className="group bg-slate-50 rounded-[2.5rem] md:rounded-[3.5rem] p-4 pb-10 md:pb-12 transition-all duration-700 border border-slate-100 text-center flex flex-col items-center w-full max-w-[400px] mx-auto">
-          <div className="aspect-[4/5] w-full relative overflow-hidden rounded-[2rem] md:rounded-[2.8rem] mb-6 md:mb-8">
-            <Image 
-              src={membro.foto} 
-              alt={membro.nome} 
-              fill
-              className={`object-cover ${membro.foto === "/alice-morsiani.jpg" ? "object-[center_65%]" : "object-top"} transition-transform duration-700 group-hover:scale-105`}
-            />
-          </div>
-          <span className="bg-[#f0f9ff] text-[#55B4FF] border border-[#55B4FF]/20 px-4 py-1.5 rounded-full font-black text-[8px] md:text-[9px] uppercase tracking-widest mb-4">{membro.ruolo}</span>
-          <h2 className="text-2xl md:text-3xl font-black text-[#022166] mb-3 group-hover:text-[#55B4FF] transition-colors">{membro.nome}</h2>
-          <p className="text-slate-500 text-xs md:text-sm font-bold italic max-w-[220px]">{membro.specialita}</p>
-        </div>
-      ))}
+{/* --- MIRCO MALAVASI --- */}
+<section id="mirco-malavasi" aria-labelledby="mirco-heading" className="relative py-20 md:py-32 px-4 bg-white overflow-hidden scroll-mt-28">
+  <div className="max-w-5xl mx-auto relative z-10 w-full">
+    <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-center bg-slate-50 rounded-[2.5rem] md:rounded-[3.5rem] p-5 md:p-10 border border-slate-100">
+      <div className="aspect-[4/5] w-full max-w-[400px] mx-auto relative overflow-hidden rounded-[2rem] md:rounded-[2.8rem]">
+        <Image
+          src="/mirco.webp"
+          alt="Dott. Mirco Malavasi, fisioterapista OMPT"
+          fill
+          sizes="(min-width: 768px) 400px, (min-width: 480px) 400px, 85vw"
+          className="object-cover object-top"
+        />
+      </div>
+      <div className="text-center md:text-left py-5 md:py-0">
+        <span className="text-[#55B4FF] font-black text-[10px] uppercase tracking-[0.3em] block mb-4">Fisioterapista OMPT</span>
+        <h2 id="mirco-heading" className="text-4xl md:text-6xl font-black text-[#022166] tracking-tighter mb-6">Mirco <span className="text-[#55B4FF]">Malavasi</span></h2>
+        <p className="text-[#022166] text-lg md:text-xl font-bold mb-5">Riabilitazione muscolo-scheletrica e oncologica.</p>
+        <p className="text-slate-500 text-base md:text-lg leading-relaxed mb-8">Ti accompagno nel percorso di recupero con ascolto, valutazione e un programma costruito sulle tue esigenze.</p>
+        <Link href="/informazioni" className="inline-flex items-center justify-center gap-3 rounded-2xl bg-[#022166] px-6 py-4 text-white text-xs font-black uppercase tracking-widest hover:bg-[#55B4FF] hover:text-[#022166] transition-colors">
+          Conosci Mirco <ArrowRight size={18} aria-hidden="true" />
+        </Link>
+      </div>
     </div>
   </div>
 </section>
